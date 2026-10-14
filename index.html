@@ -1,0 +1,1186 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- ============================================================
+     turzin. · PORTFÓLIO (engenharia de design)
+     Arquivo único: estrutura (HTML), visual (CSS) e animações (JS).
+     Abra o arquivo GUIA-DO-SITE.html para saber em qual linha mudar cada coisa.
+     Dica: procure (Ctrl+F) pelas etiquetas [GUIA: ...] para achar cada parte.
+     ============================================================ -->
+
+<!-- [GUIA: titulo-aba] Texto que aparece na aba do navegador e no Google -->
+<title>turzin.</title>
+<!-- seo -->
+<meta name="description" content="turzin. é engenharia de design e tecnologia: identidade visual, branding e sites para pequenos negócios. Veja os projetos e peça seu orçamento.">
+<link rel="canonical" href="https://turzindesign.com.br/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="turzin.">
+<meta name="theme-color" content="#212121">
+<link rel="icon" href="/img/marca/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/img/marca/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="turzin.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://turzindesign.com.br/">
+<meta property="og:title" content="turzin. · Identidade visual e sites">
+<meta property="og:description" content="turzin. é engenharia de design e tecnologia: identidade visual, branding e sites para pequenos negócios. Veja os projetos e peça seu orçamento.">
+<meta property="og:image" content="https://turzindesign.com.br/img/og/og-home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="turzin. · Identidade visual e sites">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="turzin. · Identidade visual e sites">
+<meta name="twitter:description" content="turzin. é engenharia de design e tecnologia: identidade visual, branding e sites para pequenos negócios. Veja os projetos e peça seu orçamento.">
+<meta name="twitter:image" content="https://turzindesign.com.br/img/og/og-home.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://turzindesign.com.br/#turzin", "name": "turzin.", "alternateName": "turzin design", "url": "https://turzindesign.com.br/", "logo": "https://turzindesign.com.br/img/marca/simbolo-512.png", "image": "https://turzindesign.com.br/img/og/og-home.jpg", "description": "Engenharia de design e tecnologia: identidade visual e sites para pequenos negócios. Do papel à tela, design como função.", "email": "turzindesign@gmail.com", "areaServed": {"@type": "Country", "name": "Brasil"}, "knowsAbout": ["Identidade visual", "Branding", "Criação de logotipo", "Design de embalagem", "Criação de sites", "Design de interface"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Serviços", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Identidade visual", "description": "Estudo de nicho e mercado, logotipo, tipografia, paleta, grafismos, aplicações e manual de uso da marca."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Identidade visual + site", "description": "Identidade visual completa com site e manual de uso do site."}}]}}, {"@type": "WebSite", "@id": "https://turzindesign.com.br/#site", "url": "https://turzindesign.com.br/", "name": "turzin.", "inLanguage": "pt-BR", "publisher": {"@id": "https://turzindesign.com.br/#turzin"}}]}</script>
+<!-- /seo -->
+<link rel="icon" href="img/marca/simbolo.svg" type="image/svg+xml">
+
+<!-- [GUIA: fontes-google] Fonte da marca: Bricolage Grotesque (variável: peso 200–800, largura 75–100, tamanho óptico 12–96).
+     É a única fonte do site. Bodoni Moda, Jost e Fraunces aparecem SÓ dentro do Playground,
+     porque ali são as marcas de mentira que o visitante testa (não é a tipografia da turzin.). -->
+<!-- fonte hospedada no próprio site (mais rápido que buscar no Google): Bricolage Grotesque variável -->
+<link rel="preload" href="fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-display:swap;font-weight:200 800;font-stretch:75% 100%;src:url(fonts/bricolage-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-display:swap;font-weight:200 800;font-stretch:75% 100%;src:url(fonts/bricolage-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+</style>
+
+<style>
+/* ================================================================
+   PAINEL DE CONTROLE (CSS)
+   Quase tudo que você vai querer mudar está aqui.
+   Mude só o valor depois dos dois-pontos e salve.
+   ================================================================ */
+:root {
+  /* [GUIA: cores] ---- CORES DO SITE (modo escuro, o padrão) ---- */
+  --ground: #212121;                  /* cinza escuro da marca: fundo da página */
+  --ink: #F7F7F7;                     /* off-white: cor principal do texto */
+  --mute: rgba(247,247,247,.62);      /* texto secundário, mais apagado */
+  --line: rgba(247,247,247,.16);      /* linhas e bordas finas */
+  --green: #44D62D;                   /* verde turzin.: destaques, ponto final, barra de progresso */
+  --green-ink: #212121;               /* texto escuro usado em cima do verde */
+  --panel: rgba(247,247,247,.05);     /* fundo dos cartões do Playground */
+
+  /* [GUIA: fontes-css] ---- FONTES ---- (o nome tem que bater com o link do Google Fonts lá em cima) */
+  /* uma família só, a Bricolage. Os três nomes existem só para organizar os usos */
+  --display: 'Bricolage Grotesque', 'Arial Narrow', system-ui, sans-serif;  /* títulos (sempre em CAIXA ALTA) */
+  --body: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;      /* textos corridos */
+  --mono: 'Bricolage Grotesque', system-ui, sans-serif;                     /* etiquetas pequenas em CAIXA ALTA */
+  /* [GUIA: largura-titulos] largura da Bricolage nos títulos (75 = bem condensada, 100 = normal) */
+  --largura: 78;
+
+  /* [GUIA: tamanhos] ---- TAMANHOS ---- clamp(mínimo, ideal, máximo) */
+  --g: clamp(16px, 4vw, 56px);                       /* margem lateral da página */
+  --titulo-hero: clamp(46px, 9.6vw, 156px);          /* título grande da primeira tela (celular) */
+  --titulo-hero-pc: clamp(56px, min(8.6vw, 15vh), 150px); /* título grande da primeira tela (PC) */
+  --titulo-secao: clamp(36px, 6vw, 88px);            /* títulos das seções */
+  --titulo-projeto: clamp(54px, min(11vw, 17vh), 190px); /* nome da marca em cada projeto */
+
+  /* [GUIA: tempos-css] ---- TEMPOS DAS ANIMAÇÕES ---- (s = segundos) */
+  --t-letras: .7s;         /* quanto tempo cada letra do título leva para subir ao abrir a página */
+  --t-cartoes: .9s;        /* cartões 3D entrando voando na primeira tela (PC) */
+  --t-flutuar: 6s;         /* cartões 3D flutuando (maior = mais lento) */
+  --t-faixa: 50s;          /* faixa de imagens que corre sozinha (maior = mais lenta) */
+  --t-palavras: 1s;        /* palavras dos títulos de seção subindo */
+  --t-aparecer: .9s;       /* blocos aparecendo quando você rola */
+  --curva: cubic-bezier(.2,.8,.2,1);   /* "jeito" das animações: começa rápido e freia suave */
+
+  color-scheme: dark;
+}
+
+/* [GUIA: cores-papel] ---- CORES DO "MODO PAPEL" (botão Vire o jogo, no Playground) ---- */
+:root[data-mode="papel"] {
+  --ground: #F7F7F7;
+  --ink: #212121;
+  --mute: rgba(33,33,33,.66);
+  --line: rgba(33,33,33,.16);
+  --panel: rgba(33,33,33,.05);
+  --green: #44D62D;
+  color-scheme: light;
+}
+
+/* ================================================================
+   BASE (não precisa mexer)
+   ================================================================ */
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+/* rolagem suave do PC (biblioteca Lenis) */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 17px/1.5 var(--body); font-optical-sizing: auto; transition: background-color .6s, color .6s; }
+main { overflow-x: clip; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+/* etiquetas pequenas em maiúsculas (ex.: "PLAYGROUND", "01 · PSICÓLOGA") */
+.mono { font-family: var(--mono); font-weight: 500; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; }
+.nocaps { text-transform: none; }  /* para escrever turzin. sempre minúsculo dentro de etiquetas */
+/* [GUIA: caixa-alta] todos os títulos em CAIXA ALTA, condensados (largura --largura) */
+h1, h2, h3 { margin: 0; font-family: var(--display); text-transform: uppercase; letter-spacing: -.02em; text-wrap: balance; font-variation-settings: "wdth" var(--largura); }
+/* ponto final quadrado (o mesmo do logo) no fim dos títulos */
+.pt { display: inline-block; width: .16em; height: .16em; margin-left: .05em; background: var(--green); }
+
+/* ================================================================
+   TOPO: barra de progresso, menu, logo e botões
+   ================================================================ */
+/* linha verde no topo que cresce conforme você rola */
+.bar { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--green); z-index: 40; }
+/* menu fixo no topo */
+.top { position: fixed; z-index: 30; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: calc(12px + env(safe-area-inset-top, 0px)) var(--g) 12px; pointer-events: none; }
+.top > * { pointer-events: auto; }
+/* [GUIA: logo-css] logo da turzin. (arquivo img/marca/logotipo.svg colado no HTML)
+   .t = letras · .d = ponto quadrado · .s = símbolo. width = tamanho */
+.logo { display: block; width: 108px; line-height: 0; }
+.marca .t, .marca .s { fill: var(--ink); transition: fill .3s; }
+.marca .d { fill: var(--green); transition: fill .3s; }
+html.no-verde .top .marca .d { fill: var(--green-ink); }   /* em cima do bloco verde do contato */
+.top nav { display: flex; gap: 22px; align-items: center; }
+.top nav a.l { text-decoration: none; opacity: .8; }
+.top nav a.l:hover { opacity: 1; }
+@media (max-width: 760px) { .top nav a.l { display: none; } }  /* no celular só aparece o botão Contato */
+
+/* [GUIA: botoes] botões arredondados. .fill = botão verde cheio */
+/* [GUIA: botoes] botões em caixa alta. No hover, um bloco verde preenche da esquerda pra direita */
+.btn { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; gap: 10px; border-radius: 0; padding: 13px 22px; font-weight: 700; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--line); background: transparent; cursor: pointer; transition: color .2s steps(2), border-color .2s steps(2); will-change: transform; }
+.btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--green); transform: scaleX(0); transform-origin: left; transition: transform .22s cubic-bezier(.2,.9,.1,1); }
+.btn:hover::before, .btn:focus-visible::before { transform: none; }
+.btn:hover, .btn:focus-visible { color: var(--green-ink); border-color: var(--green); }
+.btn.fill { background: var(--green); color: var(--green-ink); border-color: var(--green); }
+.btn.fill::before { background: var(--ink); }
+.btn.fill:hover { color: var(--ground); border-color: var(--ink); }
+.btn.sm { padding: 9px 16px; font-size: 14px; }
+html.no-verde .top .btn.fill { background: var(--green-ink); color: var(--green); border-color: var(--green-ink); }
+.btn .arr { transition: transform .3s; }
+.btn:hover .arr { transform: translateX(4px); }   /* setinha anda para o lado no hover */
+
+/* índice lateral (só no PC largo): tracinhos à direita que marcam a seção atual */
+.rail { position: fixed; right: var(--g); top: 50%; transform: translateY(-50%); z-index: 25; display: grid; gap: 10px; transition: opacity .4s; }
+.rail a { display: flex; align-items: center; gap: 10px; justify-content: flex-end; text-decoration: none; opacity: .35; transition: opacity .3s; }
+.rail a i { width: 18px; height: 2px; background: currentColor; transition: width .3s; }
+.rail a span { opacity: 0; transition: opacity .3s; }
+.rail a.on { opacity: 1; } .rail a.on i { width: 34px; }
+.rail:hover a span { opacity: 1; }
+.rail.away { opacity: 0; pointer-events: none; }   /* some enquanto você está nos projetos */
+@media (max-width: 1100px) { .rail { display: none; } }
+
+/* [GUIA: cursor] seta branca no PC (com contorno cinza para aparecer em fundo claro). O rastro de quadradinhos verdes fica em CONFIG.rastroCursor */
+@media (pointer: fine) {
+  html, html * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath d='M4 2.5v18.2l4.7-4.5 3.2 7.2 3.1-1.4-3.1-7h6.6z' fill='%23fff' stroke='%23212121' stroke-width='1.4' stroke-linejoin='round'/%3E%3C/svg%3E") 4 2, auto !important; }
+  input[type="text"], input:not([type]), textarea { cursor: text !important; }
+}
+
+/* ================================================================
+   PRIMEIRA TELA (HERO)
+   ================================================================ */
+.hero { padding: calc(120px + env(safe-area-inset-top, 0px)) var(--g) 36px; }
+.hero .eyebrow { display: flex; gap: 10px 22px; flex-wrap: wrap; color: var(--mute); margin-bottom: 26px; }
+.hero h1 { font-weight: 800; font-size: var(--titulo-hero); line-height: .92; letter-spacing: -.02em; max-width: 12ch; }
+.hero h1 .ln { display: block; overflow: hidden; padding: .14em 0 .12em; margin: -.14em 0 -.12em; }  /* o respiro evita cortar acentos (é, ó) e o ç */
+.hero h1 .ln.alt { color: var(--green); }   /* linhas verdes do título */
+/* título DIGITADO: cada letra aparece e um cursor verde anda junto. No fim o cursor fica piscando */
+.hero h1 .ch { display: inline-block; font-variation-settings: "wght" 800, "wdth" var(--largura); }
+html.anima .hero h1 .ch.tp { opacity: 0; }
+.cur { display: inline-block; width: .16em; height: .16em; margin-left: .05em; background: var(--green); }
+.cur.pisca { animation: pisca 1s steps(1) infinite; }
+@keyframes pisca { 50% { opacity: 0; } }
+/* textinho de cima e botões aparecem logo depois do título (.35s de atraso) */
+.hero .eyebrow, .hero .row { animation: fadeup .7s .35s var(--curva) both; }
+@keyframes fadeup { from { transform: translateY(20px); opacity: 0; } }
+.hero .row { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 28px; }
+.hero .say { font-size: clamp(18px, 2vw, 22px); max-width: 34ch; margin: 0; color: var(--mute); }
+/* palavra que troca sozinha (design / tecnologia / experiência) */
+.rot { display: inline-grid; vertical-align: bottom; height: 1.4em; overflow: hidden; color: var(--ink); font-weight: 700; text-transform: uppercase; letter-spacing: .02em; }
+.rot span { grid-area: 1/1; transform: translateY(110%); transition: transform .6s var(--curva); }
+.rot span.on { transform: none; } .rot span.out { transform: translateY(-110%); }
+.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* [GUIA: cartoes-3d] cartões 3D à direita do título (só aparecem em telas a partir de 1000px) */
+.stack { display: none; }
+@media (min-width: 1000px) {
+  .hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); column-gap: 3vw; align-items: center; min-height: 92vh; }
+  .hero > .eyebrow, .hero > h1, .hero > .row { grid-column: 1; }
+  .hero h1 { font-size: var(--titulo-hero-pc); }
+  .hero .row { margin-top: 28px; }
+  .stack { display: block; grid-column: 2; grid-row: 1 / span 3; position: relative; height: min(64vh, 560px); perspective: 1200px; }
+  .stack .s3d { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .2s ease-out; }
+  .stack .c { position: absolute; width: 58%; aspect-ratio: 4/5; border-radius: 10px; overflow: hidden; box-shadow: 0 40px 80px -30px rgba(0,0,0,.7); transform: translateZ(var(--z)) rotate(var(--r)); animation: deal var(--t-cartoes) var(--curva) both, bob var(--t-flutuar) ease-in-out infinite alternate; }
+  .stack .c img { width: 100%; height: 100%; object-fit: cover; }
+  /* posição (left/top), inclinação (--r) e profundidade (--z) de cada cartão */
+  .stack .c:nth-child(1) { left: 0; top: 14%; --r: -9deg; --z: 0px; animation-delay: .15s, 1.1s; }
+  .stack .c:nth-child(2) { left: 22%; top: 4%; --r: 3deg; --z: 60px; animation-delay: .25s, 1.2s; }
+  .stack .c:nth-child(3) { left: 42%; top: 20%; --r: 11deg; --z: 120px; animation-delay: .35s, 1.3s; }
+  @keyframes deal { from { transform: translateZ(var(--z)) translateY(80vh) rotate(calc(var(--r) * 3)); } }
+  @keyframes bob { to { transform: translateZ(var(--z)) translateY(-14px) rotate(calc(var(--r) * .7)); } }
+}
+
+/* faixa de imagens que corre sozinha embaixo do hero */
+.marquee { overflow: hidden; padding-block: 34px 10px; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); transform: skewX(var(--sk, 0deg)); transition: transform .3s ease-out; }
+.marquee .row2 { display: flex; gap: 14px; width: max-content; animation: slide var(--t-faixa) linear infinite; }
+.marquee img { height: clamp(140px, 20vw, 230px); width: auto; aspect-ratio: 4/5; object-fit: cover; border-radius: 0; }
+/* [GUIA: faixa-logos] cada logo é um link para o projeto na mesma página */
+.marquee a { display: block; position: relative; transition: transform .25s var(--curva); }
+.marquee a:hover, .marquee a:focus-visible { transform: translateY(-6px); }
+.marquee:hover .row2, .marquee:focus-within .row2 { animation-play-state: paused; }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* títulos de seção: cada palavra sobe quando chega na tela */
+.split .w { display: inline-block; overflow: hidden; vertical-align: top; padding: .16em .04em .14em; margin: -.16em -.04em -.14em; }  /* respiro para não cortar acentos */
+.split .w > span { display: inline-block; transition: transform var(--t-palavras) var(--curva); }
+.split-pre .w > span { transform: translateY(108%); }
+
+/* seções comuns */
+.sec { padding: clamp(80px, 11vw, 150px) var(--g); }
+.kick { color: var(--mute); margin-bottom: 16px; display: block; }
+.sec h2 { font-weight: 800; font-size: var(--titulo-secao); line-height: .95; letter-spacing: -.02em; }
+.lede { color: var(--mute); font-size: 18px; max-width: 46ch; margin: 20px 0 0; }
+
+/* ================================================================
+   PROJETOS (Isabella, Margarett, Açaí Yo)
+   A tela "trava" e as imagens passam conforme você rola.
+   A cor de fundo de cada projeto fica no JS, em PROJETOS (campo cor).
+   ================================================================ */
+.chapter { position: relative; height: 220vh; }  /* no celular: quanto rolar em cada projeto. No PC é calculado sozinho */
+.stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--b, #333); color: #fff; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); grid-template-rows: auto 1fr; gap: 0 4vw; padding: calc(86px + env(safe-area-inset-top, 0px)) var(--g) calc(30px + env(safe-area-inset-bottom, 0px)); }
+.ch-title { grid-column: 1 / -1; font-size: var(--titulo-projeto); line-height: .9; letter-spacing: -.02em; font-variation-settings: "wght" 800, "wdth" var(--largura); white-space: nowrap; }
+.ch-info { align-self: end; display: grid; gap: 14px; max-width: 46ch; padding-bottom: 6px; }
+.ch-info .seg { opacity: .75; }
+.ch-info p { margin: 0; font-size: 17px; line-height: 1.55; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { border: 1px solid rgba(255,255,255,.4); padding: 4px 10px; font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
+.ch-info .btn { border-color: rgba(255,255,255,.5); justify-self: start; }
+.ch-info .btn::before { background: #fff; } .ch-info .btn:hover { color: #111; border-color: #fff; }
+.ch-count { position: absolute; right: var(--g); bottom: calc(30px + env(safe-area-inset-bottom, 0px)); opacity: .7; }
+.layers { position: relative; min-height: 0; }
+
+/* CELULAR: 3 imagens empilhadas que se revelam em camadas */
+.layer { position: absolute; border-radius: 0; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,.5); cursor: pointer; aspect-ratio: 4/5; max-width: 48%; }
+.layer img { width: 100%; height: 100%; object-fit: cover; }
+.layer:nth-child(1) { left: 2%; top: 6%; height: 74%; }
+.layer:nth-child(2) { left: 28%; top: 22%; height: 76%; }
+.layer:nth-child(3) { right: 0; top: 0; height: 66%; }
+
+/* PC: esteira horizontal com todas as imagens do projeto */
+.layers.dk { overflow: hidden; margin-right: calc(-1 * var(--g)); }
+.htrack { position: absolute; top: 0; bottom: 0; left: 0; display: flex; gap: 20px; align-items: stretch; will-change: transform; }
+.htrack figure { margin: 0; flex: none; height: 100%; aspect-ratio: 4/5; border-radius: 0; overflow: hidden; position: relative; cursor: pointer; transform-origin: 50% 50%; }
+.htrack figure.wide { aspect-ratio: 16/10; }   /* imagens largas (almofada, outdoor) */
+.htrack img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--curva); }
+.htrack figure:hover img { transform: scale(1.05); }   /* zoom ao passar o mouse */
+.htrack figcaption { position: absolute; left: 10px; bottom: 10px; background: rgba(33,33,33,.85); color: #fff; padding: 5px 9px; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; opacity: 0; transform: translateY(6px); transition: opacity .3s, transform .3s; }
+.htrack figure:hover figcaption { opacity: 1; transform: none; }
+
+/* notebook com tela baixa: esconde as etiquetas para caber */
+@media (max-height: 720px) and (min-width: 861px) { .ch-info .chips { display: none; } .ch-info p { font-size: 15px; } .ch-info { gap: 10px; } }
+/* ajustes do celular */
+@media (max-width: 860px) {
+  .stage { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; gap: 14px; }
+  .ch-title { font-size: clamp(42px, 13vw, 76px); white-space: normal; }
+  .layers { grid-row: 2; }
+  .ch-info { grid-row: 3; }
+  .ch-info p { font-size: 15px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .ch-info .chips { display: none; }
+  .layer:nth-child(1) { height: 72%; top: 4%; left: 0; }
+  .layer:nth-child(2) { height: 74%; left: 24%; top: 22%; }
+  .layer:nth-child(3) { height: 64%; top: 8%; }
+  .ch-count { display: none; }
+}
+
+/* ================================================================
+   CRIATIVOS (Nike e Gatorade)
+   ================================================================ */
+.cri { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr); gap: 48px 64px; align-items: center; }
+.tilts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; perspective: 900px; }
+.tilt { position: relative; border-radius: 6px; overflow: hidden; transition: transform .25s ease-out; }
+.tilt img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+/* faixa com o nome que sobe ao passar o mouse */
+.tilt .rev { position: absolute; inset: auto 0 0 0; padding: 14px; background: linear-gradient(transparent, rgba(0,0,0,.85)); color: #fff; transform: translateY(100%); transition: transform .4s var(--curva); }
+.tilt:hover .rev, .tilt:focus-within .rev { transform: none; }
+.tilt .rev b { display: block; font-family: var(--display); font-weight: 800; font-size: 22px; text-transform: uppercase; font-variation-settings: "wdth" var(--largura); }
+.note { font-size: 13px; color: var(--mute); border-left: 1px solid var(--line); padding-left: 14px; margin-top: 24px; max-width: 46ch; }
+/* [GUIA: criativos-celular] no celular o nome do post fica EMBAIXO da imagem, sem cobrir o post */
+@media (max-width: 860px) { .cri { grid-template-columns: 1fr; } .tilt { overflow: visible; } .tilt .rev { position: static; transform: none; background: none; color: var(--ink); padding: 10px 0 0; } .tilt .rev .mono { color: var(--mute); } }
+
+/* ================================================================
+   PLAYGROUND ("Brinque um pouco")
+   ================================================================ */
+.play-grid { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 16px; }
+.panel { background: var(--panel); border-radius: 0; padding: clamp(18px, 2.4vw, 30px); min-width: 0; }
+.panel h3 { font-size: clamp(26px, 2.8vw, 38px); font-weight: 800; }
+.panel .lede { font-size: 15px; margin-top: 8px; }
+.ctl { display: grid; gap: 22px; margin-top: 26px; }
+.ctl label { display: grid; gap: 8px; }
+.ctl input[type=text] { font: 500 18px var(--body); color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--line); padding: 8px 0; outline: none; }
+.ctl input[type=text]:focus { border-bottom-color: var(--green); }
+.seg-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.seg-btns button { border: 1.5px solid var(--line); background: transparent; border-radius: 0; padding: 8px 14px; cursor: pointer; font-size: 13px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
+.seg-btns button[aria-pressed="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+.sw { display: flex; gap: 10px; flex-wrap: wrap; }
+.sw button { width: 40px; height: 40px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; background: linear-gradient(135deg, var(--a) 50%, var(--c) 50%); padding: 0; }
+.sw button[aria-pressed="true"] { border-color: var(--ink); transform: scale(1.08); }
+.stagebox { display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: auto auto; gap: 16px; align-items: center; justify-items: center; padding: 10px 0; perspective: 1000px; }
+/* cartão de visita que vira */
+.card3d { width: 100%; max-width: 330px; aspect-ratio: 1.75; position: relative; transform-style: preserve-3d; transition: transform .7s var(--curva); cursor: grab; grid-column: 1 / -1; touch-action: pan-y; }
+.card3d .f { position: absolute; inset: 0; border-radius: 8px; backface-visibility: hidden; display: grid; place-content: center; text-align: center; padding: 18px; box-shadow: 0 24px 50px -18px rgba(0,0,0,.55); }
+.card3d .back { transform: rotateY(180deg); }
+.mk-name { font-size: 28px; line-height: 1; }
+.mk-sub { font: 10px var(--mono); letter-spacing: .2em; text-transform: uppercase; opacity: .75; margin-top: 8px; }
+.mk-mono { font-size: 64px; line-height: 1; }
+/* sacola */
+.bag { width: 150px; aspect-ratio: .78; position: relative; border-radius: 3px 3px 6px 6px; display: grid; place-content: center; text-align: center; padding: 12px; box-shadow: 0 24px 40px -18px rgba(0,0,0,.6); }
+.bag::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 16%; background: rgba(0,0,0,.14); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 60%, 0 100%); }
+.bag .mk-name { font-size: 20px; }
+/* post de Instagram */
+.post { width: 100%; max-width: 210px; aspect-ratio: 1; border-radius: 6px; padding: 16px; display: grid; align-content: space-between; box-shadow: 0 24px 40px -18px rgba(0,0,0,.6); }
+.post .mk-name { font-size: 26px; }
+.flip-hint { grid-column: 1 / -1; color: var(--mute); }
+.share-row { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; }
+.share-msg { color: var(--mute); }
+/* [GUIA: painel-compartilhar] painel que abre com a imagem do cartão e as opções de compartilhar */
+.sharebox { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 16px; background: rgba(0,0,0,.72); }
+.sharebox[hidden] { display: none; }
+.sharebox .in { width: min(440px, 100%); background: var(--ground); color: var(--ink); border: 1px solid var(--line); padding: 18px; display: grid; gap: 14px; max-height: 100%; overflow: auto; }
+.sharebox .tt { display: flex; justify-content: space-between; align-items: center; }
+.sharebox .tt b { font: 800 22px var(--display); text-transform: uppercase; font-variation-settings: "wdth" var(--largura); }
+.sharebox .x { background: none; border: 0; font-size: 26px; line-height: 1; cursor: pointer; color: var(--ink); padding: 4px 8px; }
+.sharebox img { width: 100%; display: block; border: 1px solid var(--line); -webkit-touch-callout: default; }
+.sharebox .ops { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sharebox .ops .btn { justify-content: center; padding: 12px 10px; font-size: 13px; }
+.sharebox .ops .btn.wide { grid-column: 1 / -1; }
+.sharebox .dica { color: var(--mute); font-size: 13px; margin: 0; text-align: center; }
+.seg-btns { max-width: 100%; }
+@media (max-width: 960px) { .play-grid { grid-template-columns: 1fr; } }
+/* "Vire o jogo" (botão do modo papel) */
+.play-row { margin-top: 16px; display: grid; gap: 16px; }
+.mode { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 24px; }
+@media (max-width: 640px) { .mode { grid-template-columns: 1fr; } }
+.switch { display: inline-flex; align-items: center; gap: 14px; border: 0; background: none; cursor: pointer; padding: 0; text-align: left; }
+.switch i { width: 64px; height: 36px; border-radius: 99px; background: var(--line); position: relative; flex: none; transition: background .3s; }
+.switch i::after { content: ""; position: absolute; top: 4px; left: 4px; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); transition: transform .35s var(--curva); }
+.switch[aria-checked="true"] i { background: var(--green); }
+.switch[aria-checked="true"] i::after { transform: translateX(28px); }
+
+/* ================================================================
+   SERVIÇOS (os detalhes aparecem ao passar o mouse; no celular ficam abertos)
+   ================================================================ */
+.svc { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.svc article { padding: 26px 24px 26px 0; border-right: 1px solid var(--line); display: grid; align-content: start; gap: 12px; min-width: 0; }
+.svc article + article { padding-left: 24px; }
+.svc article:last-child { border-right: 0; }
+.svc h3 { font-size: clamp(28px, 3vw, 40px); font-weight: 800; }
+.svc p { margin: 0; color: var(--mute); }
+.svc ul { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }   /* itens sempre visíveis */
+.svc li::before { content: ""; display: inline-block; width: 7px; height: 7px; margin: 0 10px 2px 0; background: var(--green); }
+.svc .tagp { color: var(--green); }
+@media (max-width: 860px) { .svc { grid-template-columns: 1fr; } .svc article { border-right: 0; border-bottom: 1px solid var(--line); padding: 24px 0 !important; } .svc ul { max-height: none; opacity: 1; } }
+
+/* ================================================================
+   CONTATO (bloco verde) e RODAPÉ
+   ================================================================ */
+.end { background: var(--green); color: var(--green-ink); }
+.end h2 { font-size: clamp(44px, 9vw, 150px); max-width: 13ch; }
+.end .pt, .end .cur { background: var(--green-ink); }
+.end .kick { color: rgba(33,33,33,.7); }
+.end .lede { color: rgba(33,33,33,.8); }
+.end .btn.fill { background: var(--green-ink); color: var(--green); border-color: var(--green-ink); font-size: 17px; padding: 18px 28px; }
+.end .btn.fill::before { background: var(--ink); } .end .btn.fill:hover { color: var(--green-ink); border-color: var(--ink); }
+.contacts { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 16px 48px; align-items: center; }
+.contacts div { display: grid; gap: 4px; }
+.contacts strong { font-family: var(--display); font-weight: 700; font-size: clamp(20px, 2.4vw, 28px); overflow-wrap: anywhere; }
+.copy { justify-self: start; border: 1.5px solid var(--green-ink); background: transparent; color: var(--green-ink); border-radius: 0; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; padding: 5px 13px; font-size: 13px; cursor: pointer; }
+.copy:hover { background: var(--green-ink); color: var(--green); }
+footer.ft { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 16px; padding: 32px var(--g) calc(28px + env(safe-area-inset-bottom, 0px)); color: var(--mute); }
+footer.ft .marca { width: 132px; }
+
+/* ================================================================
+   ANIMAÇÕES DE TECNOLOGIA (novas)
+   ================================================================ */
+/* [GUIA: grade-hero] grade de engenharia no fundo da primeira tela (segue o mouse) e linha de varredura */
+.hero { position: relative; isolation: isolate; }
+.hero::before { content: ""; position: absolute; inset: -64px; z-index: -1; pointer-events: none; opacity: .55;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 70% 45%, #000, transparent 75%); mask-image: radial-gradient(ellipse 70% 60% at 70% 45%, #000, transparent 75%);
+  transform: translate(var(--gx, 0px), var(--gy, 0px)); }
+.hero::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; z-index: -1; pointer-events: none; background: var(--green); opacity: 0; }
+html.anima .hero::after { animation: varre 7s 2.2s cubic-bezier(.6,0,.4,1) infinite; }
+@keyframes varre { 0% { transform: translateY(0); opacity: 0; } 8% { opacity: .5; } 60% { opacity: .35; } 100% { transform: translateY(100vh); opacity: 0; } }
+/* HUD: coordenadas do mouse (PC) ou porcentagem de rolagem (celular) */
+.hud { font-variant-numeric: tabular-nums; color: var(--green); }
+/* símbolo da marca que se monta bloco a bloco (pixels). --i = ordem do bloco, do maior pro menor */
+.px rect { transform-box: fill-box; transform-origin: center; }
+html.anima .px rect { opacity: 0; transform: scale(.4); }
+html.anima .px.on rect { animation: pixel .26s steps(3, end) forwards; animation-delay: calc(var(--i) * 90ms); }
+@keyframes pixel { to { opacity: 1; transform: none; } }
+.hero-sym { width: 58px; margin-bottom: 22px; }
+.kick-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; } .kick-row .kick { margin: 0; }
+.kick-row .px { width: 40px; flex: none; }
+.end .marca .s { fill: var(--green-ink); }
+.end-sym { width: clamp(70px, 9vw, 120px); margin-bottom: 26px; }
+/* ponto final que CAI no fim dos títulos quando eles entram (batida no fim do verso) */
+html.anima .split .pt { opacity: 0; transform: translateY(-1.2em); }
+html.anima .split.in .pt { animation: batida .34s cubic-bezier(.55,0,.9,.4) .35s forwards; }
+@keyframes batida { 0% { opacity: 1; transform: translateY(-1.2em); } 70% { opacity: 1; transform: none; } 82% { transform: translateY(.03em) scale(1.3, .65); } 100% { opacity: 1; transform: none; } }
+/* revelação em pixels das imagens (canvas criado pelo JS por cima da imagem) */
+canvas.pxr { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; image-rendering: pixelated; }
+.tilt { isolation: isolate; }
+/* rastro de pixels do cursor (PC) */
+.trail { position: fixed; left: 0; top: 0; width: 7px; height: 7px; margin: -3px 0 0 -3px; background: var(--green); pointer-events: none; z-index: 59; opacity: 0; }
+
+/* blocos que sobem quando você rola até eles */
+.rv { transition: transform var(--t-aparecer) var(--curva), opacity var(--t-aparecer); }
+.rv.pre { transform: translateY(34px); opacity: .15; }
+
+/* [GUIA: sem-animacao] Computadores com "efeitos de animação" desligados no sistema (comum no Windows).
+   O site mantém as animações, só deixa mais calmas as que ficam rodando sem parar.
+   Para desligar TUDO nesses computadores, mude CONFIG.respeitarSistema para true no JS. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee .row2 { animation-duration: calc(var(--t-faixa) * 2); }
+  .stack .c { animation: deal var(--t-cartoes) var(--curva) both !important; }
+}
+html.parado *, html.parado *::before, html.parado *::after { animation: none !important; transition: none !important; }
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     ESTRUTURA DA PÁGINA (HTML) · aqui ficam os TEXTOS
+     ================================================================ -->
+
+<!-- linha de progresso no topo -->
+<div class="bar" id="bar"></div>
+
+<!-- ===== MENU DO TOPO ===== -->
+<header class="top">
+  <!-- [GUIA: logo-html] logo (arquivo img/marca/logotipo.svg). Para trocar, cole o novo SVG aqui -->
+  <a class="logo" href="#inicio" aria-label="turzin., início"><svg class="marca" aria-hidden="true" focusable="false" viewBox="0 0 1284.0 365.0"><path class="t" transform="translate(-270.0 -717.5) scale(0.5)" d="M1084.0 2164.4C1071.8 2163.5 1052.6 2159.5 1040.2 2155.4C1031.3 2152.4 1015.3 2144.3 1006.1 2138.1C991.9 2128.5 977.5 2114.0 967.3 2099.0C957.6 2084.7 946.6 2060.5 941.9 2043.5C936.3 2022.4 933.3 2007.8 931.1 1990.5C930.5 1986.1 929.5 1978.7 928.8 1974.0C927.9 1967.7 927.5 1924.1 927.2 1805.8L926.9 1646.0L996.4 1646.0L1066.0 1646.0L1066.0 1785.7C1066.0 1872.5 1066.4 1928.8 1067.0 1934.4C1070.2 1963.7 1072.2 1974.2 1077.1 1989.2C1090.4 2029.6 1116.4 2050.0 1154.7 2050.0C1165.4 2050.0 1168.4 2049.6 1180.0 2046.8C1191.0 2044.1 1204.1 2036.4 1215.1 2026.3C1240.1 2003.1 1256.5 1965.7 1263.0 1917.0C1263.6 1912.3 1264.6 1905.6 1265.2 1902.0C1265.9 1897.6 1266.4 1854.4 1266.7 1770.8L1267.2 1646.0L1336.6 1646.0L1406.0 1646.0L1405.8 1898.8L1405.5 2151.5L1350.6 2151.8C1320.3 2151.9 1295.3 2151.7 1294.9 2151.3C1294.5 2150.8 1293.9 2115.3 1293.5 2072.2L1292.7 1994.0L1284.4 1994.0L1276.2 1994.0L1275.2 1997.2C1274.7 1999.0 1273.2 2004.3 1272.0 2009.0C1270.8 2013.7 1268.9 2020.2 1267.9 2023.5C1266.8 2026.8 1265.5 2031.1 1264.9 2033.0C1264.3 2034.9 1263.0 2038.8 1262.0 2041.5C1247.1 2082.4 1234.2 2104.8 1214.6 2124.6C1193.6 2145.6 1172.2 2156.5 1139.5 2162.6C1131.6 2164.0 1095.5 2165.2 1084.0 2164.4ZM757.5 2162.5C740.2 2161.1 731.5 2159.8 721.0 2157.1C693.8 2150.2 675.0 2140.1 657.9 2123.1C647.2 2112.4 640.4 2102.9 634.0 2089.5C626.4 2073.5 622.8 2062.3 619.1 2042.5C613.4 2012.6 613.6 2018.6 613.0 1882.5L612.5 1755.5L576.1 1755.2L539.7 1755.0L540.3 1716.2C540.7 1694.9 541.3 1670.4 541.7 1661.8L542.3 1646.0L571.9 1646.0C602.6 1645.9 615.7 1644.8 626.9 1641.4C638.1 1637.9 645.4 1631.7 649.8 1622.0C652.6 1615.6 652.2 1617.5 659.0 1578.5C660.0 1572.5 661.8 1562.3 663.0 1556.0C664.1 1549.7 665.3 1542.5 665.7 1540.0C666.0 1537.5 666.7 1534.9 667.3 1534.2C668.0 1533.3 677.2 1533.0 707.1 1533.0L746.0 1533.0L746.0 1588.3C746.0 1630.0 746.3 1643.9 747.2 1644.8C748.1 1645.7 763.7 1646.0 811.2 1646.0L874.0 1646.0L874.0 1702.5L874.0 1759.0L810.6 1759.0C753.7 1759.0 747.2 1759.2 746.6 1760.6C746.3 1761.5 746.0 1810.4 746.0 1869.3C746.0 1958.7 746.3 1977.9 747.5 1985.0C749.6 1997.2 750.4 2000.1 753.5 2006.4C760.2 2020.1 773.0 2029.0 791.5 2032.9C798.7 2034.4 833.3 2033.9 842.3 2032.1C851.0 2030.4 862.7 2026.3 869.8 2022.4C873.2 2020.5 876.5 2019.0 877.0 2019.0C877.6 2019.0 878.0 2042.5 878.0 2083.0L878.0 2147.0L874.8 2148.4C871.8 2149.7 868.7 2150.6 859.5 2153.1C857.9 2153.5 854.7 2154.3 852.5 2154.9C845.7 2156.8 828.0 2159.8 817.5 2160.9C805.9 2162.1 777.4 2164.1 774.5 2163.9C773.4 2163.8 765.8 2163.1 757.5 2162.5ZM1459.1 2150.7C1458.3 2149.6 1458.1 2083.6 1458.2 1897.9L1458.5 1646.5L1516.0 1646.5L1573.5 1646.5L1574.0 1732.0L1574.5 1817.5L1583.1 1817.8L1591.6 1818.1L1592.8 1813.0C1593.5 1810.1 1594.0 1806.6 1594.0 1805.2C1594.0 1798.7 1600.3 1768.4 1606.0 1747.5C1607.5 1741.8 1611.1 1731.8 1616.1 1718.8C1618.6 1712.4 1626.6 1697.9 1632.3 1689.6C1644.7 1671.4 1664.9 1654.5 1680.2 1649.6C1685.2 1648.0 1691.4 1646.5 1698.6 1645.1C1706.1 1643.6 1733.3 1642.6 1743.2 1643.5L1752.0 1644.2L1752.0 1700.6L1752.0 1757.0L1740.0 1757.0C1725.5 1757.0 1717.7 1759.2 1700.5 1768.0C1663.6 1786.9 1632.9 1815.7 1619.3 1844.0C1614.3 1854.4 1613.3 1856.9 1609.7 1868.0C1606.5 1877.9 1605.0 1883.1 1603.0 1892.5C1602.5 1894.7 1601.8 1897.8 1601.4 1899.5C1598.9 1910.8 1598.7 1921.8 1598.1 2033.0L1597.5 2151.5L1528.9 2151.8C1472.0 2152.0 1460.1 2151.8 1459.1 2150.7ZM1800.7 2151.3C1800.3 2151.0 1800.0 2124.5 1800.0 2092.6L1800.0 2034.5L1930.5 1902.0L2061.1 1769.5L2060.8 1763.5L2060.5 1757.5L1932.8 1757.2L1805.0 1757.0L1804.5 1754.7C1804.2 1753.5 1804.1 1728.7 1804.2 1699.5L1804.5 1646.5L2021.0 1646.5L2237.5 1646.5L2237.8 1703.5L2238.0 1760.4L2204.7 1794.0C2186.3 1812.4 2126.9 1872.4 2072.7 1927.3L1974.0 2027.0L1974.0 2032.4C1974.0 2035.7 1974.5 2038.2 1975.3 2038.9C1976.3 2039.7 2013.0 2040.1 2108.1 2040.2L2239.5 2040.5L2239.8 2094.9C2239.9 2134.2 2239.7 2149.7 2238.9 2150.6C2237.9 2151.8 2202.5 2152.0 2019.5 2152.0C1899.5 2152.0 1801.0 2151.7 1800.7 2151.3ZM2482.7 2151.3C2482.3 2151.0 2482.0 2037.1 2482.0 1898.3L2482.0 1646.0L2539.1 1646.0L2596.3 1646.0L2595.9 1721.2L2595.5 1796.5L2604.5 1796.5L2613.5 1796.5L2615.3 1789.5C2634.0 1717.2 2663.6 1672.8 2708.5 1650.2C2724.1 1642.4 2732.6 1639.4 2749.5 1636.2C2783.2 1629.9 2811.3 1630.5 2842.5 1638.5C2886.1 1649.6 2920.6 1678.7 2941.0 1721.6C2943.8 1727.6 2946.5 1733.4 2947.0 1734.5C2955.8 1755.8 2963.5 1789.1 2966.9 1821.0C2970.0 1849.3 2970.1 1859.0 2969.8 2004.0L2969.5 2151.5L2901.1 2151.8C2851.4 2151.9 2832.3 2151.7 2831.4 2150.9C2830.2 2149.9 2830.0 2127.1 2830.0 2012.7C2830.0 1926.8 2829.6 1872.2 2829.0 1866.6C2826.0 1839.4 2822.3 1820.9 2817.5 1808.0C2813.9 1798.4 2805.8 1783.2 2801.0 1777.3C2782.7 1754.5 2753.6 1744.2 2722.0 1749.4C2706.5 1752.0 2692.4 1757.8 2681.3 1766.2C2673.1 1772.5 2659.9 1786.8 2653.6 1796.4C2644.9 1809.6 2635.9 1829.7 2632.0 1844.5C2631.5 1846.2 2630.5 1850.0 2629.7 1853.0C2628.9 1856.0 2627.3 1863.7 2626.2 1870.0C2625.1 1876.3 2623.6 1884.4 2622.9 1888.0C2621.9 1892.9 2621.5 1925.4 2621.3 2022.5C2621.0 2120.1 2620.6 2150.6 2619.7 2151.2C2618.2 2152.1 2483.6 2152.3 2482.7 2151.3ZM2336.8 1568.5C2306.0 1563.3 2287.3 1549.3 2279.7 1526.0C2276.6 1516.6 2275.6 1504.6 2276.9 1494.2C2281.1 1462.1 2298.2 1444.8 2333.6 1436.9C2342.8 1434.8 2380.5 1435.1 2389.8 1437.3C2405.6 1441.1 2415.4 1445.5 2424.7 1453.0C2446.4 1470.5 2452.4 1509.9 2437.5 1536.6C2430.6 1549.0 2417.4 1559.2 2402.0 1564.3C2397.8 1565.7 2395.4 1566.3 2381.2 1569.0C2373.9 1570.4 2346.2 1570.0 2336.8 1568.5Z"/><rect class="t" x="875.0" y="105.5" width="69.5" height="253.0"/><rect class="d" x="1241.5" y="316.5" width="42.5" height="42.0"/></svg></a>
+  <nav class="mono">
+    <a class="l" href="#projetos">Projetos</a>
+    <a class="l" href="#playground">Playground</a>
+    <a class="l" href="#servicos">Serviços</a>
+    <a class="btn fill sm mag" href="#contato">Contato</a>
+  </nav>
+</header>
+
+<!-- índice lateral do PC. Se criar uma seção nova, adicione uma linha aqui -->
+<nav class="rail mono" id="rail" aria-label="Seções">
+  <a href="#inicio" data-t="inicio"><span>Início</span><i></i></a>
+  <a href="#c-isa" data-t="c-isa"><span>Isabella</span><i></i></a>
+  <a href="#c-mar" data-t="c-mar"><span>Margarett</span><i></i></a>
+  <a href="#c-acai" data-t="c-acai"><span>Açaí Yo</span><i></i></a>
+  <a href="#c-rei" data-t="c-rei"><span>Reigotta</span><i></i></a>
+  <a href="#c-kami" data-t="c-kami"><span>Kamisama</span><i></i></a>
+  <a href="#criativos" data-t="criativos"><span>Criativos</span><i></i></a>
+  <a href="#playground" data-t="playground"><span>Playground</span><i></i></a>
+  <a href="#servicos" data-t="servicos"><span>Serviços</span><i></i></a>
+  <a href="#contato" data-t="contato"><span>Contato</span><i></i></a>
+</nav>
+
+<main>
+<!-- ===== [GUIA: texto-hero] PRIMEIRA TELA ===== -->
+<section class="hero" id="inicio">
+  <!-- símbolo da marca: se monta bloco a bloco ao abrir a página -->
+  <svg class="marca px hero-sym" aria-hidden="true" focusable="false" viewBox="0 0 862.0 710.0"><rect class="s" x="0.0" y="0.0" width="617.0" height="385.0"/><rect class="s" x="694.0" y="171.0" width="168.0" height="128.0"/><rect class="s" x="336.0" y="511.0" width="219.0" height="199.0"/><rect class="s" x="753.0" y="610.0" width="109.0" height="100.0"/></svg>
+  <div class="eyebrow mono"><span class="nocaps">turzin.</span><span>Engenharia de design e tecnologia</span><span class="hud" id="hud" aria-hidden="true">X 0000 · Y 0000</span></div>
+  <!-- título principal (é DIGITADO ao abrir). Cada <span class="ln"> é uma linha.
+       data-pt = linha termina com o ponto verde · data-cur = linha termina com o cursor piscando
+       Se mudar o texto, mude também o aria-label (é o que leitores de tela leem) -->
+  <h1 id="ht" aria-label="Do papel à tela. Design como função."><span class="ln" data-pt>Do papel à tela</span><span class="ln" data-cur>Design como função</span></h1>
+  <div class="row">
+    <!-- as palavras dentro de id="rot" ficam trocando sozinhas. Pode adicionar mais <span> -->
+    <p class="say"><span class="nocaps">turzin.</span> é <span class="rot" id="rot"><span class="on">design</span><span>tecnologia</span><span>arte</span><span>engenharia</span><span>programação</span></span><br>Com atitude, do tamanho da fonte até o outdoor.</p>
+    <div class="ctas">
+      <a class="btn fill mag" href="#projetos">Ver projetos <span class="arr">→</span></a>
+      <a class="btn mag" href="#playground">Brincar um pouco</a>
+    </div>
+  </div>
+  <!-- [GUIA: cartoes-3d-imagens] 3 cartões 3D (só no PC) com aplicações da própria turzin.: site, manifesto e cartão. Pasta: img/home/1-hero-cartoes-3d -->
+  <div class="stack" aria-hidden="true"><div class="s3d" id="s3d">
+    <div class="c"><img src="img/home/1-hero-cartoes-3d/site-turzin.webp" alt="" width="800" height="1000" loading="lazy" decoding="async"></div>
+    <div class="c"><img src="img/home/1-hero-cartoes-3d/manifesto-turzin.webp" alt="" width="800" height="1000" loading="lazy" decoding="async"></div>
+    <div class="c"><img src="img/home/1-hero-cartoes-3d/cartao-turzin.webp" alt="" width="800" height="1000" loading="lazy" decoding="async"></div>
+  </div></div>
+</section>
+
+<!-- faixa de imagens: as imagens dela ficam no JS (CONFIG.faixa) -->
+<nav class="marquee" aria-label="Projetos"><div class="row2" id="mq"></div></nav>
+
+<div id="projetos"></div>
+
+<!-- ===== [GUIA: texto-projetos] PROJETOS =====
+     Textos de cada projeto ficam aqui. Imagens (img/home/3-projetos) e cor de fundo ficam no JS (PROJETOS).
+     data-set="isa" liga esta seção ao projeto "isa" do JS. -->
+<section class="chapter" id="c-isa" data-set="isa" aria-labelledby="t-isa">
+  <div class="stage">
+    <h2 class="ch-title" id="t-isa">Isabella Gutierres</h2>
+    <div class="ch-info">
+      <span class="seg mono scr">01 · Psicóloga · Sorocaba, SP</span>
+      <p>O segmento inteiro fala frio: azul, cérebro, folha. A Isabella atende relacionamento, então a marca tinha que acolher. Duas letras B espelhadas viram uma borboleta. Vinho, pêssego e amarelo no lugar do azul de consultório.</p>
+      <div class="chips"><span>Símbolo</span><span>Paleta</span><span>Papelaria</span><span>Sinalização</span><span>Instagram</span></div>
+      <button class="btn mag open" data-cursor="Ver">Ver estudo de caso <span class="arr">→</span></button>
+    </div>
+    <div class="layers"></div>
+    <span class="ch-count mono">01 / 05</span>
+  </div>
+</section>
+
+<section class="chapter" id="c-mar" data-set="mar" aria-labelledby="t-mar">
+  <div class="stage">
+    <h2 class="ch-title" id="t-mar">Margarett</h2>
+    <div class="ch-info">
+      <span class="seg mono scr">02 · Hambúrguer artesanal</span>
+      <p>Hamburgueria artesanal não é lanchonete, e a marca precisava mostrar isso antes da primeira mordida. Serifa elegante, preto e marrom café, e um hambúrguer desenhado só com linhas. Na sacola, o recado vai junto: “Aproveite cada momento”.</p>
+      <div class="chips"><span>Símbolo</span><span>Paleta</span><span>Embalagem</span><span>Cardápio</span><span>Instagram</span></div>
+      <button class="btn mag open" data-cursor="Ver">Ver estudo de caso <span class="arr">→</span></button>
+    </div>
+    <div class="layers"></div>
+    <span class="ch-count mono">02 / 05</span>
+  </div>
+</section>
+
+<section class="chapter" id="c-acai" data-set="acai" aria-labelledby="t-acai">
+  <div class="stage">
+    <h2 class="ch-title" id="t-acai">Açaí Yo</h2>
+    <div class="ch-info">
+      <span class="seg mono scr">03 · Açaiteria</span>
+      <p>Açaí é energia, tá ligado? O Y virou um raio e a marca inteira fala de recarga: bateria, “recarregue-se” e “Já tomou sua dose diária de energia?”.</p>
+      <div class="chips"><span>Símbolo</span><span>Campanha</span><span>Embalagens</span><span>Uniformes</span><span>Fachada</span></div>
+      <button class="btn mag open" data-cursor="Ver">Ver estudo de caso <span class="arr">→</span></button>
+    </div>
+    <div class="layers"></div>
+    <span class="ch-count mono">03 / 05</span>
+  </div>
+</section>
+
+<section class="chapter" id="c-rei" data-set="rei" aria-labelledby="t-rei">
+  <div class="stage">
+    <h2 class="ch-title" id="t-rei">Reigotta</h2>
+    <div class="ch-info">
+      <span class="seg mono scr">04 · Moda fitness · E-commerce</span>
+      <p>Roupa de treino pede energia. O símbolo é um batimento cardíaco que forma uma coroa, e o rosa com verde neon faz a marca aparecer no meio do feed.</p>
+      <div class="chips"><span>Símbolo</span><span>Paleta</span><span>Etiquetas</span><span>Sacola</span><span>E-commerce</span></div>
+      <button class="btn mag open" data-cursor="Ver">Ver estudo de caso <span class="arr">→</span></button>
+    </div>
+    <div class="layers"></div>
+    <span class="ch-count mono">04 / 05</span>
+  </div>
+</section>
+
+<section class="chapter" id="c-kami" data-set="kami" aria-labelledby="t-kami">
+  <div class="stage">
+    <h2 class="ch-title" id="t-kami">Kamisama</h2>
+    <div class="ch-info">
+      <span class="seg mono scr">05 · Delivery japonês</span>
+      <p>Delivery com cara de restaurante. Um guerreiro envolvido por um dragão foge do clichê do hashi, e o laranja, o vinho e o salmão saem direto dos pratos.</p>
+      <div class="chips"><span>Símbolo</span><span>Paleta</span><span>Ícones</span><span>Embalagem</span><span>Instagram</span></div>
+      <button class="btn mag open" data-cursor="Ver">Ver estudo de caso <span class="arr">→</span></button>
+    </div>
+    <div class="layers"></div>
+    <span class="ch-count mono">05 / 05</span>
+  </div>
+</section>
+
+<!-- ===== [GUIA: texto-criativos] CRIATIVOS ===== (imagens em img/home/4-criativos) -->
+<section class="sec" id="criativos" aria-labelledby="t-cri">
+  <div class="cri">
+    <div class="rv">
+      <span class="kick mono scr">Criativos</span>
+      <h2 id="t-cri" class="split" data-pt>Posts que param o dedo</h2>
+      <p class="lede">Além da marca, eu crio as peças do dia a dia: post e anúncio com conceito, hierarquia clara e acabamento de campanha.</p>
+      <p class="note">Estudos autorais, não oficiais e sem vínculo com as marcas retratadas. Feitos pra mostrar composição e manipulação de produto.</p>
+    </div>
+    <div class="tilts rv">
+      <div class="tilt" tabindex="0"><img src="img/home/4-criativos/nike.webp" alt="Estudo de post para chuteira em fundo verde-limão" loading="lazy"><div class="rev"><b>Agilidade mortal</b><span class="mono">Post de lançamento · estudo</span></div></div>
+      <div class="tilt" tabindex="0"><img src="img/home/4-criativos/gatorade.webp" alt="Estudo de foto de produto, garrafa vermelha" loading="lazy"><div class="rev"><b>Produto em cena</b><span class="mono">Manipulação e luz · estudo</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== [GUIA: texto-playground] PLAYGROUND ===== -->
+<section class="sec" id="playground" aria-labelledby="t-play">
+  <div class="kick-row"><span class="kick mono scr">Playground</span><svg class="marca px" aria-hidden="true" focusable="false" viewBox="0 0 862.0 710.0"><rect class="s" x="0.0" y="0.0" width="617.0" height="385.0"/><rect class="s" x="694.0" y="171.0" width="168.0" height="128.0"/><rect class="s" x="336.0" y="511.0" width="219.0" height="199.0"/><rect class="s" x="753.0" y="610.0" width="109.0" height="100.0"/></svg></div>
+  <h2 id="t-play" class="split" data-pt>Brinca um pouco</h2>
+  <p class="lede rv">Digita o nome de um negócio e vê como ele fica com cara de marca.</p>
+
+  <div class="play-grid">
+    <div class="panel rv">
+      <h3>Testa a sua marca</h3>
+      <div class="ctl">
+        <!-- value="Café Aurora" = nome que já vem escrito -->
+        <label><span class="mono" style="color:var(--mute)">Nome do negócio</span><input type="text" id="pg-name" value="Café Aurora" maxlength="22" autocomplete="off"></label>
+        <div><span class="mono" style="color:var(--mute)">Personalidade</span>
+          <div class="seg-btns" id="pg-style" style="margin-top:8px">
+            <!-- os botões são criados pelo JS a partir de ESTILOS -->
+          </div>
+        </div>
+        <!-- [GUIA: playground-subtitulo] subtítulo do cartão: a pessoa escreve o que quiser. Vazio = frase da personalidade -->
+        <label><span class="mono" style="color:var(--mute)">Subtítulo do cartão</span><input type="text" id="pg-sub" maxlength="34" autocomplete="off" placeholder="Desde 2026"></label>
+        <div><span class="mono" style="color:var(--mute)">Cores</span>
+          <div class="sw" id="pg-sw" style="margin-top:8px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel rv">
+      <div class="stagebox" id="pg-stage">
+        <div class="card3d" id="card" role="button" tabindex="0" aria-label="Cartão de visita, toque para virar" data-cursor="Virar">
+          <div class="f front"><div class="mk-name" data-n></div><div class="mk-sub" data-t></div></div>
+          <div class="f back"><div class="mk-mono" data-m></div></div>
+        </div>
+        <div class="bag"><div class="mk-name" data-n></div><div class="mk-sub" data-t></div></div>
+        <div class="post"><span class="mk-sub" style="margin:0">Novidade</span><div class="mk-name" data-n></div><span class="mk-sub" style="margin:0" data-t></span></div>
+        <span class="flip-hint mono">Toca ou arrasta o cartão pra virar</span>
+        <!-- [GUIA: playground-compartilhar] gera uma imagem do cartão para compartilhar (ou baixar no PC) -->
+        <div class="share-row"><button class="btn fill" type="button" id="pg-share">Compartilhar cartão <span class="arr">↗</span></button><span class="mono share-msg" id="pg-msg" role="status"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="play-row">
+    <div class="panel mode rv">
+      <div>
+        <h3>Vire o jogo</h3>
+        <p class="lede">Marca forte funciona no escuro e no claro. Troca a página inteira e confere.</p>
+      </div>
+      <button class="switch" id="mode" role="switch" aria-checked="false"><i></i><span class="mono">Modo papel</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== [GUIA: texto-servicos] SERVIÇOS ===== -->
+<section class="sec" id="servicos" aria-labelledby="t-svc">
+  <div class="kick-row"><span class="kick mono scr">Serviços</span><svg class="marca px" aria-hidden="true" focusable="false" viewBox="0 0 862.0 710.0"><rect class="s" x="0.0" y="0.0" width="617.0" height="385.0"/><rect class="s" x="694.0" y="171.0" width="168.0" height="128.0"/><rect class="s" x="336.0" y="511.0" width="219.0" height="199.0"/><rect class="s" x="753.0" y="610.0" width="109.0" height="100.0"/></svg></div>
+  <h2 id="t-svc" class="split" data-pt>Identidade visual e site</h2>
+  <p class="lede rv">Um logotipo é uma pequena parte de um todo. Sozinho, ele quase não tem força. Identidade visual é projeto completo: trabalho de engenharia, do tamanho da fonte até o outdoor.</p>
+  <div class="svc rv">
+    <!-- [GUIA: servicos-itens] cada <article> é um serviço; cada <li> é um item da entrega -->
+    <article tabindex="0"><span class="tagp mono">Identidade</span><h3>Identidade visual</h3><p>A marca pensada a partir do negócio e do cliente. Não é só logo, é sistema.</p>
+      <ul><li>Estudo de nicho e mercado</li><li>Kit Brand Book</li><li>Kit lançamento de marca</li><li>Logotipos, tipografias, grafismos, aplicações e paleta de cores</li><li>Manual de uso da marca</li></ul></article>
+    <article tabindex="0"><span class="tagp mono">Identidade + Site</span><h3>Identidade visual + Site</h3><p>A marca completa e já no ar, com o mesmo cuidado em cada tela.</p>
+      <ul><li>Estudo de nicho e mercado</li><li>Kit Brand Book</li><li>Kit lançamento de marca</li><li>Logotipos, tipografias, grafismos, aplicações e paleta de cores</li><li>Manual de uso da marca</li><li>Site</li><li>Manual de uso do site</li></ul></article>
+  </div>
+</section>
+
+<!-- ===== [GUIA: texto-contato] CONTATO =====
+     O número e o e-mail que aparecem na tela são escritos aqui.
+     O link do botão de WhatsApp e o e-mail copiado ficam no JS (CONFIG). -->
+<section class="sec end" id="contato" aria-labelledby="t-end">
+  <svg class="marca px end-sym" aria-hidden="true" focusable="false" viewBox="0 0 862.0 710.0"><rect class="s" x="0.0" y="0.0" width="617.0" height="385.0"/><rect class="s" x="694.0" y="171.0" width="168.0" height="128.0"/><rect class="s" x="336.0" y="511.0" width="219.0" height="199.0"/><rect class="s" x="753.0" y="610.0" width="109.0" height="100.0"/></svg>
+  <span class="kick mono scr">Contato</span>
+  <h2 id="t-end" class="split">Quer trocar uma ideia?</h2>
+  <p class="lede rv">Sobre um projeto, sobre design ou só pra falar de marca. Tô por aqui.</p>
+  <div class="contacts">
+    <a class="btn fill mag js-whats" href="#contato" target="_blank" rel="noopener">WhatsApp <span class="arr">→</span></a>
+    <div><span class="mono">WhatsApp</span><strong>(34) 99959-9575</strong></div>
+    <div><span class="mono">E-mail</span><strong id="mail">turzindesign@gmail.com</strong><button class="copy">Copiar e-mail</button></div>
+  </div>
+</section>
+</main>
+
+<!-- painel de compartilhar o cartão do Playground -->
+<div class="sharebox" id="sharebox" hidden role="dialog" aria-modal="true" aria-labelledby="sb-t">
+  <div class="in">
+    <div class="tt"><b id="sb-t">Seu cartão</b><button class="x" type="button" id="sb-x" aria-label="Fechar">×</button></div>
+    <img id="sb-img" alt="Imagem do cartão criado no Playground">
+    <div class="ops">
+      <button class="btn fill wide" type="button" id="sb-share">Compartilhar <span class="arr">↗</span></button>
+      <button class="btn" type="button" id="sb-zap">WhatsApp</button>
+      <button class="btn" type="button" id="sb-insta">Instagram</button>
+      <button class="btn" type="button" id="sb-copy">Copiar imagem</button>
+      <button class="btn" type="button" id="sb-save">Salvar no aparelho</button>
+    </div>
+    <p class="dica" id="sb-msg" role="status">No celular, também dá pra segurar a imagem e salvar.</p>
+  </div>
+</div>
+
+<!-- RODAPÉ -->
+<footer class="ft mono"><svg class="marca" aria-hidden="true" focusable="false" viewBox="0 0 1294.5 579.5"><path class="t" transform="translate(-258.0 -684.5) scale(0.5)" d="M1054.0 2526.8C991.3 2517.8 951.9 2487.8 926.7 2430.0C923.5 2422.6 917.8 2405.8 916.0 2398.0C913.0 2385.5 911.9 2380.1 910.0 2369.0C903.8 2331.7 903.8 2333.9 904.2 2163.0L904.5 2008.5L973.0 2008.5L1041.5 2008.5L1042.1 2150.0C1042.7 2286.1 1043.0 2299.1 1045.9 2319.7C1052.1 2363.3 1069.9 2393.9 1096.0 2405.8C1117.1 2415.4 1147.4 2415.3 1168.6 2405.4C1190.6 2395.2 1212.8 2368.9 1225.1 2338.5C1230.5 2325.2 1236.1 2303.2 1238.9 2284.5C1239.5 2280.7 1240.5 2274.3 1241.1 2270.5C1242.0 2265.3 1242.5 2230.0 1242.7 2136.3L1243.1 2009.0L1245.3 2008.5C1246.5 2008.2 1277.7 2008.1 1314.5 2008.2L1381.5 2008.5L1381.8 2261.8L1382.0 2515.0L1326.0 2515.0L1270.0 2515.0L1269.9 2440.8C1269.9 2399.9 1269.5 2364.5 1269.2 2362.0L1268.5 2357.5L1260.6 2357.5L1252.7 2357.5L1251.5 2361.5C1250.8 2363.7 1249.8 2367.3 1249.2 2369.5C1244.1 2388.2 1236.7 2410.9 1232.5 2420.5C1231.8 2422.2 1230.4 2425.5 1229.4 2428.0C1228.5 2430.5 1224.6 2438.6 1220.8 2446.0C1198.2 2490.3 1167.2 2514.8 1121.5 2524.5C1105.6 2527.9 1070.2 2529.1 1054.0 2526.8ZM723.5 2524.9C680.3 2518.3 655.4 2507.5 634.0 2486.0C622.2 2474.3 612.5 2459.1 604.9 2440.5C600.6 2429.7 595.0 2407.5 593.1 2393.0C592.5 2388.3 591.7 2382.9 591.4 2381.0C591.0 2379.1 590.4 2319.2 590.1 2248.0L589.5 2118.5L552.6 2118.2L515.7 2118.0L516.5 2091.7C516.9 2077.3 517.6 2052.7 517.9 2037.0L518.5 2008.5L556.0 2007.9C576.6 2007.6 595.3 2006.8 597.5 2006.3C617.1 2001.3 626.8 1991.2 630.0 1972.5C630.5 1969.8 632.0 1961.0 633.4 1953.0C634.8 1945.0 636.6 1934.5 637.5 1929.5C638.4 1924.5 640.0 1915.4 641.0 1909.2C642.1 1903.0 643.2 1897.5 643.5 1897.0C643.9 1896.4 659.0 1896.0 683.6 1896.0L723.0 1896.0L723.0 1952.0L723.0 2008.0L785.4 2008.0C819.7 2008.0 848.5 2008.3 849.4 2008.6C850.8 2009.2 851.0 2015.1 851.0 2065.6L851.0 2122.0L787.0 2122.0L722.9 2122.0L723.2 2236.8L723.6 2351.5L725.8 2359.0C730.4 2373.9 738.2 2383.8 750.2 2389.8C757.3 2393.5 760.6 2394.4 772.5 2396.5C796.6 2400.8 833.0 2394.7 849.2 2383.7C850.8 2382.7 852.4 2382.2 853.0 2382.5C854.6 2383.5 854.4 2509.5 852.8 2510.7C852.1 2511.2 849.5 2512.2 847.0 2512.9C844.5 2513.6 841.4 2514.6 840.0 2515.1C837.3 2516.0 823.5 2519.3 815.5 2520.9C809.5 2522.1 797.5 2523.8 790.0 2524.5C779.8 2525.5 729.6 2525.8 723.5 2524.9ZM1435.7 2514.3C1435.3 2514.0 1435.0 2400.1 1435.0 2261.4L1435.0 2009.0L1437.2 2008.5C1438.5 2008.2 1464.2 2008.1 1494.5 2008.2L1549.5 2008.5L1550.0 2093.7C1550.4 2153.5 1550.8 2179.2 1551.6 2180.0C1552.3 2180.7 1555.8 2181.0 1560.6 2180.8L1568.5 2180.5L1569.2 2176.5C1569.6 2174.3 1570.4 2168.7 1571.1 2164.0C1575.8 2129.8 1585.0 2097.3 1596.7 2073.0C1608.8 2048.0 1631.5 2023.8 1651.5 2014.5C1657.8 2011.6 1669.9 2008.9 1685.0 2007.0C1695.1 2005.7 1725.6 2005.9 1727.8 2007.3C1728.7 2007.9 1729.0 2020.4 1729.0 2064.1L1729.0 2120.0L1716.8 2120.0C1704.3 2120.0 1700.9 2120.7 1690.0 2125.0C1666.6 2134.3 1635.5 2155.8 1617.5 2175.2C1609.9 2183.4 1600.0 2198.1 1595.1 2208.5C1592.0 2214.9 1591.3 2216.6 1588.9 2222.5C1588.1 2224.5 1584.8 2234.8 1583.1 2240.5C1582.6 2242.2 1581.3 2247.6 1580.2 2252.5C1579.1 2257.4 1577.6 2264.0 1576.8 2267.0C1575.8 2271.4 1575.4 2297.7 1575.0 2393.5L1574.5 2514.5L1505.4 2514.8C1467.4 2514.9 1436.0 2514.7 1435.7 2514.3ZM1776.1 2456.2L1776.1 2397.5L1906.5 2265.5L2036.9 2133.5L2037.0 2126.8L2037.0 2120.0L1909.0 2120.0L1781.0 2120.0L1781.0 2064.5L1781.0 2009.0L1783.2 2008.5C1784.5 2008.2 1881.8 2008.1 1999.5 2008.2L2213.5 2008.5L2213.8 2066.1L2214.0 2123.8L2108.4 2230.6C2050.3 2289.4 1991.1 2349.2 1976.9 2363.5L1951.0 2389.6L1951.0 2395.8L1951.0 2402.0L2083.2 2402.2L2215.5 2402.5L2215.8 2458.8L2216.0 2515.0L1996.0 2515.0L1776.0 2515.0L1776.1 2456.2ZM2458.2 2261.8L2458.5 2008.5L2515.0 2008.5L2571.5 2008.5L2571.8 2084.2L2572.0 2160.0L2580.8 2160.0L2589.7 2160.0L2590.8 2156.2C2591.4 2154.2 2592.3 2150.7 2592.9 2148.5C2597.2 2132.1 2601.4 2118.8 2603.0 2115.8C2603.6 2114.8 2604.0 2113.6 2604.0 2113.0C2604.0 2112.4 2605.0 2109.8 2606.1 2107.2C2607.3 2104.6 2608.9 2100.9 2609.7 2099.0C2615.0 2086.7 2623.0 2072.3 2631.3 2060.1C2638.8 2049.1 2658.6 2029.5 2669.5 2022.3C2686.0 2011.4 2702.4 2004.4 2721.5 2000.2C2738.2 1996.4 2744.9 1995.8 2767.8 1995.8C2791.8 1995.9 2805.2 1997.4 2821.5 2002.1C2870.6 2016.2 2905.5 2050.1 2925.5 2103.0C2931.8 2119.8 2938.0 2144.8 2940.9 2165.5C2941.6 2169.9 2942.5 2176.4 2943.0 2180.0C2946.3 2203.3 2946.5 2213.3 2946.5 2364.0L2946.5 2514.5L2877.1 2514.8C2822.2 2515.0 2807.5 2514.8 2806.8 2513.8C2806.4 2513.1 2806.0 2449.5 2806.0 2372.5C2806.0 2281.9 2805.6 2229.5 2805.0 2224.0C2802.1 2200.6 2797.5 2179.0 2793.1 2168.5C2780.2 2138.0 2762.8 2121.0 2737.4 2114.2C2726.0 2111.1 2702.7 2111.1 2690.2 2114.1C2661.0 2121.2 2637.3 2142.3 2620.6 2176.3C2617.0 2183.6 2614.0 2190.2 2614.0 2191.1C2614.0 2191.9 2613.6 2193.0 2613.2 2193.6C2612.7 2194.1 2611.8 2196.5 2611.0 2199.0C2610.3 2201.5 2609.1 2205.3 2608.5 2207.5C2607.8 2209.7 2606.5 2214.4 2605.7 2218.0C2603.0 2229.5 2602.2 2234.1 2599.0 2255.7C2598.4 2260.4 2598.0 2306.6 2598.0 2387.4C2598.0 2455.8 2597.7 2512.5 2597.4 2513.4C2596.8 2514.8 2589.7 2515.0 2527.4 2515.0L2458.0 2515.0L2458.2 2261.8ZM2317.5 1932.1C2300.9 1930.2 2288.3 1925.7 2276.2 1917.2C2265.9 1910.1 2258.1 1898.3 2254.9 1885.0C2253.1 1877.8 2253.1 1854.2 2254.9 1847.0C2258.9 1830.6 2270.6 1815.8 2285.5 1808.4C2293.3 1804.5 2294.7 1803.9 2302.0 1801.9C2316.9 1797.8 2343.4 1796.8 2360.8 1799.6C2380.5 1802.7 2393.9 1808.8 2404.6 1819.5C2415.9 1830.8 2420.8 1843.1 2421.7 1862.8C2423.3 1897.5 2405.5 1920.8 2370.4 1929.6C2362.2 1931.6 2357.4 1932.1 2342.5 1932.5C2332.6 1932.7 2321.3 1932.5 2317.5 1932.1Z"/><rect class="s" x="1000.0" y="0.0" width="211.0" height="131.5"/><rect class="s" x="1237.0" y="58.5" width="57.5" height="44.0"/><rect class="s" x="1115.0" y="174.0" width="75.0" height="68.5"/><rect class="s" x="1257.0" y="208.0" width="37.5" height="34.5"/><rect class="t" x="875.0" y="319.5" width="70.0" height="253.5"/><rect class="d" x="1242.0" y="530.5" width="42.0" height="42.5"/></svg><span>Engenharia de design e tecnologia</span><span class="nocaps">turzin. 2026</span></footer>
+
+<!-- biblioteca de rolagem suave (Lenis). Para desligar, apague esta linha. -->
+<script src="js/lenis.min.js"></script>
+<script>
+/* ================================================================
+   PAINEL DE CONTROLE (JAVASCRIPT)
+   Contato, imagens dos projetos e velocidades das animações.
+   ================================================================ */
+const CONFIG = {
+  // [GUIA: whatsapp] número com 55 + DDD, só números. E a mensagem que já vem escrita.
+  whatsapp: '5534999599575',
+  mensagem: 'Fala, turzin. Vi o site e quis trocar uma ideia.',
+  // [GUIA: email] e-mail que o botão "Copiar e-mail" copia
+  email: 'turzindesign@gmail.com',
+
+  // [GUIA: tempos-js] ---- VELOCIDADES ----
+  digitacao: 45,          // ms entre uma letra e outra no título digitado (menor = mais rápido)
+  atrasoDigitacao: 300,   // ms antes de começar a digitar
+  embaralhar: 650,        // ms do efeito de "decodificar" as etiquetas (letras aleatórias até formar a palavra)
+  pixelImagem: 650,       // ms da revelação em pixels das imagens
+  rastroCursor: true,     // rastro de pixels verdes atrás do cursor (PC). false = desliga
+  ondaLetras: 650,        // velocidade da onda no título (maior = mais lenta)
+  ondaForca: 0.75,        // quanto as letras afinam na onda (0 = nada, 1 = bastante)
+  raioMouse: 240,         // distância (px) em que o mouse deforma as letras do título
+  trocaPalavra: 2200,     // tempo (ms) entre cada palavra que troca (design / tecnologia...)
+  cartoes3dGiro: 22,      // quanto os cartões 3D giram seguindo o mouse (graus)
+  rolagemSuave: 0.14,     // suavidade da rolagem no PC (menor = mais "macia" e lenta, maior = mais rápida. 0.08 a 0.2)
+  esteiraVelocidade: 1.15,// quanto rolar para a esteira de imagens passar (maior = mais devagar)
+  imaComBotoes: 0.25,     // força do "ímã" dos botões puxando para o mouse (0 = desliga)
+  respeitarSistema: false,// true = se o computador estiver com animações desligadas, o site fica parado
+
+  // [GUIA: faixa] imagens da faixa que corre embaixo da primeira tela (todas ficam em img/home/2-faixa)
+  // cada item: [imagem da pasta img/home/2-faixa, seção do projeto (âncora), nome]
+  faixa: [["01-isabella.webp","#c-isa","Isabella Gutierres"],["02-margarett.webp","#c-mar","Margarett"],["03-acai-yo.webp","#c-acai","Açaí Yo"],
+          ["04-reigotta.webp","#c-rei","Reigotta"],["05-kamisama.webp","#c-kami","Kamisama"]]
+};
+
+/* [GUIA: projetos] ---- PROJETOS (seções coloridas da página inicial) ----
+   nome: nome do projeto | cor: fundo da seção | pagina: página do estudo de caso
+   pasta: pasta das imagens desta seção (dentro de img/home/3-projetos)
+   itens: ["arquivo.webp", "legenda"]  ·  coloque ,1 no fim se a imagem for larga  (ordem = ordem na esteira do PC)
+   camadas: as 3 imagens que aparecem empilhadas no CELULAR
+   Para adicionar um projeto: copie um bloco, mude a chave (ex.: novo), crie a pasta de imagens
+   e uma <section class="chapter" data-set="novo"> no HTML. */
+const PROJETOS = {
+  isa: { nome: "Isabella Gutierres", cor: "#a3122b", pagina: "isabella.html", pasta: "img/home/3-projetos/isabella/",
+    itens: [["placa.webp","Placa do consultório"],["cartao.webp","Cartão de visita"],["almofada-larga.webp","Aplicação no consultório",1],["envelope.webp","Envelope"],["paleta.webp","Paleta de cores"],["post-instagram.webp","Post para Instagram"]],
+    camadas: ["cartao.webp","placa.webp","post-instagram.webp"] },
+  mar: { nome: "Margarett", cor: "#3f2d1a", pagina: "margarett.html", pasta: "img/home/3-projetos/margarett/",
+    itens: [["logo.webp","Logo principal"],["simbolo.webp","Símbolo e direção de imagem"],["paleta.webp","Paleta de cores"],["sacola.webp","Embalagem delivery"],["post-imperio.webp","Post para Instagram"],["cardapio.webp","Cardápio"],["cardapio-interno.webp","Cardápio, páginas internas"]],
+    camadas: ["logo.webp","sacola.webp","post-imperio.webp"] },
+  acai: { nome: "Açaí Yo", cor: "#6d2fae", pagina: "acai-yo.html", pasta: "img/home/3-projetos/acai-yo/",
+    itens: [["logo-vertical.webp","Logo vertical"],["outdoor-largo.webp","Campanha “Recarregue-se”",1],["pontos-de-venda.webp","Cupom, cartão, fachada e freezer"],["uniforme-polo.webp","Uniforme"],["embalagem-acai.webp","Embalagem açaí"],["embalagem-sabores.webp","Variação de sabor"],["morango-bone-avental.webp","Morango, boné e avental"],["post-instagram.webp","Post para Instagram"]],
+    camadas: ["logo-vertical.webp","embalagem-acai.webp","uniforme-polo.webp"] },
+  rei: { nome: "Reigotta", cor: "#FF3EB5", pagina: "reigotta.html", pasta: "img/home/3-projetos/reigotta/",
+    itens: [["post-novos-ciclos.webp","Post “coleção novos ciclos”"],["etiqueta-verde.webp","Etiqueta de coleção",1],["post-natural.webp","Post “conecte-se ao natural”"],["cartaz-top.webp","Cartaz “Top Boxeadora”",1],["sacola.webp","Sacola",1],["post-nova-colecao.webp","Post “nova coleção”",1],["cartoes.webp","Cartões de visita",1],["etiqueta-rosa.webp","Etiqueta de produto",1]],
+    camadas: ["post-novos-ciclos.webp","post-natural.webp","sacola.webp"] },
+  kami: { nome: "Kamisama", cor: "#FF5C35", pagina: "kamisama.html", pasta: "img/home/3-projetos/kamisama/",
+    itens: [["logo.webp","Logo vertical",1],["sushi-simbolo.webp","Símbolo e direção de imagem",1],["embalagem-larga.webp","Embalagem de delivery",1],["posts.webp","Posts para Instagram",1],["simbolo.webp","Símbolo sobre o vinho",1],["logo-horizontal.webp","Logo horizontal",1]],
+    camadas: ["logo.webp","embalagem-larga.webp","posts.webp"] }
+};
+
+/* [GUIA: playground-estilos] ---- PLAYGROUND: as 3 personalidades ----
+   fonte: fonte do teste (tem que estar no link do Google Fonts)
+   peso, caixa (uppercase = MAIÚSCULA, lowercase = minúscula, none = normal), espaco: espaçamento das letras
+   frase: frase pequena embaixo do nome
+   cores: pares [fundo, texto] que viram as bolinhas de cor */
+const ESTILOS = {
+  elegante:   { nome: 'Elegante', fonte: "'Bodoni Moda', Georgia, serif", peso: 500, caixa: 'uppercase', espaco: '.08em', frase: 'Desde 2026',
+                cores: [["#1c1a17","#e9dcc3"],["#0f2a24","#d8c08a"],["#f1ece2","#3a2a1c"],["#2b1420","#e6c9a8"]] },
+  energetico: { nome: 'Energético', fonte: "'Jost', system-ui, sans-serif", peso: 700, caixa: 'lowercase', espaco: '-.02em', frase: 'Recarregue-se',
+                cores: [["#6d2fae","#ffffff"],["#ff4f1f","#fff4e0"],["#0b57ff","#e8ff3c"],["#111111","#1fdc2a"]] },
+  acolhedor:  { nome: 'Acolhedor', fonte: "'Fraunces', Georgia, serif", peso: 600, caixa: 'none', espaco: '-.01em', frase: 'Feito com cuidado',
+                cores: [["#b44a2f","#fbeee0"],["#f3e3cf","#7a3b2e"],["#3d5a40","#f4ead8"],["#a3122b","#ffe08a"]] },
+  minimalista:{ nome: 'Minimalista', fonte: "'Jost', system-ui, sans-serif", peso: 400, caixa: 'lowercase', espaco: '.02em', frase: 'menos, só que melhor',
+                cores: [["#f4f4f2","#1a1a1a"],["#1a1a1a","#f4f4f2"],["#e9e6df","#5b5a55"],["#dfe6e9","#22313f"]] },
+  urbano:     { nome: 'Urbano', fonte: "'Anton', Impact, sans-serif", peso: 400, caixa: 'uppercase', espaco: '.01em', frase: 'Da rua pro mundo',
+                cores: [["#111111","#ffd400"],["#ffd400","#111111"],["#e63b2e","#ffffff"],["#2b2b2b","#9cff57"]] },
+  tecnologico:{ nome: 'Tecnológico', fonte: "'Space Grotesk', system-ui, sans-serif", peso: 600, caixa: 'none', espaco: '-.03em', frase: 'Feito pra escalar',
+                cores: [["#0b1020","#5cf2ff"],["#f2f5ff","#2a35ff"],["#101010","#c6ff3d"],["#2a35ff","#ffffff"]] },
+  divertido:  { nome: 'Divertido', fonte: "'Pacifico', cursive", peso: 400, caixa: 'none', espaco: '0', frase: 'Feito com alegria',
+                cores: [["#ff6fae","#fff4c2"],["#7c4dff","#fff1fb"],["#ffd23f","#e8336b"],["#2ec4b6","#ffffff"]] }
+};
+// [GUIA: playground-fontes] fontes das marcas de teste: só carregam quando o Playground chega perto (deixa o site mais rápido)
+const FONTES_PLAYGROUND = 'https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;700&family=Jost:wght@400;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Anton&family=Space+Grotesk:wght@600&family=Pacifico&display=swap';
+
+/* ================================================================
+   DAQUI PARA BAIXO É O FUNCIONAMENTO.
+   Não precisa mexer, mas cada parte está explicada.
+   ================================================================ */
+const sistemaSemAnimacao = matchMedia('(prefers-reduced-motion: reduce)').matches; // o computador está com animações desligadas?
+const reduce = CONFIG.respeitarSistema && sistemaSemAnimacao;      // true = desliga as animações do site
+const calmo = sistemaSemAnimacao;                                   // só acalma a onda contínua do título
+if (reduce) document.documentElement.classList.add('parado'); else document.documentElement.classList.add('anima');
+const fine = matchMedia('(pointer: fine)').matches;                    // tem mouse? (PC)
+const cl = (v, a=0, b=1) => Math.max(a, Math.min(b, v));               // limita um número entre a e b
+const ease = t => 1 - Math.pow(1 - cl(t), 3);                          // curva suave de 0 a 1
+
+/* --- Contato: monta o link do WhatsApp em todos os botões verdes --- */
+const whatsLink = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.mensagem)}`;
+document.querySelectorAll('.js-whats').forEach(a => a.href = whatsLink);
+
+/* --- Título da primeira tela: separa letra por letra e faz a onda --- */
+const ht = document.getElementById('ht');
+ht.querySelectorAll('.ln').forEach(ln => {
+  ln.innerHTML = ln.textContent.split(' ').map(w => '<span style="white-space:nowrap">' + [...w].map(c => `<span class="ch">${c}</span>`).join('') + '</span>').join(' ');
+});
+const chars = [...ht.querySelectorAll('.ch')];
+// ponto verde (data-pt) e cursor (data-cur) no fim das linhas
+ht.querySelectorAll('.ln').forEach(ln => {
+  if (ln.hasAttribute('data-pt')) { const d = document.createElement('span'); d.className = 'pt'; ln.lastElementChild.appendChild(d); }
+  if (ln.hasAttribute('data-cur')) { const d = document.createElement('span'); d.className = 'cur'; ln.lastElementChild.appendChild(d); }
+});
+ht.querySelectorAll('.ln').forEach(l => l.setAttribute('aria-hidden', 'true'));
+const fimCursor = ht.querySelector('.cur');
+let fimDigitacao = 0;   // quando a digitação termina (a onda só começa depois)
+(function digitar() {
+  const seq = [...ht.querySelectorAll('.ch, .pt, .cur')];
+  if (reduce) { fimCursor && fimCursor.classList.add('pisca'); return; }
+  seq.forEach(e => { e.classList.add('tp'); if (!e.classList.contains('ch')) e.style.opacity = 0; });
+  const anda = document.createElement('span'); anda.className = 'cur';           // cursor que anda com as letras
+  seq.forEach((e, i) => setTimeout(() => {
+    e.classList.remove('tp'); e.style.opacity = '';
+    if (e === fimCursor) { anda.remove(); e.classList.add('pisca'); }
+    else if (e.classList.contains('ch')) e.after(anda);
+  }, CONFIG.atrasoDigitacao + i * CONFIG.digitacao));
+  fimDigitacao = CONFIG.atrasoDigitacao + seq.length * CONFIG.digitacao + 300;
+})();
+if (!reduce) {
+  let on = true, mx = -9999, my = -9999, rects = [];
+  new IntersectionObserver(es => on = es[0].isIntersecting).observe(ht); // só anima quando o título está na tela
+  const measure = () => rects = chars.map(c => { const r = c.getBoundingClientRect(); return [r.left + r.width/2, r.top + r.height/2 + scrollY]; });
+  setTimeout(measure, 900); setTimeout(measure, 2600); addEventListener('resize', measure);
+  if (fine) addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+  let last = 0; const prev = [];
+  const wave = ts => {
+    // roda a ~30 quadros por segundo (mais leve para o PC) e começa logo depois da entrada
+    if (on && ts > Math.max(900, fimDigitacao) && ts - last > 33) { last = ts; chars.forEach((c, i) => {
+      const w = (Math.sin(ts / (CONFIG.ondaLetras * (calmo ? 1.6 : 1)) - i*0.33) + 1) / 2, kw = w*w*w * (calmo ? .6 : 1); // onda
+      let kc = 0; if (rects[i]) kc = cl(1 - Math.hypot(rects[i][0] - mx, rects[i][1] - scrollY - my) / CONFIG.raioMouse); // mouse perto
+      const k = Math.max(kw * CONFIG.ondaForca, kc);
+      const wg = Math.round(800 - 600*k), wd = Math.round(78 + 22*kc);        // peso: 800 = grossa, 200 = fina · largura: 78 normal, abre perto do mouse
+      if (prev[i] !== wg * 1000 + wd) { prev[i] = wg * 1000 + wd; c.style.fontVariationSettings = `"wght" ${wg}, "wdth" ${wd}`; } // só atualiza se mudou
+    }); }
+    requestAnimationFrame(wave);
+  };
+  requestAnimationFrame(wave);
+}
+
+/* --- Cartões 3D da primeira tela seguem o mouse (só PC) --- */
+const s3d = document.getElementById('s3d');
+if (s3d && fine && !reduce) {
+  let tx = 0, ty = 0, x = 0, y = 0;
+  addEventListener('pointermove', e => { tx = (e.clientX / innerWidth - .5); ty = (e.clientY / innerHeight - .5); }, { passive: true });
+  (function loop() { x += (tx - x) * .06; y += (ty - y) * .06; s3d.style.transform = `rotateY(${x * CONFIG.cartoes3dGiro}deg) rotateX(${-y * CONFIG.cartoes3dGiro * .7}deg) translateX(${x * 20}px)`; requestAnimationFrame(loop); })();
+}
+
+/* --- Palavra que troca sozinha (design / tecnologia / experiência) --- */
+const rs = [...document.querySelectorAll('#rot span')]; let ri = 0;
+if (!reduce) setInterval(() => { rs[ri].classList.remove('on'); rs[ri].classList.add('out'); const p = ri; setTimeout(() => rs[p].classList.remove('out'), 650); ri = (ri+1) % rs.length; rs[ri].classList.add('on'); }, CONFIG.trocaPalavra);
+
+/* --- Faixa de imagens (repete a lista 2x para dar a volta sem emenda) --- */
+// a lista aparece 4x seguidas para a faixa dar a volta sem emenda; só a primeira cópia é lida por leitores de tela e pelo teclado
+document.getElementById('mq').innerHTML = [0,1,2,3].map(k => CONFIG.faixa.map(([f, link, nome]) =>
+  `<a href="${link}" ${k ? 'tabindex="-1" aria-hidden="true"' : ''} data-cursor="Ver"><img src="img/home/2-faixa/${f}" alt="${k ? '' : 'Logo ' + nome}" width="400" height="500" decoding="async"></a>`).join('')).join('');
+
+/* --- Projetos: no PC vira esteira horizontal; no celular, 3 imagens em camadas --- */
+let desk = null;            // true = modo PC (esteira), false = modo celular (camadas)
+let chapters = [];
+function buildChapters() {
+  const nowDesk = innerWidth > 860;
+  if (nowDesk === desk) return;           // só reconstrói quando muda de celular para PC (ou o contrário)
+  desk = nowDesk;
+  chapters = [...document.querySelectorAll('.chapter')].map(sec => {
+    const set = PROJETOS[sec.dataset.set];
+    sec.style.setProperty('--b', set.cor);                     // cor de fundo vem de PROJETOS
+    const box = sec.querySelector('.layers');
+    box.innerHTML = ''; box.classList.toggle('dk', desk); sec.style.height = '';
+    sec.querySelector('.open').onclick = () => openProj(sec.dataset.set);
+    if (desk) {
+      const tr = document.createElement('div'); tr.className = 'htrack';
+      tr.innerHTML = set.itens.map(([f, cap, w]) => `<figure class="${w ? 'wide' : ''}" data-cursor="Ver"><img src="${set.pasta}${f}" alt="${cap}" loading="lazy" draggable="false"><figcaption>${cap}</figcaption></figure>`).join('');
+      [...tr.children].forEach(f => f.onclick = () => openProj(sec.dataset.set));
+      box.appendChild(tr);
+      return { sec, title: sec.querySelector('.ch-title'), box, tr, figs: [...tr.children], layers: [] };
+    }
+    set.camadas.forEach(f => { const d = document.createElement('div'); d.className = 'layer'; d.dataset.cursor = 'Ver'; d.innerHTML = `<img src="${set.pasta}${f}" alt="" loading="lazy">`; d.onclick = () => openProj(sec.dataset.set); box.appendChild(d); });
+    return { sec, title: sec.querySelector('.ch-title'), layers: [...box.children] };
+  });
+  sizeChapters();
+}
+// no PC, a altura de cada projeto depende de quantas imagens ele tem
+function sizeChapters() {
+  chapters.forEach(c => { if (!c.tr) return; const travel = Math.max(0, c.tr.scrollWidth - c.box.clientWidth * .55); c.travel = travel; c.sec.style.height = (innerHeight + travel * CONFIG.esteiraVelocidade + innerHeight * .35) + 'px'; });
+}
+buildChapters();
+addEventListener('resize', () => { buildChapters(); sizeChapters(); });
+addEventListener('load', sizeChapters);
+// roda a cada rolagem: p vai de 0 (começo do projeto) até 1 (fim)
+function paintChapters() {
+  const vh = innerHeight;
+  chapters.forEach(({ sec, title, layers, tr, figs, box, travel }) => {
+    const r = sec.getBoundingClientRect();
+    if (r.bottom < -vh || r.top > vh * 1.5) return;
+    const p = reduce ? 1 : cl(-r.top / (r.height - vh));
+    if (tr) { // PC: move a esteira e deixa maior a imagem do meio
+      const bw = box.clientWidth;
+      tr.style.transform = `translateX(${bw * .55 - (travel + bw * .55) * cl((p - .08) / .92)}px)`;
+      const mid = box.getBoundingClientRect().left + bw / 2;
+      figs.forEach(f => { const fr = f.getBoundingClientRect(); const d = cl(Math.abs(fr.left + fr.width/2 - mid) / (bw * .9)); f.style.transform = `scale(${1 - d*.14}) rotate(${(fr.left + fr.width/2 - mid) / bw * 4}deg)`; f.style.opacity = 1 - d*.35; });
+    }
+    // nome da marca fica mais fino e espaçado conforme rola
+    title.style.fontVariationSettings = `"wght" ${800 - 450*ease(p*1.5)}, "wdth" ${78 + 22*ease(p*1.5)}`;
+    title.style.letterSpacing = `${-0.02 + 0.03*ease(p*1.5)}em`;
+    // celular: cada imagem se revela de baixo para cima, uma depois da outra
+    layers.forEach((l, i) => {
+      const k = reduce ? 1 : ease((p - 0.04 - i*0.2) / 0.32);
+      l.style.clipPath = `inset(${(1-k)*100}% 0 0 0 round 6px)`;
+      l.style.transform = `translateY(${(1-k)*70}px)`;
+      l.firstChild.style.transform = `scale(${1.15 - 0.15*k})`;
+    });
+  });
+}
+
+/* --- Barra de progresso e índice lateral --- */
+const bar = document.getElementById('bar');
+const railLinks = [...document.querySelectorAll('#rail a')];
+const targets = railLinks.map(a => document.getElementById(a.dataset.t));
+function onScroll() {
+  const h = document.documentElement.scrollHeight - innerHeight;
+  bar.style.width = (h > 0 ? scrollY / h * 100 : 0) + '%';
+  let cur = 0; targets.forEach((t, i) => { if (t && t.getBoundingClientRect().top < innerHeight * 0.5) cur = i; });
+  railLinks.forEach((a, i) => a.classList.toggle('on', i === cur));
+  // no bloco verde do contato, o botão Orçamento do topo fica escuro para não sumir
+  const ct = document.getElementById('contato').getBoundingClientRect(); document.documentElement.classList.toggle('no-verde', ct.top < 60 && ct.bottom > 60);
+  document.getElementById('rail').classList.toggle('away', chapters.some(c => { const r = c.sec.getBoundingClientRect(); return r.top < innerHeight * .5 && r.bottom > innerHeight * .5; }));
+  paintChapters();
+}
+addEventListener('scroll', () => requestAnimationFrame(onScroll), { passive: true });
+addEventListener('resize', onScroll); onScroll();
+
+/* --- Títulos de seção: separa as palavras para elas subirem --- */
+document.querySelectorAll('.split').forEach(h => {
+  h.innerHTML = h.textContent.trim().split(/\s+/).map((w, i) => `<span class="w"><span style="transition-delay:${i*60}ms">${w}</span></span>`).join(' ');
+  if (h.hasAttribute('data-pt')) { const d = document.createElement('span'); d.className = 'pt'; h.lastElementChild.firstElementChild.appendChild(d); }  // ponto final quadrado
+  if (!reduce && h.getBoundingClientRect().top > innerHeight) {
+    h.classList.add('split-pre');
+    const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { h.classList.remove('split-pre'); h.classList.add('in'); o.disconnect(); } }, { rootMargin: '0px 0px -10% 0px' }); o.observe(h);
+  } else h.classList.add('in');
+});
+
+/* --- Faixa de imagens inclina com a velocidade da rolagem --- */
+const mqEl = document.querySelector('.marquee'); let lastY = scrollY;
+if (!reduce) (function sk() { const v = scrollY - lastY; lastY = scrollY; mqEl.style.setProperty('--sk', cl(v * -.25, -10, 10) + 'deg'); requestAnimationFrame(sk); })();
+
+/* --- Rolagem suave no PC (biblioteca Lenis) --- */
+let lenis = null;
+if (fine && !reduce && window.Lenis) {
+  lenis = new Lenis({ lerp: CONFIG.rolagemSuave, wheelMultiplier: 1 });
+  (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(performance.now());
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: 0, duration: 1.4 }); } }));
+}
+
+/* --- Blocos que sobem quando aparecem (só os que estão abaixo da primeira tela) --- */
+if (!reduce) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.rv').forEach(el => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pre'); io.observe(el); } });
+}
+
+/* --- Botões-ímã e criativos que inclinam (só PC) --- */
+if (fine && !reduce) {
+  document.querySelectorAll('.mag').forEach(b => {
+    b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width/2) * CONFIG.imaComBotoes}px, ${(e.clientY - r.top - r.height/2) * CONFIG.imaComBotoes * 1.4}px)`; });
+    b.addEventListener('pointerleave', () => b.style.transform = '');
+  });
+  document.querySelectorAll('.tilt').forEach(t => {
+    t.addEventListener('pointermove', e => { const r = t.getBoundingClientRect(); const px = (e.clientX - r.left)/r.width - .5, py = (e.clientY - r.top)/r.height - .5; t.style.transform = `rotateY(${px*12}deg) rotateX(${-py*12}deg)`; });
+    t.addEventListener('pointerleave', () => t.style.transform = '');
+  });
+}
+
+/* ================================================================
+   ANIMAÇÕES DE TECNOLOGIA
+   ================================================================ */
+/* --- Símbolo que se monta em pixels: ordem dos blocos (maior primeiro) e disparo --- */
+document.querySelectorAll('.px').forEach(svg => {
+  [...svg.querySelectorAll('rect')].sort((a, b) => b.width.baseVal.value * b.height.baseVal.value - a.width.baseVal.value * a.height.baseVal.value)
+    .forEach((r, i) => r.style.setProperty('--i', i));
+});
+if (!reduce) {
+  const ioPx = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ioPx.unobserve(e.target); } }), { rootMargin: '0px 0px -12% 0px' });
+  document.querySelectorAll('.px').forEach(el => ioPx.observe(el));
+}
+
+/* --- Decodificar texto: letras aleatórias até formar a palavra (etiquetas com class="scr") --- */
+const GLIFOS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#/<>_+=';
+function embaralhar(el) {
+  const alvo = el.dataset.txt || (el.dataset.txt = el.textContent); const t0 = performance.now();
+  (function passo(t) {
+    const k = Math.min(1, (t - t0) / CONFIG.embaralhar);
+    el.textContent = [...alvo].map((c, i) => c === ' ' || c === '·' || i / alvo.length < k ? c : GLIFOS[(Math.random() * GLIFOS.length) | 0]).join('');
+    if (k < 1) requestAnimationFrame(passo);
+  })(t0);
+}
+if (!reduce) {
+  const ioScr = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { embaralhar(e.target); ioScr.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('.scr').forEach(el => ioScr.observe(el));
+  // links do menu também "decodificam" ao passar o mouse
+  document.querySelectorAll('.top nav a.l, .rail a span').forEach(a => a.addEventListener('pointerenter', () => embaralhar(a)));
+}
+
+/* --- Revelação em pixels: blocos na cor do fundo somem em ordem aleatória por cima da imagem --- */
+function revelarPixels(el, cor, atraso = 0) {
+  if (reduce || el.dataset.pxr) return; el.dataset.pxr = 1;
+  const r = el.getBoundingClientRect(); if (!r.width) return;
+  const c = document.createElement('canvas'); c.className = 'pxr';
+  const cel = Math.max(14, Math.round(r.width / 18));                      // tamanho do "pixel"
+  const cols = Math.ceil(r.width / cel), rows = Math.ceil(r.height / cel);
+  c.width = cols; c.height = rows;                                          // 1 pixel do canvas = 1 bloco (fica leve)
+  const g = c.getContext('2d'); g.fillStyle = cor; g.fillRect(0, 0, cols, rows);
+  el.appendChild(c);
+  const ordem = [...Array(cols * rows).keys()].sort(() => Math.random() - .5);
+  let feitos = 0, t0 = 0;
+  setTimeout(() => requestAnimationFrame(function passo(t) {
+    if (!t0) t0 = t;
+    const alvo = Math.floor(ordem.length * Math.min(1, (t - t0) / CONFIG.pixelImagem));
+    for (; feitos < alvo; feitos++) { const k = ordem[feitos]; g.clearRect(k % cols, (k / cols) | 0, 1, 1); }
+    if (feitos < ordem.length) requestAnimationFrame(passo); else c.remove();
+  }), atraso);
+}
+if (!reduce) {
+  const ioImg = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { revelarPixels(e.target, getComputedStyle(document.body).backgroundColor); ioImg.unobserve(e.target); } }), { threshold: .25 });
+  document.querySelectorAll('.tilt').forEach(el => ioImg.observe(el));
+}
+// esteira do PC: as imagens de cada projeto se revelam em pixels quando o projeto entra
+function revelarProjeto(c) { if (c.revelado || !c.figs) return; c.revelado = true; c.figs.forEach((f, i) => revelarPixels(f, getComputedStyle(c.sec).getPropertyValue('--b').trim() || '#333', 120 + i * 110)); }
+addEventListener('scroll', () => chapters.forEach(c => { const r = c.sec.getBoundingClientRect(); if (r.top < innerHeight * .4 && r.bottom > 0) revelarProjeto(c); }), { passive: true });
+
+/* --- HUD da primeira tela: coordenadas do mouse (PC) ou rolagem em % (celular) + grade que segue o mouse --- */
+const hud = document.getElementById('hud'), heroEl = document.querySelector('.hero');
+const pad = n => String(Math.max(0, Math.round(n))).padStart(4, '0');
+if (fine) {
+  let px = 0, py = 0, pend = false;
+  addEventListener('pointermove', e => { px = e.clientX; py = e.clientY; if (!pend) { pend = true; requestAnimationFrame(() => {
+    pend = false; hud.textContent = `X ${pad(px)} · Y ${pad(py + scrollY)}`;
+    if (!reduce) { heroEl.style.setProperty('--gx', ((px / innerWidth - .5) * -24).toFixed(1) + 'px'); heroEl.style.setProperty('--gy', ((py / innerHeight - .5) * -24).toFixed(1) + 'px'); }
+  }); } }, { passive: true });
+} else {
+  addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - innerHeight; hud.textContent = `Scroll ${pad(h > 0 ? scrollY / h * 100 : 0).slice(1)}%`; }, { passive: true });
+  hud.textContent = 'Scroll 000%';
+}
+
+/* --- Rastro de pixels atrás do cursor (PC) --- */
+if (fine && !reduce && CONFIG.rastroCursor) {
+  const pool = [...Array(16)].map(() => { const d = document.createElement('i'); d.className = 'trail'; document.body.appendChild(d); return d; });
+  let k = 0, lx = 0, ly = 0;
+  addEventListener('pointermove', e => {
+    if (Math.hypot(e.clientX - lx, e.clientY - ly) < 22) return; lx = e.clientX; ly = e.clientY;
+    const d = pool[k++ % pool.length], x = Math.round(e.clientX / 8) * 8, y = Math.round(e.clientY / 8) * 8;   // encaixa numa grade de 8px
+    d.animate([{ opacity: .9, transform: `translate(${x}px, ${y}px) scale(1)` }, { opacity: 0, transform: `translate(${x}px, ${y + 10}px) scale(.4)` }], { duration: 520, easing: 'steps(4, end)' });
+  }, { passive: true });
+}
+
+/* --- Abrir projeto: vai para a página de estudo de caso (campo pagina em PROJETOS) --- */
+function openProj(key) { location.href = PROJETOS[key].pagina; }
+
+/* --- Playground: "Teste a sua marca" --- */
+let pg = { s: 'elegante', i: 0 };
+const pgName = document.getElementById('pg-name'), pgSub = document.getElementById('pg-sub'), swBox = document.getElementById('pg-sw');
+// carrega as fontes do playground só quando ele está perto da tela
+const pgSec = document.getElementById('playground'); let fontesOk = false;
+new IntersectionObserver((es, o) => { if (es[0].isIntersecting && !fontesOk) { fontesOk = true; const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = FONTES_PLAYGROUND; document.head.appendChild(l); o.disconnect(); } }, { rootMargin: '900px 0px' }).observe(pgSec);
+// botões de personalidade a partir de ESTILOS
+const styleBox = document.getElementById('pg-style');
+styleBox.innerHTML = Object.entries(ESTILOS).map(([k, v]) => `<button data-s="${k}" aria-pressed="${k === pg.s}">${v.nome || k[0].toUpperCase() + k.slice(1)}</button>`).join('');
+function renderSwatches() {
+  swBox.innerHTML = ESTILOS[pg.s].cores.map(([a, c], i) => `<button style="--a:${a};--c:${c}" aria-label="Paleta ${i+1}" aria-pressed="${i === pg.i}"></button>`).join('');
+  [...swBox.children].forEach((b, i) => b.onclick = () => { pg.i = i; renderSwatches(); paintBrand(); });
+}
+function paintBrand() {
+  const st = ESTILOS[pg.s], [bg, fg] = st.cores[pg.i]; const name = pgName.value.trim() || 'Sua Marca';
+  document.querySelectorAll('#pg-stage [data-n]').forEach(n => { n.textContent = name; Object.assign(n.style, { fontFamily: st.fonte, fontWeight: st.peso, textTransform: st.caixa, letterSpacing: st.espaco }); });
+  const frase = pgSub.value.trim() || st.frase; pgSub.placeholder = st.frase;
+  document.querySelectorAll('#pg-stage [data-t]').forEach(n => n.textContent = frase);
+  const m = document.querySelector('#pg-stage [data-m]'); m.textContent = st.caixa === 'lowercase' ? name[0].toLowerCase() : name[0].toUpperCase(); Object.assign(m.style, { fontFamily: st.fonte, fontWeight: st.peso });
+  document.querySelector('#card .front').style.cssText = `background:${bg};color:${fg}`;
+  document.querySelector('#card .back').style.cssText = `background:${fg};color:${bg}`;
+  document.querySelector('#pg-stage .bag').style.cssText = `background:${bg};color:${fg}`;
+  document.querySelector('#pg-stage .post').style.cssText = `background:${fg};color:${bg}`;
+}
+document.querySelectorAll('#pg-style button').forEach(b => b.onclick = () => {
+  pg.s = b.dataset.s; pg.i = 0; document.querySelectorAll('#pg-style button').forEach(x => x.setAttribute('aria-pressed', x === b)); renderSwatches(); paintBrand();
+});
+pgName.addEventListener('input', paintBrand); pgSub.addEventListener('input', paintBrand);
+renderSwatches(); paintBrand();
+// cartão: toque para virar, arraste para girar
+const card = document.getElementById('card'); let rot = 0, drag = null;
+const setRot = (v, anim) => { card.style.transition = anim ? '' : 'none'; card.style.transform = `rotateY(${v}deg)`; };
+card.addEventListener('pointerdown', e => { drag = { x: e.clientX, r: rot, moved: false }; card.setPointerCapture(e.pointerId); });
+card.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - drag.x; if (Math.abs(dx) > 5) drag.moved = true; if (drag.moved) setRot(drag.r + dx * .6, false); });
+card.addEventListener('pointerup', e => { if (!drag) return; const dx = e.clientX - drag.x; rot = drag.moved ? Math.round((drag.r + dx * .6) / 180) * 180 : rot + 180; drag = null; setRot(rot, true); });
+card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); rot += 180; setRot(rot, true); } });
+
+/* --- Compartilhar o cartão: desenha a frente do cartão numa imagem e abre o compartilhar do celular (no PC, baixa a imagem) --- */
+async function imagemDoCartao() {
+  const st = ESTILOS[pg.s], [bg, fg] = st.cores[pg.i];
+  const nome = pgName.value.trim() || 'Sua Marca', frase = pgSub.value.trim() || st.frase;
+  const W = 1200, H = 686, c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d');
+  const caixa = t => st.caixa === 'uppercase' ? t.toUpperCase() : st.caixa === 'lowercase' ? t.toLowerCase() : t;
+  try { await document.fonts.load(`${st.peso} 100px ${st.fonte}`); } catch (e) {}
+  g.fillStyle = bg; g.fillRect(0, 0, W, H); g.fillStyle = fg; g.textAlign = 'center'; g.textBaseline = 'middle';
+  let tam = 130; g.font = `${st.peso} ${tam}px ${st.fonte}`;
+  if ('letterSpacing' in g) g.letterSpacing = st.espaco.replace('em', '') * tam + 'px';
+  while (g.measureText(caixa(nome)).width > W * .82 && tam > 40) { tam -= 4; g.font = `${st.peso} ${tam}px ${st.fonte}`; }
+  g.fillText(caixa(nome), W / 2, H / 2 - 20);
+  g.font = `600 26px 'Bricolage Grotesque', sans-serif`; if ('letterSpacing' in g) g.letterSpacing = '6px'; g.globalAlpha = .8;
+  g.fillText(frase.toUpperCase(), W / 2, H / 2 + tam * .55 + 10);
+  g.globalAlpha = .5; g.font = `500 20px 'Bricolage Grotesque', sans-serif`; if ('letterSpacing' in g) g.letterSpacing = '2px';
+  g.fillText('feito no playground da turzin.', W / 2, H - 40);
+  return new Promise(r => c.toBlob(r, 'image/png'));
+}
+const shareBtn = document.getElementById('pg-share'), shareMsg = document.getElementById('pg-msg');
+const sb = document.getElementById('sharebox'), sbImg = document.getElementById('sb-img'), sbMsg = document.getElementById('sb-msg');
+let sbBlob = null, sbFile = null, sbUrl = '';
+const aviso = t => { sbMsg.textContent = t; };
+// pode compartilhar arquivo pelo menu do próprio aparelho (WhatsApp, Instagram, AirDrop, e-mail...)?
+const podeCompartilhar = () => { try { return !!(navigator.canShare && sbFile && navigator.canShare({ files: [sbFile] })); } catch (e) { return false; } };
+async function compartilhar() {
+  try { await navigator.share({ files: [sbFile], title: 'Minha marca', text: 'Fiz no playground da turzin.' }); aviso('Compartilhado.'); return true; }
+  catch (e) { if (e.name === 'AbortError') return true; return false; }
+}
+async function copiarImagem() {
+  try { await navigator.clipboard.write([new ClipboardItem({ 'image/png': sbBlob })]); return true; } catch (e) { return false; }
+}
+async function salvar() {
+  // dentro do claude.ai o arquivo passa pela confirmação do visualizador (no app do celular abre o menu de compartilhar do aparelho)
+  const dl = window.claude && window.claude.use ? await window.claude.use('downloads').catch(() => null) : null;
+  if (dl) { try { await dl.save({ filename: sbFile.name, data: sbBlob }); aviso('Imagem salva.'); } catch (e) { if (e && e.code !== 'declined') aviso('Não deu pra salvar por aqui. Segura a imagem e salva.'); } return; }
+  const a = document.createElement('a'); a.href = sbUrl; a.download = sbFile.name; document.body.appendChild(a); a.click(); a.remove(); aviso('Imagem salva no aparelho.');
+}
+shareBtn.onclick = async () => {
+  sbBlob = await imagemDoCartao();
+  const nomeArq = (pgName.value.trim() || 'minha-marca').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-') + '.png';
+  sbFile = new File([sbBlob], nomeArq, { type: 'image/png' });
+  if (sbUrl) URL.revokeObjectURL(sbUrl); sbUrl = URL.createObjectURL(sbBlob); sbImg.src = sbUrl;
+  document.getElementById('sb-share').hidden = !podeCompartilhar();
+  aviso(podeCompartilhar() ? 'Escolhe onde mandar. No celular, também dá pra segurar a imagem e salvar.' : 'No celular, também dá pra segurar a imagem e salvar.');
+  sb.hidden = false; document.getElementById('sb-x').focus();
+};
+document.getElementById('sb-x').onclick = () => { sb.hidden = true; shareBtn.focus(); };
+sb.addEventListener('click', e => { if (e.target === sb) sb.hidden = true; });
+addEventListener('keydown', e => { if (e.key === 'Escape' && !sb.hidden) sb.hidden = true; });
+document.getElementById('sb-share').onclick = async () => { if (!(await compartilhar())) aviso('Seu navegador não abriu o menu de compartilhar. Usa “Copiar imagem” ou “Salvar no aparelho”.'); };
+// WhatsApp e Instagram: no celular, o menu do aparelho manda a imagem direto pro app.
+// No PC, a imagem vai pra área de transferência e o app abre: é só colar (Ctrl+V) na conversa.
+document.getElementById('sb-zap').onclick = async () => {
+  if (podeCompartilhar() && await compartilhar()) return;
+  const ok = await copiarImagem();
+  window.open(fine ? 'https://web.whatsapp.com/' : 'https://wa.me/?text=' + encodeURIComponent('Fiz minha marca no playground da turzin.'), '_blank', 'noopener');
+  aviso(ok ? 'Imagem copiada. No WhatsApp, abre a conversa e cola (Ctrl+V).' : 'Salva a imagem e manda pelo WhatsApp.');
+};
+document.getElementById('sb-insta').onclick = async () => {
+  if (podeCompartilhar() && await compartilhar()) return;
+  const ok = await copiarImagem();
+  window.open(fine ? 'https://www.instagram.com/direct/inbox/' : 'https://www.instagram.com/', '_blank', 'noopener');
+  aviso(ok ? 'Imagem copiada. No Instagram, cola na conversa (Ctrl+V) ou salva e posta.' : 'Salva a imagem e posta no Instagram.');
+};
+document.getElementById('sb-copy').onclick = async () => aviso(await copiarImagem() ? 'Imagem copiada. É só colar onde quiser.' : 'Esse navegador não deixa copiar imagem. Usa “Salvar no aparelho”.');
+document.getElementById('sb-save').onclick = salvar;
+
+/* --- Botão "Modo papel" (troca as cores para as de :root[data-mode="papel"]) --- */
+const sw = document.getElementById('mode');
+sw.onclick = () => { const on = sw.getAttribute('aria-checked') !== 'true'; sw.setAttribute('aria-checked', on); document.documentElement.dataset.mode = on ? 'papel' : ''; };
+
+/* --- Botão "Copiar e-mail" --- */
+document.querySelectorAll('.copy').forEach(b => b.onclick = () => {
+  const done = () => { b.textContent = 'Copiado'; setTimeout(() => b.textContent = 'Copiar e-mail', 1600); };
+  const sel = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById('mail')); getSelection().removeAllRanges(); getSelection().addRange(r); };
+  navigator.clipboard ? navigator.clipboard.writeText(CONFIG.email).then(done, sel) : sel();
+});
+</script>
+<!-- [GUIA: musica] música de fundo no PC + botão de som (arquivo musica.js) -->
+<script src="musica.js" defer></script>
+</body>
+</html>

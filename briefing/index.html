@@ -1,0 +1,1151 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../img/marca/simbolo.svg" type="image/svg+xml">
+<title>turzin.</title>
+<meta name="description" content="Briefing de identidade visual da turzin.: versão imersiva ou legado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
+<style>
+/* Briefing turzin. — uma tela por pergunta (imersiva) ou uma página por ato (legado).
+   Visual da turzin.: só Bricolage Grotesque, verde #44D62D, cinza #212121, papel #F7F7F7, ponto quadrado. */
+:root {
+  --ink: #212121;      /* cinza da marca */
+  --deep: #141414;     /* fundo do ato I */
+  --paper: #F7F7F7;    /* papel */
+  --green: #44D62D;    /* verde da marca */
+  --green-ink: #2E9A1C;/* verde legível sobre papel */
+  --mute: #9A9A9A;
+  --font: 'Bricolage Grotesque', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  /* tema ativo (muda por ato e por modo) */
+  --bg: var(--ink); --fg: var(--paper); --acc: var(--green); --soft: rgba(247,247,247,.62); --line: rgba(247,247,247,.16); --panel: rgba(33,33,33,.72);
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 17px/1.5 var(--font); -webkit-font-smoothing: antialiased; overflow-x: hidden; transition: background .6s steps(6), color .6s steps(6); }
+* { box-sizing: border-box; }
+button, input, textarea { font: inherit; color: inherit; }
+::selection { background: var(--green); color: var(--ink); }
+
+/* ---------- temas por ato (cada ato tem a sua característica) ---------- */
+body[data-ato="origem"] { --bg: var(--deep); }
+body[data-ato="lugar"]  { --bg: #1A1A1A; --acc: var(--green); }
+body[data-ato="olhar"]  { --bg: var(--paper); --fg: var(--ink); --soft: rgba(33,33,33,.64); --line: rgba(33,33,33,.16); --panel: rgba(247,247,247,.78); --acc: var(--green-ink); color-scheme: light; }
+body[data-ato="voz"]    { --bg: var(--voz-bg, var(--ink)); }
+body.legado { --bg: var(--paper); --fg: var(--ink); --soft: rgba(33,33,33,.64); --line: rgba(33,33,33,.15); --panel: #fff; --acc: var(--green-ink); color-scheme: light; }
+
+/* ---------- palco (canvas) e grade ---------- */
+#palco { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.grade { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity .8s;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 48px 48px; }
+body[data-ato="nome"] .grade, body[data-ato="lugar"] .grade { opacity: .5; }
+body[data-ato="lugar"] .grade { background-size: 96px 96px; }
+.legado .grade, .legado #palco { display: none; }
+#nomeVivo { position: fixed; left: 0; right: 0; top: 50%; transform: translateY(-50%); z-index: 0; text-align: center; pointer-events: none; padding-inline: 16px;
+  font-size: clamp(56px, 15vw, 220px); line-height: .9; color: var(--fg); opacity: 0; transition: opacity .8s, font-variation-settings .35s, letter-spacing .35s; overflow-wrap: anywhere; }
+#nomeVivo i { display: inline-block; width: .17em; height: .17em; background: var(--green); margin-left: .04em; }
+body[data-ato="voz"] #nomeVivo { opacity: .14; }
+body.falando #nomeVivo { opacity: 1; top: 32%; }
+.saida.v5 { align-content: start; padding-top: 46vh; }
+.saida.v5.fim { align-content: end; padding-top: 0; }
+.saida.v5:not(.fim) .resumo { display: none; }
+
+/* ---------- piscada: pálpebras de verdade fechando e abrindo a tela ----------
+   Fecha rápido (110 ms, acelerando), fica fechada um instante e abre mais devagar (260 ms, freando).
+   A pálpebra de cima desce mais que a de baixo sobe, como no olho. Ao abrir, a tela volta de um leve desfoque.
+   Só usa transform (placa de vídeo), então não trava no celular. */
+#palpebra { position: fixed; inset: 0; z-index: 60; pointer-events: none; overflow: hidden; }
+#palpebra::before, #palpebra::after { content: ""; position: absolute; left: -15%; right: -15%; background: #0B0B0B; will-change: transform; }
+#palpebra::before { top: 0; height: 64%; border-radius: 0 0 50% 50% / 0 0 26% 26%; transform: translateY(-104%); box-shadow: 0 18px 50px 10px rgba(0,0,0,.55); transition: transform .26s cubic-bezier(.12,.7,.3,1); }
+#palpebra::after { bottom: 0; height: 42%; border-radius: 50% 50% 0 0 / 26% 26% 0 0; transform: translateY(104%); box-shadow: 0 -14px 40px 8px rgba(0,0,0,.5); transition: transform .26s cubic-bezier(.12,.7,.3,1); }
+#palpebra.fecha::before, #palpebra.fecha::after { transform: translateY(0); transition-duration: .11s; transition-timing-function: cubic-bezier(.6,0,.9,.5); }
+.acorda { animation: acorda .42s ease-out both; }
+@keyframes acorda { from { filter: blur(3px); opacity: .7; } to { filter: none; opacity: 1; } }
+
+/* ---------- topo ---------- */
+.topo { position: fixed; top: 0; left: 0; right: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 86%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); display: flex; align-items: center; gap: 20px; padding: calc(14px + env(safe-area-inset-top, 0px)) 24px 14px; }
+.logo { font-weight: 800; font-size: 22px; letter-spacing: -.02em; line-height: 1; white-space: nowrap; }
+.logo i { display: inline-block; width: .2em; height: .2em; background: var(--green); margin-left: .03em; }
+.prog { flex: 1; display: flex; align-items: center; gap: 14px; min-width: 0; opacity: 0; transition: opacity .4s; }
+.prog.on { opacity: 1; }
+.prog .rot { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); white-space: nowrap; }
+.prog .rot b { color: var(--fg); font-weight: 700; }
+.segs { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; max-width: 420px; margin-left: auto; }
+.segs span { height: 4px; background: var(--line); position: relative; overflow: hidden; }
+.segs span i { position: absolute; inset: 0; background: var(--acc); transform-origin: left; transform: scaleX(var(--p, 0)); transition: transform .5s steps(8); }
+.btn-som { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--line); background: transparent; padding: 8px 12px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
+.btn-som .eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 11px; }
+.btn-som .eq i { width: 3px; height: 3px; background: var(--acc); }
+.btn-som.on .eq i { animation: eq .9s steps(4) infinite; }
+.btn-som.on .eq i:nth-child(2) { animation-delay: .2s; } .btn-som.on .eq i:nth-child(3) { animation-delay: .45s; }
+@keyframes eq { 50% { height: 11px; } 100% { height: 4px; } }
+.legado .btn-som { display: none; }
+
+/* ---------- área das telas ---------- */
+main { position: relative; z-index: 5; min-height: 100%; display: grid; padding: calc(88px + env(safe-area-inset-top, 0px)) 24px calc(40px + env(safe-area-inset-bottom, 0px)); }
+.tela { width: 100%; max-width: 760px; margin: auto; align-self: center; }
+.tela.larga { max-width: 1080px; }
+.entra { animation: entra .6s steps(7) both; }
+@keyframes entra { 0% { clip-path: inset(0 0 100% 0); transform: translateX(-8px); opacity: 0; } 45% { clip-path: inset(0 0 45% 0); transform: translateX(5px); opacity: 1; } 70% { transform: translateX(-2px); } 100% { clip-path: inset(0 0 0 0); transform: none; } }
+.sai { animation: sai .28s steps(4) forwards; }
+@keyframes sai { 30% { transform: translateX(6px) skewX(-4deg); opacity: .8; } 100% { transform: translateX(-10px); opacity: 0; clip-path: inset(40% 0 30% 0); } }
+.legado .entra { animation: sobe .45s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes sobe { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* ---------- tipografia das telas ---------- */
+.eyb { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--acc); margin: 0 0 18px; }
+.pergunta h2 { margin: 0 0 10px; font-size: clamp(30px, 5.2vw, 52px); line-height: 1.04; letter-spacing: -.02em; font-weight: 700; text-wrap: balance; overflow-wrap: anywhere; }
+.pergunta .hint { margin: 0 0 26px; color: var(--soft); max-width: 56ch; }
+/* característica de cada ato nas perguntas */
+body[data-ato="origem"] .pergunta h2 { font-weight: 300; letter-spacing: -.03em; }
+body[data-ato="nome"] .pergunta h2 { text-transform: uppercase; font-weight: 800; font-variation-settings: "wdth" 78; letter-spacing: -.01em; }
+body[data-ato="lugar"] .pergunta h2 { font-weight: 600; }
+body[data-ato="olhar"] .pergunta h2 { font-weight: 700; }
+body[data-ato="voz"] .pergunta h2 { font-variation-settings: "wght" var(--v-wght, 700), "wdth" var(--v-wdth, 100); letter-spacing: var(--v-ls, -.02em); text-transform: var(--v-tt, none); transition: font-variation-settings .3s; }
+
+/* ---------- botões ---------- */
+.acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 30px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid var(--fg); background: transparent; padding: 14px 22px; font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: background .15s steps(2), color .15s steps(2), border-color .15s; }
+.btn.pri { background: var(--green); border-color: var(--green); color: var(--ink); }
+.btn:hover { border-color: var(--acc); }
+.btn.pri:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.btn:disabled { opacity: .35; cursor: not-allowed; }
+.btn:focus-visible, .chip:focus-visible, .card:focus-visible, input:focus-visible, textarea:focus-visible, .par button:focus-visible, .cor:focus-visible, .btn-som:focus-visible, .link:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; }
+.link { background: none; border: 0; padding: 4px 0; color: var(--soft); font-size: 14px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.dica { font-size: 13px; color: var(--soft); }
+.kbd { display: inline-block; border: 1px solid var(--line); padding: 1px 6px; font-size: 12px; margin: 0 2px; }
+
+/* ---------- campos ---------- */
+.inp, .txt { width: 100%; background: transparent; border: 0; border-bottom: 2px solid var(--line); padding: 10px 0; font-size: clamp(20px, 2.6vw, 26px); outline: none; transition: border-color .2s; border-radius: 0; }
+.txt { min-height: 120px; resize: vertical; font-size: 19px; line-height: 1.5; border: 2px solid var(--line); padding: 14px 16px; }
+.inp:focus, .txt:focus { border-color: var(--acc); }
+.inp::placeholder, .txt::placeholder { color: var(--soft); opacity: .6; }
+.cont { display: flex; justify-content: flex-end; font-size: 12px; color: var(--soft); margin-top: 6px; font-variant-numeric: tabular-nums; }
+.cont.cheio { color: var(--acc); }
+.rotulo { display: block; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); margin: 18px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.card { text-align: left; border: 1.5px solid var(--line); background: var(--panel); padding: 16px; cursor: pointer; display: grid; gap: 4px; transition: border-color .15s, transform .15s; }
+.card b { font-size: 18px; } .card span { font-size: 14px; color: var(--soft); }
+.card:hover { border-color: var(--fg); }
+.card[aria-pressed="true"] { border-color: var(--acc); box-shadow: inset 0 0 0 1px var(--acc); }
+.card[aria-pressed="true"] b::after { content: ""; display: inline-block; width: .32em; height: .32em; background: var(--green); margin-left: .25em; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1.5px solid var(--line); background: var(--panel); padding: 8px 14px; font-size: 15px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: border-color .15s, background .15s; }
+.chip:hover { border-color: var(--fg); }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip .n { font-size: 11px; font-weight: 800; background: var(--green); color: var(--ink); min-width: 20px; height: 20px; display: inline-grid; place-items: center; }
+.chip.risca[aria-pressed="true"] { background: transparent; color: var(--soft); text-decoration: line-through; text-decoration-thickness: 2px; border-style: dashed; }
+.chip.voa { animation: voa .55s steps(5) forwards; }
+@keyframes voa { to { transform: translateY(-40px) rotate(-6deg); opacity: 0; } }
+.chip.fica { border-color: var(--acc); }
+.tagbox { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border-bottom: 2px solid var(--line); padding: 8px 0; }
+.tagbox .inp { border: 0; flex: 1; min-width: 160px; padding: 6px 0; }
+.tag { background: var(--fg); color: var(--bg); padding: 6px 10px; font-size: 15px; display: inline-flex; gap: 8px; align-items: center; }
+.tag button { background: none; border: 0; color: inherit; cursor: pointer; padding: 0 2px; font-size: 16px; line-height: 1; }
+.linhas { display: grid; gap: 10px; }
+.linha { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: end; }
+.linha .inp { font-size: 18px; }
+.linha button.x { border: 0; background: none; color: var(--soft); font-size: 22px; cursor: pointer; padding: 6px; }
+.duplo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+/* barras (polo, faixa, escalas) */
+.polo { display: grid; gap: 10px; }
+.polo .ends { display: flex; justify-content: space-between; gap: 12px; font-weight: 700; font-size: 15px; }
+.polo .ends span:last-child { text-align: right; }
+.polo .val { text-align: center; font-size: 13px; color: var(--soft); min-height: 1.4em; }
+input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 30px; background: transparent; cursor: pointer; margin: 0; }
+input[type=range]::-webkit-slider-runnable-track { height: 4px; background: var(--line); }
+input[type=range]::-moz-range-track { height: 4px; background: var(--line); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; background: var(--green); margin-top: -9px; border: 0; border-radius: 0; }
+input[type=range]::-moz-range-thumb { width: 22px; height: 22px; background: var(--green); border: 0; border-radius: 0; }
+.escalas { display: grid; gap: 18px; }
+.escalas .polo { gap: 2px; }
+.faixa { position: relative; height: 30px; }
+.faixa input { position: absolute; inset: 0; pointer-events: none; }
+.faixa input::-webkit-slider-thumb { pointer-events: auto; }
+.faixa input::-moz-range-thumb { pointer-events: auto; }
+.faixa input + input::-webkit-slider-runnable-track { background: transparent; }
+.faixa input + input::-moz-range-track { background: transparent; }
+.faixa-num { font-size: clamp(34px, 6vw, 56px); font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.faixa-num small { font-size: .4em; font-weight: 600; color: var(--soft); letter-spacing: 0; }
+/* pares visuais */
+.pares { display: grid; gap: 14px; }
+.par { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.par button { border: 1.5px solid var(--line); background: var(--panel); padding: 0; cursor: pointer; display: grid; text-align: left; min-width: 0; }
+.par button > .lab { padding: 8px 12px; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+.par button[aria-pressed="true"] { border-color: var(--acc); box-shadow: inset 0 0 0 1px var(--acc); }
+.par button[aria-pressed="true"] > .lab::after { content: ""; width: 8px; height: 8px; background: var(--green); }
+.par button[aria-pressed="false"].tem { opacity: .42; }
+/* mini moodboard: letra · textura · forma · cores */
+.mood { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
+.mood > i { min-width: 0; aspect-ratio: 1; display: grid; place-items: center; overflow: hidden; font-style: normal; }
+.mood > i { aspect-ratio: 4 / 3; }
+.mood .aa { font-size: clamp(30px, 3.4vw, 46px); line-height: 1; }
+.mood svg { width: 100%; height: 100%; display: block; }
+.mood .cp { display: grid; grid-template-rows: 1fr 1fr; place-items: stretch; }
+.mood .cp b { display: block; }
+/* rosto que pisca (uma vez = sim, duas = não) */
+.rosto { width: 56px; height: 56px; flex: none; }
+.rosto svg { width: 100%; height: 100%; display: block; }
+.rosto .ol { transform-box: fill-box; transform-origin: center; }
+.rosto.p1 .ol { animation: piscar1 .32s steps(3); }
+.rosto.p2 .ol { animation: piscar2 .7s steps(6); }
+.rosto.pw .ol.e { animation: piscar1 .42s steps(3); }
+@keyframes piscar1 { 40%, 60% { transform: scaleY(.12); } }
+@keyframes piscar2 { 15%, 28% { transform: scaleY(.12); } 42% { transform: none; } 62%, 75% { transform: scaleY(.12); } }
+.simnao-l { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+.simnao-l .simnao { margin: 0; }
+.legenda-rosto { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 14px; color: var(--soft); }
+/* cores */
+.paleta { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 10px; }
+.cor { border: 1.5px solid var(--line); background: var(--panel); padding: 0; cursor: pointer; text-align: left; position: relative; }
+.cor i { display: block; height: 58px; }
+.cor span { display: block; padding: 6px 8px; font-size: 13px; }
+.cor[data-s="q"] { border-color: var(--acc); box-shadow: inset 0 0 0 1px var(--acc); }
+.cor[data-s="q"]::after { content: "QUERO"; position: absolute; top: 6px; left: 6px; background: var(--green); color: var(--ink); font-size: 10px; font-weight: 800; letter-spacing: .08em; padding: 2px 5px; }
+.cor[data-s="n"] { opacity: .55; }
+.cor[data-s="n"] i { background-image: linear-gradient(to top right, transparent calc(50% - 1.5px), var(--fg) calc(50% - 1.5px) calc(50% + 1.5px), transparent calc(50% + 1.5px)) !important; }
+.cor[data-s="n"]::after { content: "NÃO"; position: absolute; top: 6px; left: 6px; background: var(--fg); color: var(--bg); font-size: 10px; font-weight: 800; letter-spacing: .08em; padding: 2px 5px; }
+.simnao { display: flex; gap: 10px; margin-bottom: 14px; }
+
+/* ---------- tela de escolha do modo ---------- */
+.modo h1 { font-size: clamp(44px, 8vw, 96px); line-height: .92; letter-spacing: -.03em; margin: 0 0 18px; font-weight: 800; text-transform: uppercase; text-wrap: balance; }
+.modo h1 i { display: inline-block; width: .16em; height: .16em; background: var(--green); margin-left: .04em; }
+.modo .lead { color: var(--soft); max-width: 52ch; margin: 0 0 34px; font-size: 18px; }
+.opcoes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.opcao { text-align: left; border: 1.5px solid var(--line); background: var(--panel); padding: 22px; cursor: pointer; display: grid; gap: 10px; align-content: start; transition: border-color .15s, transform .2s; position: relative; overflow: hidden; }
+.opcao:hover { border-color: var(--green); transform: translateY(-3px); }
+.opcao .tit { font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: -.01em; }
+.opcao p { margin: 0; color: var(--soft); font-size: 15px; }
+.opcao ul { margin: 4px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 14px; }
+.opcao li::before { content: ""; display: inline-block; width: 6px; height: 6px; background: var(--green); margin-right: 8px; vertical-align: middle; }
+.opcao .tempo { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--acc); }
+.opcao.imersiva::before { content: ""; position: absolute; right: -30px; top: -30px; width: 120px; height: 120px; background: linear-gradient(var(--green) 0 0) 0 0/40px 40px no-repeat, linear-gradient(var(--green) 0 0) 56px 18px/14px 14px no-repeat, linear-gradient(var(--fg) 0 0) 22px 56px/18px 18px no-repeat; opacity: .5; animation: pisc 2.4s steps(2) infinite; }
+@keyframes pisc { 50% { opacity: .15; } }
+.retomar { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: 14px; color: var(--soft); }
+
+/* ---------- abertura / entrada de ato ---------- */
+.roteiro p { font-size: clamp(26px, 4.4vw, 46px); line-height: 1.12; letter-spacing: -.02em; margin: 0 0 6px; font-weight: 300; min-height: 1.1em; }
+.roteiro p.forte { font-weight: 800; }
+.roteiro .fone { margin-top: 26px; display: flex; gap: 10px; align-items: center; color: var(--soft); font-size: 14px; }
+.ato-num { font-size: 13px; font-weight: 800; letter-spacing: .3em; text-transform: uppercase; color: var(--acc); margin-bottom: 12px; }
+.ato-tit { font-size: clamp(64px, 14vw, 170px); font-weight: 800; line-height: .86; letter-spacing: -.04em; text-transform: uppercase; margin: 0 0 22px; }
+.ato-tit i { display: inline-block; width: .15em; height: .15em; background: var(--green); margin-left: .03em; }
+.ato-frase { font-size: clamp(20px, 2.8vw, 28px); color: var(--soft); max-width: 34ch; min-height: 2.6em; margin: 0; }
+.cur::after { content: ""; display: inline-block; width: .5em; height: .9em; background: var(--green); vertical-align: -.1em; margin-left: 2px; animation: pisc 1s steps(1) infinite; }
+
+/* ---------- saída de ato: legenda + resumo ---------- */
+.saida { display: grid; gap: 24px; align-content: end; min-height: calc(100vh - 140px); }
+.legenda { font-size: clamp(24px, 3.6vw, 38px); font-weight: 700; letter-spacing: -.02em; text-align: center; min-height: 1.3em; margin: 0; text-wrap: balance; }
+.resumo { background: var(--panel); border: 1.5px solid var(--line); padding: 22px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transform: translateY(24px); transition: opacity .5s, transform .5s cubic-bezier(.2,.7,.2,1); }
+.resumo.on { opacity: 1; transform: none; }
+.resumo-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.resumo-top b { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--acc); }
+.itens { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.item { border-top: 1px solid var(--line); padding-top: 10px; min-width: 0; display: grid; gap: 4px; align-content: start; }
+.item .k { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--soft); display: flex; justify-content: space-between; gap: 8px; }
+.item .k button { background: none; border: 0; color: var(--acc); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; padding: 0; }
+.item .v { font-size: 15px; overflow-wrap: anywhere; white-space: pre-line; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.item .v.vazio { color: var(--soft); font-style: italic; }
+.fala { text-align: center; }
+.fala .linha1 { font-size: clamp(30px, 5vw, 60px); font-weight: 800; letter-spacing: -.02em; min-height: 1.1em; margin: 0 0 8px; }
+.fala .linha2 { font-size: clamp(20px, 2.8vw, 30px); color: var(--soft); max-width: 36ch; margin: 0 auto; min-height: 1.4em; }
+
+/* ---------- legado: página por ato ---------- */
+.leg-cab { margin-bottom: 26px; }
+.leg-cab h2 { font-size: clamp(36px, 6vw, 64px); line-height: .95; margin: 0 0 8px; font-weight: 800; text-transform: uppercase; letter-spacing: -.02em; }
+.leg-cab p { margin: 0; color: var(--soft); }
+.leg-q { padding: 26px 0; border-top: 1px solid var(--line); }
+.leg-q h3 { font-size: 22px; line-height: 1.2; margin: 0 0 6px; font-weight: 700; text-wrap: balance; }
+.leg-q .hint { margin: 0 0 14px; color: var(--soft); font-size: 15px; }
+.leg-q .num { font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--acc); margin-bottom: 6px; }
+.erro { color: #C0262D; font-size: 14px; margin-top: 8px; }
+body:not(.legado) .erro { color: #FF8A8A; }
+
+/* ---------- retrato ---------- */
+.retrato { display: grid; gap: 34px; }
+.r-hero { display: grid; gap: 14px; padding-bottom: 28px; border-bottom: 1.5px solid var(--line); }
+.r-nome { font-size: clamp(60px, 13vw, 180px); line-height: .86; margin: 0; letter-spacing: -.03em; overflow-wrap: anywhere; font-variation-settings: "wght" var(--v-wght, 800), "wdth" var(--v-wdth, 100); text-transform: var(--v-tt, none); }
+.r-nome i { display: inline-block; width: .16em; height: .16em; background: var(--green); margin-left: .04em; }
+.r-frase { font-size: clamp(20px, 2.6vw, 28px); max-width: 40ch; margin: 0; }
+.r-meta { font-size: 13px; color: var(--soft); letter-spacing: .06em; text-transform: uppercase; }
+.r-sec { display: grid; gap: 14px; }
+.r-sec h3 { margin: 0; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--acc); display: flex; gap: 12px; align-items: baseline; }
+.r-sec h3 span { color: var(--soft); letter-spacing: .1em; }
+.tres-grande { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: clamp(32px, 5vw, 54px); font-weight: 800; letter-spacing: -.02em; text-transform: uppercase; }
+.tres-grande span::after { content: ""; display: inline-block; width: .16em; height: .16em; background: var(--green); margin-left: .05em; }
+.barras { display: grid; gap: 10px; max-width: 640px; }
+.barra { display: grid; grid-template-columns: 110px 1fr 110px; gap: 12px; align-items: center; font-size: 14px; }
+.barra span:last-child { text-align: right; }
+.barra .t { height: 6px; background: var(--line); position: relative; }
+.barra .t i { position: absolute; top: -5px; width: 16px; height: 16px; background: var(--green); transform: translateX(-50%); }
+.sw-lin { display: flex; flex-wrap: wrap; gap: 8px; }
+.sw { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); padding: 4px 10px 4px 4px; font-size: 14px; }
+.sw i { width: 22px; height: 22px; display: inline-block; }
+.sw.nao { text-decoration: line-through; color: var(--soft); }
+.r-acoes { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding-top: 10px; border-top: 1.5px solid var(--line); }
+.aviso { font-size: 14px; color: var(--soft); max-width: 60ch; }
+.aviso.ok { color: var(--acc); font-weight: 700; }
+
+/* ---------- celular ---------- */
+@media (max-width: 720px) {
+  .topo { padding-inline: 16px; gap: 12px; }
+  .logo { font-size: 19px; }
+  .prog .rot { display: none; }
+  .btn-som { padding: 7px 9px; }
+  .btn-som .tx { display: none; }
+  main { padding-inline: 16px; padding-top: calc(76px + env(safe-area-inset-top, 0px)); }
+  .tela { align-self: start; }
+  .opcoes, .duplo { grid-template-columns: 1fr; }
+  .linha { grid-template-columns: 1fr auto; }
+  .linha .inp:nth-child(2) { grid-column: 1; }
+  .linha button.x { grid-row: 1 / span 2; grid-column: 2; }
+  .mood .aa { font-size: 26px; }
+  .barra { grid-template-columns: 76px 1fr 76px; font-size: 12px; }
+  .acoes .btn { flex: 1; justify-content: center; }
+  .saida { min-height: 0; align-content: start; padding-top: 50vh; }
+  .saida.v5 { padding-top: 46vh; }
+  .saida.v5.fim { padding-top: 50vh; align-content: start; }
+  .resumo { padding: 16px; }
+}
+</style>
+
+</head><body>
+<canvas id="palco" aria-hidden="true"></canvas>
+<div class="grade" aria-hidden="true"></div>
+<div id="nomeVivo" aria-hidden="true"></div>
+<div id="palpebra" aria-hidden="true"></div>
+
+<header class="topo">
+  <div class="logo" aria-label="turzin.">turzin<i></i></div>
+  <div class="prog" id="prog" aria-hidden="true">
+    <span class="rot" id="progRot"></span>
+    <div class="segs" id="segs"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
+  </div>
+  <button class="btn-som" id="btnSom" type="button" hidden aria-pressed="false"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="tx">Som</span></button>
+</header>
+
+<main id="main" aria-live="polite"></main>
+
+<script>
+/* ================================================================
+   CONFIGURAÇÃO
+   ================================================================ */
+const CONFIG = {
+  // ENVIO DAS RESPOSTAS POR E-MAIL (Web3Forms → turzindesign@gmail.com)
+  // Cole entre as aspas a Access Key que o Web3Forms mandou para o seu e-mail.
+  WEB3FORMS_KEY: 'd2f554ae-63b7-4b8f-8f8b-34fb7abedd90',
+  GUARDA: 'turzin-briefing-v1',   // nome do rascunho salvo no navegador
+};
+
+/* ================================================================
+   ATOS E PERGUNTAS
+   {marca} é trocado pelo nome que a pessoa digitou.
+   ================================================================ */
+const ATOS = [
+  { id: 'comeco', nome: 'Começo' },
+  { id: 'origem', rom: 'I',   nome: 'Origem', sobre: 'Você',          entrada: 'Antes da marca, existe alguém. Vamos começar por você.', saida: 'Um ponto. Toda marca começa assim.', legado: 'Quem está por trás da marca.' },
+  { id: 'nome',   rom: 'II',  nome: 'Nome',   sobre: 'A marca',       entrada: 'Agora ela precisa de um nome e de um motivo para existir.', saida: '{marca}. Agora ela tem nome.', legado: 'O que a marca é, vende e quer ser.' },
+  { id: 'lugar',  rom: 'III', nome: 'Lugar',  sobre: 'O mercado',     entrada: 'Ninguém nasce sozinho. Vamos olhar em volta.', saida: 'No meio de tantos, ela achou o próprio espaço.', legado: 'Concorrentes e referências.' },
+  { id: 'olhar',  rom: 'IV',  nome: 'Olhar',  sobre: 'Quem compra',   entrada: 'Uma marca existe para alguém. Quem é essa pessoa?', saida: 'Ela já sabe com quem está falando.', legado: 'O público da marca.' },
+  { id: 'voz',    rom: 'V',   nome: 'Voz',    sobre: 'Personalidade', entrada: 'Falta o mais importante: o jeito dela de ser.', saida: '', legado: 'Personalidade, visual e cores.' },
+];
+
+const PALAVRAS = ['Séria','Divertida','Alegre','Elegante','Ousada','Delicada','Moderna','Tradicional','Futurista','Nostálgica','Calma','Energética','Acolhedora','Exclusiva','Acessível','Criativa','Técnica','Artística','Rebelde','Irreverente','Sóbria','Rústica','Refinada','Simples','Sofisticada','Confiável','Curiosa','Aventureira','Romântica','Sensível','Madura','Jovem','Racional','Emocional','Intuitiva','Livre','Enigmática','Industrial','Natural','Urbana','Discreta','Extrovertida','Profissional','Casual','Sonhadora','Determinada','Esperta','Sutil'];
+
+const CORES = [['Vermelho','#E63946'],['Laranja','#F08A3E'],['Amarelo','#F6D743'],['Limão','#B5E61D'],['Verde','#2F8F46'],['Verde-água','#2A9D8F'],['Azul-claro','#7FB7E6'],['Azul','#1D4ED8'],['Marinho','#14284B'],['Roxo','#6A2CBF'],['Lilás','#C8B6FF'],['Rosa','#FF5FA2'],['Vinho','#7A1C2E'],['Terracota','#C8553D'],['Marrom','#7B4B2A'],['Bege','#E9DCC4'],['Dourado','#C9A227'],['Preto','#111111'],['Cinza','#9AA0A6'],['Branco','#FAFAFA']];
+
+const P = [
+  // começo
+  { id: 'pessoa', ato: 0, t: 'Respondido por', tipo: 'texto', q: 'Primeiro, como você se chama?', ph: 'Seu nome', obrig: true },
+  { id: 'marca',  ato: 0, t: 'Marca', tipo: 'texto', q: 'E qual o nome da marca que vamos construir?', ph: 'Nome da marca', obrig: true },
+  // I · origem
+  { id: 'papel', ato: 1, t: 'Seu papel', tipo: 'texto', q: 'Qual o seu papel no dia a dia de {marca}?', ph: 'Ex.: sócia e responsável pelo atendimento' },
+  { id: 'historia', ato: 1, t: 'Como começou', tipo: 'longo', q: 'Como essa história começou?', hint: 'Conta do jeito que você contaria para um amigo.' },
+  { id: 'nomeOrigem', ato: 1, t: 'Origem do nome', tipo: 'longo', q: 'De onde vem o nome {marca}?', hint: 'O que ele significa para você.' },
+  { id: 'agora', ato: 1, t: 'Por que agora', tipo: 'longo', q: 'Por que cuidar da identidade visual agora?', hint: 'O que aconteceu para este ser o momento.' },
+  // II · nome
+  { id: 'elevador', ato: 2, t: 'Em uma frase', tipo: 'texto', max: 120, q: 'Explica {marca} em uma frase.', hint: 'Como se fosse para alguém no elevador. Guarde bem essa frase: ela volta no final.', ph: 'Ex.: Doces de família feitos para presentear' },
+  { id: 'fase', ato: 2, t: 'Momento', tipo: 'cards', q: 'Em que momento {marca} está?', opts: [['Ideia no papel','Ainda não abriu as portas'],['Acabou de abrir','Menos de um ano de vida'],['Crescendo','Clientes chegando, estrutura aumentando'],['Já é conhecida','Tem nome na cidade ou no nicho'],['Mudando de rumo','Quer se reposicionar']] },
+  { id: 'produtos', ato: 2, t: 'O que vende', tipo: 'tags', q: 'O que {marca} vende?', hint: 'Escreva cada produto ou serviço e aperte Enter.', ph: 'Ex.: bolos de pote' },
+  { id: 'diferencial', ato: 2, t: 'O que só ela tem', tipo: 'longo', q: 'O que só {marca} tem?' },
+  { id: 'historiaProduto', ato: 2, t: 'História por trás', tipo: 'longo', q: 'Existe alguma história por trás da marca ou de algum produto?', hint: 'Uma receita de família, o primeiro cliente, um nome antigo. Se não tiver, pode seguir.' },
+  { id: 'futuro', ato: 2, t: 'Daqui a 5 anos', tipo: 'longo', q: 'Daqui a 5 anos, onde {marca} está?', hint: 'Ela pode virar outra coisa ou entrar em outro mercado?' },
+  { id: 'inegociaveis', ato: 2, t: 'Nunca abre mão de', tipo: 'tres', q: 'Três coisas de que {marca} nunca abre mão.', ph: ['Ex.: atendimento próximo', 'Ex.: ingrediente natural', 'Ex.: prazo cumprido'] },
+  // III · lugar
+  { id: 'concorrentes', ato: 3, t: 'Concorrentes', tipo: 'lista', q: 'Quem disputa o mesmo cliente que você?', hint: 'Nome e, se tiver, o Instagram ou o site.' },
+  { id: 'mercado', ato: 3, t: 'Sobre eles', tipo: 'duplo', q: 'Olhando para eles:', labels: ['O que eles fazem bem?', 'O que fazem que você jamais faria?'] },
+  { id: 'referencias', ato: 3, t: 'Referências visuais', tipo: 'longo', q: 'Quais marcas você admira visualmente?', hint: 'De qualquer área. Pode colar links do Instagram, Pinterest ou sites.' },
+  // IV · olhar
+  { id: 'persona', ato: 4, t: 'Cliente ideal', tipo: 'longo', q: 'Descreve o seu cliente ideal como se fosse uma pessoa.', hint: 'Idade, rotina, onde passa o tempo, o que valoriza.' },
+  { id: 'idade', ato: 4, t: 'Faixa de idade', tipo: 'faixa', q: 'Qual a faixa de idade desse público?', min: 12, max: 80, ini: [22, 45] },
+  { id: 'publico', ato: 4, t: 'Público', tipo: 'polo', q: 'Esse público é…', esq: 'Mais feminino', dir: 'Mais masculino', meio: 'Equilibrado' },
+  { id: 'preco', ato: 4, t: 'Poder de compra', tipo: 'polo', q: 'E o poder de compra dele?', esq: 'Acessível', dir: 'Premium', meio: 'Intermediário' },
+  { id: 'boca', ato: 4, t: 'O que o cliente diz', tipo: 'longo', q: 'Quando um cliente fala de {marca} para um amigo, o que você quer que ele diga?' },
+  { id: 'onde', ato: 4, t: 'Onde aparece', tipo: 'ordem', q: 'Onde {marca} mais vai aparecer?', hint: 'Toque na ordem de importância. Toque de novo para tirar.', opts: ['Instagram','Fachada','Embalagem','Site','Cardápio ou catálogo','Uniforme','Cartão de visita','Sacola','WhatsApp','Veículo','Outdoor','No próprio produto'] },
+  { id: 'encontra', ato: 4, t: 'Como chegam', tipo: 'multi', q: 'Como as pessoas chegam até {marca}?', hint: 'Escolha quantas quiser.', opts: ['Instagram','Indicação','Google','Passando na rua','TikTok','WhatsApp','Marketplace','Eventos e feiras'] },
+  // V · voz
+  { id: 'escalas', ato: 5, t: 'Personalidade', tipo: 'escalas', q: 'Se {marca} fosse uma pessoa, onde ela estaria em cada linha?', hint: 'Arraste e repare no nome ao fundo.', hintLeg: 'Arraste para o lado que combina mais.', eixos: [['seria','Séria','Divertida'],['trad','Tradicional','Futurista'],['peso','Delicada','Ousada'],['razao','Racional','Emocional'],['ritmo','Calma','Energética'],['forma','Simples','Complexa']] },
+  { id: 'palavras', ato: 5, t: 'Palavras', tipo: 'multi', minSel: 3, max: 8, q: 'Escolha de 3 a 8 palavras que descrevem {marca}.', opts: PALAVRAS },
+  { id: 'tres', ato: 5, t: 'As 3 mais fortes', tipo: 'tresde', minSel: 3, q: 'Agora fica só com 3.', hint: 'As três que mais têm a ver.' },
+  { id: 'nunca', ato: 5, t: 'Nunca seria', tipo: 'nunca', max: 5, q: 'E o que {marca} nunca seria?', hint: 'Escolha até 5.' },
+  { id: 'pares', ato: 5, t: 'Visual', tipo: 'pares', q: 'Pensando só no visual, qual lado tem mais a ver?', hint: 'Escolha um lado em cada linha.', pares: [['organico','Orgânico','geometrico','Geométrico'],['classico','Clássico','contemporaneo','Contemporâneo'],['pesado','Pesado','leve','Leve'],['minimo','Minimalista','ornamentado','Ornamentado'],['artesanal','Artesanal','industrial','Industrial']] },
+  { id: 'cores', ato: 5, t: 'Cores', tipo: 'cores', q: 'E as cores?', hint: 'Toque uma vez para "quero" e duas vezes para "não quero".', rosto: true },
+  { id: 'proibido', ato: 5, t: 'Proibido na marca', tipo: 'longo', q: 'Tem algum elemento que não pode aparecer de jeito nenhum?', hint: 'Um símbolo, um estilo, algo que lembre um concorrente.' },
+  { id: 'espaco', ato: 5, t: 'Espaço físico', tipo: 'simnao', q: 'O espaço físico já está definido?', hint: 'Parede pintada, móveis comprados, fachada pronta. Pisca uma vez para sim, duas para não.', ph: 'Conta o que já está definido: cores, materiais, estilo.' },
+  { id: 'extra', ato: 5, t: 'Mais alguma coisa', tipo: 'longo', q: 'Antes de {marca} falar: quer contar mais alguma coisa?', hint: 'Qualquer detalhe que não coube nas perguntas.' },
+];
+const PQ = Object.fromEntries(P.map(q => [q.id, q]));
+
+/* ================================================================
+   ESTADO (salvo no navegador para continuar depois)
+   ================================================================ */
+let S = { modo: null, i: 0, r: {}, retorno: null };
+const guarda = {
+  ler() { try { return JSON.parse(localStorage.getItem(CONFIG.GUARDA) || 'null'); } catch (e) { return null; } },
+  salvar() { try { localStorage.setItem(CONFIG.GUARDA, JSON.stringify(S)); } catch (e) {} },
+  limpar() { try { localStorage.removeItem(CONFIG.GUARDA); } catch (e) {} },
+};
+let tSalva; const salvar = () => { clearTimeout(tSalva); tSalva = setTimeout(guarda.salvar, 250); };
+
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const marca = () => (S.r.marca || '').trim() || 'Sua marca';
+const fmt = s => s.replace(/\{marca\}/g, marca());
+const espera = ms => new Promise(r => setTimeout(r, ms));
+function el(html) { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; }
+
+/* ================================================================
+   MÚSICA QUE CRESCE COM O PROGRESSO (gerada no navegador, sem arquivos)
+   Camadas: 1 batida de coração · 2 chimbal · 3 baixo · 4 acordes · 5 arpejo
+   ================================================================ */
+const Som = (() => {
+  const BPM = 96, PASSO = 60 / BPM / 4;
+  const VOL = [.95, .22, .34, .16, .10];
+  // Lá menor · Fá · Dó · Sol
+  const PROG = [
+    { b: 55.00, p: [220.00, 261.63, 329.63], a: [440.00, 523.25, 659.25, 523.25] },
+    { b: 43.65, p: [174.61, 220.00, 261.63], a: [349.23, 440.00, 523.25, 440.00] },
+    { b: 65.41, p: [196.00, 261.63, 329.63], a: [392.00, 523.25, 659.25, 523.25] },
+    { b: 49.00, p: [196.00, 246.94, 293.66], a: [392.00, 493.88, 587.33, 493.88] },
+  ];
+  let ac, master, comp, camadas = [], ruido, timer, prox = 0, passo = 0, inicio = 0, nivel = 0, ligado = true;
+  function iniciar() {
+    if (ac) { ac.resume && ac.resume(); return; }
+    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+    ac = new AC();
+    comp = ac.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 4;
+    master = ac.createGain(); master.gain.value = 0;
+    comp.connect(master); master.connect(ac.destination);
+    camadas = VOL.map(() => { const g = ac.createGain(); g.gain.value = 0; g.connect(comp); return g; });
+    // eco no arpejo
+    const d = ac.createDelay(1); d.delayTime.value = PASSO * 3; const fb = ac.createGain(); fb.gain.value = .32; const dm = ac.createGain(); dm.gain.value = .5;
+    camadas[4].connect(d); d.connect(fb); fb.connect(d); d.connect(dm); dm.connect(comp);
+    ruido = ac.createBuffer(1, ac.sampleRate * .5, ac.sampleRate); const dd = ruido.getChannelData(0); for (let i = 0; i < dd.length; i++) dd[i] = Math.random() * 2 - 1;
+    inicio = prox = ac.currentTime + .08; passo = 0;
+    timer = setInterval(tick, 25);
+    master.gain.setTargetAtTime(ligado ? .55 : 0, ac.currentTime, .8);
+    definirNivel(nivel);
+  }
+  function tick() { while (prox < ac.currentTime + .12) { agenda(passo, prox); prox += PASSO; passo++; } }
+  function env(g, t, a, pico, rel) { g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(pico, t + a); g.gain.exponentialRampToValueAtTime(0.0001, t + a + rel); }
+  function bumbo(t, f = 1) { const o = ac.createOscillator(), g = ac.createGain(); o.frequency.setValueAtTime(130, t); o.frequency.exponentialRampToValueAtTime(42, t + .14); env(g, t, .004, .9 * f, .32); o.connect(g); g.connect(camadas[0]); o.start(t); o.stop(t + .4); }
+  function chiado(t, alvo, freq, tipo, pico, rel) { const s = ac.createBufferSource(); s.buffer = ruido; const fl = ac.createBiquadFilter(); fl.type = tipo; fl.frequency.value = freq; const g = ac.createGain(); env(g, t, .002, pico, rel); s.connect(fl); fl.connect(g); g.connect(alvo); s.start(t); s.stop(t + rel + .05); }
+  function baixo(f, t, dur) { const o = ac.createOscillator(), fl = ac.createBiquadFilter(), g = ac.createGain(); o.type = 'sawtooth'; o.frequency.value = f; fl.type = 'lowpass'; fl.frequency.value = 380; env(g, t, .01, .6, dur); o.connect(fl); fl.connect(g); g.connect(camadas[2]); o.start(t); o.stop(t + dur + .1); }
+  function acorde(fs, t, dur) { const fl = ac.createBiquadFilter(), g = ac.createGain(); fl.type = 'lowpass'; fl.frequency.value = 1300; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(.5, t + .9); g.gain.setValueAtTime(.5, t + dur - .6); g.gain.exponentialRampToValueAtTime(0.0001, t + dur + .3); fl.connect(g); g.connect(camadas[3]);
+    fs.forEach(f => [-6, 6].forEach(c => { const o = ac.createOscillator(); o.type = 'triangle'; o.frequency.value = f; o.detune.value = c; o.connect(fl); o.start(t); o.stop(t + dur + .4); })); }
+  function nota(f, t) { const o = ac.createOscillator(), fl = ac.createBiquadFilter(), g = ac.createGain(); o.type = 'square'; o.frequency.value = f; fl.type = 'lowpass'; fl.frequency.value = 2400; env(g, t, .005, .35, .2); o.connect(fl); fl.connect(g); g.connect(camadas[4]); o.start(t); o.stop(t + .3); }
+  function agenda(s, t) {
+    const i = s % 16, c = PROG[Math.floor(s / 16) % 4];
+    if (i === 0 || i === 8) bumbo(t, 1); if (i === 2 || i === 10) bumbo(t, .55);             // tum-tum
+    if (i % 2 === 1) chiado(t, camadas[1], 7500, 'highpass', .28, .05);
+    if (i === 4 || i === 12) chiado(t, camadas[1], 1900, 'bandpass', .5, .09);
+    if (i === 0 || i === 6 || i === 10) baixo(c.b, t, PASSO * (i === 10 ? 5 : 3.5));
+    if (i === 0) acorde(c.p, t, PASSO * 16);
+    nota(c.a[s % 4] * (i >= 8 ? 1 : 1), t);
+  }
+  function definirNivel(n) { nivel = n; if (!ac) return; camadas.forEach((g, i) => g.gain.setTargetAtTime(i < n ? VOL[i] : 0, ac.currentTime, 1.1)); }
+  return {
+    iniciar, nivel: definirNivel,
+    get ligado() { return ligado; },
+    alternar() { ligado = !ligado; if (ac) master.gain.setTargetAtTime(ligado ? .55 : 0, ac.currentTime, .25); return ligado; },
+    // fase da batida (0..1 a cada meio compasso) para o ponto pulsar junto
+    fase() { if (!ac) return (performance.now() / 1250) % 1; return (((ac.currentTime - inicio) / (PASSO * 8)) % 1 + 1) % 1; },
+    parar() { if (master && ac) master.gain.setTargetAtTime(0, ac.currentTime, .3); },
+  };
+})();
+
+/* ================================================================
+   PALCO: a marca nascendo no fundo (canvas)
+   ================================================================ */
+const Palco = (() => {
+  const cv = $('#palco'), cx = cv.getContext('2d');
+  let W = 0, H = 0, dpr = 1, alfa = 0, alfaAlvo = 0, fy = .5, rodando = false, quadroN = 0, COR = { fg: '#F7F7F7', soft: '#999' };
+  const tem = { ponto: false, nome: false, lugar: false, olhar: false };
+  let anim = null;           // { tipo, t0 }
+  let parts = [], ponto = { x: 0, y: 0, s: 14 }, nomeLarg = 0, nomeAlt = 0, figuras = [], formas = [];
+  function lerCores() { const cs = getComputedStyle(document.body); COR = { fg: cs.getPropertyValue('--fg').trim() || '#F7F7F7', soft: cs.getPropertyValue('--soft').trim() || '#999' }; }
+  function medir() { dpr = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0); if (tem.nome) montarNome(); else posPonto(); if (tem.lugar) montarFormas(); if (tem.olhar) montarFiguras(); }
+  function posPonto() { ponto.x = W / 2; ponto.y = H * fy; ponto.s = Math.max(12, Math.min(W, H) * .028); }
+  function montarNome() {
+    const txt = marca();
+    const oc = document.createElement('canvas'), o = oc.getContext('2d');
+    let fs = Math.min(H * .2, 220); o.font = `800 ${fs}px 'Bricolage Grotesque', sans-serif`;
+    let w = o.measureText(txt).width; const maxW = W * .78; if (w + fs * .25 > maxW) { fs *= maxW / (w + fs * .25); }
+    fs = Math.max(fs, 28); o.font = `800 ${fs}px 'Bricolage Grotesque', sans-serif`; w = o.measureText(txt).width;
+    const dot = fs * .17, totW = w + fs * .05 + dot;
+    oc.width = Math.ceil(w + 4); oc.height = Math.ceil(fs * 1.3);
+    o.font = `800 ${fs}px 'Bricolage Grotesque', sans-serif`; o.fillStyle = '#000'; o.textBaseline = 'alphabetic'; o.fillText(txt, 2, fs);
+    const cel = Math.max(3, Math.round(fs / 15)), dados = o.getImageData(0, 0, oc.width, oc.height).data;
+    const x0 = W / 2 - totW / 2, y0 = H * fy - fs * .62;
+    const novos = [];
+    for (let y = 0; y < oc.height; y += cel) for (let x = 0; x < oc.width; x += cel) { if (dados[(y * oc.width + x) * 4 + 3] > 120) novos.push({ tx: x0 + x, ty: y0 + y, c: cel - (cel > 4 ? 1 : 0), d: Math.random() }); }
+    const teto = W < 720 ? 1100 : 2200; if (novos.length > teto) { novos.sort(() => Math.random() - .5); novos.length = teto; }
+    parts = novos; nomeLarg = totW; nomeAlt = fs;
+    ponto.x = x0 + w + fs * .05 + dot / 2; ponto.y = y0 + fs - dot / 2; ponto.s = dot;
+  }
+  function montarFormas() {
+    const n = Math.min(9, Math.max(5, (S.r.concorrentes || []).filter(c => c && c.nome).length || 6));
+    const R = Math.max(nomeLarg * .62, Math.min(W, H) * .36), r0 = Math.max(W, H) * .8;
+    formas = Array.from({ length: n }, (_, i) => { const a = i / n * Math.PI * 2 + .4; const s = Math.min(W, H) * (.05 + (i % 3) * .022); return { a, s, R, r0, rMeio: Math.max(nomeLarg * .35, 40) }; });
+  }
+  function montarFiguras() {
+    const n = W < 720 ? 5 : 9;
+    figuras = Array.from({ length: n }, (_, i) => ({ x: (i + .5) / n * W, base: H - Math.min(H * .08, 60), esc: Math.max(3, Math.min(W, H) / 120) * (.8 + (i % 3) * .2), atraso: i * .08 }));
+  }
+  const FIG = ['..###..','..###..','..###..','...#...','.#####.','#.###.#','#.###.#','..#.#..','..#.#..','..#.#..'];
+  const ease = t => t < 0 ? 0 : t > 1 ? 1 : 1 - Math.pow(1 - t, 3);
+  function quadro(agora) {
+    // no celular desenha a 30 quadros por segundo; parado e invisível, o laço dorme
+    if (W < 720 && (quadroN++ & 1)) { requestAnimationFrame(quadro); return; }
+    alfa += (alfaAlvo - alfa) * (W < 720 ? .16 : .08);
+    cx.clearRect(0, 0, W, H);
+    if (alfa < .01 && alfaAlvo === 0) { rodando = false; return; }
+    const { fg, soft } = COR, at = anim ? (agora - anim.t0) / 1000 : 99;
+    cx.globalAlpha = alfa;
+    // III · formas cinzas (concorrentes)
+    if (tem.lugar) {
+      const k = anim && anim.tipo === 'lugar' ? at : 99;
+      cx.fillStyle = soft || '#777';
+      formas.forEach((f, i) => {
+        let r; const t1 = ease((k - i * .05) / 1.1), t2 = ease((k - 1.6) / 1.2);
+        r = f.r0 + (f.rMeio - f.r0) * t1; r = r + (f.R - r) * t2;
+        const x = W / 2 + Math.cos(f.a + k * .02) * r * (W > H ? 1.25 : .9), y = H * fy + Math.sin(f.a) * r * .62;
+        cx.globalAlpha = alfa * .55; cx.fillRect(Math.round(x - f.s / 2), Math.round(y - f.s / 2), f.s, f.s);
+      });
+      cx.globalAlpha = alfa;
+    }
+    // IV · silhuetas do público
+    if (tem.olhar) {
+      const k = anim && anim.tipo === 'olhar' ? at : 99;
+      cx.fillStyle = fg;
+      figuras.forEach(f => {
+        const t = ease((k - f.atraso) / 1.2), sobe = (1 - t) * 160;
+        cx.globalAlpha = alfa * .5 * t + (k > 50 ? alfa * .5 : 0) * 0;
+        FIG.forEach((lin, yy) => [...lin].forEach((c, xx) => { if (c === '#') cx.fillRect(Math.round(f.x + (xx - 3.5) * f.esc), Math.round(f.base - (10 - yy) * f.esc + sobe), f.esc - .5, f.esc - .5); }));
+      });
+      cx.globalAlpha = alfa;
+    }
+    // II · nome em pixels (some no ato V, quando o nome vira texto vivo)
+    const noVoz = document.body.dataset.ato === 'voz';
+    if (tem.nome && !noVoz) {
+      const k = anim && anim.tipo === 'nome' ? at : 99;
+      cx.fillStyle = fg;
+      for (const p of parts) {
+        const t = ease((k - p.d * .9) / .9);
+        if (t <= 0) continue;
+        const x = ponto.x + (p.tx - ponto.x) * t, y = ponto.y + (p.ty - ponto.y) * t;
+        cx.fillRect(x, y, p.c, p.c);
+      }
+      // produtos orbitando
+      const tags = (S.r.produtos || []).slice(0, 6);
+      if (tags.length && k > 1.2) {
+        cx.font = `600 ${Math.max(12, nomeAlt * .1)}px 'Bricolage Grotesque', sans-serif`; cx.textAlign = 'center';
+        cx.globalAlpha = alfa * Math.min(1, (k - 1.2)) * .7;
+        tags.forEach((tg, i) => { const a = agora / 9000 + i / tags.length * Math.PI * 2; cx.fillText(tg, W / 2 + Math.cos(a) * (nomeLarg * .62 + 20), H * fy + Math.sin(a) * (nomeAlt * .95 + 18)); });
+        cx.globalAlpha = alfa;
+      }
+    }
+    // I · o ponto (bate junto com a música)
+    if ((tem.ponto || tem.nome) && !noVoz) {
+      const k = anim && anim.tipo === 'ponto' ? at : 99;
+      const nasce = ease(k / .8), fase = Som.fase();
+      const bate = Math.max(Math.exp(-fase * 30), .55 * Math.exp(-Math.abs(fase - .25) * 30));
+      const s = ponto.s * nasce * (1 + bate * (tem.nome ? .12 : .35));
+      cx.fillStyle = '#44D62D'; cx.fillRect(Math.round(ponto.x - s / 2), Math.round(ponto.y - s / 2), s, s);
+    }
+    cx.globalAlpha = 1;
+    requestAnimationFrame(quadro);
+  }
+  addEventListener('resize', () => medir());
+  const acordar = () => { if (!rodando) { rodando = true; requestAnimationFrame(quadro); } };
+  lerCores(); medir(); acordar();
+  return {
+    // estado conforme os atos já concluídos (ao voltar ou retomar)
+    estado(atoFeito) { tem.ponto = atoFeito >= 1; tem.nome = atoFeito >= 2; tem.lugar = atoFeito >= 3; tem.olhar = atoFeito >= 4; medir(); },
+    tocar(tipo) { anim = { tipo, t0: performance.now() }; },
+    alfa(v) { alfaAlvo = v; if (v > 0) acordar(); },
+    cores() { lerCores(); },
+    centro(v) { if (v !== fy) { fy = v; medir(); } },
+    refazNome() { if (tem.nome) medir(); },
+  };
+})();
+
+/* ================================================================
+   NOME VIVO (ato V): a tipografia muda conforme os sliders
+   ================================================================ */
+function estiloVoz() {
+  const e = S.r.escalas || {}, v = k => (e[k] ?? 50) / 100;
+  const wght = Math.round(200 + v('peso') * 600);
+  const wdth = Math.round(100 - v('trad') * 25);
+  const ls = (v('ritmo') < .5 ? (.5 - v('ritmo')) * .16 : -(v('ritmo') - .5) * .06).toFixed(3) + 'em';
+  const tt = v('seria') < .3 ? 'uppercase' : v('seria') > .72 ? 'lowercase' : 'none';
+  const r = document.documentElement.style;
+  r.setProperty('--v-wght', wght); r.setProperty('--v-wdth', wdth); r.setProperty('--v-ls', ls); r.setProperty('--v-tt', tt);
+  const nv = $('#nomeVivo');
+  nv.style.fontVariationSettings = `"wght" ${wght}, "wdth" ${wdth}`; nv.style.letterSpacing = ls; nv.style.textTransform = tt;
+  nv.innerHTML = esc(marca()) + '<i></i>';
+  // cores escolhidas tingem o fundo
+  const q = Object.entries(S.r.cores || {}).filter(([, s]) => s === 'q').map(([h]) => h);
+  const bg = q.length ? `radial-gradient(circle at 18% 20%, ${q[0]}55, transparent 55%), radial-gradient(circle at 85% 80%, ${(q[1] || q[0])}44, transparent 50%), #1B1B1B` : '';
+  document.body.style.background = document.body.dataset.ato === 'voz' && q.length ? bg : '';
+}
+
+/* ================================================================
+   MINI MOODBOARDS (desenhados em código: letra · textura · forma · cores)
+   ================================================================ */
+const FONTES_MOOD = 'https://fonts.googleapis.com/css2?family=Pacifico&family=Jost:wght@400;600&family=Playfair+Display:ital,wght@1,600&family=Manrope:wght@200&family=Anton&family=Josefin+Sans:wght@100&family=Rye&family=Special+Elite&family=Saira+Stencil+One&text=Aa&display=swap';
+let fontesMood = false;
+const ruido = (freq, oct, [r, g, b], a, o, bg) => `url('data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='${freq}' numOctaves='${oct}' seed='7'/><feColorMatrix values='0 0 0 0 ${r} 0 0 0 0 ${g} 0 0 0 0 ${b} ${a} 0 0 0 ${o}'/></filter><rect width='160' height='160' fill='${bg}'/><rect width='160' height='160' filter='url(#f)'/></svg>`).replace(/'/g, '%27')}') center/cover`;
+const svg = (bg, corpo) => `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="${bg}"/>${corpo}</svg>`;
+const MOOD = {
+  organico:      { f: "'Pacifico', cursive", c: '#5B3A1E', bg: '#F3E9D8', tx: ruido('.9', 2, [.45, .33, .18], .7, -.15, '#EADFC8'),
+                   fo: svg('#F3E9D8', '<path d="M50 14C73 11 90 31 85 53S64 89 43 85 11 66 15 44 29 16 50 14Z" fill="#C8553D"/><path d="M68 62c8 2 14 10 10 18s-14 6-17-1 0-19 7-17Z" fill="#8A9A5B"/>'), cp: ['#C8553D', '#8A9A5B'] },
+  geometrico:    { f: "'Jost', sans-serif", w: 600, c: '#111', bg: '#FFFFFF', tx: 'linear-gradient(#1D4ED822 1px, transparent 1px) 0 0/12px 12px, linear-gradient(90deg, #1D4ED822 1px, transparent 1px) 0 0/12px 12px, #F4F5F7',
+                   fo: svg('#FFFFFF', '<circle cx="36" cy="38" r="22" fill="#1D4ED8"/><rect x="50" y="50" width="34" height="34" fill="#E63946"/><path d="M20 86 38 60 56 86Z" fill="#111"/>'), cp: ['#1D4ED8', '#E63946'] },
+  classico:      { f: "'Playfair Display', serif", w: 600, it: true, c: '#C9A227', bg: '#5E1424', tx: ruido('.012 .05', 4, [.3, .3, .33], 1.7, -.8, '#F1EEE9'),
+                   fo: svg('#5E1424', '<rect x="18" y="18" width="64" height="64" fill="none" stroke="#C9A227" stroke-width="3"/><rect x="26" y="26" width="48" height="48" fill="none" stroke="#C9A227" stroke-width="1"/><circle cx="50" cy="50" r="6" fill="#C9A227"/>'), cp: ['#5E1424', '#C9A227'] },
+  contemporaneo: { f: "'Manrope', sans-serif", w: 200, c: '#111', bg: '#EDEDED', tx: 'linear-gradient(115deg, transparent 38%, #ffffffcc 45%, transparent 52%), linear-gradient(135deg, #CFE3F5, #F7F9FB 50%, #B8C6D6)',
+                   fo: svg('#EDEDED', '<line x1="8" y1="74" x2="92" y2="30" stroke="#111" stroke-width=".8"/><line x1="22" y1="94" x2="76" y2="6" stroke="#111" stroke-width=".8"/><circle cx="64" cy="62" r="7" fill="#FF4D2E"/>'), cp: ['#BFC3C7', '#FF4D2E'] },
+  pesado:        { f: "'Anton', sans-serif", c: '#111', bg: '#E4E4E2', big: true, tx: ruido('.75', 3, [.18, .18, .18], .9, -.25, '#8E8E8C'),
+                   fo: svg('#E4E4E2', '<rect x="12" y="24" width="76" height="52" fill="#111"/>'), cp: ['#111111', '#5A5A5A'] },
+  leve:          { f: "'Josefin Sans', sans-serif", w: 100, c: '#333', bg: '#FBFAF7', tx: 'repeating-linear-gradient(45deg, #0000000d 0 1px, transparent 1px 6px), repeating-linear-gradient(-45deg, #0000000a 0 1px, transparent 1px 6px), #F7F4EF',
+                   fo: svg('#FBFAF7', '<path d="M8 62C32 22 62 100 92 38" fill="none" stroke="#666" stroke-width=".7"/>'), cp: ['#F4EDE4', '#BFD8E8'] },
+  minimo:        { f: "'Jost', sans-serif", w: 400, c: '#111', bg: '#FFFFFF', txt: 'a', tx: '#FAFAFA',
+                   fo: svg('#FFFFFF', '<rect x="46" y="46" width="8" height="8" fill="#111"/>'), cp: ['#FFFFFF', '#111111'] },
+  ornamentado:   { f: "'Rye', serif", c: '#E9A23B', bg: '#1F3D2B', tx: 'radial-gradient(circle, #C8553D 22%, transparent 24%) 0 0/22px 22px, radial-gradient(circle, #2A9D8F 22%, transparent 24%) 11px 11px/22px 22px, #F3D9A4',
+                   fo: svg('#1F3D2B', [0, 45, 90, 135, 180, 225, 270, 315].map(a => `<circle cx="${50 + Math.cos(a * Math.PI / 180) * 22}" cy="${50 + Math.sin(a * Math.PI / 180) * 22}" r="9" fill="${a % 90 ? '#2A9D8F' : '#E9A23B'}"/>`).join('') + '<circle cx="50" cy="50" r="11" fill="#C8553D"/><circle cx="50" cy="50" r="4" fill="#F3D9A4"/>'), cp: ['#2A9D8F', '#E9A23B'] },
+  artesanal:     { f: "'Special Elite', monospace", c: '#3B2A1A', bg: '#E9DCC4', tx: ruido('.02 .45', 3, [.32, .2, .09], 1.1, -.35, '#B48A5A'),
+                   fo: svg('#EFE4D0', '<circle cx="50" cy="50" r="34" fill="none" stroke="#7B4B2A" stroke-width="3" stroke-dasharray="2 3"/><circle cx="50" cy="50" r="25" fill="none" stroke="#7B4B2A" stroke-width="1.2"/><path d="M50 38l3.5 8 8.5.6-6.5 5.5 2 8.3L50 56l-7.5 4.4 2-8.3-6.5-5.5 8.5-.6Z" fill="#7B4B2A"/>'), cp: ['#B48A5A', '#E9DCC4'] },
+  industrial:    { f: "'Saira Stencil One', sans-serif", c: '#111', bg: '#F6D743', tx: 'repeating-linear-gradient(90deg, #9DA3A8 0 2px, #B9BEC2 2px 3px, #A9AEB2 3px 5px)',
+                   fo: svg('#3C3F42', '<path d="M0 100 100 0" stroke="#F6D743" stroke-width="14"/><circle cx="50" cy="50" r="17" fill="#9DA3A8" stroke="#222" stroke-width="2"/><path d="M50 40l8.7 5v10L50 60l-8.7-5V45Z" fill="#555"/>'), cp: ['#3C3F42', '#F6D743'] },
+};
+function moodboard(k) {
+  const m = MOOD[k];
+  if (!fontesMood) { fontesMood = true; const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = FONTES_MOOD; document.head.appendChild(l); }
+  return `<span class="mood" aria-hidden="true">
+    <i class="aa" style="background:${m.bg};color:${m.c};font-family:${m.f};font-weight:${m.w || 400};${m.it ? 'font-style:italic;' : ''}${m.big ? 'font-size:1.3em;' : ''}">${m.txt || 'Aa'}</i>
+    <i>${m.fo}</i>
+  </span>`;
+}
+
+/* rosto em pixel que pisca: uma vez = sim, duas = não (CSS puro, sem laço de animação) */
+function rosto() {
+  const r = el(`<div class="rosto" aria-hidden="true"><svg viewBox="0 0 12 12" shape-rendering="crispEdges">
+    <rect x="1" y="2" width="10" height="9" fill="var(--fg)"/><rect x="9" y="0" width="2" height="2" fill="#44D62D"/>
+    <rect class="ol e" x="3" y="5" width="2" height="2" fill="var(--bg)"/><rect class="ol d" x="7" y="5" width="2" height="2" fill="var(--bg)"/>
+    <rect x="4" y="8" width="4" height="1" fill="var(--bg)"/></svg></div>`);
+  r.pisca = n => { r.classList.remove('p1', 'p2', 'pw'); void r.offsetWidth; r.classList.add(n === 2 ? 'p2' : n === 'w' ? 'pw' : 'p1'); };
+  return r;
+}
+// piscada espontânea de vez em quando (um timer só para a página toda)
+setInterval(() => { document.querySelectorAll('.rosto').forEach(r => { if (Math.random() < .5 && r.pisca) r.pisca(1); }); }, 4200);
+
+/* ================================================================
+   CAMPOS (os mesmos nas duas versões)
+   ================================================================ */
+function campo(q, aoMudar) {
+  const v = S.r[q.id], set = val => { S.r[q.id] = val; salvar(); aoMudar && aoMudar(); };
+  const w = document.createElement('div'); w.className = 'campo'; w.dataset.q = q.id;
+  switch (q.tipo) {
+    case 'texto': {
+      w.innerHTML = `<input class="inp" id="f-${q.id}" type="text" autocomplete="off" maxlength="${q.max || 200}" placeholder="${esc(q.ph || '')}" value="${esc(v || '')}" aria-label="${esc(fmt(q.q))}">${q.max ? `<div class="cont"><span>${(v || '').length}</span>/${q.max}</div>` : ''}`;
+      const i = w.querySelector('input'); i.addEventListener('input', () => { set(i.value); if (q.max) { w.querySelector('.cont span').textContent = i.value.length; w.querySelector('.cont').classList.toggle('cheio', i.value.length >= q.max); } });
+      break; }
+    case 'longo': {
+      w.innerHTML = `<textarea class="txt" id="f-${q.id}" rows="4" maxlength="3000" placeholder="${esc(q.ph || 'Escreva aqui')}" aria-label="${esc(fmt(q.q))}">${esc(v || '')}</textarea>`;
+      const t = w.querySelector('textarea'); const ajusta = () => { t.style.height = 'auto'; t.style.height = Math.max(120, t.scrollHeight + 4) + 'px'; };
+      t.addEventListener('input', () => { set(t.value); ajusta(); }); requestAnimationFrame(ajusta);
+      break; }
+    case 'cards': {
+      w.innerHTML = `<div class="cards" role="radiogroup">${q.opts.map(([a, b]) => `<button type="button" class="card" aria-pressed="${v === a}"><b>${esc(a)}</b><span>${esc(b)}</span></button>`).join('')}</div>`;
+      w.querySelectorAll('.card').forEach((b, k) => b.onclick = () => { set(q.opts[k][0]); w.querySelectorAll('.card').forEach(x => x.setAttribute('aria-pressed', x === b)); });
+      break; }
+    case 'tags': {
+      const lista = Array.isArray(v) ? v.slice() : [];
+      w.innerHTML = `<div class="tagbox"><input class="inp" id="f-${q.id}" type="text" placeholder="${esc(q.ph || '')}" aria-label="${esc(fmt(q.q))}"></div><div class="dica" style="margin-top:8px">Aperte <span class="kbd">Enter</span> para adicionar.</div>`;
+      const box = w.querySelector('.tagbox'), i = w.querySelector('input');
+      const desenha = () => { box.querySelectorAll('.tag').forEach(t => t.remove()); lista.forEach((t, k) => { const e = el(`<span class="tag">${esc(t)}<button type="button" aria-label="Remover ${esc(t)}">×</button></span>`); e.querySelector('button').onclick = () => { lista.splice(k, 1); set(lista.slice()); desenha(); }; box.insertBefore(e, i); }); };
+      const add = () => { const t = i.value.trim().replace(/,$/, ''); if (t) { lista.push(t); set(lista.slice()); i.value = ''; desenha(); } };
+      i.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ',') { e.preventDefault(); e.stopPropagation(); add(); } else if (e.key === 'Backspace' && !i.value && lista.length) { lista.pop(); set(lista.slice()); desenha(); } });
+      i.addEventListener('blur', add); desenha();
+      break; }
+    case 'tres': {
+      const a = Array.isArray(v) ? v.slice() : ['', '', ''];
+      w.innerHTML = `<div class="linhas">${[0, 1, 2].map(k => `<input class="inp" id="f-${q.id}-${k}" type="text" placeholder="${esc(q.ph[k])}" value="${esc(a[k] || '')}" aria-label="Item ${k + 1}">`).join('')}</div>`;
+      w.querySelectorAll('input').forEach((i, k) => i.addEventListener('input', () => { a[k] = i.value; set(a.slice()); }));
+      break; }
+    case 'lista': {
+      const a = Array.isArray(v) && v.length ? v.map(x => ({ ...x })) : [{ nome: '', link: '' }, { nome: '', link: '' }];
+      w.innerHTML = `<div class="linhas"></div><div class="acoes" style="margin-top:12px"><button type="button" class="link add">+ Adicionar outro</button></div>`;
+      const box = w.querySelector('.linhas');
+      const desenha = () => { box.innerHTML = ''; a.forEach((c, k) => { const l = el(`<div class="linha"><input class="inp" id="f-${q.id}-n${k}" type="text" placeholder="Nome" value="${esc(c.nome)}" aria-label="Nome do concorrente ${k + 1}"><input class="inp" id="f-${q.id}-l${k}" type="text" placeholder="@instagram ou site" value="${esc(c.link)}" aria-label="Link do concorrente ${k + 1}"><button type="button" class="x" aria-label="Remover">×</button></div>`);
+        const [n, li] = l.querySelectorAll('input'); n.oninput = () => { c.nome = n.value; set(a.map(x => ({ ...x }))); }; li.oninput = () => { c.link = li.value; set(a.map(x => ({ ...x }))); };
+        l.querySelector('.x').onclick = () => { a.splice(k, 1); if (!a.length) a.push({ nome: '', link: '' }); set(a.map(x => ({ ...x }))); desenha(); }; box.appendChild(l); }); };
+      w.querySelector('.add').onclick = () => { a.push({ nome: '', link: '' }); desenha(); box.lastElementChild.querySelector('input').focus(); };
+      desenha();
+      break; }
+    case 'duplo': {
+      const o = v && typeof v === 'object' ? { ...v } : { a: '', b: '' };
+      w.innerHTML = `<div class="duplo">${['a', 'b'].map((k, n) => `<label><span class="rotulo">${esc(q.labels[n])}</span><textarea class="txt" id="f-${q.id}-${k}" rows="4" maxlength="3000">${esc(o[k] || '')}</textarea></label>`).join('')}</div>`;
+      w.querySelectorAll('textarea').forEach((t, n) => t.addEventListener('input', () => { o[n ? 'b' : 'a'] = t.value; set({ ...o }); }));
+      break; }
+    case 'faixa': {
+      const [a0, b0] = Array.isArray(v) ? v : q.ini;
+      w.innerHTML = `<div class="faixa-num"><span class="a">${a0}</span> a <span class="b">${b0}</span>${b0 >= q.max ? '+' : ''} <small>anos</small></div><div class="faixa"><input id="f-${q.id}-a" type="range" min="${q.min}" max="${q.max}" value="${a0}" aria-label="Idade mínima"><input id="f-${q.id}-b" type="range" min="${q.min}" max="${q.max}" value="${b0}" aria-label="Idade máxima"></div><div class="polo"><div class="ends"><span>${q.min}</span><span>${q.max}+</span></div></div>`;
+      const [ia, ib] = w.querySelectorAll('input');
+      const up = e => { let a = +ia.value, b = +ib.value; if (a > b) { if (e && e.target === ia) ib.value = b = a; else ia.value = a = b; } w.querySelector('.a').textContent = a; w.querySelector('.b').textContent = b + (b >= q.max ? '+' : ''); set([a, b]); };
+      ia.oninput = ib.oninput = up;
+      break; }
+    case 'polo': {
+      const n = typeof v === 'number' ? v : 50;
+      const txt = x => `${100 - x}% ${q.esq.toLowerCase()} · ${x}% ${q.dir.toLowerCase()}`;
+      w.innerHTML = `<div class="polo"><div class="ends"><span>${esc(q.esq)}</span><span>${esc(q.dir)}</span></div><input id="f-${q.id}" type="range" min="0" max="100" value="${n}" aria-label="${esc(fmt(q.q))}"><div class="val">${esc(txt(n))}</div></div>`;
+      const r = w.querySelector('input'); r.oninput = () => { w.querySelector('.val').textContent = txt(+r.value); set(+r.value); };
+      q._txt = txt;
+      break; }
+    case 'escalas': {
+      const o = v && typeof v === 'object' ? { ...v } : {};
+      w.innerHTML = `<div class="escalas">${q.eixos.map(([k, a, b]) => `<div class="polo"><div class="ends"><span>${esc(a)}</span><span>${esc(b)}</span></div><input id="f-${q.id}-${k}" type="range" min="0" max="100" value="${o[k] ?? 50}" aria-label="${esc(a)} ou ${esc(b)}"></div>`).join('')}</div>`;
+      w.querySelectorAll('input').forEach((r, n) => r.oninput = () => { o[q.eixos[n][0]] = +r.value; set({ ...o }); estiloVoz(); });
+      
+      break; }
+    case 'multi': case 'nunca': {
+      const sel = new Set(Array.isArray(v) ? v : []);
+      const usadas = q.tipo === 'nunca' ? new Set(S.r.palavras || []) : new Set();
+      const opts = q.tipo === 'nunca' ? PALAVRAS.filter(p => !usadas.has(p)) : q.opts;
+      w.innerHTML = `<div class="chips">${opts.map(o => `<button type="button" class="chip${q.tipo === 'nunca' ? ' risca' : ''}" aria-pressed="${sel.has(o)}">${esc(o)}</button>`).join('')}</div>${q.max ? `<div class="cont"><span>${sel.size}</span>/${q.max}</div>` : ''}`;
+      w.querySelectorAll('.chip').forEach((b, k) => b.onclick = () => { const o = opts[k]; if (sel.has(o)) sel.delete(o); else { if (q.max && sel.size >= q.max) { b.animate([{ transform: 'translateX(-4px)' }, { transform: 'translateX(4px)' }, { transform: 'none' }], { duration: 200, easing: 'steps(3)' }); return; } sel.add(o); }
+        b.setAttribute('aria-pressed', sel.has(o)); const arr = opts.filter(x => sel.has(x)); set(arr); if (q.max) { w.querySelector('.cont span').textContent = sel.size; w.querySelector('.cont').classList.toggle('cheio', sel.size >= q.max); }
+        if (q.id === 'palavras' && Array.isArray(S.r.tres)) S.r.tres = S.r.tres.filter(t => sel.has(t)); });
+      break; }
+    case 'tresde': {
+      const base = S.r.palavras || [], sel = new Set((Array.isArray(v) ? v : []).filter(x => base.includes(x)));
+      if (!base.length) { w.innerHTML = `<p class="dica">Escolha as palavras na pergunta anterior primeiro.</p>`; break; }
+      w.innerHTML = `<div class="chips">${base.map(o => `<button type="button" class="chip" aria-pressed="${sel.has(o)}">${esc(o)}</button>`).join('')}</div><div class="cont"><span>${sel.size}</span>/3</div>`;
+      const bs = [...w.querySelectorAll('.chip')];
+      const marcaVoo = () => { if (sel.size === 3) bs.forEach((b, k) => { if (!sel.has(base[k])) b.classList.add('voa'); else b.classList.add('fica'); }); else bs.forEach(b => b.classList.remove('voa', 'fica')); };
+      bs.forEach((b, k) => b.onclick = () => { const o = base[k]; if (sel.has(o)) sel.delete(o); else { if (sel.size >= 3) return; sel.add(o); } b.setAttribute('aria-pressed', sel.has(o)); set(base.filter(x => sel.has(x))); w.querySelector('.cont span').textContent = sel.size; marcaVoo(); });
+      break; }
+    case 'ordem': {
+      const a = Array.isArray(v) ? v.slice() : [];
+      w.innerHTML = `<div class="chips">${q.opts.map(o => `<button type="button" class="chip" aria-pressed="${a.includes(o)}"><span class="n" ${a.includes(o) ? '' : 'hidden'}>${a.indexOf(o) + 1}</span>${esc(o)}</button>`).join('')}</div>`;
+      const bs = [...w.querySelectorAll('.chip')];
+      const desenha = () => bs.forEach((b, k) => { const p = a.indexOf(q.opts[k]); b.setAttribute('aria-pressed', p >= 0); const n = b.querySelector('.n'); n.hidden = p < 0; n.textContent = p + 1; });
+      bs.forEach((b, k) => b.onclick = () => { const o = q.opts[k], p = a.indexOf(o); if (p >= 0) a.splice(p, 1); else a.push(o); set(a.slice()); desenha(); });
+      break; }
+    case 'pares': {
+      const o = v && typeof v === 'object' ? { ...v } : {};
+      w.innerHTML = `<div class="pares">${q.pares.map(([ka, a, kb, b]) => `<div class="par" role="group" aria-label="${esc(a)} ou ${esc(b)}">${[[ka, a], [kb, b]].map(([k, n]) => `<button type="button" data-k="${ka}-${kb}" data-v="${k}" class="${o[ka + '-' + kb] ? 'tem' : ''}" aria-pressed="${o[ka + '-' + kb] === k}">${moodboard(k)}<span class="lab">${esc(n)}</span></button>`).join('')}</div>`).join('')}</div>`;
+      w.querySelectorAll('.par button').forEach(b => b.onclick = () => { const k = b.dataset.k; o[k] = o[k] === b.dataset.v ? undefined : b.dataset.v; if (!o[k]) delete o[k]; set({ ...o });
+        b.parentElement.querySelectorAll('button').forEach(x => { x.setAttribute('aria-pressed', o[k] === x.dataset.v); x.classList.toggle('tem', !!o[k]); }); });
+      break; }
+    case 'cores': {
+      const o = v && typeof v === 'object' ? { ...v } : {};
+      w.innerHTML = `<div class="legenda-rosto"><span class="rosto-slot"></span><span>1 piscada = quero · 2 piscadas = não quero</span></div><div class="paleta">${CORES.map(([n, h]) => `<button type="button" class="cor" data-h="${h}" data-s="${o[h] || ''}" aria-label="${esc(n)}"><i style="background:${h}"></i><span>${esc(n)}</span></button>`).join('')}</div>`;
+      w.querySelectorAll('.cor').forEach(b => b.onclick = () => { const h = b.dataset.h, s = o[h] === 'q' ? 'n' : o[h] === 'n' ? '' : 'q'; if (s) o[h] = s; else delete o[h]; b.dataset.s = s; b.setAttribute('aria-label', b.textContent + (s === 'q' ? ', quero' : s === 'n' ? ', não quero' : '')); set({ ...o }); estiloVoz(); if (s) ro.pisca(s === 'q' ? 1 : 2); });
+      const ro = rosto(); w.querySelector('.rosto-slot').replaceWith(ro);
+      break; }
+    case 'simnao': {
+      const o = v && typeof v === 'object' ? { ...v } : { v: '', t: '' };
+      w.innerHTML = `<div class="simnao-l"><span class="rosto-slot"></span><div class="simnao"><button type="button" class="chip" data-v="Sim" aria-pressed="${o.v === 'Sim'}">Sim</button><button type="button" class="chip" data-v="Em parte" aria-pressed="${o.v === 'Em parte'}">Em parte</button><button type="button" class="chip" data-v="Não" aria-pressed="${o.v === 'Não'}">Não</button></div></div><textarea class="txt" id="f-${q.id}" rows="3" placeholder="${esc(q.ph)}" ${o.v && o.v !== 'Não' ? '' : 'hidden'}>${esc(o.t || '')}</textarea>`;
+      const t = w.querySelector('textarea'), ro = rosto(); w.querySelector('.rosto-slot').replaceWith(ro);
+      w.querySelectorAll('.chip').forEach(b => b.onclick = () => { o.v = b.dataset.v; ro.pisca(o.v === 'Sim' ? 1 : o.v === 'Não' ? 2 : 'w'); w.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === b)); t.hidden = o.v === 'Não'; set({ ...o }); if (!t.hidden) t.focus(); });
+      t.oninput = () => { o.t = t.value; set({ ...o }); };
+      break; }
+  }
+  return w;
+}
+
+/* texto da resposta (resumos, retrato e cópia) */
+function valor(q) {
+  const v = S.r[q.id];
+  const vazio = x => x == null || x === '' || (Array.isArray(x) && !x.filter(Boolean).length) || (typeof x === 'object' && !Array.isArray(x) && !Object.keys(x).length);
+  if (vazio(v)) return '';
+  switch (q.tipo) {
+    case 'tags': case 'multi': case 'nunca': case 'tresde': return v.join(', ');
+    case 'ordem': return v.map((x, i) => `${i + 1}. ${x}`).join('  ');
+    case 'tres': return v.filter(Boolean).map(x => '· ' + x).join('\n');
+    case 'lista': return v.filter(c => c.nome || c.link).map(c => c.nome + (c.link ? ` (${c.link})` : '')).join('\n');
+    case 'duplo': return [v.a ? 'Fazem bem: ' + v.a : '', v.b ? 'Jamais faria: ' + v.b : ''].filter(Boolean).join('\n');
+    case 'faixa': return `${v[0]} a ${v[1]}${v[1] >= q.max ? '+' : ''} anos`;
+    case 'polo': return `${q.esq} ${100 - v}% · ${q.dir} ${v}%`;
+    case 'escalas': return q.eixos.map(([k, a, b]) => v[k] == null ? `${a} ↔ ${b}: não ajustado` : `${a} ${100 - v[k]}% · ${b} ${v[k]}%`).join('\n');
+    case 'pares': return q.pares.map(([ka, a, kb, b]) => `${a} ou ${b}: ${v[ka + '-' + kb] ? (v[ka + '-' + kb] === ka ? a : b) : 'sem escolha'}`).join('\n');
+    case 'cores': { const n = h => `${(CORES.find(c => c[1] === h) || [h])[0]} (${h})`; const q1 = Object.keys(v).filter(h => v[h] === 'q').map(n), n1 = Object.keys(v).filter(h => v[h] === 'n').map(n); return [q1.length ? 'Quero: ' + q1.join(', ') : '', n1.length ? 'Não quero: ' + n1.join(', ') : ''].filter(Boolean).join('\n'); }
+    case 'simnao': return v.v ? v.v + (v.t ? ': ' + v.t : '') : '';
+    default: return String(v);
+  }
+}
+
+/* ================================================================
+   NAVEGAÇÃO
+   ================================================================ */
+const main = $('#main');
+let SEQ = [];
+function montarSeq() {
+  SEQ = [{ t: 'abertura' }];
+  P.filter(q => q.ato === 0).forEach(q => SEQ.push({ t: 'q', q }));
+  for (let a = 1; a <= 5; a++) { SEQ.push({ t: 'entrada', a }); P.filter(q => q.ato === a).forEach(q => SEQ.push({ t: 'q', q })); SEQ.push({ t: 'saida', a }); }
+  SEQ.push({ t: 'retrato' });
+}
+const LSEQ = [0, 1, 2, 3, 4, 5, 'retrato'];
+
+async function trocar(render, piscar) {
+  const atual = main.firstElementChild;
+  if (piscar && atual) {
+    // pisca: fecha, troca a pergunta com o olho fechado, abre
+    const pal = $('#palpebra'); pal.classList.add('fecha'); await espera(170);
+    main.innerHTML = ''; const n = render(); main.appendChild(n); scrollTo(0, 0);
+    await espera(40); pal.classList.remove('fecha'); n.classList.add('acorda');
+    return;
+  }
+  if (atual) { atual.classList.add('sai'); await espera(S.modo === 'legado' ? 0 : 230); }
+  main.innerHTML = ''; const n = render(); main.appendChild(n); n.classList.add('entra');
+  scrollTo(0, 0);
+}
+// a cada 3 trocas entre perguntas: 1 com piscada, 2 sem
+let contaPisca = 0, ultimaTela = null;
+
+function atoAtual() {
+  if (S.modo === 'legado') { const p = LSEQ[S.i]; return p === 'retrato' ? 5 : p; }
+  const s = SEQ[S.i]; if (!s) return 0; return s.t === 'q' ? s.q.ato : s.a ?? (s.t === 'retrato' ? 5 : 0);
+}
+function progresso() {
+  const pr = $('#prog'), segs = [...document.querySelectorAll('#segs i')];
+  const a = atoAtual(); pr.classList.toggle('on', a >= 1);
+  let frac = 0;
+  if (S.modo === 'legado') { frac = 0; segs.forEach((s, k) => s.style.setProperty('--p', k + 1 < a ? 1 : k + 1 === a ? .5 : 0)); if (LSEQ[S.i] === 'retrato') segs.forEach(s => s.style.setProperty('--p', 1)); }
+  else {
+    const s = SEQ[S.i], qs = P.filter(q => q.ato === a);
+    if (s && s.t === 'q') frac = (qs.indexOf(s.q)) / qs.length; else if (s && s.t === 'saida') frac = 1; else frac = 0;
+    segs.forEach((g, k) => g.style.setProperty('--p', k + 1 < a ? 1 : k + 1 === a ? frac : 0));
+    if (s && s.t === 'retrato') segs.forEach(g => g.style.setProperty('--p', 1));
+  }
+  const at = ATOS[a], fim = S.modo === 'legado' ? LSEQ[S.i] === 'retrato' : SEQ[S.i] && SEQ[S.i].t === 'retrato';
+  $('#progRot').innerHTML = fim ? '<b>Retrato da marca</b>' : a >= 1 ? `${S.modo === 'legado' ? 'Etapa ' + a : 'Ato ' + at.rom} · <b>${at.nome}</b>` : '';
+}
+function tema() {
+  const a = atoAtual(), s = S.modo === 'imersiva' ? SEQ[S.i] : null;
+  document.body.dataset.ato = S.modo === 'imersiva' && a >= 1 && !(s && s.t === 'retrato') ? ATOS[a].id : '';
+  if (S.modo === 'imersiva') estiloVoz(); else document.body.style.background = '';
+  requestAnimationFrame(() => Palco.cores());
+}
+
+function ir(i) { S.i = i; salvar(); mostrar(); }
+function avancar() {
+  if (S.retorno != null) { const r = S.retorno; S.retorno = null; return ir(r); }
+  ir(S.i + 1);
+}
+function ajustar(id) {
+  S.retorno = S.i;
+  if (S.modo === 'legado') { ir(LSEQ.indexOf(PQ[id].ato)); requestAnimationFrame(() => setTimeout(() => { const c = document.querySelector(`[data-q="${id}"]`); c && c.scrollIntoView({ block: 'center' }); }, 450)); }
+  else ir(SEQ.findIndex(s => s.t === 'q' && s.q.id === id));
+}
+
+function mostrar() {
+  tema(); progresso();
+  if (!S.modo) return trocar(telaModo);
+  if (S.modo === 'legado') { const p = LSEQ[S.i]; return trocar(() => p === 'retrato' ? telaRetrato() : telaLegado(p)); }
+  const s = SEQ[S.i];
+  // palco: o que já nasceu
+  const feitos = SEQ.slice(0, S.i).filter(x => x.t === 'saida').length;
+  Palco.centro(s.t === 'saida' ? .3 : .5);
+  if (s.t !== 'saida') Palco.estado(feitos);
+  Palco.alfa(s.t === 'retrato' || s.t === 'abertura' ? 0 : s.t === 'entrada' ? .3 : (atoAtual() === 4 ? .05 : .07));
+  Som.nivel(s.t === 'retrato' ? 1 : Math.max(1, atoAtual()));
+  document.body.classList.remove('falando');
+  if (s.t !== 'q') ultimaTela = s.t;
+  if (s.t === 'abertura') return trocar(telaAbertura);
+  if (s.t === 'entrada') return trocar(() => telaEntrada(s.a));
+  if (s.t === 'q') {
+    let piscar = false;
+    if (ultimaTela === 'q') { piscar = contaPisca % 3 === 0; contaPisca++; }
+    ultimaTela = 'q';
+    return trocar(() => telaPergunta(s.q), piscar);
+  }
+  if (s.t === 'saida') return trocar(() => telaSaida(s.a));
+  if (s.t === 'retrato') return trocar(telaRetrato);
+}
+
+/* ================================================================
+   TELAS
+   ================================================================ */
+function telaModo() {
+  const salvo = guarda.ler(), temSalvo = salvo && salvo.modo && salvo.r && salvo.r.marca;
+  $('#btnSom').hidden = true; document.body.classList.remove('legado');
+  const t = el(`<section class="tela modo">
+    <p class="eyb">Briefing de identidade visual</p>
+    <h1>Vamos construir a sua marca<i></i></h1>
+    <p class="lead">São as mesmas perguntas nas duas versões. Escolha como prefere responder.</p>
+    <div class="opcoes">
+      <button type="button" class="opcao imersiva" data-m="imersiva"><span class="tempo">Cerca de 15 min · use fone</span><span class="tit">Imersiva</span><p>Uma pergunta por vez, com trilha sonora e a sua marca ganhando forma na tela enquanto você responde.</p><ul><li>Música que cresce a cada ato</li><li>Animações entre as etapas</li><li>Melhor no computador, funciona no celular</li></ul></button>
+      <button type="button" class="opcao" data-m="legado"><span class="tempo">Cerca de 10 min</span><span class="tit">Legado</span><p>Formulário direto, uma página por etapa. Sem som e com animações leves.</p><ul><li>Todas as perguntas da etapa na mesma tela</li><li>Bom para responder com calma</li></ul></button>
+    </div>
+    ${temSalvo ? `<div class="retomar"><span>Você já começou o briefing de <b>${esc(salvo.r.marca)}</b>.</span><button type="button" class="link" id="retomar">Continuar de onde parou</button><button type="button" class="link" id="zerar">Começar do zero</button></div>` : ''}
+  </section>`);
+  t.querySelectorAll('.opcao').forEach(b => b.onclick = () => iniciar(b.dataset.m));
+  if (temSalvo) {
+    t.querySelector('#retomar').onclick = () => { S = { ...S, ...salvo, retorno: null }; preparar(); if (S.modo === 'imersiva') { Som.iniciar(); Som.nivel(Math.max(1, atoAtual())); } mostrar(); };
+    t.querySelector('#zerar').onclick = () => { guarda.limpar(); trocar(telaModo); };
+  }
+  return t;
+}
+function preparar() {
+  document.body.classList.toggle('legado', S.modo === 'legado');
+  $('#btnSom').hidden = S.modo !== 'imersiva';
+  if (S.modo === 'imersiva') montarSeq();
+}
+function iniciar(m) { S = { modo: m, i: 0, r: {}, retorno: null }; preparar(); salvar(); mostrar(); }
+
+async function digita(alvo, texto, vel = 34) {
+  alvo.textContent = ''; alvo.classList.add('cur');
+  for (const ch of texto) { if (!alvo.isConnected) return; alvo.textContent += ch; await espera(ch === '.' || ch === ',' ? vel * 6 : vel); }
+  alvo.classList.remove('cur');
+}
+
+function telaAbertura() {
+  const t = el(`<section class="tela roteiro">
+    <p></p><p></p><p class="forte"></p>
+    <div class="acoes" style="opacity:0;transition:opacity .5s"><button type="button" class="btn pri" id="comecar">Começar <span aria-hidden="true">→</span></button><button type="button" class="link" id="voltarModo">Trocar para a versão legado</button></div>
+    <div class="fone" style="opacity:0;transition:opacity .5s"><span class="kbd">♪</span> Coloca o fone. A trilha começa quando você clicar.</div>
+  </section>`);
+  const ps = t.querySelectorAll('p:not(.fone)');
+  (async () => { await espera(350); await digita(ps[0], 'Toda marca começa antes do logo.'); await digita(ps[1], 'Começa numa ideia, numa decisão, numa pessoa.'); await digita(ps[2], 'Nos próximos 15 minutos, a gente constrói a sua.'); t.querySelector('.acoes').style.opacity = 1; t.querySelector('.fone').style.opacity = 1; })();
+  t.querySelector('#comecar').onclick = () => { Som.iniciar(); Som.nivel(1); botaoSom(); avancar(); };
+  t.querySelector('#voltarModo').onclick = () => { S.modo = 'legado'; S.i = 0; preparar(); salvar(); mostrar(); };
+  // atalho: Enter também começa
+  return t;
+}
+
+function telaEntrada(a) {
+  const at = ATOS[a];
+  Som.nivel(a);
+  const t = el(`<section class="tela">
+    <div class="ato-num">Ato ${at.rom} · ${at.sobre}</div>
+    <h2 class="ato-tit">${at.nome}<i></i></h2>
+    <p class="ato-frase"></p>
+    <div class="acoes" style="opacity:0;transition:opacity .4s"><button type="button" class="btn pri">Continuar <span aria-hidden="true">→</span></button></div>
+  </section>`);
+  (async () => { await espera(500); await digita(t.querySelector('.ato-frase'), fmt(at.entrada), 30); t.querySelector('.acoes').style.opacity = 1; t.querySelector('.btn').focus({ preventScroll: true }); })();
+  t.querySelector('.btn').onclick = avancar;
+  return t;
+}
+
+function telaPergunta(q) {
+  const qs = P.filter(x => x.ato === q.ato), n = qs.indexOf(q) + 1, at = ATOS[q.ato];
+  const t = el(`<section class="tela pergunta">
+    <p class="eyb">${q.ato ? `Ato ${at.rom} · ${n}/${qs.length}` : 'Antes de começar'}</p>
+    <h2>${esc(fmt(q.q))}</h2>
+    ${q.hint ? `<p class="hint">${esc(fmt(q.hint))}</p>` : '<div style="height:18px"></div>'}
+    <div class="slot"></div>
+    <p class="erro" hidden></p>
+    <div class="acoes"><button type="button" class="btn pri" id="seguir">${S.retorno != null ? 'Salvar e voltar' : 'Continuar'} <span aria-hidden="true">→</span></button>${S.i > 1 && S.retorno == null ? '<button type="button" class="link" id="voltar">Voltar</button>' : ''}<span class="dica" id="atalho"></span></div>
+  </section>`);
+  const btn = t.querySelector('#seguir');
+  const valida = () => {
+    if (q.obrig) btn.disabled = !(S.r[q.id] || '').trim();
+    if (q.minSel) { const n = (S.r[q.id] || []).length; btn.disabled = n < q.minSel; t.querySelector('#atalho').textContent = n < q.minSel ? `Escolha pelo menos ${q.minSel} para continuar.` : ''; }
+  };
+  t.querySelector('.slot').appendChild(campo(q, () => { valida(); if (q.id === 'marca') Palco.refazNome(); }));
+  if (['texto', 'tres', 'lista'].includes(q.tipo)) t.querySelector('#atalho').innerHTML = 'ou aperte <span class="kbd">Enter</span>';
+  else if (['longo', 'duplo'].includes(q.tipo)) t.querySelector('#atalho').innerHTML = '<span class="kbd">Ctrl</span>+<span class="kbd">Enter</span> para seguir';
+  valida();
+  const seguir = () => { if (btn.disabled) return; if (q.id === 'marca') Palco.refazNome(); avancar(); };
+  btn.onclick = seguir;
+  const v = t.querySelector('#voltar'); if (v) v.onclick = () => ir(S.i - 1);
+  t.addEventListener('keydown', e => { if (e.key !== 'Enter') return; const tg = e.target; if (tg.tagName === 'TEXTAREA') { if (e.ctrlKey || e.metaKey) { e.preventDefault(); seguir(); } return; } if (tg.tagName === 'INPUT' && tg.type === 'text') { e.preventDefault(); seguir(); } });
+  setTimeout(() => { const f = t.querySelector('.slot input[type=text], .slot textarea:not([hidden])'); if (f && matchMedia('(pointer: fine)').matches) f.focus({ preventScroll: true }); }, 450);
+  return t;
+}
+
+function itensResumo(a) {
+  return P.filter(q => q.ato === a).map(q => { const v = valor(q); return `<div class="item"><div class="k"><span>${esc(q.t)}</span><button type="button" data-aj="${q.id}">Ajustar</button></div><div class="v${v ? '' : ' vazio'}">${esc(v || 'Sem resposta')}</div></div>`; }).join('');
+}
+
+function telaSaida(a) {
+  const at = ATOS[a], prox = ATOS[a + 1];
+  const t = el(`<section class="tela larga saida${a === 5 ? ' v5' : ''}">
+    ${a === 5 ? `<div class="fala"><p class="linha1"></p><p class="linha2"></p></div>` : `<p class="legenda"></p>`}
+    <div class="resumo">
+      <div class="resumo-top"><b>Ato ${at.rom} · ${at.nome} concluído</b><span class="dica">Confira o que você respondeu.</span></div>
+      <div class="itens">${itensResumo(a)}</div>
+      <div class="acoes" style="margin-top:20px"><button type="button" class="btn pri" id="seguir">${prox ? `Próximo ato: ${prox.nome}` : 'Ver o retrato da marca'} <span aria-hidden="true">→</span></button></div>
+    </div>
+  </section>`);
+  t.querySelectorAll('[data-aj]').forEach(b => b.onclick = () => ajustar(b.dataset.aj));
+  t.querySelector('#seguir').onclick = avancar;
+  const mostraResumo = () => t.querySelector('.resumo').classList.add('on');
+  (async () => {
+    if (a === 5) {
+      // a marca fala: tudo some, fica só o nome; a trilha volta para a batida
+      Palco.alfa(0); document.body.classList.add('falando'); Som.nivel(1);
+      await espera(1400);
+      const frase = (S.r.elevador || '').trim();
+      await digita(t.querySelector('.linha1'), `Oi. Eu sou ${marca()}.`, 60);
+      if (frase) { await espera(300); await digita(t.querySelector('.linha2'), frase, 38); }
+      await espera(900);
+      await digita(t.querySelector('.linha2'), 'Ela nasceu aqui. O resto, a gente desenha junto.', 30);
+      document.body.classList.remove('falando');
+      t.classList.add('fim'); await espera(30);
+      mostraResumo();
+    } else {
+      Palco.estado(a); Palco.alfa(1);
+      Palco.tocar(['', 'ponto', 'nome', 'lugar', 'olhar'][a]);
+      if (a === 1) Som.nivel(2);
+      await espera(a === 3 ? 2600 : 2000);
+      await digita(t.querySelector('.legenda'), fmt(at.saida), 32);
+      await espera(500); Palco.alfa(.4); mostraResumo();
+    }
+  })();
+  return t;
+}
+
+/* ---------- legado: uma página por ato ---------- */
+function telaLegado(a) {
+  const at = ATOS[a], qs = P.filter(q => q.ato === a);
+  const t = el(`<section class="tela">
+    <div class="leg-cab">
+      <p class="eyb">${a ? `Etapa ${a} de 5` : 'Antes de começar'}</p>
+      <h2>${a ? at.nome : 'Briefing turzin.'}</h2>
+      <p>${a ? esc(at.legado) : 'Responda com calma. Dá para fechar a página e continuar depois neste mesmo navegador.'}</p>
+    </div>
+    <div class="leg-lista"></div>
+    <p class="erro" hidden></p>
+    <div class="acoes"><button type="button" class="btn pri" id="seguir">${S.retorno != null ? 'Salvar e voltar ao retrato' : a < 5 ? 'Próxima etapa' : 'Ver o retrato da marca'} <span aria-hidden="true">→</span></button>${a > 0 && S.retorno == null ? '<button type="button" class="btn" id="voltar">Voltar</button>' : ''}${a === 0 ? '<button type="button" class="link" id="trocar">Prefiro a versão imersiva</button>' : ''}</div>
+  </section>`);
+  const lista = t.querySelector('.leg-lista');
+  const blocos = {};
+  qs.forEach((q, k) => {
+    const b = el(`<div class="leg-q"><div class="num">${String(k + 1).padStart(2, '0')}</div><h3>${esc(fmt(q.q))}${q.obrig ? ' *' : ''}</h3>${q.hint ? `<p class="hint">${esc(fmt(q.hintLeg || q.hint))}</p>` : ''}<div class="slot"></div></div>`);
+    const desenha = () => { const s = b.querySelector('.slot'); s.innerHTML = ''; s.appendChild(campo(q, () => { if (q.id === 'palavras') { blocos.tres && blocos.tres(); blocos.nunca && blocos.nunca(); } })); };
+    blocos[q.id] = desenha; desenha(); lista.appendChild(b);
+  });
+  t.querySelector('#seguir').onclick = () => {
+    const falta = qs.filter(q => q.obrig && !(S.r[q.id] || '').trim());
+    const poucas = qs.filter(q => q.minSel && (S.r[q.id] || []).length < q.minSel);
+    const er = t.querySelector('.erro');
+    if (falta.length) { er.hidden = false; er.textContent = 'Preencha seu nome e o nome da marca para continuar.'; return; }
+    if (poucas.length) { er.hidden = false; er.textContent = poucas[0].id === 'tres' ? 'Escolha as 3 palavras mais fortes para continuar.' : 'Escolha pelo menos 3 palavras que descrevem a marca.'; document.querySelector(`[data-q="${poucas[0].id}"]`).scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
+    er.hidden = true; avancar();
+  };
+  const v = t.querySelector('#voltar'); if (v) v.onclick = () => ir(S.i - 1);
+  const tr = t.querySelector('#trocar'); if (tr) tr.onclick = () => { S.modo = 'imersiva'; S.i = 0; preparar(); salvar(); mostrar(); };
+  return t;
+}
+
+/* ---------- retrato: as respostas organizadas ---------- */
+function telaRetrato() {
+  estiloVoz(); document.body.style.background = '';
+  const r = S.r, tres = r.tres && r.tres.length ? r.tres : (r.palavras || []).slice(0, 3);
+  const esq = PQ.escalas, e = r.escalas || {};
+  const cores = r.cores || {}, nomeCor = h => (CORES.find(c => c[1] === h) || [h])[0];
+  const data = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+  const sec = (a, ids) => `<section class="r-sec"><h3>${ATOS[a].nome} <span>${ATOS[a].sobre}</span></h3><div class="itens">${P.filter(q => ids.includes(q.id)).map(q => { const v = valor(q); return `<div class="item"><div class="k"><span>${esc(q.t)}</span><button type="button" data-aj="${q.id}">Ajustar</button></div><div class="v${v ? '' : ' vazio'}" style="-webkit-line-clamp:unset">${esc(v || 'Sem resposta')}</div></div>`; }).join('')}</div></section>`;
+  const t = el(`<section class="tela larga retrato">
+    <div class="r-hero">
+      <p class="eyb">Retrato da marca</p>
+      <h2 class="r-nome">${esc(marca())}<i></i></h2>
+      ${r.elevador ? `<p class="r-frase">${esc(r.elevador)}</p>` : ''}
+      <div class="r-meta">Respondido por ${esc(r.pessoa || '')} · ${data} · versão ${S.modo === 'legado' ? 'legado' : 'imersiva'}</div>
+    </div>
+    ${tres.length ? `<section class="r-sec"><h3>Em 3 palavras</h3><div class="tres-grande">${tres.map(p => `<span>${esc(p)}</span>`).join('')}</div></section>` : ''}
+    <section class="r-sec"><h3>Personalidade</h3><div class="barras">${esq.eixos.map(([k, a, b]) => `<div class="barra"><span>${esc(a)}</span><div class="t"><i style="left:${e[k] ?? 50}%"></i></div><span>${esc(b)}</span></div>`).join('')}</div></section>
+    <section class="r-sec"><h3>Visual e cores</h3>
+      ${valor(PQ.pares) ? `<p style="margin:0">${esc(valor(PQ.pares))}</p>` : ''}
+      <div class="sw-lin">${Object.keys(cores).map(h => `<span class="sw${cores[h] === 'n' ? ' nao' : ''}"><i style="background:${h}"></i>${esc(nomeCor(h))}</span>`).join('') || '<span class="dica">Nenhuma cor marcada.</span>'}</div>
+    </section>
+    ${sec(5, ['palavras', 'nunca', 'proibido', 'espaco', 'extra'])}
+    ${sec(1, ['papel', 'historia', 'nomeOrigem', 'agora'])}
+    ${sec(2, ['fase', 'produtos', 'diferencial', 'historiaProduto', 'futuro', 'inegociaveis'])}
+    ${sec(3, ['concorrentes', 'mercado', 'referencias'])}
+    ${sec(4, ['persona', 'idade', 'publico', 'preco', 'boca', 'onde', 'encontra'])}
+    <div class="r-acoes">
+      <input type="checkbox" id="bc" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none"><button type="button" class="btn pri" id="enviar">Enviar respostas <span aria-hidden="true">→</span></button>
+      <button type="button" class="btn" id="copiar">Copiar respostas</button>
+      <p class="aviso" id="aviso">Confira tudo acima. Se quiser mudar algo, use “Ajustar”.</p>
+    </div>
+  </section>`);
+  t.querySelectorAll('[data-aj]').forEach(b => b.onclick = () => ajustar(b.dataset.aj));
+  t.querySelector('#copiar').onclick = async () => { const av = t.querySelector('#aviso'); try { await navigator.clipboard.writeText(textoCompleto()); av.textContent = 'Respostas copiadas.'; av.classList.add('ok'); } catch (er) { av.textContent = 'Não foi possível copiar automaticamente neste navegador.'; av.classList.remove('ok'); } };
+  t.querySelector('#enviar').onclick = () => enviar(t);
+  return t;
+}
+
+function textoCompleto() {
+  const linhas = [`BRIEFING · ${marca()}`, `Respondido por: ${S.r.pessoa || ''}`, `Versão: ${S.modo}`, ''];
+  for (let a = 1; a <= 5; a++) { linhas.push(`== ${ATOS[a].nome.toUpperCase()} (${ATOS[a].sobre}) ==`); P.filter(q => q.ato === a).forEach(q => linhas.push(`${q.t}: ${valor(q) || '-'}`)); linhas.push(''); }
+  return linhas.join('\n');
+}
+
+// monta o e-mail: uma linha por resposta; sliders em porcentagem; "Não respondido" quando ficou em branco
+// limpa texto antes de enviar: tira quebras de linha do assunto e corta respostas gigantes
+const limpa = (x, max = 3000) => String(x ?? '').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').slice(0, max);
+function montarDados() {
+  const nome = limpa((S.r.pessoa || '').replace(/[\r\n]+/g, ' '), 80).trim() || 'Sem nome';
+  const d = { access_key: CONFIG.WEB3FORMS_KEY, subject: `BRIEFING ${nome.toUpperCase()} - PREENCHIDO`, from_name: 'Briefing turzin.',
+    'Marca': marca(), 'Respondido por': nome, 'Versão do formulário': S.modo === 'legado' ? 'Legado' : 'Imersiva', 'Enviado em': new Date().toLocaleString('pt-BR'),
+    'Como ler os sliders': 'Porcentagem de 0 a 100 em direção a cada polo. 50% / 50% = exatamente no meio. "Não ajustado" = a pessoa não mexeu.',
+    botcheck: !!document.querySelector('#bc') && document.querySelector('#bc').checked };
+  for (let a = 1; a <= 5; a++) P.filter(q => q.ato === a).forEach(q => {
+    const base = `${ATOS[a].rom} · ${ATOS[a].nome} · ${q.t}`, v = S.r[q.id];
+    if (q.tipo === 'escalas') q.eixos.forEach(([k, e, dd]) => { d[`${base} · ${e} ↔ ${dd}`] = v && v[k] != null ? `${e} ${100 - v[k]}% · ${dd} ${v[k]}%` : 'Não ajustado'; });
+    else if (q.tipo === 'pares') q.pares.forEach(([ka, e, kb, dd]) => { const x = v && v[ka + '-' + kb]; d[`${base} · ${e} ou ${dd}`] = x ? (x === ka ? e : dd) : 'Sem escolha'; });
+    else if (q.tipo === 'polo') d[base] = typeof v === 'number' ? `${q.esq} ${100 - v}% · ${q.dir} ${v}%` : 'Não ajustado';
+    else d[base] = limpa(valor(q)) || 'Não respondido';
+  });
+  d['Marca'] = limpa(d['Marca'], 120);
+  return d;
+}
+
+async function enviar(t) {
+  const av = t.querySelector('#aviso'), b = t.querySelector('#enviar');
+  if (!CONFIG.WEB3FORMS_KEY || CONFIG.WEB3FORMS_KEY === 'COLE_A_CHAVE_AQUI') { av.textContent = 'O envio ainda não foi configurado. Use “Copiar respostas”.'; av.classList.remove('ok'); return; }
+  if (enviar.ocupado || enviar.feito) return;                       // evita envio duplicado (duplo clique, Enter repetido)
+  const agora = Date.now(); if (agora - (enviar.ultimo || 0) < 15000) { av.textContent = 'Aguarde alguns segundos antes de tentar de novo.'; return; }
+  enviar.ocupado = true; enviar.ultimo = agora;
+  b.disabled = true; av.textContent = 'Enviando…'; av.classList.remove('ok');
+  const nome = (S.r.pessoa || '').trim() || 'Sem nome', dados = montarDados();
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(dados) });
+    const j = await res.json().catch(() => ({}));
+    if (!res.ok || !j.success) throw new Error(j.message || res.status);
+    av.textContent = `Recebido. Obrigado, ${nome.split(' ')[0]}. Agora é com a turzin.`; av.classList.add('ok'); b.textContent = 'Enviado'; enviar.feito = true;
+    guarda.limpar();   // apaga as respostas guardadas neste aparelho depois do envio
+  } catch (er) { b.disabled = false; av.textContent = 'Não foi possível enviar agora. Verifique a internet e tente de novo, ou use “Copiar respostas”.'; }
+  finally { enviar.ocupado = false; }
+}
+
+/* ---------- botão de som ---------- */
+function botaoSom() {
+  const b = $('#btnSom'); b.hidden = false;
+  const pinta = () => { b.classList.toggle('on', Som.ligado); b.setAttribute('aria-pressed', Som.ligado); b.querySelector('.tx').textContent = Som.ligado ? 'Som' : 'Mudo'; b.setAttribute('aria-label', Som.ligado ? 'Desligar a trilha' : 'Ligar a trilha'); };
+  b.onclick = () => { Som.iniciar(); Som.alternar(); pinta(); }; pinta();
+}
+
+/* ---------- início ---------- */
+botaoSom(); $('#btnSom').hidden = true;
+document.fonts && document.fonts.ready.then(() => Palco.refazNome());
+mostrar();
+</script>
+
+</body></html>

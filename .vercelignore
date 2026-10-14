@@ -1,0 +1,8 @@
+src
+GUIA-DO-SITE.html
+*.zip
+*.bat
+*.py
+*.md
+.env*
+.git

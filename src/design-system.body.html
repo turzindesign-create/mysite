@@ -1,0 +1,452 @@
+<body>
+
+<!-- ================================================================
+     DESIGN SYSTEM turzin. · tudo aqui usa o CSS e o JS originais do site (index.html).
+     O que é só de documentação usa classes com prefixo .ds- (camada de documentação, no fim do <head>).
+     ================================================================ -->
+
+<div class="bar" id="bar"></div>
+
+<!-- ===== MENU DO TOPO (mesmo componente do site, com as seções do design system) ===== -->
+<header class="top">
+  <a class="logo" href="#inicio" aria-label="turzin., início">{{SVG:logotipo:marca}}</a>
+  <nav class="mono">
+    <a class="l" href="#ds-marca">Marca</a>
+    <a class="l" href="#ds-tipo">Tipografia</a>
+    <a class="l" href="#ds-cores">Cores</a>
+    <a class="l" href="#ds-comp">Componentes</a>
+    <a class="l" href="#ds-layout">Layout</a>
+    <a class="l" href="#ds-mov">Movimento</a>
+    <a class="l" href="#ds-voz">Voz</a>
+    <a class="btn fill sm mag" href="index.html">Ver site</a>
+  </nav>
+</header>
+
+<nav class="rail mono" id="rail" aria-label="Seções">
+  <a href="#inicio" data-t="inicio"><span>Início</span><i></i></a>
+  <a href="#ds-marca" data-t="ds-marca"><span>Marca</span><i></i></a>
+  <a href="#ds-tipo" data-t="ds-tipo"><span>Tipografia</span><i></i></a>
+  <a href="#ds-cores" data-t="ds-cores"><span>Cores</span><i></i></a>
+  <a href="#ds-comp" data-t="ds-comp"><span>Componentes</span><i></i></a>
+  <a href="#ds-layout" data-t="ds-layout"><span>Layout</span><i></i></a>
+  <a href="#ds-mov" data-t="ds-mov"><span>Movimento</span><i></i></a>
+  <a href="#ds-voz" data-t="ds-voz"><span>Voz</span><i></i></a>
+  <a href="#contato" data-t="contato"><span>Contato</span><i></i></a>
+</nav>
+
+<main>
+<!-- ===== 0) HERO: cópia exata da primeira tela do site, só com o texto trocado ===== -->
+<section class="hero" id="inicio">
+  {{SVG:simbolo:marca px hero-sym}}
+  <div class="eyebrow mono"><span class="nocaps">turzin.</span><span>Design system · versão 1.0</span><span class="hud" id="hud" aria-hidden="true">X 0000 · Y 0000</span></div>
+  <h1 id="ht" aria-label="Peça por peça. Sistema de design."><span class="ln" data-pt>Peça por peça</span><span class="ln" data-cur>Sistema de design</span></h1>
+  <div class="row">
+    <p class="say"><span class="nocaps">turzin.</span> é <span class="rot" id="rot"><span class="on">cor</span><span>tipo</span><span>grade</span><span>ritmo</span><span>movimento</span></span><br>Cada regra do site e da marca, num lugar só.</p>
+    <div class="ctas">
+      <a class="btn fill mag" href="#ds-tipo">Ver os tokens <span class="arr">→</span></a>
+      <a class="btn mag" href="#ds-mov">Ver o movimento</a>
+    </div>
+  </div>
+  <div class="stack" aria-hidden="true"><div class="s3d" id="s3d">
+    <div class="c"><img src="img/home/1-hero-cartoes-3d/site-turzin.webp" alt="" width="800" height="1000" loading="lazy" decoding="async"></div>
+    <div class="c"><img src="img/home/1-hero-cartoes-3d/manifesto-turzin.webp" alt="" width="800" height="1000" loading="lazy" decoding="async"></div>
+    <div class="c"><img src="img/home/1-hero-cartoes-3d/cartao-turzin.webp" alt="" width="800" height="1000" loading="lazy" decoding="async"></div>
+  </div></div>
+</section>
+
+<nav class="marquee" aria-label="Projetos"><div class="row2" id="mq"></div></nav>
+
+<!-- índice em linha (camada de documentação): no celular o menu do topo esconde os links -->
+<nav class="ds-index mono" aria-label="Seções do design system">
+  <a href="#ds-marca">Marca</a><a href="#ds-tipo">Tipografia</a><a href="#ds-cores">Cores</a><a href="#ds-comp">Componentes</a><a href="#ds-layout">Layout</a><a href="#ds-mov">Movimento</a><a href="#ds-voz">Voz</a>
+</nav>
+
+<!-- ===== MARCA (manual de identidade) ===== -->
+<section class="sec" id="ds-marca" aria-labelledby="t-marca">
+  <div class="kick-row"><span class="kick mono scr">00 · Marca</span>{{SVG:simbolo:marca px}}</div>
+  <h2 id="t-marca" class="split" data-pt>Logo, símbolo e assinaturas</h2>
+  <p class="lede rv">O logo carrega a engenharia. A voz carrega a conversa. Tecnologia, design e engenharia, com atitude.</p>
+
+  <div class="ds-marks rv">
+    <figure class="ds-mark"><div class="ds-mk ds-mk-escuro">{{SVG:logotipo:marca}}</div><figcaption class="mono">Logotipo · Bold, espaçamento −40</figcaption></figure>
+    <figure class="ds-mark"><div class="ds-mk ds-mk-escuro">{{SVG:simbolo:marca px ds-mk-sym}}</div><figcaption class="mono">Símbolo · bloco maior na razão 1,61</figcaption></figure>
+    <figure class="ds-mark"><div class="ds-mk ds-mk-escuro">{{SVG:assinatura-centralizada:marca}}</div><figcaption class="mono">Assinatura centralizada · institucional</figcaption></figure>
+    <figure class="ds-mark"><div class="ds-mk ds-mk-escuro">{{SVG:assinatura-ponto:marca}}</div><figcaption class="mono">Assinatura no ponto · a mais expressiva</figcaption></figure>
+  </div>
+
+  <h3 class="ds-h3">Uma marca, quatro fundos</h3>
+  <p class="ds-p">A cor do ponto final sempre contrasta com a do texto. Escolha a versão pelo fundo onde a marca vai aparecer.</p>
+  <div class="ds-fundos">
+    <div class="ds-fundo"><div class="ds-mk ds-mk-verde">{{SVG:logotipo:marca}}</div><div class="ds-mk ds-mk-verde">{{SVG:simbolo:marca}}</div><p><b class="mono">Verde</b> Assinatura, a mais reconhecível. Perfis, capas e destaques.</p></div>
+    <div class="ds-fundo"><div class="ds-mk ds-mk-escuro">{{SVG:logotipo:marca}}</div><div class="ds-mk ds-mk-escuro">{{SVG:simbolo:marca}}</div><p><b class="mono">Escuro</b> Maior impacto. O verde brilha no cinza escuro, como palco e tela à noite.</p></div>
+    <div class="ds-fundo"><div class="ds-mk ds-mk-claro">{{SVG:logotipo:marca}}</div><div class="ds-mk ds-mk-claro">{{SVG:simbolo:marca}}</div><p><b class="mono">Claro</b> A mais legível e sóbria. Documentos, propostas e impressos.</p></div>
+    <div class="ds-fundo"><div class="ds-mk ds-mk-clarov">{{SVG:logotipo:marca}}</div><div class="ds-mk ds-mk-clarov">{{SVG:simbolo:marca}}</div><p><b class="mono">Claro + verde</b> A mais leve. Contraste baixo: só em tamanho grande.</p></div>
+  </div>
+
+  <div class="ds-rules">
+    <div><span class="mono">Sempre</span><p><span class="nocaps">turzin.</span> em minúsculas, com o ponto final quadrado.</p></div>
+    <div><span class="mono">Sempre</span><p>O ponto quadrado fecha títulos e vira cursor nas animações.</p></div>
+    <div><span class="mono">Nunca</span><p>Trocar a fonte do logo, arredondar o ponto ou pintar o ponto da mesma cor do texto.</p></div>
+  </div>
+</section>
+
+<!-- ===== 1) TIPOGRAFIA ===== -->
+<section class="sec" id="ds-tipo" aria-labelledby="t-tipo">
+  <div class="kick-row"><span class="kick mono scr">01 · Tipografia</span>{{SVG:simbolo:marca px}}</div>
+  <h2 id="t-tipo" class="split" data-pt>Uma família, três eixos</h2>
+  <p class="lede rv">Bricolage Grotesque em todo o site. Peso de 200 a 800, largura de 75 a 100 e tamanho óptico de 12 a 96. Títulos sempre em caixa alta e condensados na largura 78.</p>
+
+  <div class="ds-pesos rv" aria-label="Pesos da Bricolage Grotesque">
+    <div><span class="ds-ag ds-w2">Ag</span><span class="mono">200</span></div>
+    <div><span class="ds-ag ds-w3">Ag</span><span class="mono">300</span></div>
+    <div><span class="ds-ag ds-w4">Ag</span><span class="mono">400</span></div>
+    <div><span class="ds-ag ds-w5">Ag</span><span class="mono">500</span></div>
+    <div><span class="ds-ag ds-w6">Ag</span><span class="mono">600</span></div>
+    <div><span class="ds-ag ds-w7">Ag</span><span class="mono">700</span></div>
+    <div><span class="ds-ag ds-w8">Ag</span><span class="mono">800</span></div>
+  </div>
+
+  <p class="ds-p mono ds-medida">Medidas calculadas ao vivo na largura atual da tela: <b id="ds-largura">—</b></p>
+  <div class="ds-specs">
+    <div class="ds-row"><span class="mono ds-nome">Título · Hero<small>.hero h1 · var(--titulo-hero-pc)</small></span>
+      <div class="ds-prev"><div class="hero ds-ctx"><h1 data-ds-spec>Do papel à tela<span class="pt"></span></h1></div></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Título · Projeto<small>.ch-title · var(--titulo-projeto)</small></span>
+      <div class="ds-prev"><h2 class="ch-title ds-ctx" data-ds-spec>Isabella</h2></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Título · Seção<small>.sec h2 · var(--titulo-secao)</small></span>
+      <div class="ds-prev"><div class="sec ds-ctx"><h2 data-ds-spec>Brinca um pouco<span class="pt"></span></h2></div></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Título · Contato<small>.end h2 · clamp(44px, 9vw, 150px)</small></span>
+      <div class="ds-prev"><div class="sec end ds-ctx"><h2 data-ds-spec>Quer trocar uma ideia?</h2></div></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Título · Serviço<small>.svc h3 · clamp(28px, 3vw, 40px)</small></span>
+      <div class="ds-prev"><div class="svc ds-ctx"><h3 data-ds-spec>Identidade visual</h3></div></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Título · Painel<small>.panel h3 · clamp(26px, 2.8vw, 38px)</small></span>
+      <div class="ds-prev"><div class="panel"><h3 data-ds-spec>Testa a sua marca</h3></div></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Destaque · Criativo<small>.tilt .rev b</small></span>
+      <div class="ds-prev"><div class="tilt ds-ctx"><div class="rev"><b data-ds-spec>Agilidade mortal</b></div></div></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Destaque · Contato<small>.contacts strong</small></span>
+      <div class="ds-prev"><div class="contacts ds-ctx"><div><strong data-ds-spec>turzindesign@gmail.com</strong></div></div></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Texto · Hero<small>.hero .say · clamp(18px, 2vw, 22px)</small></span>
+      <div class="ds-prev"><div class="hero ds-ctx"><p class="say" data-ds-spec><span class="nocaps">turzin.</span> é design. Com atitude, do tamanho da fonte até o outdoor.</p></div></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Texto · Abertura<small>.lede</small></span>
+      <div class="ds-prev"><p class="lede ds-ctx" data-ds-spec>Digita o nome de um negócio e vê como ele fica com cara de marca.</p></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Texto · Corpo<small>body · var(--body)</small></span>
+      <div class="ds-prev"><p class="ds-corpo" data-ds-spec>Não sigo template. Escrevo o meu. Cada projeto começa pelo problema e termina em algo que funciona e tem identidade.</p></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Texto · Projeto<small>.ch-info p</small></span>
+      <div class="ds-prev"><div class="ch-info"><p data-ds-spec>Duas letras B espelhadas viram uma borboleta. Vinho, pêssego e amarelo no lugar do azul de consultório.</p></div></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Texto · Nota<small>.note</small></span>
+      <div class="ds-prev"><p class="note ds-ctx" data-ds-spec>Estudos autorais, não oficiais e sem vínculo com as marcas retratadas.</p></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Etiqueta<small>.mono · var(--mono)</small></span>
+      <div class="ds-prev"><span class="mono" data-ds-spec>01 · Psicóloga · Sorocaba, SP</span></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Etiqueta · Botão<small>.btn</small></span>
+      <div class="ds-prev"><span class="btn" data-ds-spec>Ver projetos</span></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Etiqueta · Chip<small>.chips span</small></span>
+      <div class="ds-prev"><div class="chips"><span data-ds-spec>Símbolo</span><span>Paleta</span><span>Papelaria</span></div></div><span class="mono ds-val"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Dado · HUD<small>.hud · números tabulares</small></span>
+      <div class="ds-prev"><span class="mono hud" data-ds-spec>X 0640 · Y 0412</span></div><span class="mono ds-val"></span></div>
+  </div>
+</section>
+
+<!-- ===== 2) CORES E SUPERFÍCIES ===== -->
+<section class="sec" id="ds-cores" aria-labelledby="t-cores">
+  <div class="kick-row"><span class="kick mono scr">02 · Cores e superfícies</span>{{SVG:simbolo:marca px}}</div>
+  <h2 id="t-cores" class="split" data-pt>Escuro com verde na ação</h2>
+  <p class="lede rv">O fundo escuro dá impacto. O verde aparece só nos pontos de ação: ponto final, botões, barra de progresso e detalhes. Os valores abaixo são lidos do CSS do site e mudam no modo papel.</p>
+
+  <h3 class="ds-h3">Tokens do site</h3>
+  <div class="ds-swatches" id="ds-tokens">
+    <div class="ds-sw"><i style="background:var(--ground)"></i><div><b class="mono">--ground</b><span>Fundo da página</span><code data-token="--ground"></code></div></div>
+    <div class="ds-sw"><i style="background:var(--ink)"></i><div><b class="mono">--ink</b><span>Texto principal</span><code data-token="--ink"></code></div></div>
+    <div class="ds-sw"><i style="background:var(--mute)"></i><div><b class="mono">--mute</b><span>Texto secundário</span><code data-token="--mute"></code></div></div>
+    <div class="ds-sw"><i style="background:var(--line)"></i><div><b class="mono">--line</b><span>Linhas, bordas e divisores</span><code data-token="--line"></code></div></div>
+    <div class="ds-sw"><i style="background:var(--green)"></i><div><b class="mono">--green</b><span>Ação e destaque</span><code data-token="--green"></code></div></div>
+    <div class="ds-sw"><i style="background:var(--green-ink)"></i><div><b class="mono">--green-ink</b><span>Texto sobre o verde</span><code data-token="--green-ink"></code></div></div>
+    <div class="ds-sw"><i style="background:var(--panel)"></i><div><b class="mono">--panel</b><span>Fundo de painéis</span><code data-token="--panel"></code></div></div>
+  </div>
+  <div class="ds-mode">
+    <button class="switch" id="mode" role="switch" aria-checked="false"><i></i><span class="mono">Modo papel</span></button>
+    <p class="ds-p">Este é o mesmo botão “Vire o jogo” do Playground. Ele troca os tokens da página inteira para <code>:root[data-mode="papel"]</code>.</p>
+  </div>
+
+  <h3 class="ds-h3">Paleta da identidade</h3>
+  <div class="ds-swatches">
+    <div class="ds-sw"><i style="background:#44D62D"></i><div><b class="mono">Verde</b><span>Destaque e assinatura</span><code>#44D62D · RGB 68 214 45</code></div></div>
+    <div class="ds-sw"><i style="background:#212121"></i><div><b class="mono">Cinza escuro</b><span>Base escura e texto</span><code>#212121 · RGB 33 33 33</code></div></div>
+    <div class="ds-sw"><i style="background:#F7F7F7"></i><div><b class="mono">Off-white</b><span>Base clara, texto no escuro</span><code>#F7F7F7 · RGB 247 247 247</code></div></div>
+    <div class="ds-sw"><i style="background:#FFFFFF"></i><div><b class="mono">Branco</b><span>Brilho máximo</span><code>#FFFFFF</code></div></div>
+    <div class="ds-sw"><i style="background:#000000"></i><div><b class="mono">Preto</b><span>Impressão em uma cor</span><code>#000000</code></div></div>
+  </div>
+  <div class="ds-contraste">
+    <div><b>8,4 : 1</b><span class="mono">Verde no cinza escuro · ótimo</span></div>
+    <div><b>15,0 : 1</b><span class="mono">Off-white no cinza escuro · ótimo</span></div>
+    <div><b>10,9 : 1</b><span class="mono">Verde no preto · ótimo</span></div>
+    <div><b>1,9 : 1</b><span class="mono">Branco no verde · só grande</span></div>
+    <div><b>1,8 : 1</b><span class="mono">Verde no claro · só grande</span></div>
+  </div>
+
+  <h3 class="ds-h3">Cores dos projetos</h3>
+  <p class="ds-p">Cada capítulo de projeto usa a cor do cliente como fundo (campo <code>cor</code> em <code>PROJETOS</code>). A cor da turzin. não entra.</p>
+  <div class="ds-swatches" id="ds-projetos"></div>
+
+  <h3 class="ds-h3">Superfícies</h3>
+  <div class="ds-surfs">
+    <figure><div class="ds-surf-ground"><span class="mono">Página</span></div><figcaption class="mono">var(--ground)</figcaption></figure>
+    <figure><div class="panel"><span class="mono">Painel</span></div><figcaption class="mono">.panel · var(--panel)</figcaption></figure>
+    <figure><div class="sec end ds-ctx ds-surf"><span class="mono">Bloco verde</span></div><figcaption class="mono">.end · var(--green)</figcaption></figure>
+    <figure><div class="stage ds-ctx ds-surf" style="--b:#a3122b"><span class="mono">Capítulo</span></div><figcaption class="mono">.stage · var(--b)</figcaption></figure>
+    <figure><div class="tilt ds-ctx-img"><img src="img/home/4-criativos/nike.webp" alt="" loading="lazy"><div class="rev"><b>Gradiente</b><span class="mono">transparente → preto 85%</span></div></div><figcaption class="mono">.tilt .rev · gradiente</figcaption></figure>
+    <figure><div class="ds-surf-over"><div class="htrack ds-ctx"><figure><figcaption>Legenda da esteira</figcaption></figure></div></div><figcaption class="mono">figcaption · rgba(33,33,33,.85)</figcaption></figure>
+  </div>
+</section>
+
+<!-- ===== 3) COMPONENTES ===== -->
+<section class="sec" id="ds-comp" aria-labelledby="t-comp">
+  <div class="kick-row"><span class="kick mono scr">03 · Componentes</span>{{SVG:simbolo:marca px}}</div>
+  <h2 id="t-comp" class="split" data-pt>As peças do site</h2>
+  <p class="lede rv">Os estados parados (hover e foco) copiam as regras originais numa classe de demonstração. Para ver o movimento de verdade, passe o mouse no item “Padrão”. O site não tem estado “desativado”, então ele não aparece aqui.</p>
+
+  <h3 class="ds-h3">Botões</h3>
+  <div class="ds-states">
+    <div class="ds-state"><span class="mono">Padrão · .btn</span><a class="btn mag" href="#ds-comp">Brincar um pouco</a></div>
+    <div class="ds-state"><span class="mono">Hover</span><span class="btn ds-hover">Brincar um pouco</span></div>
+    <div class="ds-state"><span class="mono">Foco (teclado)</span><span class="btn ds-hover ds-focus">Brincar um pouco</span></div>
+  </div>
+  <div class="ds-states">
+    <div class="ds-state"><span class="mono">Padrão · .btn.fill</span><a class="btn fill mag" href="#ds-comp">Ver projetos <span class="arr">→</span></a></div>
+    <div class="ds-state"><span class="mono">Hover</span><span class="btn fill ds-hover">Ver projetos <span class="arr">→</span></span></div>
+    <div class="ds-state"><span class="mono">Foco (teclado)</span><span class="btn fill ds-hover ds-focus">Ver projetos <span class="arr">→</span></span></div>
+  </div>
+  <div class="ds-states">
+    <div class="ds-state"><span class="mono">Pequeno · .btn.fill.sm</span><a class="btn fill sm mag" href="#ds-comp">Contato</a></div>
+    <div class="ds-state"><span class="mono">Sobre o verde · .end .btn.fill</span><div class="sec end ds-ctx ds-surf"><a class="btn fill mag" href="#contato">WhatsApp <span class="arr">→</span></a></div></div>
+    <div class="ds-state"><span class="mono">Sobre a cor do projeto · .ch-info .btn</span><div class="stage ds-ctx ds-surf" style="--b:#6d2fae"><div class="ch-info"><span class="btn mag">Ver estudo de caso <span class="arr">→</span></span></div></div></div>
+  </div>
+  <div class="ds-states">
+    <div class="ds-state"><span class="mono">Copiar · .copy</span><div class="sec end ds-ctx ds-surf"><span class="copy">Copiar e-mail</span></div></div>
+    <div class="ds-state"><span class="mono">Copiar · hover</span><div class="sec end ds-ctx ds-surf"><span class="copy ds-hover">Copiar e-mail</span></div></div>
+  </div>
+
+  <h3 class="ds-h3">Seleção e entrada</h3>
+  <div class="ds-states">
+    <div class="ds-state"><span class="mono">Opções · .seg-btns</span><div class="seg-btns"><button type="button" aria-pressed="true">Elegante</button><button type="button" aria-pressed="false">Urbano</button><button type="button" aria-pressed="false">Divertido</button></div></div>
+    <div class="ds-state"><span class="mono">Cores · .sw</span><div class="sw"><button type="button" style="--a:#1c1a17;--c:#e9dcc3" aria-pressed="true" aria-label="Paleta 1"></button><button type="button" style="--a:#0f2a24;--c:#d8c08a" aria-pressed="false" aria-label="Paleta 2"></button><button type="button" style="--a:#2b1420;--c:#e6c9a8" aria-pressed="false" aria-label="Paleta 3"></button></div></div>
+    <div class="ds-state"><span class="mono">Interruptor · .switch</span><div class="ds-pair"><span class="switch" aria-checked="false"><i></i><span class="mono">Desligado</span></span><span class="switch" aria-checked="true"><i></i><span class="mono">Ligado</span></span></div></div>
+  </div>
+  <div class="ds-states">
+    <div class="ds-state ctl"><span class="mono">Campo · padrão</span><label><span class="mono">Nome do negócio</span><input type="text" id="ds-in1" value="Café Aurora" autocomplete="off"></label></div>
+    <div class="ds-state ctl"><span class="mono">Campo · foco</span><label><span class="mono">Nome do negócio</span><input type="text" id="ds-in2" class="ds-focus-in" value="Café Aurora" autocomplete="off"></label></div>
+    <div class="ds-state ctl"><span class="mono">Campo · vazio</span><label><span class="mono">Subtítulo do cartão</span><input type="text" id="ds-in3" placeholder="Desde 2026" autocomplete="off"></label></div>
+  </div>
+
+  <h3 class="ds-h3">Etiquetas e navegação</h3>
+  <div class="ds-states">
+    <div class="ds-state"><span class="mono">Chips · .chips</span><div class="stage ds-ctx ds-surf" style="--b:#a3122b"><div class="chips"><span>Símbolo</span><span>Paleta</span><span>Papelaria</span></div></div></div>
+    <div class="ds-state"><span class="mono">Etiqueta + símbolo · .kick-row</span><div class="kick-row"><span class="kick mono">Playground</span>{{SVG:simbolo:marca px}}</div></div>
+    <div class="ds-state"><span class="mono">Índice lateral · .rail (PC largo)</span><nav class="rail ds-ctx mono" aria-hidden="true"><a class="on"><span>Marca</span><i></i></a><a><span>Tipografia</span><i></i></a><a><span>Cores</span><i></i></a></nav></div>
+  </div>
+  <p class="ds-p">Também são componentes do site, ao vivo nesta página: a <b>barra verde de progresso</b> no topo, o <b>menu fixo</b>, o <b>índice lateral</b> à direita (PC largo), a <b>faixa de logos</b> embaixo do hero e o <b>botão de som</b> no canto inferior direito (PC).</p>
+
+  <!-- componente real: Playground inteiro (cartão que vira, sacola, post, compartilhar) -->
+  <div class="ds-tag mono">Componente real · Playground · cartão 3D, sacola, post e painel de compartilhar</div>
+</section>
+
+<section class="sec" id="playground" aria-labelledby="t-play">
+  <div class="kick-row"><span class="kick mono scr">Playground</span>{{SVG:simbolo:marca px}}</div>
+  <h2 id="t-play" class="split" data-pt>Brinca um pouco</h2>
+  <p class="lede rv">Digita o nome de um negócio e vê como ele fica com cara de marca.</p>
+  <div class="play-grid">
+    <div class="panel rv">
+      <h3>Testa a sua marca</h3>
+      <div class="ctl">
+        <label><span class="mono" style="color:var(--mute)">Nome do negócio</span><input type="text" id="pg-name" value="Café Aurora" maxlength="22" autocomplete="off"></label>
+        <div><span class="mono" style="color:var(--mute)">Personalidade</span>
+          <div class="seg-btns" id="pg-style" style="margin-top:8px"></div>
+        </div>
+        <label><span class="mono" style="color:var(--mute)">Subtítulo do cartão</span><input type="text" id="pg-sub" maxlength="34" autocomplete="off" placeholder="Desde 2026"></label>
+        <div><span class="mono" style="color:var(--mute)">Cores</span>
+          <div class="sw" id="pg-sw" style="margin-top:8px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel rv">
+      <div class="stagebox" id="pg-stage">
+        <div class="card3d" id="card" role="button" tabindex="0" aria-label="Cartão de visita, toque para virar" data-cursor="Virar">
+          <div class="f front"><div class="mk-name" data-n></div><div class="mk-sub" data-t></div></div>
+          <div class="f back"><div class="mk-mono" data-m></div></div>
+        </div>
+        <div class="bag"><div class="mk-name" data-n></div><div class="mk-sub" data-t></div></div>
+        <div class="post"><span class="mk-sub" style="margin:0">Novidade</span><div class="mk-name" data-n></div><span class="mk-sub" style="margin:0" data-t></span></div>
+        <span class="flip-hint mono">Toca ou arrasta o cartão pra virar</span>
+        <div class="share-row"><button class="btn fill" type="button" id="pg-share">Compartilhar cartão <span class="arr">↗</span></button><span class="mono share-msg" id="pg-msg" role="status"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="servicos" aria-labelledby="t-svc">
+  <div class="ds-tag mono">Componente real · Cartões de serviço · .svc</div>
+  <div class="kick-row"><span class="kick mono scr">Serviços</span>{{SVG:simbolo:marca px}}</div>
+  <h2 id="t-svc" class="split" data-pt>Identidade visual e site</h2>
+  <div class="svc rv">
+    <article tabindex="0"><span class="tagp mono">Identidade</span><h3>Identidade visual</h3><p>A marca pensada a partir do negócio e do cliente. Não é só logo, é sistema.</p>
+      <ul><li>Estudo de nicho e mercado</li><li>Kit Brand Book</li><li>Kit lançamento de marca</li><li>Logotipos, tipografias, grafismos, aplicações e paleta de cores</li><li>Manual de uso da marca</li></ul></article>
+    <article tabindex="0"><span class="tagp mono">Identidade + Site</span><h3>Identidade visual + Site</h3><p>A marca completa e já no ar, com o mesmo cuidado em cada tela.</p>
+      <ul><li>Estudo de nicho e mercado</li><li>Kit Brand Book</li><li>Kit lançamento de marca</li><li>Logotipos, tipografias, grafismos, aplicações e paleta de cores</li><li>Manual de uso da marca</li><li>Site</li><li>Manual de uso do site</li></ul></article>
+  </div>
+</section>
+
+<!-- ===== 4) LAYOUT E ESPAÇAMENTO ===== -->
+<section class="sec" id="ds-layout" aria-labelledby="t-layout">
+  <div class="kick-row"><span class="kick mono scr">04 · Layout e espaçamento</span>{{SVG:simbolo:marca px}}</div>
+  <h2 id="t-layout" class="split" data-pt>Grade de engenharia</h2>
+  <p class="lede rv">Tudo parte da margem lateral fluida e de grades de duas colunas que viram uma só no celular. Valores medidos ao vivo nesta tela.</p>
+
+  <div class="ds-specs">
+    <div class="ds-row"><span class="mono ds-nome">Margem lateral<small>--g · clamp(16px, 4vw, 56px)</small></span><div class="ds-prev"><div class="ds-bar ds-bar-g"></div></div><span class="mono ds-val" data-ds-px="--g"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Respiro das seções<small>.sec · clamp(80px, 11vw, 150px)</small></span><div class="ds-prev"><div class="ds-bar ds-bar-sec"></div></div><span class="mono ds-val" data-ds-pad=".sec"></span></div>
+    <div class="ds-row"><span class="mono ds-nome">Hero no PC<small>1,3fr · 0,7fr · gap 3vw · a partir de 1000px</small></span><div class="ds-prev"><div class="ds-cols ds-c-hero"><i></i><i></i></div></div><span class="mono ds-val">2 colunas → 1</span></div>
+    <div class="ds-row"><span class="mono ds-nome">Capítulo de projeto<small>.stage · 1fr · 1,05fr · gap 4vw</small></span><div class="ds-prev"><div class="ds-cols ds-c-stage"><i></i><i></i></div></div><span class="mono ds-val">até 860px: 1 coluna</span></div>
+    <div class="ds-row"><span class="mono ds-nome">Criativos<small>.cri · 0,9fr · 1,3fr · gap 48/64px</small></span><div class="ds-prev"><div class="ds-cols ds-c-cri"><i></i><i></i></div></div><span class="mono ds-val">até 860px: 1 coluna</span></div>
+    <div class="ds-row"><span class="mono ds-nome">Playground<small>.play-grid · 1fr · 1,5fr · gap 16px</small></span><div class="ds-prev"><div class="ds-cols ds-c-play"><i></i><i></i></div></div><span class="mono ds-val">até 960px: 1 coluna</span></div>
+    <div class="ds-row"><span class="mono ds-nome">Serviços<small>.svc · 2 colunas iguais</small></span><div class="ds-prev"><div class="ds-cols ds-c-svc"><i></i><i></i></div></div><span class="mono ds-val">até 860px: 1 coluna</span></div>
+    <div class="ds-row"><span class="mono ds-nome">Cantos<small>border-radius</small></span><div class="ds-prev"><div class="ds-cantos"><i class="ds-r0"></i><i class="ds-r6"></i><i class="ds-r10"></i></div></div><span class="mono ds-val">0 · 6px · 10px</span></div>
+  </div>
+  <p class="ds-p">Botões, painéis e imagens da esteira são retos (canto 0), como pixel. Só os criativos (6px), os cartões 3D (10px) e os mockups do Playground arredondam.</p>
+  <div class="ds-tag mono">Padrão real 1 · Hero com cartões 3D · está no topo desta página</div>
+  <div class="ds-tag mono">Padrão real 2 · Capítulo de projeto · tela que trava e esteira horizontal (role para ver)</div>
+</section>
+
+<section class="chapter" id="c-isa" data-set="isa" aria-labelledby="t-isa">
+  <div class="stage">
+    <h2 class="ch-title" id="t-isa">Isabella Gutierres</h2>
+    <div class="ch-info">
+      <span class="seg mono scr">01 · Psicóloga · Sorocaba, SP</span>
+      <p>O segmento inteiro fala frio: azul, cérebro, folha. A Isabella atende relacionamento, então a marca tinha que acolher. Duas letras B espelhadas viram uma borboleta. Vinho, pêssego e amarelo no lugar do azul de consultório.</p>
+      <div class="chips"><span>Símbolo</span><span>Paleta</span><span>Papelaria</span><span>Sinalização</span><span>Instagram</span></div>
+      <button class="btn mag open" data-cursor="Ver">Ver estudo de caso <span class="arr">→</span></button>
+    </div>
+    <div class="layers"></div>
+    <span class="ch-count mono">01 / 05</span>
+  </div>
+</section>
+
+<section class="sec" id="criativos" aria-labelledby="t-cri">
+  <div class="ds-tag mono">Padrão real 3 · Texto + imagens · .cri</div>
+  <div class="cri">
+    <div class="rv">
+      <span class="kick mono scr">Criativos</span>
+      <h2 id="t-cri" class="split" data-pt>Posts que param o dedo</h2>
+      <p class="lede">Além da marca, eu crio as peças do dia a dia: post e anúncio com conceito, hierarquia clara e acabamento de campanha.</p>
+      <p class="note">Estudos autorais, não oficiais e sem vínculo com as marcas retratadas. Feitos pra mostrar composição e manipulação de produto.</p>
+    </div>
+    <div class="tilts rv">
+      <div class="tilt" tabindex="0"><img src="img/home/4-criativos/nike.webp" alt="Estudo de post para chuteira em fundo verde-limão" loading="lazy"><div class="rev"><b>Agilidade mortal</b><span class="mono">Post de lançamento · estudo</span></div></div>
+      <div class="tilt" tabindex="0"><img src="img/home/4-criativos/gatorade.webp" alt="Estudo de foto de produto, garrafa vermelha" loading="lazy"><div class="rev"><b>Produto em cena</b><span class="mono">Manipulação e luz · estudo</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5) MOVIMENTO E INTERAÇÃO ===== -->
+<section class="sec" id="ds-mov" aria-labelledby="t-mov">
+  <div class="kick-row"><span class="kick mono scr">05 · Movimento e interação</span>{{SVG:simbolo:marca px}}</div>
+  <h2 id="t-mov" class="split" data-pt>Tudo se mexe com motivo</h2>
+  <p class="lede rv">Cada efeito abaixo roda com o JavaScript e o CSS originais do site. “Repetir” chama de novo a mesma função ou animação. Curva padrão: <code>--curva: cubic-bezier(.2, .8, .2, 1)</code>, começa rápido e freia suave.</p>
+
+  <div class="ds-motion">
+    <article class="ds-mcard"><div class="ds-stagearea">{{SVG:simbolo:marca px ds-demo-px}}</div>
+      <div><b class="mono">Símbolo em pixels</b><p>.px · @keyframes pixel · 0,26s steps(3) · +90ms por bloco, do maior pro menor</p></div>
+      <button class="btn sm" type="button" data-replay="px">Repetir</button></article>
+
+    <article class="ds-mcard"><div class="ds-stagearea"><span class="mono scr ds-demo-scr">Engenharia de design</span></div>
+      <div><b class="mono">Decodificar texto</b><p>embaralhar() · .scr · 650ms (CONFIG.embaralhar) · ao entrar na tela e no hover do menu</p></div>
+      <button class="btn sm" type="button" data-replay="scr">Repetir</button></article>
+
+    <article class="ds-mcard"><div class="ds-stagearea"><div class="tilt ds-demo-pxr"><img src="img/home/4-criativos/gatorade.webp" alt="" loading="lazy"><div class="rev"><b>Produto em cena</b><span class="mono">Hover: inclina e sobe a legenda</span></div></div></div>
+      <div><b class="mono">Revelação em pixels + inclinação</b><p>revelarPixels() · 650ms em ordem aleatória · hover: rotateY/X até 6° · legenda 0,4s var(--curva)</p></div>
+      <button class="btn sm" type="button" data-replay="pxr">Repetir</button></article>
+
+    <article class="ds-mcard"><div class="ds-stagearea"><div class="sec ds-ctx"><h2 class="split ds-demo-split" data-pt>Brinca um pouco</h2></div></div>
+      <div><b class="mono">Palavras subindo + ponto que cai</b><p>.split · 1s var(--curva) · +60ms por palavra · ponto: @keyframes batida 0,34s, atraso 0,35s</p></div>
+      <button class="btn sm" type="button" data-replay="split">Repetir</button></article>
+
+    <article class="ds-mcard"><div class="ds-stagearea"><div class="panel rv ds-demo-rv"><span class="mono">Bloco que sobe</span></div></div>
+      <div><b class="mono">Blocos que sobem</b><p>.rv · .pre → normal · 0,9s var(--curva) · sobe 34px</p></div>
+      <button class="btn sm" type="button" data-replay="rv">Repetir</button></article>
+
+    <article class="ds-mcard"><div class="ds-stagearea"><a class="btn fill mag" href="#ds-mov">Passe o mouse <span class="arr">→</span></a></div>
+      <div><b class="mono">Botão: preenchimento + ímã</b><p>::before scaleX 0 → 1 · 0,22s cubic-bezier(.2,.9,.1,1) · seta +4px · ímã 0,25 (CONFIG.imaComBotoes)</p></div>
+      <span class="mono ds-live">Ao vivo no hover</span></article>
+
+    <article class="ds-mcard"><div class="ds-stagearea"><div class="ds-cards3d"><div class="c"><img src="img/home/1-hero-cartoes-3d/manifesto-turzin.webp" alt="" loading="lazy"></div></div></div>
+      <div><b class="mono">Cartões 3D</b><p>@keyframes deal 0,9s var(--curva) · bob 6s ease-in-out alternado · seguem o mouse até 22° (PC)</p></div>
+      <button class="btn sm" type="button" data-replay="deal">Repetir</button></article>
+
+    <article class="ds-mcard"><div class="ds-stagearea"><a class="btn" href="#inicio">Ir para o hero</a></div>
+      <div><b class="mono">Título digitado + onda</b><p>45ms por letra · cursor verde anda junto e pisca no fim · depois a onda afina o peso (800 → 200) e o mouse abre a largura</p></div>
+      <button class="btn sm" type="button" data-replay="hero">Repetir</button></article>
+
+    <article class="ds-mcard"><div class="ds-stagearea"><span class="ds-live mono">No hero, ao vivo</span></div>
+      <div><b class="mono">Palavra que troca</b><p>.rot · a cada 2,2s (CONFIG.trocaPalavra) · 0,6s var(--curva) · sobe e some por cima</p></div>
+      <span class="mono ds-live">Ao vivo</span></article>
+
+    <article class="ds-mcard"><div class="ds-stagearea"><span class="hud mono ds-hud-demo">X 0000 · Y 0000</span></div>
+      <div><b class="mono">Grade, varredura e HUD</b><p>grade segue o mouse ±12px · linha verde varre a tela em 7s cubic-bezier(.6,0,.4,1) · HUD mostra X/Y no PC e % de rolagem no celular</p></div>
+      <span class="mono ds-live">Ao vivo no hero</span></article>
+
+    <article class="ds-mcard"><div class="ds-stagearea"><span class="ds-live mono">Mova o mouse pela página</span></div>
+      <div><b class="mono">Rastro de pixels</b><p>quadradinhos verdes de 7px · grade de 8px · 520ms steps(4) · só no PC</p></div>
+      <span class="mono ds-live">Ao vivo</span></article>
+
+    <article class="ds-mcard"><div class="ds-stagearea"><span class="ds-live mono">Role a página</span></div>
+      <div><b class="mono">Faixa, esteira e progresso</b><p>faixa corre em 50s e inclina com a velocidade da rolagem · esteira do capítulo anda com a rolagem · barra verde no topo · rolagem suave no PC (Lenis)</p></div>
+      <span class="mono ds-live">Ao vivo</span></article>
+  </div>
+</section>
+
+<!-- ===== VOZ (manual de identidade) ===== -->
+<section class="sec" id="ds-voz" aria-labelledby="t-voz">
+  <div class="kick-row"><span class="kick mono scr">06 · Voz</span>{{SVG:simbolo:marca px}}</div>
+  <h2 id="t-voz" class="split" data-pt>Direto, sem enrolação</h2>
+  <p class="lede rv">A turzin. fala como gente: informal, direta e com frase curta. O logo continua limpo e técnico.</p>
+  <div class="ds-voz">
+    <div class="panel"><span class="mono ds-ok">Assim</span><p class="ds-fala">Não sigo template. Escrevo o meu.</p><p class="ds-fala">Do papel à tela. Design como função.</p><p class="ds-fala">Tem um projeto? Me chama.</p></div>
+    <div class="panel"><span class="mono">Regras</span>
+      <ul class="ds-lista">
+        <li>Títulos sempre em caixa alta, terminados no ponto quadrado.</li>
+        <li><span class="nocaps">turzin.</span> sempre em minúsculas, com ponto.</li>
+        <li>“Solução” no máximo uma vez por página.</li>
+        <li>O site não é de conversão: mostra o trabalho, sem pressão de venda.</li>
+      </ul></div>
+    <div class="panel"><span class="mono ds-nao">Nunca usar</span>
+      <div class="chips ds-proibidas"><span>palavrão</span><span>emoji</span><span>“uai”</span><span>coach</span><span>transformar</span><span>disruptivo</span><span>inovador</span><span>“bora pra cima”</span></div></div>
+  </div>
+</section>
+
+<!-- componente real de fechamento: bloco de contato -->
+<section class="sec end" id="contato" aria-labelledby="t-end">
+  {{SVG:simbolo:marca px end-sym}}
+  <span class="kick mono scr">Contato</span>
+  <h2 id="t-end" class="split">Quer trocar uma ideia?</h2>
+  <p class="lede rv">Sobre um projeto, sobre design ou só pra falar de marca. Tô por aqui.</p>
+  <div class="contacts">
+    <a class="btn fill mag js-whats" href="#contato" target="_blank" rel="noopener">WhatsApp <span class="arr">→</span></a>
+    <div><span class="mono">WhatsApp</span><strong>(34) 99959-9575</strong></div>
+    <div><span class="mono">E-mail</span><strong id="mail">turzindesign@gmail.com</strong><button class="copy">Copiar e-mail</button></div>
+  </div>
+</section>
+</main>
+
+<div class="sharebox" id="sharebox" hidden role="dialog" aria-modal="true" aria-labelledby="sb-t">
+  <div class="in">
+    <div class="tt"><b id="sb-t">Seu cartão</b><button class="x" type="button" id="sb-x" aria-label="Fechar">×</button></div>
+    <img id="sb-img" alt="Imagem do cartão criado no Playground">
+    <div class="ops">
+      <button class="btn fill wide" type="button" id="sb-share">Compartilhar <span class="arr">↗</span></button>
+      <button class="btn" type="button" id="sb-zap">WhatsApp</button>
+      <button class="btn" type="button" id="sb-insta">Instagram</button>
+      <button class="btn" type="button" id="sb-copy">Copiar imagem</button>
+      <button class="btn" type="button" id="sb-save">Salvar no aparelho</button>
+    </div>
+    <p class="dica" id="sb-msg" role="status">No celular, também dá pra segurar a imagem e salvar.</p>
+  </div>
+</div>
+
+<footer class="ft mono">{{SVG:assinatura-ponto:marca}}<span>Design system · engenharia de design e tecnologia</span><span class="nocaps">turzin. 2026</span></footer>

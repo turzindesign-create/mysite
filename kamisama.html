@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- ============================================================
+     ESTUDO DE CASO · KAMISAMA
+     - Textos: direto aqui no HTML (cada <section class="cap"> é um capítulo).
+     - Imagens desta página: pasta img/kamisama/ (uma subpasta para cada seção).
+     - Visual compartilhado pelas 3 páginas: case.css · Comportamento: case.js
+     - Cores desta página: bloco :root logo abaixo.
+     ============================================================ -->
+<title>turzin.</title>
+<!-- seo -->
+<meta name="description" content="Estudo de caso da identidade visual de Kamisama, delivery de comida japonesa: do problema ao símbolo, cores, tipografia e aplicações. Projeto da turzin.">
+<link rel="canonical" href="https://turzindesign.com.br/kamisama">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="turzin.">
+<meta name="theme-color" content="#212121">
+<link rel="icon" href="/img/marca/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/img/marca/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="turzin.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://turzindesign.com.br/kamisama">
+<meta property="og:title" content="Kamisama · Estudo de caso · turzin.">
+<meta property="og:description" content="Estudo de caso da identidade visual de Kamisama, delivery de comida japonesa: do problema ao símbolo, cores, tipografia e aplicações. Projeto da turzin.">
+<meta property="og:image" content="https://turzindesign.com.br/img/og/og-kamisama.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kamisama · Estudo de caso · turzin.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kamisama · Estudo de caso · turzin.">
+<meta name="twitter:description" content="Estudo de caso da identidade visual de Kamisama, delivery de comida japonesa: do problema ao símbolo, cores, tipografia e aplicações. Projeto da turzin.">
+<meta name="twitter:image" content="https://turzindesign.com.br/img/og/og-kamisama.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "CreativeWork", "@id": "https://turzindesign.com.br/kamisama#caso", "name": "Identidade visual Kamisama", "headline": "Kamisama · Estudo de caso · turzin.", "description": "Estudo de caso da identidade visual de Kamisama, delivery de comida japonesa: do problema ao símbolo, cores, tipografia e aplicações. Projeto da turzin.", "url": "https://turzindesign.com.br/kamisama", "image": "https://turzindesign.com.br/img/og/og-kamisama.jpg", "inLanguage": "pt-BR", "genre": "Identidade visual", "about": "Kamisama, delivery de comida japonesa", "creator": {"@id": "https://turzindesign.com.br/#turzin"}, "publisher": {"@id": "https://turzindesign.com.br/#turzin"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "turzin.", "item": "https://turzindesign.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Kamisama", "item": "https://turzindesign.com.br/kamisama"}]}, {"@type": "ProfessionalService", "@id": "https://turzindesign.com.br/#turzin", "name": "turzin.", "url": "https://turzindesign.com.br/", "logo": "https://turzindesign.com.br/img/marca/simbolo-512.png"}]}</script>
+<!-- /seo -->
+<link rel="icon" href="img/marca/simbolo.svg" type="image/svg+xml">
+<!-- fonte hospedada no próprio site (mais rápido que buscar no Google): Bricolage Grotesque variável -->
+<link rel="preload" href="fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-display:swap;font-weight:200 800;font-stretch:75% 100%;src:url(fonts/bricolage-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-display:swap;font-weight:200 800;font-stretch:75% 100%;src:url(fonts/bricolage-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+</style>
+<link rel="stylesheet" href="case.css">
+<style>
+  /* [GUIA: kamisama-cores] cores desta página = cores do CLIENTE. A página tem a cara da marca dele;
+     da turzin. ficam só o logo, a tipografia (Bricolage em caixa alta) e o ponto quadrado. */
+  :root {
+    --brand: #FF5C35;   /* cor principal do cliente: capa, números, letras A da matriz, destaques */
+    --on-brand: #fff;    /* texto em cima da cor principal */
+    --next: #a3122b;    /* cor do bloco "Próximo projeto" (Isabella Gutierres) */
+  }
+</style>
+</head>
+<body>
+<div class="read"></div>
+<header class="top">
+  <a class="back" href="index.html#c-kami"><span aria-hidden="true">←</span> Voltar</a>
+  <a class="logo" href="index.html" aria-label="turzin. página inicial"><svg aria-hidden="true" focusable="false" viewBox="0 0 1284.0 365.0"><path class="t" transform="translate(-270.0 -717.5) scale(0.5)" d="M1084.0 2164.4C1071.8 2163.5 1052.6 2159.5 1040.2 2155.4C1031.3 2152.4 1015.3 2144.3 1006.1 2138.1C991.9 2128.5 977.5 2114.0 967.3 2099.0C957.6 2084.7 946.6 2060.5 941.9 2043.5C936.3 2022.4 933.3 2007.8 931.1 1990.5C930.5 1986.1 929.5 1978.7 928.8 1974.0C927.9 1967.7 927.5 1924.1 927.2 1805.8L926.9 1646.0L996.4 1646.0L1066.0 1646.0L1066.0 1785.7C1066.0 1872.5 1066.4 1928.8 1067.0 1934.4C1070.2 1963.7 1072.2 1974.2 1077.1 1989.2C1090.4 2029.6 1116.4 2050.0 1154.7 2050.0C1165.4 2050.0 1168.4 2049.6 1180.0 2046.8C1191.0 2044.1 1204.1 2036.4 1215.1 2026.3C1240.1 2003.1 1256.5 1965.7 1263.0 1917.0C1263.6 1912.3 1264.6 1905.6 1265.2 1902.0C1265.9 1897.6 1266.4 1854.4 1266.7 1770.8L1267.2 1646.0L1336.6 1646.0L1406.0 1646.0L1405.8 1898.8L1405.5 2151.5L1350.6 2151.8C1320.3 2151.9 1295.3 2151.7 1294.9 2151.3C1294.5 2150.8 1293.9 2115.3 1293.5 2072.2L1292.7 1994.0L1284.4 1994.0L1276.2 1994.0L1275.2 1997.2C1274.7 1999.0 1273.2 2004.3 1272.0 2009.0C1270.8 2013.7 1268.9 2020.2 1267.9 2023.5C1266.8 2026.8 1265.5 2031.1 1264.9 2033.0C1264.3 2034.9 1263.0 2038.8 1262.0 2041.5C1247.1 2082.4 1234.2 2104.8 1214.6 2124.6C1193.6 2145.6 1172.2 2156.5 1139.5 2162.6C1131.6 2164.0 1095.5 2165.2 1084.0 2164.4ZM757.5 2162.5C740.2 2161.1 731.5 2159.8 721.0 2157.1C693.8 2150.2 675.0 2140.1 657.9 2123.1C647.2 2112.4 640.4 2102.9 634.0 2089.5C626.4 2073.5 622.8 2062.3 619.1 2042.5C613.4 2012.6 613.6 2018.6 613.0 1882.5L612.5 1755.5L576.1 1755.2L539.7 1755.0L540.3 1716.2C540.7 1694.9 541.3 1670.4 541.7 1661.8L542.3 1646.0L571.9 1646.0C602.6 1645.9 615.7 1644.8 626.9 1641.4C638.1 1637.9 645.4 1631.7 649.8 1622.0C652.6 1615.6 652.2 1617.5 659.0 1578.5C660.0 1572.5 661.8 1562.3 663.0 1556.0C664.1 1549.7 665.3 1542.5 665.7 1540.0C666.0 1537.5 666.7 1534.9 667.3 1534.2C668.0 1533.3 677.2 1533.0 707.1 1533.0L746.0 1533.0L746.0 1588.3C746.0 1630.0 746.3 1643.9 747.2 1644.8C748.1 1645.7 763.7 1646.0 811.2 1646.0L874.0 1646.0L874.0 1702.5L874.0 1759.0L810.6 1759.0C753.7 1759.0 747.2 1759.2 746.6 1760.6C746.3 1761.5 746.0 1810.4 746.0 1869.3C746.0 1958.7 746.3 1977.9 747.5 1985.0C749.6 1997.2 750.4 2000.1 753.5 2006.4C760.2 2020.1 773.0 2029.0 791.5 2032.9C798.7 2034.4 833.3 2033.9 842.3 2032.1C851.0 2030.4 862.7 2026.3 869.8 2022.4C873.2 2020.5 876.5 2019.0 877.0 2019.0C877.6 2019.0 878.0 2042.5 878.0 2083.0L878.0 2147.0L874.8 2148.4C871.8 2149.7 868.7 2150.6 859.5 2153.1C857.9 2153.5 854.7 2154.3 852.5 2154.9C845.7 2156.8 828.0 2159.8 817.5 2160.9C805.9 2162.1 777.4 2164.1 774.5 2163.9C773.4 2163.8 765.8 2163.1 757.5 2162.5ZM1459.1 2150.7C1458.3 2149.6 1458.1 2083.6 1458.2 1897.9L1458.5 1646.5L1516.0 1646.5L1573.5 1646.5L1574.0 1732.0L1574.5 1817.5L1583.1 1817.8L1591.6 1818.1L1592.8 1813.0C1593.5 1810.1 1594.0 1806.6 1594.0 1805.2C1594.0 1798.7 1600.3 1768.4 1606.0 1747.5C1607.5 1741.8 1611.1 1731.8 1616.1 1718.8C1618.6 1712.4 1626.6 1697.9 1632.3 1689.6C1644.7 1671.4 1664.9 1654.5 1680.2 1649.6C1685.2 1648.0 1691.4 1646.5 1698.6 1645.1C1706.1 1643.6 1733.3 1642.6 1743.2 1643.5L1752.0 1644.2L1752.0 1700.6L1752.0 1757.0L1740.0 1757.0C1725.5 1757.0 1717.7 1759.2 1700.5 1768.0C1663.6 1786.9 1632.9 1815.7 1619.3 1844.0C1614.3 1854.4 1613.3 1856.9 1609.7 1868.0C1606.5 1877.9 1605.0 1883.1 1603.0 1892.5C1602.5 1894.7 1601.8 1897.8 1601.4 1899.5C1598.9 1910.8 1598.7 1921.8 1598.1 2033.0L1597.5 2151.5L1528.9 2151.8C1472.0 2152.0 1460.1 2151.8 1459.1 2150.7ZM1800.7 2151.3C1800.3 2151.0 1800.0 2124.5 1800.0 2092.6L1800.0 2034.5L1930.5 1902.0L2061.1 1769.5L2060.8 1763.5L2060.5 1757.5L1932.8 1757.2L1805.0 1757.0L1804.5 1754.7C1804.2 1753.5 1804.1 1728.7 1804.2 1699.5L1804.5 1646.5L2021.0 1646.5L2237.5 1646.5L2237.8 1703.5L2238.0 1760.4L2204.7 1794.0C2186.3 1812.4 2126.9 1872.4 2072.7 1927.3L1974.0 2027.0L1974.0 2032.4C1974.0 2035.7 1974.5 2038.2 1975.3 2038.9C1976.3 2039.7 2013.0 2040.1 2108.1 2040.2L2239.5 2040.5L2239.8 2094.9C2239.9 2134.2 2239.7 2149.7 2238.9 2150.6C2237.9 2151.8 2202.5 2152.0 2019.5 2152.0C1899.5 2152.0 1801.0 2151.7 1800.7 2151.3ZM2482.7 2151.3C2482.3 2151.0 2482.0 2037.1 2482.0 1898.3L2482.0 1646.0L2539.1 1646.0L2596.3 1646.0L2595.9 1721.2L2595.5 1796.5L2604.5 1796.5L2613.5 1796.5L2615.3 1789.5C2634.0 1717.2 2663.6 1672.8 2708.5 1650.2C2724.1 1642.4 2732.6 1639.4 2749.5 1636.2C2783.2 1629.9 2811.3 1630.5 2842.5 1638.5C2886.1 1649.6 2920.6 1678.7 2941.0 1721.6C2943.8 1727.6 2946.5 1733.4 2947.0 1734.5C2955.8 1755.8 2963.5 1789.1 2966.9 1821.0C2970.0 1849.3 2970.1 1859.0 2969.8 2004.0L2969.5 2151.5L2901.1 2151.8C2851.4 2151.9 2832.3 2151.7 2831.4 2150.9C2830.2 2149.9 2830.0 2127.1 2830.0 2012.7C2830.0 1926.8 2829.6 1872.2 2829.0 1866.6C2826.0 1839.4 2822.3 1820.9 2817.5 1808.0C2813.9 1798.4 2805.8 1783.2 2801.0 1777.3C2782.7 1754.5 2753.6 1744.2 2722.0 1749.4C2706.5 1752.0 2692.4 1757.8 2681.3 1766.2C2673.1 1772.5 2659.9 1786.8 2653.6 1796.4C2644.9 1809.6 2635.9 1829.7 2632.0 1844.5C2631.5 1846.2 2630.5 1850.0 2629.7 1853.0C2628.9 1856.0 2627.3 1863.7 2626.2 1870.0C2625.1 1876.3 2623.6 1884.4 2622.9 1888.0C2621.9 1892.9 2621.5 1925.4 2621.3 2022.5C2621.0 2120.1 2620.6 2150.6 2619.7 2151.2C2618.2 2152.1 2483.6 2152.3 2482.7 2151.3ZM2336.8 1568.5C2306.0 1563.3 2287.3 1549.3 2279.7 1526.0C2276.6 1516.6 2275.6 1504.6 2276.9 1494.2C2281.1 1462.1 2298.2 1444.8 2333.6 1436.9C2342.8 1434.8 2380.5 1435.1 2389.8 1437.3C2405.6 1441.1 2415.4 1445.5 2424.7 1453.0C2446.4 1470.5 2452.4 1509.9 2437.5 1536.6C2430.6 1549.0 2417.4 1559.2 2402.0 1564.3C2397.8 1565.7 2395.4 1566.3 2381.2 1569.0C2373.9 1570.4 2346.2 1570.0 2336.8 1568.5Z"/><rect class="t" x="875.0" y="105.5" width="69.5" height="253.0"/><rect class="d" x="1241.5" y="316.5" width="42.5" height="42.0"/></svg></a>
+</header>
+
+<!-- ================= [GUIA: kamisama-capa] CAPA ================= -->
+<section class="capa" id="capa">
+  <span class="kick mono">Estudo de caso 05 · Identidade visual</span>
+  <h1>Kamisama<span class="pt"></span></h1>
+  <p class="sub">Identidade visual para um delivery de comida japonesa: a elegância de um restaurante, com a força de um guerreiro.</p>
+  <div class="ficha"><div><b>Cliente</b>Kamisama</div><div><b>Segmento</b>Delivery de comida japonesa</div><div><b>Cardápio</b>Sushi e yakisoba</div><div><b>Entregas</b>Símbolo, logotipo, paleta, ícones, embalagem e redes</div></div>
+  <!-- imagem da capa: img/kamisama/1-capa -->
+  <div class="capa-img"><img src="img/kamisama/1-capa/sushi.webp" alt="Sushi de salmão com o símbolo da Kamisama" style="object-position:center 50%"></div>
+</section>
+
+<div class="corpo">
+  <!-- SUMÁRIO (lateral, só no PC). Se criar um capítulo, adicione um link aqui -->
+  <nav class="sumario" aria-label="Sumário">
+    <b class="mono">Sumário</b>
+    <ol>
+      <li><a href="#resumo">Resumo</a></li>
+      <li><a href="#contexto">1. Contexto</a></li>
+      <li><a href="#base">2. Base teórica</a></li>
+      <li><a href="#problemas">3. Problemas de design</a></li>
+      <li><a href="#metodo">4. Método RACI</a></li>
+      <li><a href="#matriz">5. Matriz da identidade</a></li>
+      <li><a href="#mapa">6. Mapa da marca</a></li>
+      <li><a href="#simbolo">7. Símbolo</a></li>
+      <li><a href="#tipografia">8. Tipografia</a></li>
+      <li><a href="#cor">9. Cor</a></li>
+      <li><a href="#grafismos">10. Grafismos e imagem</a></li>
+      <li><a href="#voz">11. Tom de voz e movimento</a></li>
+      <li><a href="#aplicacoes">12. Aplicações</a></li>
+      <li><span class="off" aria-disabled="true" title="Ainda sem site">13. Site</span></li>
+      <li><a href="#resultados">14. Resultados</a></li>
+      <li><a href="#consideracoes">15. Considerações finais</a></li>
+      <li><a href="#referencias">Referências</a></li>
+    </ol>
+  </nav>
+
+  <article>
+    <!-- ================= [GUIA: kamisama-textos] RESUMO ================= -->
+    <section class="resumo cap" id="resumo">
+      <span class="mono" style="color:var(--brand)">Resumo</span>
+      <p>Este estudo apresenta a identidade visual da Kamisama, delivery de comida japonesa e yakisoba. O trabalho partiu de cinco problemas da empresa, organizados pelo método RACI de identidade. A tipografia elegante ficou responsável por fazer o delivery parecer restaurante; o símbolo, um guerreiro envolvido por um dragão, por fugir dos clichês do segmento; e as cores, tiradas dos próprios pratos, por abrir o apetite e marcar a embalagem.</p>
+      <p class="chave"><b>Palavras-chave:</b> identidade visual; gastronomia japonesa; delivery; método RACI; símbolo.</p>
+    </section>
+
+    <section class="cap" id="contexto">
+      <h2><span class="n">1</span>Contexto<span class="pt"></span></h2>
+      <p>No delivery, o cliente escolhe o restaurante pelo aplicativo ou pelo Instagram, sem ver o salão nem o atendimento. A marca é o que sobra para dizer se a comida é boa.</p><p>O segmento japonês repete os mesmos recursos: hashi, ondas, sol vermelho e letras que imitam pincel. A Kamisama precisava de uma marca própria, com a elegância de um restaurante e energia para o feed.</p>
+    </section>
+
+    <!-- [GUIA: kamisama-base] base teórica deste projeto: cada parágrafo é um <p>. Se citar um autor novo, inclua ele nas Referências -->
+    <section class="cap" id="base">
+      <h2><span class="n">2</span>Base teórica<span class="pt"></span></h2>
+      <p>O Bruno Munari via o projeto como um jeito de organizar e simplificar: o problema já traz as peças, e o trabalho é tirar o que sobra (Munari, 1998). No símbolo da Kamisama foi literal: guerreiro e dragão desenhados só com formas chapadas, sem contorno e sem detalhe que não precisasse estar ali.</p>
+      <p>O Adrian Frutiger, que passou a vida estudando sinais, mostra que um símbolo funciona quando a gente reconhece a forma antes de entender o desenho (Frutiger, 1999). Por isso, além do símbolo completo, a marca ganhou ícones bem simples para o aplicativo, onde tudo aparece pequeno.</p>
+      <p>A matriz RACI, que organiza todo o resto, vem da gestão de projetos. No capítulo 4 eu conto como adaptei ela para o design.</p>
+    </section>
+
+    <!-- ================= [GUIA: kamisama-problemas] PROBLEMAS (P1 a P5) =================
+         Se mudar um problema aqui, mude também a linha dele na matriz e nos resultados -->
+    <section class="cap" id="problemas">
+      <h2><span class="n">3</span>Problemas de design<span class="pt"></span></h2>
+      <p>Antes de desenhar, os problemas. Saíram da conversa com o cliente e da análise do segmento:</p>
+      <ol class="problemas"><li><b class="p">P1</b><strong>Parecer restaurante, mesmo sendo delivery</strong><span>O cliente julga a qualidade pela marca antes de provar a comida.</span></li><li><b class="p">P2</b><strong>Fugir dos clichês do segmento</strong><span>Hashi, onda e letra “oriental” se repetem em quase todo delivery japonês.</span></li><li><b class="p">P3</b><strong>Abrir o apetite</strong><span>No aplicativo e no feed, a marca precisa lembrar a comida.</span></li><li><b class="p">P4</b><strong>Ser reconhecida no aplicativo</strong><span>O logo aparece minúsculo na lista de restaurantes.</span></li><li><b class="p">P5</b><strong>Chegar bem na casa do cliente</strong><span>A embalagem é o único contato físico com a marca.</span></li></ol>
+    </section>
+
+    <!-- método RACI: o mesmo texto nas 3 páginas -->
+    <section class="cap" id="metodo">
+      <h2><span class="n">4</span>Método RACI<span class="pt"></span></h2>
+      <p>O método RACI de identidade é meu, e parte de uma ideia simples: design existe pra resolver problema da empresa. Então cada elemento da identidade precisa ter uma função clara. Nada entra só pra enfeitar.</p>
+      <p>Na gestão de projetos, a matriz RACI cruza tarefas com pessoas e define quem executa, quem responde pelo resultado, quem é consultado e quem só é informado (PMI, 2017). No método, as tarefas viram os <b>problemas da empresa</b> e as pessoas viram os <b>elementos da identidade</b>: símbolo, tipografia, cor, grafismos, imagem, tom de voz e movimento.</p>
+      <p>O processo tem quatro passos:</p>
+      <ul class="lista">
+        <li><b>Levantar os problemas.</b> Conversa com o cliente e análise do segmento pra listar o que a marca precisa resolver.</li>
+        <li><b>Montar a matriz.</b> Para cada problema, definir o papel de cada elemento com as letras abaixo.</li>
+        <li><b>Desenhar.</b> Cada elemento é criado a partir das responsabilidades que recebeu na matriz.</li>
+        <li><b>Conferir.</b> No fim, cada problema é revisto: o elemento que responde por ele fez a parte dele?</li>
+      </ul>
+      <div class="raci-leg">
+        <div><span class="l A">A</span><br><b>Responde</b><br>O elemento principal pra resolver o problema. Só um por problema.</div>
+        <div><span class="l R">R</span><br><b>Resolve junto</b><br>Elementos que trabalham junto no problema.</div>
+        <div><span class="l C">C</span><br><b>Apoia</b><br>Reforçam o trabalho, mas não carregam o problema.</div>
+        <div><span class="l I">I</span><br><b>Acompanha</b><br>Não atuam no problema, mas ficam coerentes com o resto.</div>
+      </div>
+    </section>
+
+    <!-- ================= [GUIA: kamisama-matriz] MATRIZ RACI =================
+         Cada linha é um problema; cada coluna, um elemento. Troque a letra (A, R, C ou I)
+         dentro do <i class="l X">X</i>: a letra da classe e a do texto precisam ser iguais.
+         Lembre de atualizar também as caixas "Responsabilidade" de cada elemento. -->
+    <section class="cap" id="matriz">
+      <h2><span class="n">5</span>Matriz da identidade<span class="pt"></span></h2>
+      <p>A matriz mostra o papel de cada elemento em cada problema. Cada elemento foi desenhado a partir dela.</p>
+      <div class="tabela"><table class="raci"><thead><tr><th>Problema</th><th>Símbolo</th><th>Tipografia</th><th>Cor</th><th>Grafismos</th><th>Imagem</th><th>Tom de voz</th><th>Movimento</th></tr></thead><tbody><tr><td><b>P1</b>Parecer restaurante, mesmo sendo delivery</td><td><i class="l R">R</i></td><td><i class="l A">A</i></td><td><i class="l C">C</i></td><td><i class="l I">I</i></td><td><i class="l R">R</i></td><td><i class="l C">C</i></td><td><i class="l I">I</i></td></tr><tr><td><b>P2</b>Fugir dos clichês do segmento</td><td><i class="l A">A</i></td><td><i class="l R">R</i></td><td><i class="l C">C</i></td><td><i class="l C">C</i></td><td><i class="l I">I</i></td><td><i class="l C">C</i></td><td><i class="l I">I</i></td></tr><tr><td><b>P3</b>Abrir o apetite</td><td><i class="l I">I</i></td><td><i class="l I">I</i></td><td><i class="l R">R</i></td><td><i class="l C">C</i></td><td><i class="l A">A</i></td><td><i class="l C">C</i></td><td><i class="l C">C</i></td></tr><tr><td><b>P4</b>Ser reconhecida no aplicativo</td><td><i class="l R">R</i></td><td><i class="l C">C</i></td><td><i class="l R">R</i></td><td><i class="l A">A</i></td><td><i class="l I">I</i></td><td><i class="l I">I</i></td><td><i class="l I">I</i></td></tr><tr><td><b>P5</b>Chegar bem na casa do cliente</td><td><i class="l R">R</i></td><td><i class="l C">C</i></td><td><i class="l A">A</i></td><td><i class="l C">C</i></td><td><i class="l I">I</i></td><td><i class="l R">R</i></td><td><i class="l I">I</i></td></tr></tbody></table></div>
+    </section>
+
+    <!-- ================= [GUIA: kamisama-mapa] MAPA DA MARCA ================= -->
+    <section class="cap" id="mapa">
+      <h2><span class="n">6</span>Mapa da marca<span class="pt"></span></h2>
+      <div class="mapa">
+        <div class="essencia"><b class="t">Essência</b><p>Força e sabor</p></div>
+        <div><b class="t">Propósito</b>Levar a experiência de um restaurante japonês para a casa do cliente.</div>
+        <div><b class="t">Público</b>Jovens e adultos que pedem comida japonesa pelo aplicativo e pelo Instagram.</div>
+        <div><b class="t">Personalidade</b><div class="tags"><span>Elegante</span><span>Forte</span><span>Calorosa</span><span>Ousada</span></div></div>
+        <div class="largo"><b class="t">Tom de voz</b>Confiante e bem-humorado, com frases curtas que puxam o pedido.</div>
+        <div class="largo"><b class="t">A marca é / não é</b><div class="enao"><span>Elegante</span><span>não</span><span>Fria</span><span>Forte</span><span>não</span><span>Agressiva</span><span>Bem-humorada</span><span>não</span><span>Desleixada</span></div></div>
+      </div>
+    </section>
+
+    <!-- ================= [GUIA: kamisama-simbolo] SÍMBOLO + ESBOÇO DE CONSTRUÇÃO =================
+         O esboço é um desenho SVG: linhas tracejadas (class="guia") + o símbolo pronto por cima.
+         Imagem da figura: img/kamisama/2-simbolo -->
+    <section class="cap" id="simbolo">
+      <h2><span class="n">7</span>Símbolo<span class="pt"></span></h2>
+      <div class="resp"><b>Responsabilidade · Símbolo</b><span><i class="l A">A</i>P2</span><span><i class="l R">R</i>P1, P4, P5</span><span><i class="l I">I</i>P3</span></div>
+      <p>O símbolo é um guerreiro envolvido por um dragão. O guerreiro traz confiança e a essência de força que a marca quer passar; o dragão, que gira em volta dele, dá movimento e energia. Embaixo, um caractere japonês fecha o desenho e liga o símbolo à cultura do cardápio.</p><p>O desenho usa só formas chapadas, sem contorno, o que mantém o visual minimalista mesmo com uma figura detalhada.</p>
+      <div class="constr">
+        <div class="tela">
+          <svg class="esboco" viewBox="-260 -260 2314 4397" role="img" aria-label="Esboço de construção do símbolo da Kamisama: guerreiro envolvido por um dragão"><path d="M187.6 3358.5C193.0 3331.5 208.6 3295.1 227.8 3264.4C255.9 3219.2 298.8 3174.0 348.5 3136.9C408.6 3092.2 472.3 3060.7 567.0 3029.0C657.9 2998.5 747.7 2979.3 853.5 2967.5C920.5 2960.0 968.3 2951.4 1032.5 2935.4C1128.1 2911.5 1233.7 2873.2 1319.1 2831.5C1326.4 2827.9 1332.7 2825.4 1333.1 2825.8C1335.0 2828.1 1365.0 2869.8 1378.4 2889.0C1401.6 2922.0 1446.1 2989.1 1445.7 2990.4C1445.2 2991.9 1413.3 3004.5 1389.5 3012.6C1309.3 3040.1 1214.4 3058.5 1125.0 3063.9C1115.4 3064.5 1105.0 3065.2 1102.0 3065.5C1099.0 3065.8 1064.3 3066.5 1025.0 3067.0C953.3 3067.9 927.5 3068.7 882.0 3071.6C591.8 3089.6 370.0 3163.6 247.1 3283.5C221.2 3308.8 204.2 3330.2 191.0 3354.1C188.4 3358.9 187.2 3360.5 187.6 3358.5ZM1518.5 2938.8C1490.6 2895.5 1446.8 2831.8 1417.6 2792.0L1401.2 2769.5L1408.4 2762.0C1427.3 2742.5 1438.3 2723.6 1442.5 2703.4C1445.2 2690.2 1443.7 2673.2 1438.5 2659.5L1436.1 2652.9L1457.8 2667.6C1513.5 2705.4 1564.6 2743.1 1612.0 2781.3C1630.8 2796.4 1661.8 2822.3 1670.6 2830.3L1675.5 2834.8L1659.5 2850.7C1630.0 2880.0 1601.3 2903.4 1566.5 2926.7C1554.8 2934.4 1530.2 2949.6 1527.7 2950.6C1527.0 2950.8 1523.3 2946.2 1518.5 2938.8ZM1716.0 2729.8C1603.8 2614.0 1450.3 2504.3 1264.2 2407.0L1244.2 2396.5L1243.6 2392.5C1242.4 2384.2 1240.0 2344.3 1239.0 2315.0C1237.9 2284.5 1238.6 2223.6 1240.0 2224.5C1240.4 2224.8 1254.9 2227.9 1272.1 2231.4C1398.7 2257.4 1506.3 2286.2 1566.0 2310.2C1685.0 2358.1 1761.5 2442.8 1778.0 2545.1C1785.9 2594.6 1780.2 2646.0 1760.9 2697.9C1755.6 2712.2 1737.7 2750.0 1736.3 2750.0C1735.9 2749.9 1726.7 2740.9 1716.0 2729.8ZM533.5 2370.5C396.4 2338.4 293.7 2304.0 208.5 2262.0C92.7 2204.8 24.4 2137.6 5.7 2062.5C1.1 2044.2 0.5 2038.5 0.5 2015.5C0.6 1990.8 2.0 1980.1 8.4 1956.9C18.4 1920.6 40.4 1878.1 69.4 1839.2C94.9 1805.0 133.8 1765.6 181.5 1726.0C240.6 1676.8 320.3 1621.0 425.8 1555.1C474.0 1525.0 569.8 1467.4 570.4 1468.1C570.6 1468.3 576.1 1478.6 582.6 1491.0C589.1 1503.4 595.1 1514.7 596.0 1516.2L597.6 1518.9L648.6 1495.4C699.0 1472.2 714.6 1464.3 733.0 1452.7C774.9 1426.5 813.5 1391.3 839.1 1356.0C852.9 1337.1 863.6 1317.8 872.0 1297.0L876.2 1286.5L896.4 1274.0L916.7 1261.4L915.0 1269.5C904.6 1316.6 883.7 1358.1 851.0 1396.4C799.5 1456.8 722.2 1504.7 615.5 1542.5L599.5 1548.1L595.3 1567.2C592.9 1577.8 591.2 1586.5 591.4 1586.7C591.6 1586.9 599.8 1583.5 609.6 1579.2C797.1 1496.1 986.0 1428.6 1097.1 1405.1C1180.6 1387.4 1224.3 1389.4 1259.2 1412.2C1267.6 1417.8 1286.0 1434.6 1286.0 1436.7C1286.0 1437.2 1279.7 1441.4 1271.9 1446.2L1257.8 1454.8L1250.2 1449.8C1239.9 1443.1 1226.3 1436.7 1215.5 1433.4C1207.2 1430.9 1204.8 1430.7 1184.2 1430.2C1153.8 1429.6 1129.7 1431.9 1090.0 1439.1C990.4 1457.3 846.2 1505.6 684.0 1575.0C650.7 1589.3 604.0 1610.1 589.5 1617.1L582.5 1620.5L530.9 1729.4L479.3 1838.4L465.9 1848.8C433.9 1873.6 413.5 1892.8 399.9 1911.0C358.6 1965.9 373.9 2009.9 448.0 2049.3C453.8 2052.4 462.8 2056.7 468.0 2059.0C473.2 2061.3 477.7 2063.3 477.8 2063.5C478.3 2063.9 493.0 2118.4 492.7 2118.6C492.6 2118.7 475.4 2114.6 454.5 2109.4C374.8 2089.7 259.3 2064.4 257.3 2066.3C256.6 2067.1 253.8 2136.5 254.2 2144.9L254.5 2151.2L282.0 2158.6C322.5 2169.5 379.7 2185.8 419.5 2197.7C463.6 2210.9 521.3 2228.9 522.2 2229.8C522.5 2230.2 531.4 2262.7 541.9 2302.0C552.4 2341.3 561.3 2374.3 561.6 2375.2C561.9 2376.2 561.8 2377.0 561.3 2376.9C560.9 2376.9 548.4 2374.0 533.5 2370.5ZM1346.5 1389.2C1342.4 1353.3 1331.4 1317.5 1316.3 1291.0C1304.9 1270.9 1289.1 1251.3 1266.8 1229.4C1227.4 1190.7 1176.4 1158.1 1122.0 1136.7C1115.7 1134.3 1109.5 1131.9 1108.2 1131.5C1106.9 1131.1 1106.0 1130.4 1106.2 1129.9C1106.5 1128.9 1133.2 1106.0 1134.0 1106.0C1134.3 1106.0 1141.9 1110.0 1150.8 1115.0C1177.3 1129.8 1201.1 1145.5 1224.8 1163.9C1230.4 1168.3 1235.0 1171.7 1235.0 1171.4C1235.0 1171.2 1217.3 1151.5 1195.6 1127.8L1156.2 1084.6L1167.7 1072.6C1194.8 1044.3 1211.7 1019.4 1222.4 991.8C1247.6 927.4 1247.0 857.0 1220.5 786.5C1203.8 742.0 1175.9 696.8 1145.5 665.1C1126.2 645.0 1081.1 611.9 1044.0 590.5C1002.4 566.5 937.8 537.7 888.3 521.1C871.5 515.4 770.0 485.0 763.9 483.8C762.8 483.6 748.2 499.3 720.5 530.2C682.2 573.0 678.4 577.0 675.6 577.0C673.9 576.9 580.0 570.5 467.0 562.6L261.5 548.3L202.7 583.7C170.3 603.2 143.7 619.0 143.5 618.8C142.8 618.0 129.5 583.5 123.7 567.5C103.5 511.7 92.8 467.5 92.6 439.5C92.5 419.5 95.3 412.3 106.5 403.7C136.0 381.3 227.1 356.8 353.0 337.5L376.5 333.9L380.1 330.2C382.1 328.2 411.5 297.7 445.5 262.5C479.5 227.3 510.0 195.7 513.4 192.3L519.5 186.0L710.0 95.9C920.3 -3.6 914.5 -0.8 911.2 2.0C910.0 3.0 861.6 42.7 803.9 90.2C734.9 146.8 699.4 176.6 700.6 176.8C701.7 176.9 837.7 161.8 1003.0 143.1C1168.3 124.4 1303.6 109.3 1303.7 109.3C1303.7 109.4 1209.7 142.3 1094.7 182.4C979.6 222.5 885.2 255.5 884.8 255.9C884.4 256.2 948.3 275.6 1026.8 298.9C1105.3 322.2 1170.8 341.8 1172.3 342.4C1174.6 343.3 1153.5 345.2 1068.3 351.9C1009.6 356.5 961.3 360.4 961.1 360.6C960.6 361.1 960.1 360.9 986.5 368.5C1104.3 402.5 1218.0 442.9 1281.5 473.4C1333.3 498.3 1378.8 531.6 1424.0 577.6C1479.7 634.3 1522.3 699.8 1550.5 772.0C1581.3 851.1 1591.7 935.0 1580.4 1014.0C1575.3 1049.5 1562.9 1095.8 1548.2 1134.0C1533.8 1171.4 1513.0 1211.6 1491.1 1244.5C1456.9 1295.6 1410.1 1345.4 1356.3 1387.7L1347.1 1394.9L1346.5 1389.2Z" fill="#FF5C35"/><path d="M909.5 3876.0C888.6 3871.8 871.4 3854.6 857.6 3824.0C853.2 3814.3 850.5 3807.1 851.8 3808.5C852.3 3809.1 855.1 3813.0 857.9 3817.3C870.2 3835.7 885.4 3850.6 897.5 3856.2C901.6 3858.1 904.2 3858.5 912.0 3858.5C920.9 3858.5 921.9 3858.3 928.0 3855.1C945.8 3845.6 966.6 3816.9 983.6 3778.4C1015.1 3706.8 1039.8 3603.5 1046.0 3517.5C1049.6 3467.7 1043.8 3425.3 1032.3 3417.2C1010.0 3401.5 955.6 3398.9 875.0 3409.6C864.3 3411.0 855.4 3412.3 855.3 3412.4C855.1 3412.5 853.9 3419.6 852.4 3428.1C844.4 3475.7 827.0 3525.3 804.2 3565.5C797.6 3577.2 780.2 3603.2 772.5 3613.0C725.6 3672.7 661.7 3715.4 592.7 3733.1C586.2 3734.8 580.7 3736.0 580.4 3735.8C580.2 3735.6 585.8 3731.1 592.8 3725.9C693.6 3651.0 751.9 3577.1 795.6 3468.8C802.8 3450.9 813.5 3420.2 812.8 3419.5C811.1 3417.8 692.8 3442.0 592.1 3464.6C573.8 3468.7 558.6 3472.0 558.5 3471.8C558.0 3471.4 583.7 3459.9 606.2 3450.4C672.0 3422.8 750.5 3396.3 812.3 3380.9C821.0 3378.8 825.4 3377.2 826.0 3376.0C828.4 3371.6 843.7 3304.7 847.1 3283.8C847.8 3279.5 848.7 3276.0 849.1 3276.0C850.0 3276.0 853.7 3293.9 855.5 3307.0C857.4 3321.0 859.3 3357.1 858.5 3364.2C858.0 3368.0 858.2 3370.0 858.8 3370.0C859.4 3370.0 863.0 3369.3 866.9 3368.5C909.4 3359.6 961.1 3354.7 990.3 3356.9C1029.8 3359.9 1052.0 3367.8 1069.2 3385.1C1075.5 3391.5 1077.8 3394.6 1082.0 3403.2C1087.5 3414.5 1091.8 3429.9 1094.1 3446.0C1096.2 3460.3 1095.9 3512.2 1093.7 3531.5C1078.7 3660.5 1028.1 3792.8 972.4 3848.5C961.4 3859.5 953.3 3865.5 942.9 3870.5C931.2 3876.0 919.4 3878.0 909.5 3876.0ZM1698.1 3506.6C1697.9 3503.0 1677.3 3442.8 1668.0 3418.5C1625.4 3307.9 1565.2 3185.9 1495.2 3068.5C1454.3 2999.9 1402.6 2921.6 1351.9 2851.2C1342.5 2838.2 1334.2 2826.9 1333.6 2826.2C1332.6 2825.2 1329.0 2826.6 1315.4 2833.1C1209.1 2884.0 1086.1 2925.6 974.0 2948.5C930.7 2957.3 897.8 2962.4 850.5 2967.5C770.4 2976.2 695.7 2990.6 621.0 3011.9C554.8 3030.7 486.4 3056.6 434.0 3082.6C424.9 3087.1 417.4 3090.7 417.3 3090.6C417.3 3090.6 455.4 3045.7 502.2 2991.0C548.9 2936.3 590.4 2887.8 594.2 2883.2L601.3 2874.9L582.0 2821.7C571.4 2792.5 562.7 2768.1 562.7 2767.5C562.7 2767.0 577.1 2733.6 594.8 2693.3C612.5 2653.1 627.0 2619.8 627.0 2619.3C627.0 2618.2 523.1 2229.7 522.7 2229.4C522.3 2229.0 467.3 2211.8 445.5 2205.2C394.1 2189.6 337.8 2173.4 284.5 2159.0C268.1 2154.5 254.4 2150.7 254.2 2150.5C253.8 2150.2 257.0 2066.7 257.4 2066.3C257.8 2065.9 303.7 2075.0 333.2 2081.4C372.2 2089.9 407.4 2098.1 451.9 2109.1C474.1 2114.6 492.4 2118.9 492.7 2118.7C492.9 2118.4 490.0 2106.4 486.1 2091.9C482.2 2077.4 470.5 2033.4 460.0 1994.2C449.6 1954.9 441.0 1922.3 441.0 1921.6C441.0 1920.9 449.4 1902.6 459.6 1880.9C534.6 1722.0 582.3 1621.4 582.9 1620.7C583.9 1619.6 630.3 1598.5 661.0 1585.2C862.6 1497.7 1025.5 1445.3 1136.0 1432.5C1154.9 1430.3 1189.2 1429.5 1201.0 1430.9C1212.4 1432.3 1225.2 1436.5 1237.0 1442.6C1273.0 1461.1 1290.2 1487.2 1292.6 1526.7L1293.2 1536.5L1255.0 1581.3L1216.9 1626.0L1228.5 1648.0C1254.5 1697.2 1266.5 1726.3 1276.4 1764.1C1287.3 1805.3 1291.5 1838.4 1291.4 1882.0C1291.4 1927.5 1286.7 1960.6 1274.0 2005.5C1256.8 2066.1 1247.0 2120.9 1241.5 2186.0C1236.8 2242.6 1237.1 2318.2 1242.4 2382.5L1243.5 2396.5L1265.0 2407.8C1468.7 2514.7 1627.7 2631.6 1744.1 2760.0C1758.2 2775.5 1774.0 2794.3 1774.0 2795.4C1774.0 2796.0 1778.5 2831.4 1784.0 2874.0C1789.4 2916.6 1793.8 2951.5 1793.7 2951.7C1793.5 2951.8 1788.0 2945.8 1781.5 2938.2C1766.6 2921.1 1718.9 2873.2 1697.5 2853.9C1594.2 2760.6 1476.1 2674.2 1336.3 2589.7C1306.6 2571.8 1266.8 2548.9 1266.3 2549.4C1265.5 2550.1 1279.0 2611.3 1281.0 2616.4C1281.5 2617.6 1287.6 2625.5 1294.7 2634.0C1351.0 2701.8 1412.6 2783.3 1465.7 2860.3C1482.6 2884.8 1518.6 2938.9 1527.7 2953.5C1530.4 2957.9 1539.3 2972.1 1547.5 2985.0C1577.4 3032.5 1618.2 3101.4 1646.8 3153.0C1674.7 3203.5 1722.8 3295.1 1734.3 3320.0L1738.7 3329.5L1719.5 3415.0C1699.0 3506.3 1698.3 3509.5 1698.1 3506.6ZM1199.6 3483.8C1195.2 3431.8 1188.6 3403.3 1174.0 3373.5C1153.0 3330.7 1120.6 3297.5 1053.2 3249.7L1038.9 3239.5L1050.1 3239.2C1078.6 3238.5 1115.6 3249.7 1145.2 3268.0C1164.9 3280.3 1185.8 3299.6 1198.2 3317.0C1206.2 3328.2 1216.7 3348.9 1220.9 3361.7C1226.6 3379.2 1228.5 3391.3 1228.5 3412.5C1228.5 3428.3 1228.1 3433.4 1226.2 3442.8C1222.1 3463.0 1214.3 3483.4 1204.7 3498.8L1201.4 3504.1L1199.6 3483.8ZM591.5 1585.8C591.7 1585.1 593.3 1578.0 595.0 1570.0C596.7 1562.0 598.6 1553.9 599.1 1551.9L600.0 1548.3L617.8 1542.0C690.8 1516.2 751.9 1484.0 799.1 1446.6C829.8 1422.2 853.6 1396.7 873.9 1366.5C917.5 1301.5 931.7 1223.5 914.3 1145.0C911.4 1131.9 906.1 1113.8 903.1 1106.7C901.9 1104.0 901.0 1101.6 901.0 1101.3C901.0 1100.4 965.7 1101.8 977.0 1102.9C1067.6 1112.2 1144.2 1138.8 1211.1 1184.1C1232.9 1198.9 1250.6 1213.5 1269.0 1232.0C1306.2 1269.1 1324.2 1298.2 1336.5 1341.1C1344.7 1369.6 1347.6 1391.1 1346.7 1418.9C1345.9 1445.1 1342.0 1465.8 1333.6 1487.7C1328.8 1500.4 1317.6 1521.9 1316.4 1520.8C1316.2 1520.6 1315.6 1516.2 1315.0 1511.0C1309.9 1468.6 1293.3 1437.3 1264.5 1415.7C1234.8 1393.5 1200.4 1388.4 1139.5 1397.1C1073.6 1406.5 970.1 1436.5 852.0 1480.3C779.4 1507.3 692.3 1542.5 623.0 1573.0C609.0 1579.2 596.1 1584.8 594.3 1585.6C591.8 1586.7 591.2 1586.7 591.5 1585.8ZM584.9 1494.8C578.2 1482.0 547.3 1423.5 516.3 1364.7L460.0 1258.0L462.5 1218.1L465.0 1178.2L458.6 1159.9C455.0 1149.8 452.2 1141.5 452.3 1141.5C453.3 1141.1 745.6 1006.7 758.1 1000.9L774.8 993.2L786.2 1003.0C813.9 1026.7 841.7 1060.5 857.4 1089.3C870.7 1113.7 881.9 1146.7 886.6 1175.5C889.0 1190.2 889.1 1222.7 886.7 1239.0C882.5 1267.6 875.5 1290.1 863.0 1315.5C849.2 1343.6 832.8 1366.6 809.1 1391.2C779.7 1421.8 739.6 1451.1 700.8 1470.6C687.3 1477.4 599.2 1518.0 598.0 1518.0C597.5 1518.0 591.7 1507.5 584.9 1494.8ZM1225.0 1163.8C1212.9 1154.1 1192.7 1140.0 1175.5 1129.3C1110.7 1088.9 1046.5 1065.3 976.5 1056.4C958.6 1054.1 910.9 1053.8 895.0 1055.9L884.6 1057.3L883.0 1054.9C864.8 1027.4 826.1 986.2 793.2 959.5L785.0 952.7L780.2 954.7C773.7 957.5 636.5 1020.1 575.0 1048.5C518.4 1074.5 462.0 1101.0 448.7 1107.6L440.0 1112.0L438.9 1109.3C437.1 1104.4 430.1 1075.8 427.1 1060.3C420.0 1025.0 416.7 993.5 416.6 962.0C416.6 933.1 419.3 912.9 426.5 888.2C452.8 798.1 526.6 730.0 616.8 712.6C634.6 709.2 648.3 708.0 670.9 708.0C737.9 708.0 799.7 727.8 862.8 769.4L875.1 777.5L1015.3 930.9C1092.4 1015.3 1172.9 1103.5 1194.2 1126.8C1215.6 1150.1 1233.0 1169.4 1233.0 1169.6C1233.0 1170.3 1232.8 1170.1 1225.0 1163.8Z" fill="#93282C"/><line class="guia" vector-effect="non-scaling-stroke" x1="897" y1="-200" x2="897" y2="4077"/><circle class="guia" vector-effect="non-scaling-stroke" cx="772" cy="882" r="409"/><line class="guia" vector-effect="non-scaling-stroke" x1="-240" y1="3334" x2="2034" y2="3334"/><ellipse class="guia" vector-effect="non-scaling-stroke" cx="897" cy="1938" rx="933" ry="1047" transform="rotate(-18 897 1938)"/><text class="rot" x="917" y="-150" font-size="74" text-anchor="start">eixo do guerreiro</text><text class="rot" x="1205" y="882" font-size="74" text-anchor="start">cabeça</text><text class="rot" x="-236" y="1938" font-size="74" text-anchor="start">dragão</text><text class="rot" x="-236" y="2020" font-size="74" text-anchor="start">em espiral</text><text class="rot" x="2030" y="3424" font-size="74" text-anchor="end">caractere japonês</text></svg>
+        </div>
+        <ol><li><b>Silhueta.</b> O guerreiro é uma silhueta vertical, construída sobre um eixo central.</li><li><b>Espiral.</b> O dragão nasce acima da cabeça e desce em espiral em volta do corpo.</li><li><b>Contraste.</b> Figura e dragão em cores diferentes, para ler bem mesmo pequeno.</li><li><b>Assinatura.</b> O caractere japonês embaixo fecha a composição.</li></ol>
+      </div>
+      <figure class="fig"><img src="img/kamisama/2-simbolo/simbolo-vinho.webp" alt="Símbolo branco e salmão sobre vinho" loading="lazy"><figcaption><b>Figura 1.</b> Versão do símbolo sobre o vinho da marca.</figcaption></figure>
+      <p class="cit">Esboço geométrico feito para explicar a construção. A arte final está nos arquivos da marca.</p>
+    </section>
+
+    <!-- ================= [GUIA: kamisama-tipografia] TIPOGRAFIA (imagem: img/kamisama/3-tipografia) ================= -->
+    <section class="cap" id="tipografia">
+      <h2><span class="n">8</span>Tipografia<span class="pt"></span></h2>
+      <div class="resp"><b>Responsabilidade · Tipografia</b><span><i class="l A">A</i>P1</span><span><i class="l R">R</i>P2</span><span><i class="l C">C</i>P4, P5</span><span><i class="l I">I</i>P3</span></div>
+      <p>A tipografia é a principal responsável por fazer o delivery parecer restaurante (P1). A Marcellus, uma serifa de inspiração clássica, dá elegância ao nome; a Noto Sans JP, desenhada para o japonês, organiza cardápio e posts com clareza.</p>
+      <div class="tipo">
+        <div class="amostra"><img src="img/kamisama/3-tipografia/marcellus.webp" alt="Prancha da tipografia Marcellus" loading="lazy"></div>
+        <dl><div><dt>Logotipo</dt><dd>Marcellus: serifa elegante e de contraste suave. Na versão horizontal, o “sama” vem em tom mais claro.</dd></div><div><dt>Descritor</dt><dd>“SUSHI” em caixa alta e bem espaçado, embaixo do nome.</dd></div><div><dt>Apoio</dt><dd>Noto Sans JP, do Thin ao Black, para cardápio, preços e posts.</dd></div></dl>
+      </div>
+    </section>
+
+    <!-- ================= [GUIA: kamisama-cor] COR =================
+         Em cada quadro: --c é a cor; o texto é a justificativa.
+         Barra de proporção: --p é a porcentagem, --c a cor e --t a cor do número. -->
+    <section class="cap" id="cor">
+      <h2><span class="n">9</span>Cor<span class="pt"></span></h2>
+      <div class="resp"><b>Responsabilidade · Cor</b><span><i class="l A">A</i>P5</span><span><i class="l R">R</i>P3, P4</span><span><i class="l C">C</i>P1, P2</span></div>
+      <p>A cor responde por levar a marca até a casa do cliente (P5) e ajuda a abrir o apetite (P3). Laranja, vinho e salmão vêm dos próprios pratos; Heller (2013) liga o vermelho e o laranja ao apetite e à energia.</p>
+      <div class="paleta">
+        <div class="cor" style="--c:#FF5C35"><div class="amostra"></div><div class="info"><b>Laranja Kamisama</b><div class="cod">#FF5C35 · RGB 255 92 53</div>Cor principal: embalagem, fundos e posts.</div></div>
+        <div class="cor" style="--c:#93282C"><div class="amostra"></div><div class="info"><b>Vinho</b><div class="cod">#93282C · RGB 147 40 44</div>Profundidade e elegância. Base do símbolo e dos fundos escuros.</div></div>
+        <div class="cor" style="--c:#FFA38B"><div class="amostra"></div><div class="info"><b>Salmão</b><div class="cod">#FFA38B · RGB 255 163 139</div>A cor do peixe. Apoio para as versões claras.</div></div>
+        <div class="cor" style="--c:#FFFFFF"><div class="amostra" style="border-bottom:1px solid var(--line)"></div><div class="info"><b>Branco</b><div class="cod">#FFFFFF · RGB 255 255 255</div>Logotipo e textos sobre as cores.</div></div>
+      </div>
+      <p>Proporção de uso sugerida:</p>
+      <div class="proporcao"><span style="--p:45;--c:#FF5C35;--t:#fff">45%</span><span style="--p:25;--c:#93282C;--t:#fff">25%</span><span style="--p:20;--c:#FFA38B;--t:#4a1a10">20%</span><span style="--p:10;--c:#ffffff;--t:#555">10%</span></div>
+      <p class="cit">Códigos HEX medidos nas peças. Confira os Pantone em um guia físico antes de imprimir.</p>
+    </section>
+
+    <section class="cap" id="grafismos">
+      <h2><span class="n">10</span>Grafismos e imagem<span class="pt"></span></h2>
+      <div class="resp"><b>Responsabilidade · Grafismos</b><span><i class="l A">A</i>P4</span><span><i class="l C">C</i>P2, P3, P5</span><span><i class="l I">I</i>P1</span></div>
+      <p>Ícones chapados de cantos redondos (sushi, cardápio, play e balão de conversa) servem de atalho nas redes e no aplicativo, onde o símbolo completo ficaria pequeno demais (P4).</p>
+      <div class="resp"><b>Responsabilidade · Imagem</b><span><i class="l A">A</i>P3</span><span><i class="l R">R</i>P1</span><span><i class="l I">I</i>P2, P4, P5</span></div>
+      <p>Fotos de comida de perto, com luz quente, e de pessoas comendo juntas. Elas abrem o apetite (P3) e mostram a experiência de restaurante.</p>
+    </section>
+
+    <section class="cap" id="voz">
+      <h2><span class="n">11</span>Tom de voz e movimento<span class="pt"></span></h2>
+      <div class="resp"><b>Responsabilidade · Tom de voz</b><span><i class="l R">R</i>P5</span><span><i class="l C">C</i>P1, P2, P3</span><span><i class="l I">I</i>P4</span></div>
+      <p>Confiante e bem-humorado: “Não precisa tentar disfarçar, a gente já te conhece!” e “Pede aí”. Frases curtas que puxam o pedido e levam a marca até a embalagem (P5).</p>
+      <div class="resp"><b>Responsabilidade · Movimento</b><span><i class="l C">C</i>P3</span><span><i class="l I">I</i>P1, P2, P4, P5</span></div>
+      <p>Proposto para os vídeos: o dragão girando em volta do guerreiro na abertura, num movimento rápido.</p>
+    </section>
+
+    <!-- ================= [GUIA: kamisama-aplicacoes] APLICAÇÕES (imagens: img/kamisama/4-aplicacoes) ================= -->
+    <section class="cap" id="aplicacoes">
+      <h2><span class="n">12</span>Aplicações<span class="pt"></span></h2>
+      <figure class="fig"><img src="img/kamisama/4-aplicacoes/embalagem.webp" alt="Embalagem laranja de delivery com o logo" loading="lazy"><figcaption><b>Figura 2.</b> Embalagem de delivery: o laranja chega primeiro na casa do cliente.</figcaption></figure><figure class="fig"><img src="img/kamisama/4-aplicacoes/posts.webp" alt="Grade de posts do Instagram da Kamisama" loading="lazy"><figcaption><b>Figura 3.</b> Posts para o Instagram, com tom bem-humorado.</figcaption></figure><div class="duas galeria"><figure class="fig"><img src="img/kamisama/4-aplicacoes/logo.webp" alt="Logo vertical branco sobre laranja" loading="lazy"><figcaption><b>Figura 4.</b> Logo vertical sobre o laranja.</figcaption></figure><figure class="fig"><img src="img/kamisama/4-aplicacoes/logo-salmao.webp" alt="Logo vertical sobre salmão" loading="lazy"><figcaption><b>Figura 5.</b> Versão sobre o salmão.</figcaption></figure></div><figure class="fig"><img src="img/kamisama/4-aplicacoes/logo-horizontal.webp" alt="Logo horizontal sobre laranja" loading="lazy"><figcaption><b>Figura 6.</b> Versão horizontal, para faixas e cabeçalhos.</figcaption></figure><div class="duas galeria"><figure class="fig"><img src="img/kamisama/4-aplicacoes/clientes.webp" alt="Duas amigas comendo e rindo" loading="lazy"><figcaption><b>Figura 7.</b> Direção de imagem: pessoas comendo juntas.</figcaption></figure><figure class="fig"><img src="img/kamisama/4-aplicacoes/icone-sushi.webp" alt="Ícone de sushi branco sobre laranja" loading="lazy"><figcaption><b>Figura 8.</b> Ícone de sushi para destaques e aplicativo.</figcaption></figure></div>
+    </section>
+
+
+    <!-- ================= [GUIA: kamisama-resultados] RESULTADOS: cada problema e como foi resolvido ================= -->
+    <section class="cap" id="resultados">
+      <h2><span class="n">14</span>Resultados<span class="pt"></span></h2>
+      <p>De volta à matriz: cada problema conferido pelo elemento que responde por ele.</p>
+      <div class="solucoes"><div><b class="p">P1</b><strong>Parecer restaurante, mesmo sendo delivery</strong><span>A Marcellus no logotipo e a paleta quente dão à marca o ar de restaurante, mesmo sendo delivery. <em>Responde: Tipografia.</em></span></div><div><b class="p">P2</b><strong>Fugir dos clichês do segmento</strong><span>Guerreiro e dragão substituem os clichês de hashi e onda e criam uma marca com história própria. <em>Responde: Símbolo.</em></span></div><div><b class="p">P3</b><strong>Abrir o apetite</strong><span>Fotos de perto, com luz quente, e cores tiradas dos pratos lembram a comida em cada post. <em>Responde: Imagem.</em></span></div><div><b class="p">P4</b><strong>Ser reconhecida no aplicativo</strong><span>Os ícones simplificados funcionam onde o símbolo completo ficaria pequeno, como no aplicativo. <em>Responde: Grafismos.</em></span></div><div><b class="p">P5</b><strong>Chegar bem na casa do cliente</strong><span>A embalagem laranja com o logo faz a experiência continuar na casa do cliente. <em>Responde: Cor.</em></span></div></div>
+    </section>
+
+    <section class="cap" id="consideracoes">
+      <h2><span class="n">15</span>Considerações finais<span class="pt"></span></h2>
+      <p>A Kamisama mostra que um delivery pode ter a presença de um restaurante quando cada elemento da marca tem uma função clara. Os próximos passos são aplicar o sistema no cardápio digital e produzir fotografia própria dos pratos.</p>
+    </section>
+
+    <!-- ================= [GUIA: kamisama-referencias] REFERÊNCIAS (ABNT) ================= -->
+    <section class="cap" id="referencias">
+      <h2>Referências<span class="pt"></span></h2>
+      <ul class="refs"><li>FRUTIGER, Adrian. <b>Sinais e símbolos</b>: desenho, projeto e significado. São Paulo: Martins Fontes, 1999.</li><li>HELLER, Eva. <b>A psicologia das cores</b>: como as cores afetam a emoção e a razão. São Paulo: Gustavo Gili, 2013.</li><li>MUNARI, Bruno. <b>Das coisas nascem coisas</b>. São Paulo: Martins Fontes, 1998.</li><li>PROJECT MANAGEMENT INSTITUTE. <b>Um guia do conhecimento em gerenciamento de projetos</b> (Guia PMBOK). 6. ed. Newtown Square: PMI, 2017.</li></ul>
+    </section>
+  </article>
+</div>
+
+<!-- PRÓXIMO PROJETO -->
+<a class="prox" href="isabella.html"><span class="mono">Próximo projeto →</span><strong>Isabella Gutierres<span class="pt"></span></strong></a>
+<div class="contato">
+  <span>Curtiu o projeto? Chama pra trocar uma ideia.</span>
+  <a class="btn" href="https://wa.me/5534999599575?text=Fala%2C%20turzin.%20Vi%20o%20site%20e%20quis%20trocar%20uma%20ideia." target="_blank" rel="noopener">WhatsApp →</a>
+</div>
+
+<script src="case.js"></script>
+<!-- música de fundo no PC + botão de som -->
+<script src="musica.js" defer></script>
+</body>
+</html>
