@@ -268,5 +268,33 @@
 <script src="case.js"></script>
 <!-- música de fundo no PC + botão de som -->
 <script src="musica.js" defer></script>
+<!-- lp-cta -->
+<style>
+.lpc{position:fixed;z-index:45;left:20px;bottom:20px;display:flex;gap:8px;transform:translateY(160%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.lpc.on{transform:none}
+.lpc a{display:inline-flex;align-items:center;gap:8px;padding:14px 20px;font:700 14px 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1.5px solid #44D62D;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.lpc .zap{background:#44D62D;color:#212121}
+.lpc .zap:hover{background:#F7F7F7;border-color:#F7F7F7}
+.lpc .volta{background:#212121;color:#F7F7F7;border-color:rgba(247,247,247,.3)}
+.lpc .volta:hover{border-color:#F7F7F7}
+.lpc .volta[hidden]{display:none}
+@media (max-width:760px){.lpc{left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px))}.lpc a{flex:1;justify-content:center;padding:14px 12px;font-size:13px}.lpc .volta{flex:0 0 auto}}
+@media (prefers-reduced-motion:reduce){.lpc{transition:none}}
+</style>
+<nav class="lpc" id="lpc" aria-label="Contato">
+  <a class="volta" id="lpc-v" href="/identidade-visual#marcas" hidden>← Voltar</a>
+  <a class="zap" href="https://wa.me/5534999599575?text=Ol%C3%A1%2C%20turzin.%20Vi%20o%20projeto%20Margarett%20e%20quero%20uma%20marca%20assim%20para%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener">Quero uma marca assim →</a>
+</nav>
+<script>
+(function () {
+  var veio = /[?&]de=lp\b/.test(location.search) || /identidade-visual/.test(document.referrer);
+  try { veio = veio || sessionStorage.getItem('veio-lp') === '1'; } catch (e) {}
+  if (veio) { document.getElementById('lpc-v').hidden = false; var t = document.querySelector('.top .back'); if (t) t.href = '/identidade-visual#marcas'; }
+  var b = document.getElementById('lpc');
+  function f() { b.classList.toggle('on', scrollY > 300); }
+  addEventListener('scroll', f, { passive: true }); f();
+})();
+</script>
+<!-- /lp-cta -->
 </body>
 </html>
