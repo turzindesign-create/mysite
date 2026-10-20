@@ -212,7 +212,7 @@ p{margin:0}
 /* ===== [GUIA: marcas] aba de marcas: logo animado + mockup ===== */
 .dica{display:flex;align-items:center;gap:10px;margin-bottom:14px;color:var(--mute)}
 .dica::before{content:"";width:22px;height:2px;background:var(--green)}
-.tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px;margin-bottom:28px}
 .tab{position:relative;display:grid;grid-template-rows:auto auto;text-align:left;padding:0;border:2px solid var(--line);background:#262626;color:var(--ink);cursor:pointer;font:inherit;transition:transform .25s var(--curva),border-color .2s,box-shadow .25s}
 .tab .sw{display:grid;place-items:center;aspect-ratio:16/10;background:var(--c)}
 .tab .sw img{width:62%;max-height:58%;object-fit:contain}
@@ -225,9 +225,64 @@ p{margin:0}
 .tab[aria-selected="true"] .nm{background:var(--green);color:var(--green-ink)}
 .tab[aria-selected="true"] .nm i{color:var(--green-ink)}
 .tab[aria-selected="true"]::after{content:"";position:absolute;left:50%;bottom:-12px;width:14px;height:14px;background:var(--green);transform:translateX(-50%) rotate(45deg)}
-@media (max-width:900px){.tabs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;margin-inline:calc(-1*var(--g));padding-inline:var(--g)}.tab{flex:0 0 150px;scroll-snap-align:start}.tab[aria-selected="true"]::after{display:none}}
+@media (max-width:900px){.tabs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;margin-inline:calc(-1*var(--g));padding-inline:var(--g)}.tab{flex:0 0 150px;scroll-snap-align:start}.tabs{gap:16px}.tab[aria-selected="true"]::after{display:none}}
 .palco{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--cor,#333);transition:background .5s}
-.palco canvas{position:absolute;inset:0;width:100%;height:100%}
+.cena{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6%;padding:8% 11% 18%}
+.cena .sim{position:relative;width:38%}
+.cena .txt{display:block;width:80%;max-width:440px;height:auto}
+.cena svg{display:block;width:100%;height:auto;overflow:visible}
+.cena[data-m],.cena[data-m] *{animation-fill-mode:both!important}
+/* Isabella: o símbolo é uma borboleta (dois B espelhados) que pousa batendo as asas */
+.cena[data-m="isabella"] .sim{width:46%;perspective:700px;animation:isaVoo 1.6s cubic-bezier(.3,.7,.2,1)}
+.cena[data-m="isabella"] .asa{transform-origin:50% 50%}
+.cena[data-m="isabella"] .asa+.asa{position:absolute;inset:0}
+.cena[data-m="isabella"] .asa.e{clip-path:inset(0 50% 0 0);animation:isaE 1.6s ease-out,isaBateE 5s ease-in-out 2.2s infinite}
+.cena[data-m="isabella"] .asa.d{clip-path:inset(0 0 0 50%);animation:isaD 1.6s ease-out,isaBateD 5s ease-in-out 2.2s infinite}
+.cena[data-m="isabella"] .txt{animation:isaTxt 1s ease-out .9s}
+@keyframes isaVoo{0%{transform:translate(70%,-90%) rotate(18deg) scale(.55);opacity:0}25%{opacity:1}100%{transform:none}}
+@keyframes isaE{0%{transform:rotateY(80deg)}15%{transform:rotateY(-6deg)}32%{transform:rotateY(62deg)}50%{transform:rotateY(0)}68%{transform:rotateY(40deg)}85%,100%{transform:rotateY(0)}}
+@keyframes isaD{0%{transform:rotateY(-80deg)}15%{transform:rotateY(6deg)}32%{transform:rotateY(-62deg)}50%{transform:rotateY(0)}68%{transform:rotateY(-40deg)}85%,100%{transform:rotateY(0)}}
+@keyframes isaBateE{0%,40%,100%{transform:rotateY(0)}8%{transform:rotateY(55deg)}16%{transform:rotateY(0)}24%{transform:rotateY(38deg)}32%{transform:rotateY(0)}}
+@keyframes isaBateD{0%,40%,100%{transform:rotateY(0)}8%{transform:rotateY(-55deg)}16%{transform:rotateY(0)}24%{transform:rotateY(-38deg)}32%{transform:rotateY(0)}}
+@keyframes isaTxt{0%{opacity:0;filter:blur(8px);transform:scaleX(1.18)}100%{opacity:1;filter:none;transform:none}}
+/* Margarett: o hambúrguer se monta peça por peça */
+.cena[data-m="margarett"] .sim{width:42%}
+.cena[data-m="margarett"] .p{transform-box:fill-box;transform-origin:50% 100%;animation:marCai .75s cubic-bezier(.3,.6,.3,1.25)}
+.cena[data-m="margarett"] .p4{animation-delay:0s}.cena[data-m="margarett"] .p3{animation-delay:.2s}.cena[data-m="margarett"] .p2{animation-delay:.4s}
+.cena[data-m="margarett"] .p1{animation:marCai .75s cubic-bezier(.3,.6,.3,1.25) .6s,marTampa 4.5s ease-in-out 2.4s infinite}
+.cena[data-m="margarett"] .txt{animation:sobe .8s cubic-bezier(.2,.8,.2,1) 1.2s}
+@keyframes marCai{0%{transform:translateY(-900px);opacity:0}55%{opacity:1}70%{transform:translateY(0) scaleY(.82)}85%{transform:translateY(-40px)}100%{transform:none}}
+@keyframes marTampa{0%,75%,100%{transform:none}84%{transform:translateY(-170px) rotate(-5deg)}92%{transform:translateY(0) scaleY(.92)}}
+@keyframes sobe{0%{opacity:0;transform:translateY(40px)}100%{opacity:1;transform:none}}
+/* Açaí Yo: o Y é um raio: cai com clarão, treme e fica piscando como neon */
+.cena[data-m="acai-yo"]{animation:treme .45s linear .32s}
+.cena[data-m="acai-yo"] .sim{width:24%;animation:acaiRaio .55s cubic-bezier(.5,0,.2,1) .15s,acaiNeon 3.6s steps(1) 2.2s infinite}
+.cena[data-m="acai-yo"] .flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;animation:flash .7s linear .3s}
+.cena[data-m="acai-yo"] .txt{animation:pop .6s cubic-bezier(.3,.6,.3,1.4) .75s}
+@keyframes acaiRaio{0%{transform:translateY(-180%) skewX(-14deg);opacity:0}60%{opacity:1;transform:translateY(5%) skewX(4deg)}100%{transform:none;filter:drop-shadow(0 0 22px rgba(255,255,255,.95))}}
+@keyframes acaiNeon{0%,100%{opacity:1}3%{opacity:.25}5%{opacity:1}8%{opacity:.4}10%{opacity:1}}
+@keyframes flash{0%{opacity:0}10%{opacity:.85}20%{opacity:0}32%{opacity:.5}45%,100%{opacity:0}}
+@keyframes treme{0%,100%{transform:none}20%{transform:translate(-8px,4px)}40%{transform:translate(7px,-5px)}60%{transform:translate(-5px,3px)}80%{transform:translate(3px,-2px)}}
+@keyframes pop{0%{opacity:0;transform:scale(.4)}100%{opacity:1;transform:none}}
+/* Reigotta: o batimento desenha o símbolo e a marca pulsa no ritmo do treino */
+.cena[data-m="reigotta"] .sim{width:34%;animation:reiBate .9s ease-out 1s,reiPulso 1.3s ease-in-out 2.4s infinite}
+.cena[data-m="reigotta"] .ecg{position:absolute;left:-170%;right:-170%;top:50%;height:120%;transform:translateY(-50%);width:auto;z-index:-1}
+.cena[data-m="reigotta"] .ecg{animation:limpa 1.1s cubic-bezier(.5,0,.3,1),apaga .6s ease 1.3s forwards}
+.cena[data-m="reigotta"] .txt{animation:limpa .8s cubic-bezier(.6,0,.2,1) 1.4s}
+@keyframes reiBate{0%{transform:scale(0);opacity:0}35%{transform:scale(1.22);opacity:1}55%{transform:scale(.94)}75%{transform:scale(1.12)}100%{transform:none}}
+@keyframes reiPulso{0%,45%,100%{transform:none}10%{transform:scale(1.12)}22%{transform:none}32%{transform:scale(1.07)}}
+@keyframes desenha{to{stroke-dashoffset:0}}
+@keyframes apaga{to{opacity:.3}}
+@keyframes limpa{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
+/* Kamisama: o dragão se enrola em volta do guerreiro */
+.cena[data-m="kamisama"] .sim{width:30%}
+.cena[data-m="kamisama"] .fg{animation:kamiSobe .9s cubic-bezier(.2,.8,.2,1) .1s}
+.cena[data-m="kamisama"] .dr{stroke:#93282C;stroke-width:16;stroke-dasharray:1;transform-box:fill-box;transform-origin:50% 60%;animation:kamiDraga 1.6s ease-in-out .5s,kamiRespira 4s ease-in-out 2.6s infinite alternate}
+.cena[data-m="kamisama"] .txt{animation:pincel .9s cubic-bezier(.6,0,.2,1) 1.6s}
+@keyframes kamiSobe{0%{opacity:0;transform:translateY(160px)}100%{opacity:1;transform:none}}
+@keyframes kamiDraga{0%{stroke-dashoffset:1;fill-opacity:0}70%{stroke-dashoffset:0;fill-opacity:0}100%{stroke-dashoffset:0;fill-opacity:1;stroke-width:0}}
+@keyframes kamiRespira{0%{transform:rotate(-1.5deg)}100%{transform:rotate(1.5deg) scale(1.02)}}
+@keyframes pincel{0%{clip-path:inset(0 100% 0 0);filter:blur(4px)}100%{clip-path:inset(0 0 0 0);filter:none}}
 .palco .info{position:absolute;left:18px;right:18px;bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--tx,#fff)}
 .palco .info b{font-weight:800;text-transform:uppercase;font-variation-settings:"wdth" 78;font-size:22px}
 .palco .de-novo{font:700 12px var(--f);letter-spacing:.08em;text-transform:uppercase;background:transparent;color:inherit;border:1.5px solid currentColor;padding:8px 12px;cursor:pointer;opacity:.8}
@@ -352,7 +407,7 @@ p{margin:0}
     <div class="dica mono rv">Toque em uma marca</div>
     <div class="tabs rv" role="tablist" aria-label="Marcas" id="tabs"></div>
     <div class="painel rv" id="painel" role="tabpanel">
-      <div class="palco" id="palco"><canvas id="cv" aria-hidden="true"></canvas><div class="info"><b id="pn"></b><button class="de-novo" type="button" id="dn">Ver de novo</button></div></div>
+      <div class="palco" id="palco"><div class="cena" id="cena" aria-hidden="true"></div><div class="info"><b id="pn"></b><button class="de-novo" type="button" id="dn">Ver de novo</button></div></div>
       <figure class="mock"><div class="foto"><img id="mi" alt="" loading="lazy"><figcaption class="tag mono" id="mt"></figcaption></div><div class="thumbs" id="thumbs" aria-label="Fotos da marca"></div></figure>
     </div>
   </div>
@@ -494,43 +549,27 @@ const MARCAS = [
   { id:'reigotta',  nome:'Reigotta',           seg:'Moda fitness',     cor:'#FF3EB5', tx:'#F7F7F7', fotos:[['1-capa/sacola','Sacola da loja'],['4-aplicacoes/cartoes','Cartões de visita'],['4-aplicacoes/etiqueta-rosa','Etiqueta de roupa']] },
   { id:'kamisama',  nome:'Kamisama',           seg:'Delivery japonês', cor:'#FEA389', tx:'#2A1517', fotos:[['4-aplicacoes/embalagem','Embalagem de delivery'],['4-aplicacoes/posts','Posts no Instagram'],['1-capa/sushi','Foto de campanha']] },
 ];
-const tabs = document.getElementById('tabs'), palco = document.getElementById('palco'), cv = document.getElementById('cv'), cx = cv.getContext('2d');
-const off = document.createElement('canvas'), ox = off.getContext('2d');
-const imgs = {}; let atual = null, anim = 0, t0 = 0;
+const tabs = document.getElementById('tabs'), palco = document.getElementById('palco'), cena = document.getElementById('cena');
+let atual = null;
 MARCAS.forEach((m, i) => {
   const b = document.createElement('button'); b.className = 'tab'; b.type = 'button'; b.role = 'tab'; b.id = 'tab-' + m.id; b.style.setProperty('--c', m.cor);
   b.innerHTML = '<span class="sw"><img src="/img/lp/logos/' + m.id + '.png" alt="" loading="lazy"></span><span class="nm">' + m.nome + '<i aria-hidden="true">→</i></span>';
   b.setAttribute('aria-selected', 'false'); b.onclick = () => mostra(i); tabs.appendChild(b);
-  const im = new Image(); im.src = '/img/lp/logos/' + m.id + '.png'; imgs[m.id] = im;
 });
 tabs.addEventListener('keydown', e => {
   const i = MARCAS.indexOf(atual); if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const n = (i + (e.key === 'ArrowRight' ? 1 : -1) + MARCAS.length) % MARCAS.length; mostra(n); document.getElementById('tab-' + MARCAS[n].id).focus(); }
 });
-function tamanho() { const r = palco.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); cv.width = Math.round(r.width * d); cv.height = Math.round(r.height * d); }
-function caixaLogo(im) { const W = cv.width, H = cv.height, k = Math.min(W * 0.62 / im.width, H * 0.42 / im.height); const w = im.width * k, h = im.height * k; return [(W - w) / 2, (H - h) / 2 - H * 0.03, w, h]; }
-function desenha(p) { // p: 0→1 progresso da animação
-  const im = imgs[atual.id]; if (!im.complete || !im.width) return;
-  const W = cv.width, H = cv.height; cx.clearRect(0, 0, W, H);
-  const [x, y, w, h] = caixaLogo(im);
-  const passos = [56, 40, 28, 18, 12, 8, 5, 3, 2, 1];
-  const bloco = p >= 1 ? 1 : passos[Math.min(passos.length - 1, Math.floor(p * 1.35 * passos.length))];
-  if (bloco > 1) { // pixel: desenha pequeno e amplia sem suavizar
-    const sw = Math.max(1, Math.round(w / bloco)), sh = Math.max(1, Math.round(h / bloco));
-    off.width = sw; off.height = sh; ox.clearRect(0, 0, sw, sh); ox.drawImage(im, 0, 0, sw, sh);
-    cx.imageSmoothingEnabled = false; cx.drawImage(off, 0, 0, sw, sh, x, y, w, h); cx.imageSmoothingEnabled = true;
-  } else cx.drawImage(im, x, y, w, h);
-  if (p > 0.45 && p < 0.95) glitchFatias(0.6 + Math.random() * 0.6);
-}
-function glitchFatias(forca) { // fatias horizontais deslocadas + faixas de cor
-  const W = cv.width, H = cv.height, n = 3 + Math.floor(Math.random() * 5);
-  for (let i = 0; i < n; i++) {
-    const fy = Math.random() * H, fh = 4 + Math.random() * H * 0.06, dx = (Math.random() - .5) * W * 0.09 * forca;
-    try { const d = cx.getImageData(0, fy, W, fh); cx.putImageData(d, dx, fy); } catch (e) {}
-  }
-  if (Math.random() < .5) { cx.fillStyle = Math.random() < .5 ? '#44D62D' : 'rgba(255,255,255,.85)'; cx.fillRect(Math.random() * W, Math.random() * H, W * (.05 + Math.random() * .2), 3 + Math.random() * 6); }
-}
-function roda(ts) { if (!t0) t0 = ts; const p = Math.min(1, (ts - t0) / 1300); desenha(p); if (p < 1) anim = requestAnimationFrame(roda); }
-function anima() { cancelAnimationFrame(anim); t0 = 0; tamanho(); if (calmo) { desenha(1); return; } const im = imgs[atual.id]; if (im.complete) anim = requestAnimationFrame(roda); else im.onload = () => { anim = requestAnimationFrame(roda); }; }
+/* [GUIA: animacoes-marcas] cada marca tem a sua animação (o visual fica no CSS, em "cena[data-m=...]") */
+const SIMB = { isabella:`<svg aria-hidden="true" focusable="false" viewBox="-190 -190 2621 1818"><defs><mask id="isa-m-X" maskUnits="userSpaceOnUse" x="0" y="0" width="2241" height="1438"><rect width="2241" height="1438" fill="#000"/><ellipse cx="719.0" cy="495.2" rx="474.6" ry="726.6" transform="rotate(103.74 719.0 495.2)" fill="#fff"/><ellipse cx="1522.0" cy="495.2" rx="474.6" ry="726.6" transform="rotate(76.26 1522.0 495.2)" fill="#fff"/><ellipse cx="716.1" cy="945.7" rx="472.0" ry="722.5" transform="rotate(76.72 716.1 945.7)" fill="#fff"/><ellipse cx="1524.9" cy="945.7" rx="472.0" ry="722.5" transform="rotate(103.28 1524.9 945.7)" fill="#fff"/><ellipse cx="605.2" cy="404.6" rx="289.5" ry="351.8" transform="rotate(118.14 605.2 404.6)" fill="#000"/><ellipse cx="1635.8" cy="404.6" rx="289.5" ry="351.8" transform="rotate(61.86 1635.8 404.6)" fill="#000"/><ellipse cx="610.6" cy="1031.3" rx="288.6" ry="356.5" transform="rotate(63.24 610.6 1031.3)" fill="#000"/><ellipse cx="1630.4" cy="1031.3" rx="288.6" ry="356.5" transform="rotate(116.76 1630.4 1031.3)" fill="#000"/></mask></defs><g fill="#FFFFFF"><rect width="2241" height="1438" mask="url(#isa-m-X)"/><ellipse cx="1120.5" cy="717.5" rx="226.3" ry="546.5" transform="rotate(0.00 1120.5 717.5)" /></g></svg>`, margarett:`<svg aria-hidden="true" focusable="false" viewBox="-170 -170 2490 1858"><g fill="#FFFFFF"><path class="p p1" d="M3.0 786 A1075 852 0 0 1 2147.0 786 L2112.1 786 A1041 822 0 0 0 37.9 786Z"/><rect class="p p2" x="0" y="786" width="2150" height="142" rx="6"/><path class="p p3" d="M884.8 928 L1358.1 1401.3 L1831.4 928 L1662.3 928 L1298.5 1291.8 L934.7 928Z"/><rect class="p p4" x="16" y="1458" width="2118" height="60" rx="4"/></g></svg>`, 'acai-yo':`<svg aria-hidden="true" focusable="false" viewBox="-150 -150 1057 1412"><path d="M726.5 0.0 L496.6 0.0 L357.7 411.5 L223.3 0.0 L-6.6 0.0 L295.9 738.4 L92.6 1026.4 A54.5 54.5 0 0 0 177.3 1094.7 L754.0 463.0 L753.0 448.0 L730.0 441.0 L538.2 440.0Z" fill="#FFFFFF"/></svg>`, reigotta:`<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="697.64 498.94 116.07 74.75"><path fill="#FFFFFF" fill-rule="nonzero" d="M812.58 544.35C811.45 542.83 809.30 542.51 807.78 543.64L782.47 562.40L761.25 503.03C760.68 501.40 759.41 500.03 757.67 499.41C756.35 498.94 754.96 498.97 753.73 499.40C753.71 499.41 753.69 499.41 753.68 499.42C753.67 499.42 753.67 499.42 753.67 499.42C753.54 499.47 753.41 499.53 753.28 499.58C753.09 499.67 752.90 499.76 752.72 499.86C752.69 499.88 752.66 499.90 752.64 499.91C752.52 499.98 752.42 500.05 752.31 500.13C752.26 500.17 752.20 500.20 752.15 500.24C752.07 500.29 752.00 500.35 751.93 500.41C751.85 500.48 751.77 500.55 751.68 500.62C751.65 500.65 751.62 500.68 751.59 500.72C750.94 501.33 750.42 502.10 750.10 502.99L728.87 562.39L703.57 543.63C702.04 542.50 699.89 542.82 698.77 544.34C697.64 545.87 697.96 548.02 699.48 549.15L729.94 571.72C729.95 571.73 729.96 571.74 729.98 571.75L730.22 571.93C730.28 571.98 730.35 572.01 730.41 572.04C730.43 572.06 730.46 572.08 730.48 572.09C730.63 572.18 730.77 572.26 730.92 572.33C731.11 572.42 731.31 572.51 731.52 572.58C734.58 573.68 737.99 572.06 739.09 569.00L755.67 522.59L772.26 569.01C773.35 572.07 776.76 573.69 779.83 572.59C780.03 572.52 780.23 572.43 780.43 572.33C780.58 572.27 780.72 572.19 780.86 572.10C780.88 572.09 780.91 572.07 780.94 572.05C781.00 572.02 781.06 571.99 781.12 571.94L781.36 571.76C781.38 571.75 781.39 571.74 781.40 571.73L811.86 549.16C813.39 548.03 813.71 545.88 812.58 544.35"/></svg>`, kamisama:`<svg aria-hidden="true" focusable="false" viewBox="-260 -260 2314 4397"><path d="M187.6 3358.5C193.0 3331.5 208.6 3295.1 227.8 3264.4C255.9 3219.2 298.8 3174.0 348.5 3136.9C408.6 3092.2 472.3 3060.7 567.0 3029.0C657.9 2998.5 747.7 2979.3 853.5 2967.5C920.5 2960.0 968.3 2951.4 1032.5 2935.4C1128.1 2911.5 1233.7 2873.2 1319.1 2831.5C1326.4 2827.9 1332.7 2825.4 1333.1 2825.8C1335.0 2828.1 1365.0 2869.8 1378.4 2889.0C1401.6 2922.0 1446.1 2989.1 1445.7 2990.4C1445.2 2991.9 1413.3 3004.5 1389.5 3012.6C1309.3 3040.1 1214.4 3058.5 1125.0 3063.9C1115.4 3064.5 1105.0 3065.2 1102.0 3065.5C1099.0 3065.8 1064.3 3066.5 1025.0 3067.0C953.3 3067.9 927.5 3068.7 882.0 3071.6C591.8 3089.6 370.0 3163.6 247.1 3283.5C221.2 3308.8 204.2 3330.2 191.0 3354.1C188.4 3358.9 187.2 3360.5 187.6 3358.5ZM1518.5 2938.8C1490.6 2895.5 1446.8 2831.8 1417.6 2792.0L1401.2 2769.5L1408.4 2762.0C1427.3 2742.5 1438.3 2723.6 1442.5 2703.4C1445.2 2690.2 1443.7 2673.2 1438.5 2659.5L1436.1 2652.9L1457.8 2667.6C1513.5 2705.4 1564.6 2743.1 1612.0 2781.3C1630.8 2796.4 1661.8 2822.3 1670.6 2830.3L1675.5 2834.8L1659.5 2850.7C1630.0 2880.0 1601.3 2903.4 1566.5 2926.7C1554.8 2934.4 1530.2 2949.6 1527.7 2950.6C1527.0 2950.8 1523.3 2946.2 1518.5 2938.8ZM1716.0 2729.8C1603.8 2614.0 1450.3 2504.3 1264.2 2407.0L1244.2 2396.5L1243.6 2392.5C1242.4 2384.2 1240.0 2344.3 1239.0 2315.0C1237.9 2284.5 1238.6 2223.6 1240.0 2224.5C1240.4 2224.8 1254.9 2227.9 1272.1 2231.4C1398.7 2257.4 1506.3 2286.2 1566.0 2310.2C1685.0 2358.1 1761.5 2442.8 1778.0 2545.1C1785.9 2594.6 1780.2 2646.0 1760.9 2697.9C1755.6 2712.2 1737.7 2750.0 1736.3 2750.0C1735.9 2749.9 1726.7 2740.9 1716.0 2729.8ZM533.5 2370.5C396.4 2338.4 293.7 2304.0 208.5 2262.0C92.7 2204.8 24.4 2137.6 5.7 2062.5C1.1 2044.2 0.5 2038.5 0.5 2015.5C0.6 1990.8 2.0 1980.1 8.4 1956.9C18.4 1920.6 40.4 1878.1 69.4 1839.2C94.9 1805.0 133.8 1765.6 181.5 1726.0C240.6 1676.8 320.3 1621.0 425.8 1555.1C474.0 1525.0 569.8 1467.4 570.4 1468.1C570.6 1468.3 576.1 1478.6 582.6 1491.0C589.1 1503.4 595.1 1514.7 596.0 1516.2L597.6 1518.9L648.6 1495.4C699.0 1472.2 714.6 1464.3 733.0 1452.7C774.9 1426.5 813.5 1391.3 839.1 1356.0C852.9 1337.1 863.6 1317.8 872.0 1297.0L876.2 1286.5L896.4 1274.0L916.7 1261.4L915.0 1269.5C904.6 1316.6 883.7 1358.1 851.0 1396.4C799.5 1456.8 722.2 1504.7 615.5 1542.5L599.5 1548.1L595.3 1567.2C592.9 1577.8 591.2 1586.5 591.4 1586.7C591.6 1586.9 599.8 1583.5 609.6 1579.2C797.1 1496.1 986.0 1428.6 1097.1 1405.1C1180.6 1387.4 1224.3 1389.4 1259.2 1412.2C1267.6 1417.8 1286.0 1434.6 1286.0 1436.7C1286.0 1437.2 1279.7 1441.4 1271.9 1446.2L1257.8 1454.8L1250.2 1449.8C1239.9 1443.1 1226.3 1436.7 1215.5 1433.4C1207.2 1430.9 1204.8 1430.7 1184.2 1430.2C1153.8 1429.6 1129.7 1431.9 1090.0 1439.1C990.4 1457.3 846.2 1505.6 684.0 1575.0C650.7 1589.3 604.0 1610.1 589.5 1617.1L582.5 1620.5L530.9 1729.4L479.3 1838.4L465.9 1848.8C433.9 1873.6 413.5 1892.8 399.9 1911.0C358.6 1965.9 373.9 2009.9 448.0 2049.3C453.8 2052.4 462.8 2056.7 468.0 2059.0C473.2 2061.3 477.7 2063.3 477.8 2063.5C478.3 2063.9 493.0 2118.4 492.7 2118.6C492.6 2118.7 475.4 2114.6 454.5 2109.4C374.8 2089.7 259.3 2064.4 257.3 2066.3C256.6 2067.1 253.8 2136.5 254.2 2144.9L254.5 2151.2L282.0 2158.6C322.5 2169.5 379.7 2185.8 419.5 2197.7C463.6 2210.9 521.3 2228.9 522.2 2229.8C522.5 2230.2 531.4 2262.7 541.9 2302.0C552.4 2341.3 561.3 2374.3 561.6 2375.2C561.9 2376.2 561.8 2377.0 561.3 2376.9C560.9 2376.9 548.4 2374.0 533.5 2370.5ZM1346.5 1389.2C1342.4 1353.3 1331.4 1317.5 1316.3 1291.0C1304.9 1270.9 1289.1 1251.3 1266.8 1229.4C1227.4 1190.7 1176.4 1158.1 1122.0 1136.7C1115.7 1134.3 1109.5 1131.9 1108.2 1131.5C1106.9 1131.1 1106.0 1130.4 1106.2 1129.9C1106.5 1128.9 1133.2 1106.0 1134.0 1106.0C1134.3 1106.0 1141.9 1110.0 1150.8 1115.0C1177.3 1129.8 1201.1 1145.5 1224.8 1163.9C1230.4 1168.3 1235.0 1171.7 1235.0 1171.4C1235.0 1171.2 1217.3 1151.5 1195.6 1127.8L1156.2 1084.6L1167.7 1072.6C1194.8 1044.3 1211.7 1019.4 1222.4 991.8C1247.6 927.4 1247.0 857.0 1220.5 786.5C1203.8 742.0 1175.9 696.8 1145.5 665.1C1126.2 645.0 1081.1 611.9 1044.0 590.5C1002.4 566.5 937.8 537.7 888.3 521.1C871.5 515.4 770.0 485.0 763.9 483.8C762.8 483.6 748.2 499.3 720.5 530.2C682.2 573.0 678.4 577.0 675.6 577.0C673.9 576.9 580.0 570.5 467.0 562.6L261.5 548.3L202.7 583.7C170.3 603.2 143.7 619.0 143.5 618.8C142.8 618.0 129.5 583.5 123.7 567.5C103.5 511.7 92.8 467.5 92.6 439.5C92.5 419.5 95.3 412.3 106.5 403.7C136.0 381.3 227.1 356.8 353.0 337.5L376.5 333.9L380.1 330.2C382.1 328.2 411.5 297.7 445.5 262.5C479.5 227.3 510.0 195.7 513.4 192.3L519.5 186.0L710.0 95.9C920.3 -3.6 914.5 -0.8 911.2 2.0C910.0 3.0 861.6 42.7 803.9 90.2C734.9 146.8 699.4 176.6 700.6 176.8C701.7 176.9 837.7 161.8 1003.0 143.1C1168.3 124.4 1303.6 109.3 1303.7 109.3C1303.7 109.4 1209.7 142.3 1094.7 182.4C979.6 222.5 885.2 255.5 884.8 255.9C884.4 256.2 948.3 275.6 1026.8 298.9C1105.3 322.2 1170.8 341.8 1172.3 342.4C1174.6 343.3 1153.5 345.2 1068.3 351.9C1009.6 356.5 961.3 360.4 961.1 360.6C960.6 361.1 960.1 360.9 986.5 368.5C1104.3 402.5 1218.0 442.9 1281.5 473.4C1333.3 498.3 1378.8 531.6 1424.0 577.6C1479.7 634.3 1522.3 699.8 1550.5 772.0C1581.3 851.1 1591.7 935.0 1580.4 1014.0C1575.3 1049.5 1562.9 1095.8 1548.2 1134.0C1533.8 1171.4 1513.0 1211.6 1491.1 1244.5C1456.9 1295.6 1410.1 1345.4 1356.3 1387.7L1347.1 1394.9L1346.5 1389.2Z" class="dr" pathLength="1" fill="#93282C"/><path d="M909.5 3876.0C888.6 3871.8 871.4 3854.6 857.6 3824.0C853.2 3814.3 850.5 3807.1 851.8 3808.5C852.3 3809.1 855.1 3813.0 857.9 3817.3C870.2 3835.7 885.4 3850.6 897.5 3856.2C901.6 3858.1 904.2 3858.5 912.0 3858.5C920.9 3858.5 921.9 3858.3 928.0 3855.1C945.8 3845.6 966.6 3816.9 983.6 3778.4C1015.1 3706.8 1039.8 3603.5 1046.0 3517.5C1049.6 3467.7 1043.8 3425.3 1032.3 3417.2C1010.0 3401.5 955.6 3398.9 875.0 3409.6C864.3 3411.0 855.4 3412.3 855.3 3412.4C855.1 3412.5 853.9 3419.6 852.4 3428.1C844.4 3475.7 827.0 3525.3 804.2 3565.5C797.6 3577.2 780.2 3603.2 772.5 3613.0C725.6 3672.7 661.7 3715.4 592.7 3733.1C586.2 3734.8 580.7 3736.0 580.4 3735.8C580.2 3735.6 585.8 3731.1 592.8 3725.9C693.6 3651.0 751.9 3577.1 795.6 3468.8C802.8 3450.9 813.5 3420.2 812.8 3419.5C811.1 3417.8 692.8 3442.0 592.1 3464.6C573.8 3468.7 558.6 3472.0 558.5 3471.8C558.0 3471.4 583.7 3459.9 606.2 3450.4C672.0 3422.8 750.5 3396.3 812.3 3380.9C821.0 3378.8 825.4 3377.2 826.0 3376.0C828.4 3371.6 843.7 3304.7 847.1 3283.8C847.8 3279.5 848.7 3276.0 849.1 3276.0C850.0 3276.0 853.7 3293.9 855.5 3307.0C857.4 3321.0 859.3 3357.1 858.5 3364.2C858.0 3368.0 858.2 3370.0 858.8 3370.0C859.4 3370.0 863.0 3369.3 866.9 3368.5C909.4 3359.6 961.1 3354.7 990.3 3356.9C1029.8 3359.9 1052.0 3367.8 1069.2 3385.1C1075.5 3391.5 1077.8 3394.6 1082.0 3403.2C1087.5 3414.5 1091.8 3429.9 1094.1 3446.0C1096.2 3460.3 1095.9 3512.2 1093.7 3531.5C1078.7 3660.5 1028.1 3792.8 972.4 3848.5C961.4 3859.5 953.3 3865.5 942.9 3870.5C931.2 3876.0 919.4 3878.0 909.5 3876.0ZM1698.1 3506.6C1697.9 3503.0 1677.3 3442.8 1668.0 3418.5C1625.4 3307.9 1565.2 3185.9 1495.2 3068.5C1454.3 2999.9 1402.6 2921.6 1351.9 2851.2C1342.5 2838.2 1334.2 2826.9 1333.6 2826.2C1332.6 2825.2 1329.0 2826.6 1315.4 2833.1C1209.1 2884.0 1086.1 2925.6 974.0 2948.5C930.7 2957.3 897.8 2962.4 850.5 2967.5C770.4 2976.2 695.7 2990.6 621.0 3011.9C554.8 3030.7 486.4 3056.6 434.0 3082.6C424.9 3087.1 417.4 3090.7 417.3 3090.6C417.3 3090.6 455.4 3045.7 502.2 2991.0C548.9 2936.3 590.4 2887.8 594.2 2883.2L601.3 2874.9L582.0 2821.7C571.4 2792.5 562.7 2768.1 562.7 2767.5C562.7 2767.0 577.1 2733.6 594.8 2693.3C612.5 2653.1 627.0 2619.8 627.0 2619.3C627.0 2618.2 523.1 2229.7 522.7 2229.4C522.3 2229.0 467.3 2211.8 445.5 2205.2C394.1 2189.6 337.8 2173.4 284.5 2159.0C268.1 2154.5 254.4 2150.7 254.2 2150.5C253.8 2150.2 257.0 2066.7 257.4 2066.3C257.8 2065.9 303.7 2075.0 333.2 2081.4C372.2 2089.9 407.4 2098.1 451.9 2109.1C474.1 2114.6 492.4 2118.9 492.7 2118.7C492.9 2118.4 490.0 2106.4 486.1 2091.9C482.2 2077.4 470.5 2033.4 460.0 1994.2C449.6 1954.9 441.0 1922.3 441.0 1921.6C441.0 1920.9 449.4 1902.6 459.6 1880.9C534.6 1722.0 582.3 1621.4 582.9 1620.7C583.9 1619.6 630.3 1598.5 661.0 1585.2C862.6 1497.7 1025.5 1445.3 1136.0 1432.5C1154.9 1430.3 1189.2 1429.5 1201.0 1430.9C1212.4 1432.3 1225.2 1436.5 1237.0 1442.6C1273.0 1461.1 1290.2 1487.2 1292.6 1526.7L1293.2 1536.5L1255.0 1581.3L1216.9 1626.0L1228.5 1648.0C1254.5 1697.2 1266.5 1726.3 1276.4 1764.1C1287.3 1805.3 1291.5 1838.4 1291.4 1882.0C1291.4 1927.5 1286.7 1960.6 1274.0 2005.5C1256.8 2066.1 1247.0 2120.9 1241.5 2186.0C1236.8 2242.6 1237.1 2318.2 1242.4 2382.5L1243.5 2396.5L1265.0 2407.8C1468.7 2514.7 1627.7 2631.6 1744.1 2760.0C1758.2 2775.5 1774.0 2794.3 1774.0 2795.4C1774.0 2796.0 1778.5 2831.4 1784.0 2874.0C1789.4 2916.6 1793.8 2951.5 1793.7 2951.7C1793.5 2951.8 1788.0 2945.8 1781.5 2938.2C1766.6 2921.1 1718.9 2873.2 1697.5 2853.9C1594.2 2760.6 1476.1 2674.2 1336.3 2589.7C1306.6 2571.8 1266.8 2548.9 1266.3 2549.4C1265.5 2550.1 1279.0 2611.3 1281.0 2616.4C1281.5 2617.6 1287.6 2625.5 1294.7 2634.0C1351.0 2701.8 1412.6 2783.3 1465.7 2860.3C1482.6 2884.8 1518.6 2938.9 1527.7 2953.5C1530.4 2957.9 1539.3 2972.1 1547.5 2985.0C1577.4 3032.5 1618.2 3101.4 1646.8 3153.0C1674.7 3203.5 1722.8 3295.1 1734.3 3320.0L1738.7 3329.5L1719.5 3415.0C1699.0 3506.3 1698.3 3509.5 1698.1 3506.6ZM1199.6 3483.8C1195.2 3431.8 1188.6 3403.3 1174.0 3373.5C1153.0 3330.7 1120.6 3297.5 1053.2 3249.7L1038.9 3239.5L1050.1 3239.2C1078.6 3238.5 1115.6 3249.7 1145.2 3268.0C1164.9 3280.3 1185.8 3299.6 1198.2 3317.0C1206.2 3328.2 1216.7 3348.9 1220.9 3361.7C1226.6 3379.2 1228.5 3391.3 1228.5 3412.5C1228.5 3428.3 1228.1 3433.4 1226.2 3442.8C1222.1 3463.0 1214.3 3483.4 1204.7 3498.8L1201.4 3504.1L1199.6 3483.8ZM591.5 1585.8C591.7 1585.1 593.3 1578.0 595.0 1570.0C596.7 1562.0 598.6 1553.9 599.1 1551.9L600.0 1548.3L617.8 1542.0C690.8 1516.2 751.9 1484.0 799.1 1446.6C829.8 1422.2 853.6 1396.7 873.9 1366.5C917.5 1301.5 931.7 1223.5 914.3 1145.0C911.4 1131.9 906.1 1113.8 903.1 1106.7C901.9 1104.0 901.0 1101.6 901.0 1101.3C901.0 1100.4 965.7 1101.8 977.0 1102.9C1067.6 1112.2 1144.2 1138.8 1211.1 1184.1C1232.9 1198.9 1250.6 1213.5 1269.0 1232.0C1306.2 1269.1 1324.2 1298.2 1336.5 1341.1C1344.7 1369.6 1347.6 1391.1 1346.7 1418.9C1345.9 1445.1 1342.0 1465.8 1333.6 1487.7C1328.8 1500.4 1317.6 1521.9 1316.4 1520.8C1316.2 1520.6 1315.6 1516.2 1315.0 1511.0C1309.9 1468.6 1293.3 1437.3 1264.5 1415.7C1234.8 1393.5 1200.4 1388.4 1139.5 1397.1C1073.6 1406.5 970.1 1436.5 852.0 1480.3C779.4 1507.3 692.3 1542.5 623.0 1573.0C609.0 1579.2 596.1 1584.8 594.3 1585.6C591.8 1586.7 591.2 1586.7 591.5 1585.8ZM584.9 1494.8C578.2 1482.0 547.3 1423.5 516.3 1364.7L460.0 1258.0L462.5 1218.1L465.0 1178.2L458.6 1159.9C455.0 1149.8 452.2 1141.5 452.3 1141.5C453.3 1141.1 745.6 1006.7 758.1 1000.9L774.8 993.2L786.2 1003.0C813.9 1026.7 841.7 1060.5 857.4 1089.3C870.7 1113.7 881.9 1146.7 886.6 1175.5C889.0 1190.2 889.1 1222.7 886.7 1239.0C882.5 1267.6 875.5 1290.1 863.0 1315.5C849.2 1343.6 832.8 1366.6 809.1 1391.2C779.7 1421.8 739.6 1451.1 700.8 1470.6C687.3 1477.4 599.2 1518.0 598.0 1518.0C597.5 1518.0 591.7 1507.5 584.9 1494.8ZM1225.0 1163.8C1212.9 1154.1 1192.7 1140.0 1175.5 1129.3C1110.7 1088.9 1046.5 1065.3 976.5 1056.4C958.6 1054.1 910.9 1053.8 895.0 1055.9L884.6 1057.3L883.0 1054.9C864.8 1027.4 826.1 986.2 793.2 959.5L785.0 952.7L780.2 954.7C773.7 957.5 636.5 1020.1 575.0 1048.5C518.4 1074.5 462.0 1101.0 448.7 1107.6L440.0 1112.0L438.9 1109.3C437.1 1104.4 430.1 1075.8 427.1 1060.3C420.0 1025.0 416.7 993.5 416.6 962.0C416.6 933.1 419.3 912.9 426.5 888.2C452.8 798.1 526.6 730.0 616.8 712.6C634.6 709.2 648.3 708.0 670.9 708.0C737.9 708.0 799.7 727.8 862.8 769.4L875.1 777.5L1015.3 930.9C1092.4 1015.3 1172.9 1103.5 1194.2 1126.8C1215.6 1150.1 1233.0 1169.4 1233.0 1169.6C1233.0 1170.3 1232.8 1170.1 1225.0 1163.8Z" class="fg" fill="#FFFFFF"/></svg>` };
+const TXT = id => '<img class="txt" alt="" src="/img/lp/logos/' + (id === 'reigotta' ? 'reigotta' : 'partes/' + id + '-texto') + '.png">';
+const CENAS = {
+  isabella: () => '<div class="sim"><div class="asa e">' + SIMB.isabella + '</div><div class="asa d">' + SIMB.isabella + '</div></div>' + TXT('isabella'),
+  margarett: () => '<div class="sim">' + SIMB.margarett + '</div>' + TXT('margarett'),
+  'acai-yo': () => '<div class="flash"></div><div class="sim">' + SIMB['acai-yo'] + '</div>' + TXT('acai-yo'),
+  reigotta: () => '<div class="sim"><svg class="ecg" viewBox="0 0 1000 200" preserveAspectRatio="none"><polyline points="0,100 430,100 455,100 475,55 495,150 518,25 540,120 556,100 1000,100" fill="none" stroke="#fff" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>' + SIMB.reigotta + '</div>' + TXT('reigotta'),
+  kamisama: () => '<div class="sim">' + SIMB.kamisama + '</div>' + TXT('kamisama'),
+};
+function anima() { cena.dataset.m = atual.id; cena.innerHTML = CENAS[atual.id](); }
 function foto(j) {
   const f = atual.fotos[j], mi = document.getElementById('mi');
   document.querySelectorAll('#thumbs button').forEach((t, k) => t.setAttribute('aria-pressed', k === j ? 'true' : 'false'));
@@ -552,12 +591,9 @@ function mostra(i) {
   anima();
 }
 document.getElementById('dn').onclick = anima;
-palco.addEventListener('pointerenter', () => { if (!calmo) { desenha(1); glitchFatias(1); setTimeout(() => desenha(1), 120); } });
-addEventListener('resize', () => { tamanho(); desenha(1); });
 mostra(0);
 // micro glitch de tempos em tempos enquanto a aba está na tela
 let palcoVisivel = false; new IntersectionObserver(e => { const v = e[0].isIntersecting; if (v && !palcoVisivel) anima(); palcoVisivel = v; }).observe(palco);
-if (!calmo) setInterval(() => { if (palcoVisivel && !document.hidden) { glitchFatias(.5); setTimeout(() => desenha(1), 90); } }, 3800);
 
 /* [GUIA: pixel-imagens] imagens aparecem em pixels grandes que vão ficando nítidos */
 function pixelRevela(img) {
@@ -591,11 +627,11 @@ titulos.forEach(h => ioGl.observe(h));
 const h1 = document.querySelector('h1'); if (!calmo) setInterval(() => { if (h1.getBoundingClientRect().bottom > 0 && !document.hidden) glitch(h1); }, 5200);
 
 /* [GUIA: embaralhar] etiquetas verdes "decodificam" letra por letra */
-const SIMB = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*';
+const LETRAS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*';
 function embaralha(el) {
   if (calmo) return; const alvo = el.textContent, t = performance.now(), dur = 650;
   (function f(n) { const p = Math.min(1, (n - t) / dur), k = Math.floor(alvo.length * p);
-    el.textContent = alvo.slice(0, k) + alvo.slice(k).replace(/[^\s·]/g, () => SIMB[Math.floor(Math.random() * SIMB.length)]);
+    el.textContent = alvo.slice(0, k) + alvo.slice(k).replace(/[^\s·]/g, () => LETRAS[Math.floor(Math.random() * LETRAS.length)]);
     if (p < 1) requestAnimationFrame(f); else el.textContent = alvo; })(t);
 }
 const ioK = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { ioK.unobserve(e.target); embaralha(e.target); } }));
