@@ -208,7 +208,42 @@ p{margin:0}
 /* aparecer ao rolar */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--curva),transform .9s var(--curva)}
 .rv.on{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* ===== [GUIA: marcas] aba de marcas: logo animado + mockup ===== */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.tab{font:700 13px var(--f);letter-spacing:.08em;text-transform:uppercase;padding:11px 16px;border:1.5px solid var(--line);background:transparent;color:var(--mute);cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.tab:hover{color:var(--ink);border-color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.painel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.6vw,20px)}
+.palco{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--cor,#333);transition:background .5s}
+.palco canvas{position:absolute;inset:0;width:100%;height:100%}
+.palco .info{position:absolute;left:18px;right:18px;bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--tx,#fff)}
+.palco .info b{font-weight:800;text-transform:uppercase;font-variation-settings:"wdth" 78;font-size:22px}
+.palco .de-novo{font:700 12px var(--f);letter-spacing:.08em;text-transform:uppercase;background:transparent;color:inherit;border:1.5px solid currentColor;padding:8px 12px;cursor:pointer;opacity:.8}
+.palco .de-novo:hover{opacity:1}
+.mock{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--panel)}
+.mock img{width:100%;height:100%;object-fit:cover}
+.mock .tag{position:absolute;left:12px;top:12px;background:var(--ground);padding:6px 10px;font-size:11px}
+@media (max-width:700px){.painel{grid-template-columns:1fr}.palco,.mock{aspect-ratio:1}}
+
+/* ===== [GUIA: glitch] títulos com glitch ao aparecer ===== */
+.gl{position:relative}
+.gl::before,.gl::after{content:attr(data-t);position:absolute;inset:0;pointer-events:none;opacity:0}
+.gl.glitch::before{opacity:1;color:var(--green);animation:gA .5s steps(2) 1}
+.gl.glitch::after{opacity:1;color:#FF3E6C;mix-blend-mode:screen;animation:gB .5s steps(2) 1}
+.gl.glitch{animation:gC .5s steps(2) 1}
+@keyframes gA{0%{clip-path:inset(10% 0 70% 0);transform:translate(-6px,0)}25%{clip-path:inset(60% 0 15% 0);transform:translate(5px,0)}50%{clip-path:inset(35% 0 45% 0);transform:translate(-3px,0)}75%{clip-path:inset(80% 0 2% 0);transform:translate(4px,0)}100%{clip-path:inset(0 0 100% 0);transform:none}}
+@keyframes gB{0%{clip-path:inset(70% 0 10% 0);transform:translate(6px,0)}25%{clip-path:inset(20% 0 60% 0);transform:translate(-5px,0)}50%{clip-path:inset(50% 0 30% 0);transform:translate(3px,0)}75%{clip-path:inset(5% 0 80% 0);transform:translate(-4px,0)}100%{clip-path:inset(0 0 100% 0);transform:none}}
+@keyframes gC{0%,100%{transform:none}20%{transform:translate(2px,-1px)}40%{transform:translate(-2px,1px)}60%{transform:skewX(-4deg)}80%{transform:translate(1px,0)}}
+.fim .gl.glitch::after{color:#fff}
+
+/* imagens revelando em pixel */
+.px-wrap{position:relative}
+.px-c{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;image-rendering:pixelated}
+
+/* rastro de pixels no cursor (PC) */
+.rastro{position:fixed;z-index:50;width:8px;height:8px;background:var(--green);pointer-events:none;transition:opacity .5s,transform .5s}
+@media (prefers-reduced-motion:reduce){.gl::before,.gl::after{display:none}.rastro{display:none}*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -217,6 +252,7 @@ p{margin:0}
   <a class="logo" href="/" aria-label="turzin., página inicial">{{LOGO}}</a>
   <nav class="mono">
     <a class="l" href="#projetos">Projetos</a>
+    <a class="l" href="#marcas">Marcas</a>
     <a class="l" href="#entrega">O que você recebe</a>
     <a class="l" href="#duvidas">Dúvidas</a>
     <a class="btn fill sm js-whats" href="#fim" target="_blank" rel="noopener">Quero minha marca</a>
@@ -283,6 +319,22 @@ p{margin:0}
       <a class="case rv" href="/acai-yo"><div class="im"><img src="/img/acai-yo/4-aplicacoes/uniforme-polo.webp" alt="Uniforme polo da Açaí Yo" width="1000" height="1250" loading="lazy"></div><div class="meta"><h3>Açaí Yo</h3><span class="seg mono">Açaíteria <span class="ver">→</span></span></div></a>
       <a class="case rv" href="/reigotta"><div class="im"><img src="/img/reigotta/4-aplicacoes/post-novos-ciclos.webp" alt="Post da coleção Novos Ciclos da Reigotta" width="866" height="1082" loading="lazy"></div><div class="meta"><h3>Reigotta</h3><span class="seg mono">Moda fitness <span class="ver">→</span></span></div></a>
       <a class="case rv" href="/kamisama"><div class="im"><img src="/img/kamisama/4-aplicacoes/logo-salmao.webp" alt="Logotipo da Kamisama sobre fundo salmão" width="1400" height="788" loading="lazy"></div><div class="meta"><h3>Kamisama</h3><span class="seg mono">Delivery japonês <span class="ver">→</span></span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- [GUIA: marcas] logos animados e mockups -->
+<section class="sec" id="marcas" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick mono">Marcas</span>
+      <h2>Cada marca com a sua cara</h2>
+      <p>Escolha uma marca para ver o logo sobre a cor dela e uma peça aplicada no dia a dia do negócio.</p>
+    </div>
+    <div class="tabs rv" role="tablist" aria-label="Marcas" id="tabs"></div>
+    <div class="painel rv" id="painel" role="tabpanel">
+      <div class="palco" id="palco"><canvas id="cv" aria-hidden="true"></canvas><div class="info"><b id="pn"></b><button class="de-novo" type="button" id="dn">Ver de novo</button></div></div>
+      <figure class="mock" style="margin:0"><img id="mi" alt="" width="1200" height="1500" loading="lazy"><figcaption class="tag mono" id="mt"></figcaption></figure>
     </div>
   </div>
 </section>
@@ -410,6 +462,124 @@ addEventListener('scroll', tick, { passive: true }); tick();
 /* blocos aparecendo ao rolar */
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
 document.querySelectorAll('.rv, #passos').forEach(el => io.observe(el));
+
+/* ===================== ANIMAÇÕES ===================== */
+const calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* [GUIA: marcas-dados] marcas da aba: cor de fundo, cor do texto, logo e mockup */
+const MARCAS = [
+  { id:'isabella',  nome:'Isabella Gutierres', seg:'Psicóloga',        cor:'#961B2E', tx:'#F7F7F7', mock:'Agenda, cartão de retorno e café' },
+  { id:'margarett', nome:'Margarett',          seg:'Hamburgueria',     cor:'#1A130D', tx:'#F7F7F7', mock:'Caixa, batata, molho e selo' },
+  { id:'acai-yo',   nome:'Açaí Yo',            seg:'Açaíteria',        cor:'#8B3AC1', tx:'#F7F7F7', mock:'Tigela, colher e guardanapo' },
+  { id:'reigotta',  nome:'Reigotta',           seg:'Moda fitness',     cor:'#FF3EB5', tx:'#F7F7F7', mock:'Squeeze, tapete e etiqueta' },
+  { id:'kamisama',  nome:'Kamisama',           seg:'Delivery japonês', cor:'#FEA389', tx:'#2A1517', mock:'Caixa de delivery, hashi e shoyu' },
+];
+const tabs = document.getElementById('tabs'), palco = document.getElementById('palco'), cv = document.getElementById('cv'), cx = cv.getContext('2d');
+const off = document.createElement('canvas'), ox = off.getContext('2d');
+const imgs = {}; let atual = null, anim = 0, t0 = 0;
+MARCAS.forEach((m, i) => {
+  const b = document.createElement('button'); b.className = 'tab'; b.type = 'button'; b.role = 'tab'; b.textContent = m.nome; b.id = 'tab-' + m.id;
+  b.setAttribute('aria-selected', 'false'); b.onclick = () => mostra(i); tabs.appendChild(b);
+  const im = new Image(); im.src = '/img/lp/logos/' + m.id + '.png'; imgs[m.id] = im;
+});
+tabs.addEventListener('keydown', e => {
+  const i = MARCAS.indexOf(atual); if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const n = (i + (e.key === 'ArrowRight' ? 1 : -1) + MARCAS.length) % MARCAS.length; mostra(n); document.getElementById('tab-' + MARCAS[n].id).focus(); }
+});
+function tamanho() { const r = palco.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); cv.width = Math.round(r.width * d); cv.height = Math.round(r.height * d); }
+function caixaLogo(im) { const W = cv.width, H = cv.height, k = Math.min(W * 0.62 / im.width, H * 0.42 / im.height); const w = im.width * k, h = im.height * k; return [(W - w) / 2, (H - h) / 2 - H * 0.03, w, h]; }
+function desenha(p) { // p: 0→1 progresso da animação
+  const im = imgs[atual.id]; if (!im.complete || !im.width) return;
+  const W = cv.width, H = cv.height; cx.clearRect(0, 0, W, H);
+  const [x, y, w, h] = caixaLogo(im);
+  const passos = [56, 40, 28, 18, 12, 8, 5, 3, 2, 1];
+  const bloco = p >= 1 ? 1 : passos[Math.min(passos.length - 1, Math.floor(p * 1.35 * passos.length))];
+  if (bloco > 1) { // pixel: desenha pequeno e amplia sem suavizar
+    const sw = Math.max(1, Math.round(w / bloco)), sh = Math.max(1, Math.round(h / bloco));
+    off.width = sw; off.height = sh; ox.clearRect(0, 0, sw, sh); ox.drawImage(im, 0, 0, sw, sh);
+    cx.imageSmoothingEnabled = false; cx.drawImage(off, 0, 0, sw, sh, x, y, w, h); cx.imageSmoothingEnabled = true;
+  } else cx.drawImage(im, x, y, w, h);
+  if (p > 0.45 && p < 0.95) glitchFatias(0.6 + Math.random() * 0.6);
+}
+function glitchFatias(forca) { // fatias horizontais deslocadas + faixas de cor
+  const W = cv.width, H = cv.height, n = 3 + Math.floor(Math.random() * 5);
+  for (let i = 0; i < n; i++) {
+    const fy = Math.random() * H, fh = 4 + Math.random() * H * 0.06, dx = (Math.random() - .5) * W * 0.09 * forca;
+    try { const d = cx.getImageData(0, fy, W, fh); cx.putImageData(d, dx, fy); } catch (e) {}
+  }
+  if (Math.random() < .5) { cx.fillStyle = Math.random() < .5 ? '#44D62D' : 'rgba(255,255,255,.85)'; cx.fillRect(Math.random() * W, Math.random() * H, W * (.05 + Math.random() * .2), 3 + Math.random() * 6); }
+}
+function roda(ts) { if (!t0) t0 = ts; const p = Math.min(1, (ts - t0) / 1300); desenha(p); if (p < 1) anim = requestAnimationFrame(roda); }
+function anima() { cancelAnimationFrame(anim); t0 = 0; tamanho(); if (calmo) { desenha(1); return; } const im = imgs[atual.id]; if (im.complete) anim = requestAnimationFrame(roda); else im.onload = () => { anim = requestAnimationFrame(roda); }; }
+function mostra(i) {
+  atual = MARCAS[i];
+  tabs.querySelectorAll('.tab').forEach((b, j) => { b.setAttribute('aria-selected', j === i ? 'true' : 'false'); b.tabIndex = j === i ? 0 : -1; });
+  palco.style.setProperty('--cor', atual.cor); palco.style.setProperty('--tx', atual.tx);
+  document.getElementById('painel').setAttribute('aria-labelledby', 'tab-' + atual.id);
+  document.getElementById('pn').textContent = atual.nome;
+  const mi = document.getElementById('mi'); mi.src = '/img/lp/mockups/' + atual.id + '.webp'; mi.alt = 'Mockup da marca ' + atual.nome + ': ' + atual.mock.toLowerCase();
+  document.getElementById('mt').textContent = atual.mock;
+  mi.onload = () => pixelRevela(mi);
+  anima();
+}
+document.getElementById('dn').onclick = anima;
+palco.addEventListener('pointerenter', () => { if (!calmo) { desenha(1); glitchFatias(1); setTimeout(() => desenha(1), 120); } });
+addEventListener('resize', () => { tamanho(); desenha(1); });
+mostra(0);
+// micro glitch de tempos em tempos enquanto a aba está na tela
+let palcoVisivel = false; new IntersectionObserver(e => { const v = e[0].isIntersecting; if (v && !palcoVisivel) anima(); palcoVisivel = v; }).observe(palco);
+if (!calmo) setInterval(() => { if (palcoVisivel && !document.hidden) { glitchFatias(.5); setTimeout(() => desenha(1), 90); } }, 3800);
+
+/* [GUIA: pixel-imagens] imagens aparecem em pixels grandes que vão ficando nítidos */
+function pixelRevela(img) {
+  if (calmo || !img.naturalWidth) return;
+  const box = img.parentElement; box.classList.add('px-wrap');
+  let c = box.querySelector('.px-c'); if (!c) { c = document.createElement('canvas'); c.className = 'px-c'; box.appendChild(c); }
+  const r = box.getBoundingClientRect(); c.width = Math.max(1, Math.round(r.width)); c.height = Math.max(1, Math.round(r.height)); c.style.opacity = 1;
+  const g = c.getContext('2d'), o = document.createElement('canvas'), og = o.getContext('2d');
+  const passos = [48, 32, 20, 12, 7, 4, 2]; let i = 0;
+  // recorte igual ao object-fit: cover
+  const ir = img.naturalWidth / img.naturalHeight, br = c.width / c.height;
+  let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
+  if (ir > br) { sw = sh * br; sx = (img.naturalWidth - sw) / 2; } else { sh = sw / br; sy = (img.naturalHeight - sh) / 2; }
+  (function passo() {
+    if (i >= passos.length) { c.style.transition = 'opacity .25s'; c.style.opacity = 0; return; }
+    const b = passos[i++], w = Math.max(1, Math.round(c.width / b)), h = Math.max(1, Math.round(c.height / b));
+    o.width = w; o.height = h; og.drawImage(img, sx, sy, sw, sh, 0, 0, w, h);
+    g.imageSmoothingEnabled = false; g.clearRect(0, 0, c.width, c.height); g.drawImage(o, 0, 0, w, h, 0, 0, c.width, c.height);
+    setTimeout(passo, 85);
+  })();
+}
+const ioPx = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const im = e.target; ioPx.unobserve(im); if (im.complete) pixelRevela(im); else im.addEventListener('load', () => pixelRevela(im), { once: true }); } }), { rootMargin: '0px 0px -12% 0px' });
+document.querySelectorAll('.mosaico img, .case img').forEach(im => ioPx.observe(im));
+
+/* [GUIA: glitch-titulos] títulos dão um glitch quando aparecem (e o da abertura de vez em quando) */
+const titulos = document.querySelectorAll('h1, h2');
+titulos.forEach(h => { h.classList.add('gl'); h.dataset.t = h.textContent.trim(); });
+function glitch(h) { if (calmo) return; h.classList.remove('glitch'); void h.offsetWidth; h.classList.add('glitch'); setTimeout(() => h.classList.remove('glitch'), 520); }
+const ioGl = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { ioGl.unobserve(e.target); setTimeout(() => glitch(e.target), 250); } }), { rootMargin: '0px 0px -15% 0px' });
+titulos.forEach(h => ioGl.observe(h));
+const h1 = document.querySelector('h1'); if (!calmo) setInterval(() => { if (h1.getBoundingClientRect().bottom > 0 && !document.hidden) glitch(h1); }, 5200);
+
+/* [GUIA: embaralhar] etiquetas verdes "decodificam" letra por letra */
+const SIMB = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*';
+function embaralha(el) {
+  if (calmo) return; const alvo = el.textContent, t = performance.now(), dur = 650;
+  (function f(n) { const p = Math.min(1, (n - t) / dur), k = Math.floor(alvo.length * p);
+    el.textContent = alvo.slice(0, k) + alvo.slice(k).replace(/[^\s·]/g, () => SIMB[Math.floor(Math.random() * SIMB.length)]);
+    if (p < 1) requestAnimationFrame(f); else el.textContent = alvo; })(t);
+}
+const ioK = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { ioK.unobserve(e.target); embaralha(e.target); } }));
+document.querySelectorAll('.kick').forEach(k => ioK.observe(k));
+
+/* [GUIA: rastro] rastro de quadradinhos verdes atrás do cursor (só PC) */
+if (!calmo && matchMedia('(pointer: fine)').matches) {
+  let ult = 0;
+  addEventListener('pointermove', e => {
+    const n = performance.now(); if (n - ult < 45) return; ult = n;
+    const q = document.createElement('i'); q.className = 'rastro'; q.style.left = (Math.round(e.clientX / 8) * 8 - 4) + 'px'; q.style.top = (Math.round(e.clientY / 8) * 8 + 10) + 'px';
+    document.body.appendChild(q); requestAnimationFrame(() => { q.style.opacity = 0; q.style.transform = 'scale(.3)'; }); setTimeout(() => q.remove(), 520);
+  }, { passive: true });
+}
 </script>
 </body>
 </html>
