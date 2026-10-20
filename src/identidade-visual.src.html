@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- ============================================================
+     turzin. · LANDING PAGE · IDENTIDADE VISUAL
+     Gerada a partir de src/identidade-visual.src.html (python src/lp_iv.py).
+     Página única focada em vender identidade visual.
+     ============================================================ -->
+<title>turzin.</title>
+<meta name="description" content="Identidade visual completa para pequenos e médios negócios: estudo de mercado, logotipo, cores, tipografia, aplicações e manual da marca. R$ 799,90, pronta em até 5 dias.">
+<link rel="canonical" href="https://turzindesign.com.br/identidade-visual">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#212121">
+<link rel="icon" href="/img/marca/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/img/marca/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="turzin.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://turzindesign.com.br/identidade-visual">
+<meta property="og:title" content="Identidade visual · turzin.">
+<meta property="og:description" content="Identidade visual completa para o seu negócio, pronta em até 5 dias.">
+<meta property="og:image" content="https://turzindesign.com.br/img/og/og-identidade-visual.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Identidade visual","serviceType":"Identidade visual","description":"Estudo de nicho e mercado, logotipo, paleta de cores, tipografia, grafismos, aplicações e manual de uso da marca.","provider":{"@type":"ProfessionalService","@id":"https://turzindesign.com.br/#turzin","name":"turzin.","url":"https://turzindesign.com.br/"},"areaServed":{"@type":"Country","name":"Brasil"},"offers":{"@type":"Offer","price":"799.90","priceCurrency":"BRL"},"url":"https://turzindesign.com.br/identidade-visual"}</script>
+<link rel="preload" href="/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-display:swap;font-weight:200 800;font-stretch:75% 100%;src:url(/fonts/bricolage-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-display:swap;font-weight:200 800;font-stretch:75% 100%;src:url(/fonts/bricolage-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+/* [GUIA: cores] mesmas cores do portfólio */
+:root{
+  --ground:#212121; --ink:#F7F7F7; --mute:rgba(247,247,247,.62); --line:rgba(247,247,247,.16);
+  --green:#44D62D; --green-ink:#212121; --panel:rgba(247,247,247,.05);
+  --f:'Bricolage Grotesque',system-ui,-apple-system,sans-serif;
+  --g:clamp(16px,4vw,56px); --max:1240px;
+  --t1:clamp(44px,8.4vw,128px); --t2:clamp(34px,5.6vw,80px);
+  --curva:cubic-bezier(.2,.8,.2,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f);font-size:18px;line-height:1.5;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+::selection{background:var(--green);color:var(--green-ink)}
+.mono{font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.nocaps{text-transform:none;letter-spacing:0}
+h1,h2,h3{margin:0;text-transform:uppercase;letter-spacing:-.02em;font-variation-settings:"wdth" 78;text-wrap:balance;line-height:.92;font-weight:800}
+h1{font-size:var(--t1)} h2{font-size:var(--t2)} h3{font-size:26px;line-height:1}
+p{margin:0}
+.wrap{width:min(var(--max),100% - 2*var(--g));margin-inline:auto}
+.kick{display:inline-flex;align-items:center;gap:10px;color:var(--green)}
+.kick::before{content:"";width:8px;height:8px;background:var(--green)}
+.dot{color:var(--green)}
+
+/* logo */
+.marca .t,.marca .s{fill:var(--ink)} .marca .d{fill:var(--green)}
+
+/* botões (iguais ao portfólio) */
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;font:700 15px var(--f);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transition:color .2s steps(2),border-color .2s steps(2)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .22s cubic-bezier(.2,.9,.1,1)}
+.btn:hover::before,.btn:focus-visible::before{transform:none}
+.btn:hover,.btn:focus-visible{color:var(--green-ink);border-color:var(--green)}
+.btn.fill{background:var(--green);color:var(--green-ink);border-color:var(--green)}
+.btn.fill::before{background:var(--ink)}
+.btn.fill:hover{color:var(--ground);border-color:var(--ink)}
+.btn.sm{padding:10px 16px;font-size:13px}
+.btn .arr{transition:transform .3s} .btn:hover .arr{transform:translateX(4px)}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+/* topo */
+.top{position:fixed;z-index:30;inset:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:calc(12px + env(safe-area-inset-top,0px)) var(--g) 12px;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.top.solid{background:rgba(33,33,33,.92);backdrop-filter:blur(8px);border-color:var(--line)}
+.logo{display:block;width:104px;line-height:0}
+.top nav{display:flex;align-items:center;gap:22px}
+.top nav a.l{text-decoration:none;opacity:.75} .top nav a.l:hover{opacity:1}
+@media (max-width:760px){.top nav a.l{display:none}}
+
+/* hero */
+.hero{min-height:100svh;display:grid;align-content:center;padding:120px 0 64px;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,72px);align-items:center}
+.hero h1 .dot{display:inline-block;width:.16em;height:.16em;background:var(--green);margin-left:.04em;vertical-align:baseline}
+.hero .sub{margin-top:26px;max-width:560px;color:var(--mute);font-size:clamp(17px,1.6vw,21px)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:30px;color:var(--mute)}
+.facts b{color:var(--ink);font-weight:700}
+.mosaico{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(6,minmax(0,1fr));gap:12px;aspect-ratio:4/5}
+.mosaico figure{margin:0;overflow:hidden;background:var(--panel);position:relative}
+.mosaico figure img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--curva)}
+.mosaico figure:hover img{transform:scale(1.04)}
+.mosaico .a{grid-row:1/4} .mosaico .b{grid-row:1/3} .mosaico .c{grid-row:3/6} .mosaico .d2{grid-row:4/7} .mosaico .e{grid-row:6/7}
+.mosaico figcaption{position:absolute;left:8px;bottom:8px;background:var(--ground);padding:5px 8px;font-size:11px}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.mosaico{aspect-ratio:auto;grid-template-rows:none;grid-template-columns:repeat(2,minmax(0,1fr))}.mosaico figure{grid-row:auto!important;aspect-ratio:1}.mosaico .e{display:none}}
+
+/* faixa de nichos */
+.faixa{border-block:1px solid var(--line);overflow:hidden;padding:18px 0;white-space:nowrap}
+.faixa .row{display:inline-flex;gap:40px;animation:corre 38s linear infinite;padding-left:40px}
+.faixa span{font-weight:800;font-size:clamp(22px,3vw,40px);text-transform:uppercase;font-variation-settings:"wdth" 78;display:inline-flex;align-items:center;gap:40px}
+.faixa span::after{content:"";width:12px;height:12px;background:var(--green)}
+@keyframes corre{to{transform:translateX(-50%)}}
+
+/* seções */
+.sec{padding:clamp(80px,12vw,160px) 0}
+.sec .head{display:grid;gap:18px;max-width:900px;margin-bottom:clamp(40px,6vw,72px)}
+.sec .head p{color:var(--mute);max-width:620px;font-size:clamp(17px,1.5vw,20px)}
+
+/* sinais (problema) */
+.sinais{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.sinais li{list-style:none;padding:28px 24px 28px 0;border-right:1px solid var(--line);display:grid;gap:14px;align-content:start}
+.sinais li:last-child{border-right:0}
+.sinais li+li{padding-left:24px}
+.sinais .n{color:var(--green)}
+.sinais p{font-size:19px;line-height:1.35}
+.sinais ul,.sinais{margin:0;padding:0}
+.frase{margin-top:clamp(48px,7vw,88px);font-weight:800;text-transform:uppercase;font-variation-settings:"wdth" 78;font-size:clamp(28px,4vw,56px);line-height:1;max-width:1000px}
+.frase em{font-style:normal;color:var(--green)}
+@media (max-width:900px){.sinais{grid-template-columns:repeat(2,minmax(0,1fr))}.sinais li{border-right:0;border-bottom:1px solid var(--line);padding:24px 0!important}.sinais li:nth-child(odd){padding-right:16px!important}}
+@media (max-width:520px){.sinais{grid-template-columns:1fr}}
+
+/* projetos */
+.cases{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(12px,1.6vw,20px)}
+.case{grid-column:span 2;text-decoration:none;display:grid;gap:14px}
+.case:nth-child(1),.case:nth-child(2){grid-column:span 3}
+.case .im{overflow:hidden;aspect-ratio:4/3;background:var(--panel)}
+.case:nth-child(n+3) .im{aspect-ratio:4/5}
+.case img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--curva)}
+.case:hover img{transform:scale(1.05)}
+.case .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1px solid var(--line);padding-top:12px}
+.case h3{font-size:clamp(24px,2.4vw,34px)}
+.case .seg{color:var(--mute)}
+.case .ver{color:var(--green);opacity:0;transform:translateX(-6px);transition:.3s}
+.case:hover .ver{opacity:1;transform:none}
+@media (max-width:900px){.cases{grid-template-columns:repeat(2,minmax(0,1fr))}.case .meta{flex-direction:column;align-items:flex-start;gap:6px}.case h3{font-size:22px}.case,.case:nth-child(1),.case:nth-child(2){grid-column:span 1}.case:nth-child(1){grid-column:span 2}.case .im,.case:nth-child(n+3) .im{aspect-ratio:1}}
+
+/* entregáveis */
+.itens{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.item{background:var(--ground);padding:28px 24px 30px;display:grid;gap:14px;align-content:start;transition:background .3s}
+.item:hover{background:#262626}
+.item .n{color:var(--green)}
+.item h3{font-size:24px}
+.item p{color:var(--mute);font-size:16px}
+@media (max-width:1000px){.itens{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.itens{grid-template-columns:1fr}}
+
+/* processo */
+.passos{display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:p;position:relative}
+.passos li{list-style:none;padding:0 18px 0 0;display:grid;gap:14px;align-content:start}
+.passos .dia{color:var(--green)}
+.passos .bar{height:2px;background:var(--line);position:relative;overflow:hidden}
+.passos .bar::after{content:"";position:absolute;inset:0;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .9s var(--curva)}
+.passos.on .bar::after{transform:none}
+.passos li:nth-child(2) .bar::after{transition-delay:.15s}.passos li:nth-child(3) .bar::after{transition-delay:.3s}.passos li:nth-child(4) .bar::after{transition-delay:.45s}.passos li:nth-child(5) .bar::after{transition-delay:.6s}
+.passos h3{font-size:24px}
+.passos p{color:var(--mute);font-size:16px}
+.passos{margin:0;padding:0}
+.nota{margin-top:36px;color:var(--mute);font-size:15px;max-width:640px}
+@media (max-width:900px){.passos{grid-template-columns:1fr;gap:28px}.passos li{padding:0}}
+
+/* oferta */
+.oferta{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
+.oferta .l{padding:clamp(28px,4vw,56px);display:grid;gap:22px;align-content:start;border-right:1px solid var(--line)}
+.oferta .r{padding:clamp(28px,4vw,56px);display:grid;gap:22px;align-content:space-between;background:var(--green);color:var(--green-ink)}
+.oferta .preco{font-weight:800;font-variation-settings:"wdth" 78;font-size:clamp(64px,9vw,128px);line-height:.85;letter-spacing:-.03em}
+.oferta .preco small{font-size:.32em;letter-spacing:0;vertical-align:top;margin-right:6px}
+.oferta .r .btn{background:var(--green-ink);color:var(--green);border-color:var(--green-ink)}
+.oferta .r .btn::before{background:var(--ink)}
+.oferta .r .btn:hover{color:var(--ground);border-color:var(--ink)}
+.check{margin:0;padding:0;display:grid;gap:12px}
+.check li{list-style:none;display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start}
+.check li::before{content:"";width:14px;height:14px;margin-top:6px;background:var(--green)}
+.oferta .r p{font-size:16px}
+@media (max-width:900px){.oferta{grid-template-columns:1fr}.oferta .l{border-right:0;border-bottom:1px solid var(--line)}}
+
+/* faq */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-weight:700;font-size:clamp(18px,1.8vw,22px)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:18px;height:18px;position:relative}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:0;right:0;top:8px;height:2px;background:var(--green);transition:transform .3s}
+.faq summary i::after{transform:rotate(90deg)}
+.faq details[open] summary i::after{transform:none}
+.faq details p{color:var(--mute);padding:0 0 26px;max-width:760px}
+
+/* chamada final */
+.fim{background:var(--green);color:var(--green-ink);padding:clamp(80px,12vw,150px) 0}
+.fim h2{font-size:clamp(44px,8vw,120px)}
+.fim p{margin-top:22px;font-size:clamp(17px,1.6vw,21px);max-width:560px}
+.fim .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;align-items:center}
+.fim .btn{background:var(--green-ink);color:var(--green);border-color:var(--green-ink)}
+.fim .btn::before{background:var(--ink)}
+.fim .btn:hover{color:var(--ground);border-color:var(--ink)}
+.fim .num{font-weight:700}
+.ft{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:28px var(--g) calc(28px + 64px);color:var(--mute)}
+.ft .logo{width:90px}
+@media (min-width:761px){.ft{padding-bottom:28px}}
+
+/* botão fixo no celular */
+.fixo{position:fixed;z-index:40;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));display:none;transform:translateY(140%);transition:transform .4s var(--curva)}
+.fixo .btn{width:100%}
+.fixo.on{transform:none}
+@media (max-width:760px){.fixo{display:block}}
+
+/* aparecer ao rolar */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--curva),transform .9s var(--curva)}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <a class="logo" href="/" aria-label="turzin., página inicial">{{LOGO}}</a>
+  <nav class="mono">
+    <a class="l" href="#projetos">Projetos</a>
+    <a class="l" href="#entrega">O que você recebe</a>
+    <a class="l" href="#duvidas">Dúvidas</a>
+    <a class="btn fill sm js-whats" href="#fim" target="_blank" rel="noopener">Quero minha marca</a>
+  </nav>
+</header>
+
+<main>
+<!-- [GUIA: hero] primeira tela -->
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <span class="kick mono">Identidade visual para pequenos negócios</span>
+      <h1 style="margin-top:22px">Sua marca vende antes de você falar<span class="dot" aria-hidden="true"></span></h1>
+      <p class="sub">Identidade visual completa para o seu negócio parecer tão bom quanto ele é: estudo de mercado, logotipo, cores, tipografia, aplicações e manual da marca.</p>
+      <div class="ctas">
+        <a class="btn fill js-whats" href="#fim" target="_blank" rel="noopener">Quero minha marca <span class="arr">→</span></a>
+        <a class="btn" href="#projetos">Ver projetos</a>
+      </div>
+      <div class="facts mono"><span><b>R$ 799,90</b></span><span>Pronta em até <b>5 dias</b></span><span><b>100%</b> online</span></div>
+    </div>
+    <div class="mosaico" aria-label="Marcas criadas pela turzin.">
+      <figure class="a"><img src="/img/isabella/1-capa/almofada.webp" alt="Almofada com a marca Isabella Gutierres" width="1440" height="900" fetchpriority="high"><figcaption class="mono">Isabella Gutierres</figcaption></figure>
+      <figure class="b"><img src="/img/acai-yo/3-tipografia/embalagem-acai.webp" alt="Embalagem roxa da Açaí Yo" width="1000" height="1250"><figcaption class="mono">Açaí Yo</figcaption></figure>
+      <figure class="c"><img src="/img/margarett/1-capa/sacola.webp" alt="Sacola kraft da hamburgueria Margarett" width="1000" height="1250"><figcaption class="mono">Margarett</figcaption></figure>
+      <figure class="d2"><img src="/img/reigotta/1-capa/sacola.webp" alt="Sacola branca com a marca Reigotta" width="1800" height="1350"><figcaption class="mono">Reigotta</figcaption></figure>
+      <figure class="e"><img src="/img/kamisama/2-simbolo/simbolo-vinho.webp" alt="Símbolo da Kamisama" width="1400" height="788" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<div class="faixa" aria-hidden="true"><div class="row">
+  <span>Hamburgueria</span><span>Açaíteria</span><span>Moda fitness</span><span>Consultório</span><span>Delivery japonês</span><span>Cafeteria</span><span>Doceria</span><span>Salão de beleza</span>
+  <span>Hamburgueria</span><span>Açaíteria</span><span>Moda fitness</span><span>Consultório</span><span>Delivery japonês</span><span>Cafeteria</span><span>Doceria</span><span>Salão de beleza</span>
+</div></div>
+
+<!-- [GUIA: sinais] problema -->
+<section class="sec" id="sinais">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick mono">Sinais</span>
+      <h2>Sua marca está custando clientes se:</h2>
+    </div>
+    <ul class="sinais rv">
+      <li><span class="n mono">01</span><p>O logo fica pixelado no Instagram, na fachada ou no cardápio.</p></li>
+      <li><span class="n mono">02</span><p>Cada post sai com uma cor e uma fonte diferente.</p></li>
+      <li><span class="n mono">03</span><p>Embalagem, cartão e redes não parecem da mesma empresa.</p></li>
+      <li><span class="n mono">04</span><p>Seu produto é bom, mas o visual não justifica o preço que você cobra.</p></li>
+    </ul>
+    <p class="frase rv">O cliente decide em segundos se confia em você. <em>A marca é o que ele vê nesses segundos.</em></p>
+  </div>
+</section>
+
+<!-- [GUIA: projetos] cases -->
+<section class="sec" id="projetos" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick mono">Projetos</span>
+      <h2>Marcas que já saíram daqui</h2>
+      <p>Cada projeto começa no estudo do negócio e termina com a marca aplicada no dia a dia do cliente.</p>
+    </div>
+    <div class="cases">
+      <a class="case rv" href="/isabella"><div class="im"><img src="/img/isabella/4-aplicacoes/cartao.webp" alt="Cartões de visita da Isabella Gutierres" width="1000" height="1251" loading="lazy"></div><div class="meta"><h3>Isabella Gutierres</h3><span class="seg mono">Psicóloga <span class="ver">→</span></span></div></a>
+      <a class="case rv" href="/margarett"><div class="im"><img src="/img/margarett/4-aplicacoes/cardapio.webp" alt="Cardápio da hamburgueria Margarett" width="1000" height="1250" loading="lazy"></div><div class="meta"><h3>Margarett</h3><span class="seg mono">Hamburgueria <span class="ver">→</span></span></div></a>
+      <a class="case rv" href="/acai-yo"><div class="im"><img src="/img/acai-yo/4-aplicacoes/uniforme-polo.webp" alt="Uniforme polo da Açaí Yo" width="1000" height="1250" loading="lazy"></div><div class="meta"><h3>Açaí Yo</h3><span class="seg mono">Açaíteria <span class="ver">→</span></span></div></a>
+      <a class="case rv" href="/reigotta"><div class="im"><img src="/img/reigotta/4-aplicacoes/post-novos-ciclos.webp" alt="Post da coleção Novos Ciclos da Reigotta" width="866" height="1082" loading="lazy"></div><div class="meta"><h3>Reigotta</h3><span class="seg mono">Moda fitness <span class="ver">→</span></span></div></a>
+      <a class="case rv" href="/kamisama"><div class="im"><img src="/img/kamisama/4-aplicacoes/logo-salmao.webp" alt="Logotipo da Kamisama sobre fundo salmão" width="1400" height="788" loading="lazy"></div><div class="meta"><h3>Kamisama</h3><span class="seg mono">Delivery japonês <span class="ver">→</span></span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- [GUIA: entrega] o que o cliente recebe -->
+<section class="sec" id="entrega" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick mono">O que você recebe</span>
+      <h2>Uma marca inteira, não só um logo</h2>
+      <p>Tudo o que o seu negócio precisa para aparecer do mesmo jeito em qualquer lugar.</p>
+    </div>
+    <div class="itens rv">
+      <div class="item"><span class="n mono">01</span><h3>Estudo de nicho e mercado</h3><p>Concorrentes, público e o que diferencia o seu negócio. A marca nasce daqui.</p></div>
+      <div class="item"><span class="n mono">02</span><h3>Logotipo e símbolo</h3><p>A assinatura da marca, pensada para funcionar grande na fachada e pequena no perfil.</p></div>
+      <div class="item"><span class="n mono">03</span><h3>Paleta de cores</h3><p>Cores escolhidas pelo que comunicam, com códigos para impressão e para tela.</p></div>
+      <div class="item"><span class="n mono">04</span><h3>Tipografia</h3><p>As fontes da marca e como usar cada uma em títulos e textos.</p></div>
+      <div class="item"><span class="n mono">05</span><h3>Grafismos</h3><p>Elementos visuais que deixam qualquer peça com a cara do seu negócio.</p></div>
+      <div class="item"><span class="n mono">06</span><h3>Aplicações</h3><p>A marca no uso real: cartão, posts, embalagem, sacola, uniforme, fachada.</p></div>
+      <div class="item"><span class="n mono">07</span><h3>Manual da marca</h3><p>As regras para qualquer pessoa aplicar a marca do jeito certo.</p></div>
+      <div class="item"><span class="n mono">08</span><h3>Arquivos finais</h3><p>Prontos para mandar para a gráfica e para usar nas redes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- [GUIA: processo] como funciona -->
+<section class="sec" id="processo" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick mono">Como funciona</span>
+      <h2>Do briefing à marca pronta em até 5 dias</h2>
+    </div>
+    <ol class="passos" id="passos">
+      <li><div class="bar"></div><span class="dia mono">Etapa 01</span><h3>Briefing</h3><p>Você responde perguntas sobre o negócio, o público e o que espera da marca.</p></li>
+      <li><div class="bar"></div><span class="dia mono">Etapa 02</span><h3>Estudo</h3><p>Pesquisa de nicho, concorrência e referências para definir a direção.</p></li>
+      <li><div class="bar"></div><span class="dia mono">Etapa 03</span><h3>Criação</h3><p>Símbolo, logotipo, cores, tipografia e grafismos.</p></li>
+      <li><div class="bar"></div><span class="dia mono">Etapa 04</span><h3>Apresentação</h3><p>Você vê a marca aplicada e pede os ajustes.</p></li>
+      <li><div class="bar"></div><span class="dia mono">Etapa 05</span><h3>Entrega</h3><p>Arquivos finais e manual da marca prontos para usar.</p></li>
+    </ol>
+    <p class="nota">O prazo conta a partir do briefing respondido e das aprovações em dia. Tudo acontece online, pelo WhatsApp e por e-mail, de qualquer cidade do Brasil.</p>
+  </div>
+</section>
+
+<!-- [GUIA: oferta] preço -->
+<section class="sec" id="oferta" style="padding-top:0">
+  <div class="wrap">
+    <div class="oferta rv">
+      <div class="l">
+        <span class="kick mono">Identidade visual completa</span>
+        <ul class="check">
+          <li>Estudo de nicho e mercado</li>
+          <li>Logotipo e símbolo</li>
+          <li>Paleta de cores e tipografia</li>
+          <li>Grafismos</li>
+          <li>Aplicações da marca</li>
+          <li>Manual da marca</li>
+          <li>Arquivos finais para impressão e redes</li>
+        </ul>
+      </div>
+      <div class="r">
+        <div>
+          <span class="mono">Investimento</span>
+          <div class="preco"><small>R$</small>799,90</div>
+          <p style="margin-top:14px">Pronta em até 5 dias. Forma de pagamento combinada pelo WhatsApp.</p>
+        </div>
+        <a class="btn js-whats" href="#fim" target="_blank" rel="noopener">Quero minha marca <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- [GUIA: duvidas] perguntas frequentes -->
+<section class="sec" id="duvidas" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick mono">Dúvidas</span>
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Em quanto tempo a marca fica pronta?<i></i></summary><p>Em até 5 dias. O prazo começa quando o briefing é respondido e depende de você aprovar cada etapa em dia.</p></details>
+      <details><summary>Atende negócios de outras cidades?<i></i></summary><p>Sim. Todo o processo é online, pelo WhatsApp e por e-mail, para qualquer lugar do Brasil.</p></details>
+      <details><summary>Já tenho um logo. Vale a pena fazer a identidade?<i></i></summary><p>Vale se o logo atual não representa o negócio, fica ruim em tamanhos pequenos ou não conversa com o resto da comunicação. Dá para partir do que você já tem ou começar do zero.</p></details>
+      <details><summary>O que eu preciso enviar?<i></i></summary><p>Só responder o briefing. Se tiver fotos do negócio, referências que você gosta ou materiais antigos, ajudam.</p></details>
+      <details><summary>Recebo os arquivos da marca?<i></i></summary><p>Sim. Você recebe os arquivos finais, prontos para a gráfica e para as redes, e o manual da marca.</p></details>
+      <details><summary>Como faço para começar?<i></i></summary><p>Me chame no WhatsApp. Eu explico os próximos passos e envio o briefing.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- [GUIA: fim] chamada final -->
+<section class="fim" id="fim">
+  <div class="wrap">
+    <h2>Sua marca pronta na semana que vem</h2>
+    <p>Me chame no WhatsApp, conte sobre o seu negócio e receba o briefing para começar.</p>
+    <div class="ctas">
+      <a class="btn js-whats" href="#fim" target="_blank" rel="noopener">Chamar no WhatsApp <span class="arr">→</span></a>
+      <span class="num mono">(34) 99959-9575</span>
+    </div>
+  </div>
+</section>
+
+<footer class="ft mono"><a class="logo" href="/" aria-label="turzin., página inicial">{{LOGO}}</a><span>Identidade visual</span><span class="nocaps">turzin. 2026</span></footer>
+
+<div class="fixo" id="fixo"><a class="btn fill js-whats" href="#fim" target="_blank" rel="noopener">Quero minha marca <span class="arr">→</span></a></div>
+
+<script>
+/* [GUIA: whatsapp] número (55 + DDD + número) e mensagem que já vem escrita */
+const WHATS = '5534999599575';
+const MSG = 'Olá, turzin. Vi a página de identidade visual e quero uma marca para o meu negócio.';
+const link = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(MSG);
+document.querySelectorAll('.js-whats').forEach(a => a.href = link);
+
+/* topo com fundo depois de rolar + botão fixo no celular depois da primeira tela */
+const top_ = document.getElementById('top'), fixo = document.getElementById('fixo'), fim = document.getElementById('fim');
+let fimVisivel = false;
+new IntersectionObserver(e => { fimVisivel = e[0].isIntersecting; tick(); }).observe(fim);
+function tick() {
+  const y = window.scrollY;
+  top_.classList.toggle('solid', y > 40);
+  fixo.classList.toggle('on', y > window.innerHeight * 0.8 && !fimVisivel);
+}
+addEventListener('scroll', tick, { passive: true }); tick();
+
+/* blocos aparecendo ao rolar */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
+document.querySelectorAll('.rv, #passos').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
