@@ -608,7 +608,7 @@ const TXT = id => '<div class="tw"><img class="txt" alt="" src="/img/lp/logos/' 
 const CENAS = {
   isabella: () => '<div class="sim">' + SIMB.isabella + '</div>' + TXT('isabella'),
   margarett: () => '<div class="sim">' + SIMB.margarett + '</div>' + TXT('margarett'),
-  'acai-yo': () => '<video class="vid" autoplay muted playsinline preload="auto" poster="/img/lp/video/acai-yo-inicio.webp"><source src="/img/lp/video/acai-yo.mp4" type="video/mp4"></video>',
+  'acai-yo': () => '<video class="vid" autoplay muted playsinline preload="auto" disablepictureinpicture poster="/img/lp/video/acai-yo-inicio-v2.webp"><source src="/img/lp/video/acai-yo-v2.mp4" type="video/mp4"></video>',
   reigotta: () => '<div class="sim"><svg class="ecg" viewBox="0 0 1000 200" preserveAspectRatio="none"><polyline points="0,100 430,100 455,100 475,55 495,150 518,25 540,120 556,100 1000,100" fill="none" stroke="#fff" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>' + SIMB.reigotta + '</div>' + TXT('reigotta'),
   kamisama: () => '<div class="sim">' + SIMB.kamisama + '</div>' + TXT('kamisama'),
 };
@@ -636,7 +636,7 @@ function mostra(i) {
 document.getElementById('dn').onclick = anima;
 mostra(0);
 // micro glitch de tempos em tempos enquanto a aba está na tela
-let palcoVisivel = false; new IntersectionObserver(e => { const v = e[0].isIntersecting; if (v && !palcoVisivel) anima(); palcoVisivel = v; }).observe(palco);
+let palcoVisivel = false; new IntersectionObserver(e => { const v = e[0].isIntersecting; if (v && !palcoVisivel && !cena.querySelector('video')) anima(); palcoVisivel = v; }).observe(palco);
 
 /* [GUIA: pixel-imagens] imagens aparecem em pixels grandes que vão ficando nítidos */
 function pixelRevela(img) {
