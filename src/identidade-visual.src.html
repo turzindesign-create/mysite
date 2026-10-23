@@ -611,7 +611,7 @@ const CENAS = {
   margarett: () => '<div class="sim">' + SIMB.margarett + '</div>' + TXT('margarett'),
   'acai-yo': () => '<video class="vid" autoplay muted playsinline preload="auto" disablepictureinpicture poster="/img/lp/video/acai-yo-inicio-v2.webp"><source src="/img/lp/video/acai-yo-v2.mp4" type="video/mp4"></video>',
   reigotta: () => '<div class="sim"><svg class="ecg" viewBox="0 0 1000 200" preserveAspectRatio="none"><polyline points="0,100 430,100 455,100 475,55 495,150 518,25 540,120 556,100 1000,100" fill="none" stroke="#fff" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>' + SIMB.reigotta + '</div>' + TXT('reigotta'),
-  kamisama: () => '<video class="vid" autoplay muted playsinline preload="auto" disablepictureinpicture poster="/img/lp/video/kamisama-inicio-v3.webp"><source src="/img/lp/video/kamisama-v3.mp4" type="video/mp4"></video>',
+  kamisama: () => '<video class="vid" autoplay muted playsinline preload="auto" disablepictureinpicture poster="/img/lp/video/kamisama-inicio-v4.webp"><source src="/img/lp/video/kamisama-v4.mp4" type="video/mp4"></video>',
 };
 function anima() { cena.dataset.m = atual.id; cena.innerHTML = CENAS[atual.id](); const v = cena.querySelector('video'); if (v) { v.muted = true; v.currentTime = 0; const p = v.play(); if (p) p.catch(() => {}); } }
 function foto(j) {
