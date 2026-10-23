@@ -293,7 +293,7 @@ p{margin:0}
 /* Açaí Yo · fitas 3D (referência enviada pelo cliente): os traços do raio entram voando de vários lados,
    com volume e sombra longa, se encaixam com a câmera inclinada, a câmera endireita e o Y ganha cor */
 .cena[data-m="acai-yo"]{perspective:1000px;--dt:2.55s;padding:0}
-.cena .vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#FFFFFF}
+.cena .vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--cor,#fff)}
 .cena[data-m="acai-yo"] .sim{width:25%}
 .cena[data-m="acai-yo"] .cam{transform-style:preserve-3d;animation:acaiCam 2.4s cubic-bezier(.7,0,.2,1)}
 .cena[data-m="acai-yo"] .y3d{filter:drop-shadow(-26px 44px 16px rgba(58,24,88,.22));animation:acaiSombra .8s ease 1.8s}
@@ -324,6 +324,7 @@ p{margin:0}
 .cena[data-m="reigotta"]{--dt:1.6s}
 /* Kamisama · pincelada de tinta (inspirado nas aberturas com nanquim de marcas japonesas):
    o dragão é traçado como um pincel em volta do guerreiro, que surge de cima para baixo */
+.cena[data-m="kamisama"]{padding:0}
 .cena[data-m="kamisama"] .sim{width:29%}
 .cena[data-m="kamisama"] .fg{animation:revelaV 1s var(--ease) .2s}
 .cena[data-m="kamisama"] .dr{stroke:#93282C;stroke-width:22;stroke-linecap:round;stroke-dasharray:1;animation:tracar 1.5s var(--ease) .5s,preencher .5s ease 1.7s,some .4s ease 1.8s forwards}
@@ -610,7 +611,7 @@ const CENAS = {
   margarett: () => '<div class="sim">' + SIMB.margarett + '</div>' + TXT('margarett'),
   'acai-yo': () => '<video class="vid" autoplay muted playsinline preload="auto" disablepictureinpicture poster="/img/lp/video/acai-yo-inicio-v2.webp"><source src="/img/lp/video/acai-yo-v2.mp4" type="video/mp4"></video>',
   reigotta: () => '<div class="sim"><svg class="ecg" viewBox="0 0 1000 200" preserveAspectRatio="none"><polyline points="0,100 430,100 455,100 475,55 495,150 518,25 540,120 556,100 1000,100" fill="none" stroke="#fff" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>' + SIMB.reigotta + '</div>' + TXT('reigotta'),
-  kamisama: () => '<div class="sim">' + SIMB.kamisama + '</div>' + TXT('kamisama'),
+  kamisama: () => '<video class="vid" autoplay muted playsinline preload="auto" disablepictureinpicture poster="/img/lp/video/kamisama-inicio-v1.webp"><source src="/img/lp/video/kamisama-v1.mp4" type="video/mp4"></video>',
 };
 function anima() { cena.dataset.m = atual.id; cena.innerHTML = CENAS[atual.id](); const v = cena.querySelector('video'); if (v) { v.muted = true; v.currentTime = 0; const p = v.play(); if (p) p.catch(() => {}); } }
 function foto(j) {
