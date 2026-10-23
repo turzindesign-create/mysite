@@ -253,6 +253,7 @@ p{margin:0}
 .tab[aria-selected="true"] .nm i{color:var(--green-ink)}
 @media (min-width:901px){.tab{overflow:visible}.tab[aria-selected="true"]::after{content:"";position:absolute;left:50%;bottom:-12px;width:14px;height:14px;background:var(--green);transform:translateX(-50%) rotate(45deg)}}
 @media (max-width:900px){.tabs{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:6px var(--g) 18px;margin-inline:calc(-1*var(--g));scroll-padding-inline:var(--g)}.tab{flex:0 0 156px;width:156px;scroll-snap-align:start;box-shadow:none}.tab[aria-selected="true"]{box-shadow:none}}
+.painel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.6vw,20px)}
 .palco{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--cor,#333);transition:background .5s}
 .cena{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6%;padding:8% 11% 18%}
 .cena .sim{position:relative;width:38%}
@@ -289,11 +290,29 @@ p{margin:0}
 @keyframes abre{0%{transform:scaleX(0)}100%{transform:none}}
 .cena[data-m="margarett"]{--dt:1.5s}
 /* Açaí Yo · um traço só, rápido e preciso (como o swoosh da Nike): o raio se desenha de uma vez e se preenche */
-.cena[data-m="acai-yo"] .sim{width:24%}
-.cena[data-m="acai-yo"] .tr{stroke:#fff;stroke-width:10;stroke-linejoin:round;stroke-dasharray:1;animation:tracar .7s var(--ease) .1s,preencher .35s ease .75s,some .3s ease .8s forwards}
-.cena[data-m="acai-yo"] .sim{animation:acaiSnap .5s var(--out) .8s}
-@keyframes acaiSnap{0%{transform:scale(.94)}100%{transform:none}}
-.cena[data-m="acai-yo"]{--dt:1s}
+/* Açaí Yo · fitas 3D (referência enviada pelo cliente): os traços do raio entram voando de vários lados,
+   com volume e sombra longa, se encaixam com a câmera inclinada, a câmera endireita e o Y ganha cor */
+.cena[data-m="acai-yo"]{perspective:1000px;--dt:2.55s}
+.cena[data-m="acai-yo"] .sim{width:25%}
+.cena[data-m="acai-yo"] .cam{transform-style:preserve-3d;animation:acaiCam 2.4s cubic-bezier(.7,0,.2,1)}
+.cena[data-m="acai-yo"] .y3d{filter:drop-shadow(-26px 44px 16px rgba(58,24,88,.22));animation:acaiSombra .8s ease 1.8s}
+.cena[data-m="acai-yo"] .pc{transform-box:view-box;animation:acaiVoa 1.05s cubic-bezier(.16,1,.3,1)}
+.cena[data-m="acai-yo"] .pc1{animation-delay:.05s}.cena[data-m="acai-yo"] .pc2{animation-delay:.2s}.cena[data-m="acai-yo"] .pc3{animation-delay:.32s}.cena[data-m="acai-yo"] .pc4{animation-delay:.45s}.cena[data-m="acai-yo"] .pc5{animation-delay:.58s}
+.cena[data-m="acai-yo"] .ex{animation:sumir .5s ease 1.75s forwards}
+.cena[data-m="acai-yo"] .topo{animation:sumir .4s ease 2.35s forwards}
+.cena[data-m="acai-yo"] .vidro{animation:acaiVidro 1.1s ease 1.6s forwards}
+.cena[data-m="acai-yo"] .solido{animation:acaiSolido .5s ease 2.2s}
+.cena[data-m="acai-yo"] .luz{position:absolute;height:2px;width:22%;left:-30%;border-radius:2px;opacity:0;animation:acaiLuz 1s cubic-bezier(.3,0,.2,1)}
+.cena[data-m="acai-yo"] .luz.l1{top:30%;background:#8B3AC1;animation-delay:.1s}.cena[data-m="acai-yo"] .luz.l2{top:58%;background:#C9A6E8;animation-delay:.3s;width:14%}.cena[data-m="acai-yo"] .luz.l3{top:44%;background:#44D62D;animation-delay:.5s;width:10%}.cena[data-m="acai-yo"] .luz.l4{top:70%;background:#8B3AC1;animation-delay:.65s;width:18%}
+.cena[data-m="acai-yo"] .tw .txt{animation:acaiDigita .9s steps(8) var(--dt),acaiFoco .9s ease var(--dt)}
+@keyframes acaiCam{0%,45%{transform:rotateX(58deg) rotateZ(-24deg) scale(1.75) translateY(-6%)}100%{transform:none}}
+@keyframes acaiVoa{0%{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}15%{opacity:1}100%{transform:none;opacity:1}}
+@keyframes acaiVidro{0%{fill-opacity:0}60%{fill-opacity:.32}100%{fill-opacity:0}}
+@keyframes acaiSolido{0%{opacity:0}100%{opacity:1}}
+@keyframes acaiSombra{to{filter:drop-shadow(0 0 0 rgba(58,24,88,0))}}
+@keyframes acaiLuz{0%{opacity:0;transform:translateX(0)}20%{opacity:.9}100%{opacity:0;transform:translateX(620%)}}
+@keyframes acaiDigita{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes acaiFoco{0%{filter:blur(6px)}100%{filter:none}}
 /* Reigotta · uma linha de batimento atravessa a tela e, no centro, vira o símbolo (como as vinhetas de apps de treino) */
 .cena[data-m="reigotta"] .sim{width:32%}
 .cena[data-m="reigotta"] .ecg{position:absolute;left:-170%;right:-170%;top:50%;height:120%;transform:translateY(-50%);width:auto;z-index:-1;animation:limpa 1s var(--ease),sumir .5s ease 1.1s forwards}
@@ -568,7 +587,7 @@ const calmo = false; // [GUIA: animacoes-sempre] mude para matchMedia('(prefers-
 const MARCAS = [
   { id:'isabella',  nome:'Isabella Gutierres', seg:'Psicóloga',        cor:'#961B2E', tx:'#F7F7F7', fotos:[['4-aplicacoes/almofada','Almofada do consultório'],['4-aplicacoes/placa','Placa de fachada'],['4-aplicacoes/post-instagram','Post no Instagram']] },
   { id:'margarett', nome:'Margarett',          seg:'Hamburgueria',     cor:'#1A130D', tx:'#F7F7F7', fotos:[['4-aplicacoes/sacola','Sacola de delivery'],['4-aplicacoes/cardapio-interno','Cardápio'],['4-aplicacoes/post-imperio','Post no Instagram']] },
-  { id:'acai-yo',   nome:'Açaí Yo',            seg:'Açaíteria',        cor:'#8B3AC1', tx:'#F7F7F7', fotos:[['3-tipografia/embalagem-acai','Embalagem'],['4-aplicacoes/uniforme-polo','Uniforme'],['1-capa/outdoor','Outdoor']] },
+  { id:'acai-yo',   nome:'Açaí Yo',            seg:'Açaíteria',        cor:'#8B3AC1', palco:'#F4F0FA', tx:'#3A1858', fotos:[['3-tipografia/embalagem-acai','Embalagem'],['4-aplicacoes/uniforme-polo','Uniforme'],['1-capa/outdoor','Outdoor']] },
   { id:'reigotta',  nome:'Reigotta',           seg:'Moda fitness',     cor:'#FF3EB5', tx:'#F7F7F7', fotos:[['1-capa/sacola','Sacola da loja'],['4-aplicacoes/cartoes','Cartões de visita'],['4-aplicacoes/etiqueta-rosa','Etiqueta de roupa']] },
   { id:'kamisama',  nome:'Kamisama',           seg:'Delivery japonês', cor:'#FEA389', tx:'#2A1517', fotos:[['4-aplicacoes/embalagem','Embalagem de delivery'],['4-aplicacoes/posts','Posts no Instagram'],['1-capa/sushi','Foto de campanha']] },
 ];
@@ -588,7 +607,19 @@ const TXT = id => '<div class="tw"><img class="txt" alt="" src="/img/lp/logos/' 
 const CENAS = {
   isabella: () => '<div class="sim">' + SIMB.isabella + '</div>' + TXT('isabella'),
   margarett: () => '<div class="sim">' + SIMB.margarett + '</div>' + TXT('margarett'),
-  'acai-yo': () => '<div class="sim">' + SIMB['acai-yo'] + '</div>' + TXT('acai-yo'),
+  'acai-yo': () => {
+    const Y = 'M726.5 0 L496.6 0 L357.7 411.5 L223.3 0 L-6.6 0 L295.9 738.4 L92.6 1026.4 A54.5 54.5 0 0 0 177.3 1094.7 L754 463 L753 448 L730 441 L538.2 440Z';
+    const P = [['M726.5 0 L496.6 0 L357.7 411.5', '900px', '-700px', '38deg'], ['M357.7 411.5 L223.3 0 L-6.6 0', '-900px', '-500px', '-30deg'],
+               ['M-6.6 0 L295.9 738.4 L92.6 1026.4', '-1100px', '600px', '24deg'], ['M92.6 1026.4 A54.5 54.5 0 0 0 177.3 1094.7 L754 463', '700px', '900px', '-40deg'],
+               ['M754 463 L753 448 L730 441 L538.2 440 L726.5 0', '1200px', '200px', '55deg']];
+    const lin = (d, cor, w, t) => '<path d="' + d + '" fill="none" stroke="' + cor + '" stroke-width="' + w + '" stroke-linecap="round" stroke-linejoin="round"' + (t ? ' transform="translate(' + t + ')"' : '') + '/>';
+    const pecas = P.map((p, i) => {
+      let ex = ''; for (let k = 8; k >= 1; k--) ex += lin(p[0], k > 4 ? '#3E1560' : '#5A2384', 34, (k * 7) + ' ' + (k * 9));
+      return '<g class="pc pc' + (i + 1) + '" style="--x:' + p[1] + ';--y:' + p[2] + ';--r:' + p[3] + '"><g class="ex">' + ex + '</g><g class="topo">' + lin(p[0], '#9A4FD0', 34) + lin(p[0], '#E2C9F7', 8) + '</g></g>';
+    }).join('');
+    const svg = '<svg class="y3d" viewBox="-150 -150 1057 1412" aria-hidden="true">' + pecas + '<path class="vidro" d="' + Y + '" fill="#8B3AC1" fill-opacity="0"/><path class="solido" d="' + Y + '" fill="#8B3AC1"/></svg>';
+    return '<i class="luz l1"></i><i class="luz l2"></i><i class="luz l3"></i><i class="luz l4"></i><div class="sim"><div class="cam">' + svg + '</div></div><div class="tw"><img class="txt" alt="" src="/img/lp/logos/partes/acai-yo-texto-roxo.png"></div>';
+  },
   reigotta: () => '<div class="sim"><svg class="ecg" viewBox="0 0 1000 200" preserveAspectRatio="none"><polyline points="0,100 430,100 455,100 475,55 495,150 518,25 540,120 556,100 1000,100" fill="none" stroke="#fff" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>' + SIMB.reigotta + '</div>' + TXT('reigotta'),
   kamisama: () => '<div class="sim">' + SIMB.kamisama + '</div>' + TXT('kamisama'),
 };
@@ -602,7 +633,7 @@ function foto(j) {
 function mostra(i) {
   atual = MARCAS[i];
   tabs.querySelectorAll('.tab').forEach((b, j) => { b.setAttribute('aria-selected', j === i ? 'true' : 'false'); b.tabIndex = j === i ? 0 : -1; });
-  palco.style.setProperty('--cor', atual.cor); palco.style.setProperty('--tx', atual.tx);
+  palco.style.setProperty('--cor', atual.palco || atual.cor); palco.style.setProperty('--tx', atual.tx);
   document.getElementById('painel').setAttribute('aria-labelledby', 'tab-' + atual.id);
   document.getElementById('pn').textContent = atual.nome;
   const th = document.getElementById('thumbs'); th.innerHTML = '';
