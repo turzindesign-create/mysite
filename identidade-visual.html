@@ -293,7 +293,7 @@ p{margin:0}
 /* Açaí Yo · fitas 3D (referência enviada pelo cliente): os traços do raio entram voando de vários lados,
    com volume e sombra longa, se encaixam com a câmera inclinada, a câmera endireita e o Y ganha cor */
 .cena[data-m="acai-yo"]{perspective:1000px;--dt:2.55s;padding:0}
-.cena .vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#E9EAEA}
+.cena .vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#FFFFFF}
 .cena[data-m="acai-yo"] .sim{width:25%}
 .cena[data-m="acai-yo"] .cam{transform-style:preserve-3d;animation:acaiCam 2.4s cubic-bezier(.7,0,.2,1)}
 .cena[data-m="acai-yo"] .y3d{filter:drop-shadow(-26px 44px 16px rgba(58,24,88,.22));animation:acaiSombra .8s ease 1.8s}
@@ -588,7 +588,7 @@ const calmo = false; // [GUIA: animacoes-sempre] mude para matchMedia('(prefers-
 const MARCAS = [
   { id:'isabella',  nome:'Isabella Gutierres', seg:'Psicóloga',        cor:'#961B2E', tx:'#F7F7F7', fotos:[['4-aplicacoes/almofada','Almofada do consultório'],['4-aplicacoes/placa','Placa de fachada'],['4-aplicacoes/post-instagram','Post no Instagram']] },
   { id:'margarett', nome:'Margarett',          seg:'Hamburgueria',     cor:'#1A130D', tx:'#F7F7F7', fotos:[['4-aplicacoes/sacola','Sacola de delivery'],['4-aplicacoes/cardapio-interno','Cardápio'],['4-aplicacoes/post-imperio','Post no Instagram']] },
-  { id:'acai-yo',   nome:'Açaí Yo',            seg:'Açaíteria',        cor:'#8B3AC1', palco:'#E9EAEA', tx:'#3A1858', fotos:[['3-tipografia/embalagem-acai','Embalagem'],['4-aplicacoes/uniforme-polo','Uniforme'],['1-capa/outdoor','Outdoor']] },
+  { id:'acai-yo',   nome:'Açaí Yo',            seg:'Açaíteria',        cor:'#8B3AC1', palco:'#FFFFFF', tx:'#3A1858', fotos:[['3-tipografia/embalagem-acai','Embalagem'],['4-aplicacoes/uniforme-polo','Uniforme'],['1-capa/outdoor','Outdoor']] },
   { id:'reigotta',  nome:'Reigotta',           seg:'Moda fitness',     cor:'#FF3EB5', tx:'#F7F7F7', fotos:[['1-capa/sacola','Sacola da loja'],['4-aplicacoes/cartoes','Cartões de visita'],['4-aplicacoes/etiqueta-rosa','Etiqueta de roupa']] },
   { id:'kamisama',  nome:'Kamisama',           seg:'Delivery japonês', cor:'#FEA389', tx:'#2A1517', fotos:[['4-aplicacoes/embalagem','Embalagem de delivery'],['4-aplicacoes/posts','Posts no Instagram'],['1-capa/sushi','Foto de campanha']] },
 ];
