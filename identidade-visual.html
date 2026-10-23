@@ -88,19 +88,34 @@ p{margin:0}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:30px;color:var(--mute)}
 .facts b{color:var(--ink);font-weight:700}
-.mosaico{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(6,minmax(0,1fr));gap:12px;aspect-ratio:4/5}
-.mosaico figure{margin:0;overflow:hidden;background:var(--panel);position:relative}
+.mosaico{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-content:center}
+.mosaico figure{margin:0;overflow:hidden;background:var(--panel);position:relative;aspect-ratio:4/5}
+.mosaico figure:nth-child(2n){transform:translateY(12%)}
 .mosaico figure img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--curva)}
 .mosaico figure:hover img{transform:scale(1.04)}
-.mosaico .a{grid-row:1/4} .mosaico .b{grid-row:1/3} .mosaico .c{grid-row:3/6} .mosaico .d2{grid-row:4/7} .mosaico .e{grid-row:6/7}
 .mosaico figcaption{position:absolute;left:8px;bottom:8px;background:var(--ground);padding:5px 8px;font-size:11px}
-@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.mosaico{aspect-ratio:auto;grid-template-rows:none;grid-template-columns:repeat(2,minmax(0,1fr))}.mosaico figure{grid-row:auto!important;aspect-ratio:1}.mosaico .e{display:none}}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.mosaico figure{aspect-ratio:1}.mosaico figure:nth-child(2n){transform:none}}
 
-/* faixa de nichos */
-.faixa{border-block:1px solid var(--line);overflow:hidden;padding:18px 0;white-space:nowrap}
-.faixa .row{display:inline-flex;gap:40px;animation:corre 38s linear infinite;padding-left:40px}
-.faixa span{font-weight:800;font-size:clamp(22px,3vw,40px);text-transform:uppercase;font-variation-settings:"wdth" 78;display:inline-flex;align-items:center;gap:40px}
-.faixa span::after{content:"";width:12px;height:12px;background:var(--green)}
+/* [GUIA: faixa] faixa de nichos com cara de terminal: grade, feixe de varredura, palavras decodificando e glitch */
+.faixa{position:relative;border-block:1px solid var(--line);overflow:hidden;padding:20px 0 16px;white-space:nowrap;background-image:linear-gradient(rgba(68,214,45,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(68,214,45,.07) 1px,transparent 1px);background-size:24px 24px}
+.faixa .row{display:inline-flex;gap:44px;padding-left:44px;animation:corre 38s linear infinite}
+.faixa .row.r2{display:flex;width:max-content;margin-top:8px;animation:corre2 46s linear infinite}
+.faixa:hover .row{animation-play-state:paused}
+.faixa .w{display:inline-flex;align-items:center;gap:44px}
+.faixa .w b{position:relative;font-weight:800;font-size:clamp(22px,3vw,40px);text-transform:uppercase;font-variation-settings:"wdth" 78;letter-spacing:-.01em}
+.faixa .w i{font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--green);opacity:.8;align-self:flex-start;margin:4px -34px 0 0}
+.faixa .w::after{content:"";width:12px;height:12px;background:var(--green);box-shadow:16px 0 0 -3px var(--green),0 16px 0 -3px rgba(68,214,45,.4);animation:pisca 1.6s steps(2) infinite}
+.faixa .r2 .w b{color:transparent;-webkit-text-stroke:1px rgba(247,247,247,.35);font-size:clamp(18px,2.2vw,30px)}
+.faixa .r2 .w::after{width:6px;height:6px;box-shadow:none;opacity:.5}
+.faixa .scan{position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--green);box-shadow:0 0 14px 2px rgba(68,214,45,.7);opacity:.8;animation:varre 4.5s cubic-bezier(.65,0,.35,1) infinite;pointer-events:none;z-index:2}
+.faixa .scan::after{content:"";position:absolute;top:0;bottom:0;right:2px;width:120px;background:rgba(68,214,45,.06)}
+.faixa .w b.gx{animation:gx .4s steps(3) 1;text-shadow:3px 0 0 rgba(255,62,108,.8),-3px 0 0 rgba(68,214,45,.9)}
+.faixa .w b.on{color:var(--green)}
+@keyframes corre2{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes varre{0%{transform:translateX(-10vw)}100%{transform:translateX(110vw)}}
+@keyframes pisca{50%{opacity:.35}}
+@keyframes gx{0%{transform:translate(0)}33%{transform:translate(-3px,1px) skewX(-8deg)}66%{transform:translate(3px,-1px)}100%{transform:none}}
+@media (max-width:760px){.faixa .row.r2,.faixa .scan{display:none}.faixa .w i{display:none}}
 @keyframes corre{to{transform:translateX(-50%)}}
 
 /* seções */
@@ -359,19 +374,15 @@ p{margin:0}
       <div class="facts mono"><span>De <b>R$ 750</b> a <b>R$ 950</b></span><span>Pronta em <b>7 dias</b></span><span><b>100%</b> online</span></div>
     </div>
     <div class="mosaico" aria-label="Marcas criadas pela turzin.">
-      <figure class="a"><img src="/img/isabella/1-capa/almofada.webp" alt="Almofada com a marca Isabella Gutierres" width="1440" height="900" fetchpriority="high"><figcaption class="mono">Isabella Gutierres</figcaption></figure>
-      <figure class="b"><img src="/img/acai-yo/3-tipografia/embalagem-acai.webp" alt="Embalagem roxa da Açaí Yo" width="1000" height="1250"><figcaption class="mono">Açaí Yo</figcaption></figure>
-      <figure class="c"><img src="/img/margarett/1-capa/sacola.webp" alt="Sacola kraft da hamburgueria Margarett" width="1000" height="1250"><figcaption class="mono">Margarett</figcaption></figure>
-      <figure class="d2"><img src="/img/reigotta/1-capa/sacola.webp" alt="Sacola branca com a marca Reigotta" width="1800" height="1350"><figcaption class="mono">Reigotta</figcaption></figure>
-      <figure class="e"><img src="/img/kamisama/2-simbolo/simbolo-vinho.webp" alt="Símbolo da Kamisama" width="1400" height="788" loading="lazy"></figure>
+      <figure><img src="/img/margarett/4-aplicacoes/cardapio.webp" alt="Cardápio da hamburgueria Margarett aberto com foto de hambúrguer" width="1000" height="1250" fetchpriority="high"><figcaption class="mono">Margarett</figcaption></figure>
+      <figure><img src="/img/isabella/1-capa/almofada.webp" alt="Almofada com a marca Isabella Gutierres" width="1440" height="900"><figcaption class="mono">Isabella Gutierres</figcaption></figure>
+      <figure><img src="/img/kamisama/4-aplicacoes/embalagem.webp" alt="Embalagem de delivery da Kamisama" width="1400" height="1040" style="object-position:82% 50%"><figcaption class="mono">Kamisama</figcaption></figure>
+      <figure><img src="/img/reigotta/1-capa/sacola.webp" alt="Sacola com a marca Reigotta" width="1800" height="1350"><figcaption class="mono">Reigotta</figcaption></figure>
     </div>
   </div>
 </section>
 
-<div class="faixa" aria-hidden="true"><div class="row">
-  <span>Hamburgueria</span><span>Açaíteria</span><span>Moda fitness</span><span>Consultório</span><span>Delivery japonês</span><span>Cafeteria</span><span>Doceria</span><span>Salão de beleza</span>
-  <span>Hamburgueria</span><span>Açaíteria</span><span>Moda fitness</span><span>Consultório</span><span>Delivery japonês</span><span>Cafeteria</span><span>Doceria</span><span>Salão de beleza</span>
-</div></div>
+<div class="faixa" id="faixa" aria-hidden="true"><div class="scan"></div><div class="row"><span class="w"><i class="mono">01</i><b>Hamburgueria</b></span><span class="w"><i class="mono">02</i><b>Açaíteria</b></span><span class="w"><i class="mono">03</i><b>Moda fitness</b></span><span class="w"><i class="mono">04</i><b>Consultório</b></span><span class="w"><i class="mono">05</i><b>Delivery japonês</b></span><span class="w"><i class="mono">06</i><b>Cafeteria</b></span><span class="w"><i class="mono">07</i><b>Doceria</b></span><span class="w"><i class="mono">08</i><b>Salão de beleza</b></span><span class="w"><i class="mono">01</i><b>Hamburgueria</b></span><span class="w"><i class="mono">02</i><b>Açaíteria</b></span><span class="w"><i class="mono">03</i><b>Moda fitness</b></span><span class="w"><i class="mono">04</i><b>Consultório</b></span><span class="w"><i class="mono">05</i><b>Delivery japonês</b></span><span class="w"><i class="mono">06</i><b>Cafeteria</b></span><span class="w"><i class="mono">07</i><b>Doceria</b></span><span class="w"><i class="mono">08</i><b>Salão de beleza</b></span></div><div class="row r2"><span class="w"><i class="mono">01</i><b>Hamburgueria</b></span><span class="w"><i class="mono">02</i><b>Açaíteria</b></span><span class="w"><i class="mono">03</i><b>Moda fitness</b></span><span class="w"><i class="mono">04</i><b>Consultório</b></span><span class="w"><i class="mono">05</i><b>Delivery japonês</b></span><span class="w"><i class="mono">06</i><b>Cafeteria</b></span><span class="w"><i class="mono">07</i><b>Doceria</b></span><span class="w"><i class="mono">08</i><b>Salão de beleza</b></span><span class="w"><i class="mono">01</i><b>Hamburgueria</b></span><span class="w"><i class="mono">02</i><b>Açaíteria</b></span><span class="w"><i class="mono">03</i><b>Moda fitness</b></span><span class="w"><i class="mono">04</i><b>Consultório</b></span><span class="w"><i class="mono">05</i><b>Delivery japonês</b></span><span class="w"><i class="mono">06</i><b>Cafeteria</b></span><span class="w"><i class="mono">07</i><b>Doceria</b></span><span class="w"><i class="mono">08</i><b>Salão de beleza</b></span></div></div>
 
 <!-- [GUIA: sinais] problema -->
 <section class="sec" id="sinais">
@@ -647,6 +658,19 @@ function embaralha(el) {
 }
 const ioK = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { ioK.unobserve(e.target); embaralha(e.target); } }));
 document.querySelectorAll('.kick').forEach(k => ioK.observe(k));
+
+/* [GUIA: faixa-js] na faixa de nichos, uma palavra por vez decodifica e dá um glitch (só no PC) */
+if (!calmo && matchMedia('(min-width: 761px)').matches) {
+  const pal = [...document.querySelectorAll('#faixa .row:not(.r2) .w b')];
+  setInterval(() => {
+    if (document.hidden) return;
+    const vis = pal.filter(b => { const r = b.getBoundingClientRect(); return r.left > 0 && r.right < innerWidth && r.top < innerHeight && r.bottom > 0; });
+    if (!vis.length) return;
+    const b = vis[Math.floor(Math.random() * vis.length)];
+    b.classList.add('on', 'gx'); embaralha(b);
+    setTimeout(() => b.classList.remove('gx'), 420); setTimeout(() => b.classList.remove('on'), 900);
+  }, 1100);
+}
 
 /* [GUIA: rastro] rastro de quadradinhos verdes atrás do cursor (só PC) */
 if (!calmo && matchMedia('(pointer: fine)').matches) {
