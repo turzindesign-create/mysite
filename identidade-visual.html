@@ -292,7 +292,8 @@ p{margin:0}
 /* Açaí Yo · um traço só, rápido e preciso (como o swoosh da Nike): o raio se desenha de uma vez e se preenche */
 /* Açaí Yo · fitas 3D (referência enviada pelo cliente): os traços do raio entram voando de vários lados,
    com volume e sombra longa, se encaixam com a câmera inclinada, a câmera endireita e o Y ganha cor */
-.cena[data-m="acai-yo"]{perspective:1000px;--dt:2.55s}
+.cena[data-m="acai-yo"]{perspective:1000px;--dt:2.55s;padding:0}
+.cena .vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#E9EAEA}
 .cena[data-m="acai-yo"] .sim{width:25%}
 .cena[data-m="acai-yo"] .cam{transform-style:preserve-3d;animation:acaiCam 2.4s cubic-bezier(.7,0,.2,1)}
 .cena[data-m="acai-yo"] .y3d{filter:drop-shadow(-26px 44px 16px rgba(58,24,88,.22));animation:acaiSombra .8s ease 1.8s}
@@ -587,7 +588,7 @@ const calmo = false; // [GUIA: animacoes-sempre] mude para matchMedia('(prefers-
 const MARCAS = [
   { id:'isabella',  nome:'Isabella Gutierres', seg:'Psicóloga',        cor:'#961B2E', tx:'#F7F7F7', fotos:[['4-aplicacoes/almofada','Almofada do consultório'],['4-aplicacoes/placa','Placa de fachada'],['4-aplicacoes/post-instagram','Post no Instagram']] },
   { id:'margarett', nome:'Margarett',          seg:'Hamburgueria',     cor:'#1A130D', tx:'#F7F7F7', fotos:[['4-aplicacoes/sacola','Sacola de delivery'],['4-aplicacoes/cardapio-interno','Cardápio'],['4-aplicacoes/post-imperio','Post no Instagram']] },
-  { id:'acai-yo',   nome:'Açaí Yo',            seg:'Açaíteria',        cor:'#8B3AC1', palco:'#F4F0FA', tx:'#3A1858', fotos:[['3-tipografia/embalagem-acai','Embalagem'],['4-aplicacoes/uniforme-polo','Uniforme'],['1-capa/outdoor','Outdoor']] },
+  { id:'acai-yo',   nome:'Açaí Yo',            seg:'Açaíteria',        cor:'#8B3AC1', palco:'#E9EAEA', tx:'#3A1858', fotos:[['3-tipografia/embalagem-acai','Embalagem'],['4-aplicacoes/uniforme-polo','Uniforme'],['1-capa/outdoor','Outdoor']] },
   { id:'reigotta',  nome:'Reigotta',           seg:'Moda fitness',     cor:'#FF3EB5', tx:'#F7F7F7', fotos:[['1-capa/sacola','Sacola da loja'],['4-aplicacoes/cartoes','Cartões de visita'],['4-aplicacoes/etiqueta-rosa','Etiqueta de roupa']] },
   { id:'kamisama',  nome:'Kamisama',           seg:'Delivery japonês', cor:'#FEA389', tx:'#2A1517', fotos:[['4-aplicacoes/embalagem','Embalagem de delivery'],['4-aplicacoes/posts','Posts no Instagram'],['1-capa/sushi','Foto de campanha']] },
 ];
@@ -607,23 +608,11 @@ const TXT = id => '<div class="tw"><img class="txt" alt="" src="/img/lp/logos/' 
 const CENAS = {
   isabella: () => '<div class="sim">' + SIMB.isabella + '</div>' + TXT('isabella'),
   margarett: () => '<div class="sim">' + SIMB.margarett + '</div>' + TXT('margarett'),
-  'acai-yo': () => {
-    const Y = 'M726.5 0 L496.6 0 L357.7 411.5 L223.3 0 L-6.6 0 L295.9 738.4 L92.6 1026.4 A54.5 54.5 0 0 0 177.3 1094.7 L754 463 L753 448 L730 441 L538.2 440Z';
-    const P = [['M726.5 0 L496.6 0 L357.7 411.5', '900px', '-700px', '38deg'], ['M357.7 411.5 L223.3 0 L-6.6 0', '-900px', '-500px', '-30deg'],
-               ['M-6.6 0 L295.9 738.4 L92.6 1026.4', '-1100px', '600px', '24deg'], ['M92.6 1026.4 A54.5 54.5 0 0 0 177.3 1094.7 L754 463', '700px', '900px', '-40deg'],
-               ['M754 463 L753 448 L730 441 L538.2 440 L726.5 0', '1200px', '200px', '55deg']];
-    const lin = (d, cor, w, t) => '<path d="' + d + '" fill="none" stroke="' + cor + '" stroke-width="' + w + '" stroke-linecap="round" stroke-linejoin="round"' + (t ? ' transform="translate(' + t + ')"' : '') + '/>';
-    const pecas = P.map((p, i) => {
-      let ex = ''; for (let k = 8; k >= 1; k--) ex += lin(p[0], k > 4 ? '#3E1560' : '#5A2384', 34, (k * 7) + ' ' + (k * 9));
-      return '<g class="pc pc' + (i + 1) + '" style="--x:' + p[1] + ';--y:' + p[2] + ';--r:' + p[3] + '"><g class="ex">' + ex + '</g><g class="topo">' + lin(p[0], '#9A4FD0', 34) + lin(p[0], '#E2C9F7', 8) + '</g></g>';
-    }).join('');
-    const svg = '<svg class="y3d" viewBox="-150 -150 1057 1412" aria-hidden="true">' + pecas + '<path class="vidro" d="' + Y + '" fill="#8B3AC1" fill-opacity="0"/><path class="solido" d="' + Y + '" fill="#8B3AC1"/></svg>';
-    return '<i class="luz l1"></i><i class="luz l2"></i><i class="luz l3"></i><i class="luz l4"></i><div class="sim"><div class="cam">' + svg + '</div></div><div class="tw"><img class="txt" alt="" src="/img/lp/logos/partes/acai-yo-texto-roxo.png"></div>';
-  },
+  'acai-yo': () => '<video class="vid" autoplay muted playsinline preload="auto" poster="/img/lp/video/acai-yo-inicio.webp"><source src="/img/lp/video/acai-yo.mp4" type="video/mp4"></video>',
   reigotta: () => '<div class="sim"><svg class="ecg" viewBox="0 0 1000 200" preserveAspectRatio="none"><polyline points="0,100 430,100 455,100 475,55 495,150 518,25 540,120 556,100 1000,100" fill="none" stroke="#fff" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>' + SIMB.reigotta + '</div>' + TXT('reigotta'),
   kamisama: () => '<div class="sim">' + SIMB.kamisama + '</div>' + TXT('kamisama'),
 };
-function anima() { cena.dataset.m = atual.id; cena.innerHTML = CENAS[atual.id](); }
+function anima() { cena.dataset.m = atual.id; cena.innerHTML = CENAS[atual.id](); const v = cena.querySelector('video'); if (v) { v.muted = true; v.currentTime = 0; const p = v.play(); if (p) p.catch(() => {}); } }
 function foto(j) {
   const f = atual.fotos[j], mi = document.getElementById('mi');
   document.querySelectorAll('#thumbs button').forEach((t, k) => t.setAttribute('aria-pressed', k === j ? 'true' : 'false'));
