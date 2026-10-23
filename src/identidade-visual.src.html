@@ -9,7 +9,7 @@
      Página única focada em vender identidade visual.
      ============================================================ -->
 <title>turzin.</title>
-<meta name="description" content="Identidade visual completa para pequenos e médios negócios: estudo de mercado, logotipo, cores, tipografia, aplicações e manual da marca. R$ 799,90, pronta em até 5 dias.">
+<meta name="description" content="Identidade visual completa para pequenos e médios negócios: consultoria de mercado, símbolo, cores, tipografia, grafismos, animações, aplicações, voz e manual da marca. Pronta em 7 dias.">
 <link rel="canonical" href="https://turzindesign.com.br/identidade-visual">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#212121">
@@ -20,12 +20,12 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://turzindesign.com.br/identidade-visual">
 <meta property="og:title" content="Identidade visual · turzin.">
-<meta property="og:description" content="Identidade visual completa para o seu negócio, pronta em até 5 dias.">
+<meta property="og:description" content="Identidade visual completa para o seu negócio, pronta em 7 dias.">
 <meta property="og:image" content="https://turzindesign.com.br/img/og/og-identidade-visual.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Identidade visual","serviceType":"Identidade visual","description":"Estudo de nicho e mercado, logotipo, paleta de cores, tipografia, grafismos, aplicações e manual de uso da marca.","provider":{"@type":"ProfessionalService","@id":"https://turzindesign.com.br/#turzin","name":"turzin.","url":"https://turzindesign.com.br/"},"areaServed":{"@type":"Country","name":"Brasil"},"offers":{"@type":"Offer","price":"799.90","priceCurrency":"BRL"},"url":"https://turzindesign.com.br/identidade-visual"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Identidade visual","serviceType":"Identidade visual","description":"Consultoria de mercado; símbolo, paleta de cores e tipografia; grafismos; animações; aplicações digitais e físicas; voz da marca; manual da marca.","provider":{"@type":"ProfessionalService","@id":"https://turzindesign.com.br/#turzin","name":"turzin.","url":"https://turzindesign.com.br/"},"areaServed":{"@type":"Country","name":"Brasil"},"offers":{"@type":"Offer","priceCurrency":"BRL","priceSpecification":{"@type":"PriceSpecification","minPrice":"750","maxPrice":"950","priceCurrency":"BRL"}},"url":"https://turzindesign.com.br/identidade-visual"}</script>
 <link rel="preload" href="/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:'Bricolage Grotesque';font-style:normal;font-display:swap;font-weight:200 800;font-stretch:75% 100%;src:url(/fonts/bricolage-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -125,10 +125,13 @@ p{margin:0}
 .cases{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(12px,1.6vw,20px)}
 .case{grid-column:span 2;text-decoration:none;display:grid;gap:14px}
 .case:nth-child(1),.case:nth-child(2){grid-column:span 3}
-.case .im{overflow:hidden;aspect-ratio:4/3;background:var(--panel)}
+.case .im{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--c,var(--panel))}
 .case:nth-child(n+3) .im{aspect-ratio:4/5}
-.case img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--curva)}
-.case:hover img{transform:scale(1.05)}
+.case .lg{position:absolute;left:22%;top:22%;width:56%;height:56%;object-fit:contain;transition:transform .7s var(--curva),opacity .5s}
+.case .ap{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .55s var(--curva),transform .9s var(--curva)}
+.case .hint{position:absolute;right:12px;bottom:12px;background:rgba(33,33,33,.85);color:var(--ink);padding:6px 10px;font-size:11px;transition:opacity .3s}
+@media (hover:hover){.case:hover .ap,.case:focus-visible .ap{opacity:1;transform:none}.case:hover .lg{transform:scale(.9);opacity:0}.case:hover .hint{opacity:0}}
+@media (hover:none){.case .hint{display:none}}
 .case .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1px solid var(--line);padding-top:12px}
 .case h3{font-size:clamp(24px,2.4vw,34px)}
 .case .seg{color:var(--mute)}
@@ -137,6 +140,16 @@ p{margin:0}
 @media (max-width:900px){.cases{grid-template-columns:repeat(2,minmax(0,1fr))}.case .meta{flex-direction:column;align-items:flex-start;gap:6px}.case h3{font-size:22px}.case,.case:nth-child(1),.case:nth-child(2){grid-column:span 1}.case:nth-child(1){grid-column:span 2}.case .im,.case:nth-child(n+3) .im{aspect-ratio:1}}
 
 /* entregáveis */
+.atos{border-top:1px solid var(--line)}
+.ato{display:grid;grid-template-columns:clamp(70px,10vw,150px) minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,48px);align-items:center;padding:clamp(24px,3.4vw,44px) 0;border-bottom:1px solid var(--line);transition:background .3s}
+.ato .num{font-weight:800;font-variation-settings:"wdth" 78;font-size:clamp(48px,7vw,110px);line-height:.8;color:transparent;-webkit-text-stroke:1.5px var(--green);transition:color .4s}
+.ato:hover .num{color:var(--green)}
+.ato .cab{display:grid;gap:10px}
+.ato .cab .mono{color:var(--green)}
+.ato h3{font-size:clamp(26px,2.8vw,40px)}
+.ato p{color:var(--mute);font-size:clamp(16px,1.3vw,19px);max-width:520px}
+.ato.fim-ato .num{font-size:clamp(44px,6vw,96px)}
+@media (max-width:760px){.ato{grid-template-columns:56px minmax(0,1fr);align-items:start}.ato p{grid-column:2}.ato .num{font-size:52px}}
 .itens{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .item{background:var(--ground);padding:28px 24px 30px;display:grid;gap:14px;align-content:start;transition:background .3s}
 .item:hover{background:#262626}
@@ -165,6 +178,7 @@ p{margin:0}
 .oferta .l{padding:clamp(28px,4vw,56px);display:grid;gap:22px;align-content:start;border-right:1px solid var(--line)}
 .oferta .r{padding:clamp(28px,4vw,56px);display:grid;gap:22px;align-content:space-between;background:var(--green);color:var(--green-ink)}
 .oferta .preco{font-weight:800;font-variation-settings:"wdth" 78;font-size:clamp(64px,9vw,128px);line-height:.85;letter-spacing:-.03em}
+.oferta .preco .ate{font-size:.3em;letter-spacing:0;margin:0 .25em;vertical-align:middle}
 .oferta .preco small{font-size:.32em;letter-spacing:0;vertical-align:top;margin-right:6px}
 .oferta .r .btn{background:var(--green-ink);color:var(--green);border-color:var(--green-ink)}
 .oferta .r .btn::before{background:var(--ink)}
@@ -324,7 +338,7 @@ p{margin:0}
   <nav class="mono">
     <a class="l" href="#projetos">Projetos</a>
     <a class="l" href="#marcas">Marcas</a>
-    <a class="l" href="#entrega">O que você recebe</a>
+    <a class="l" href="#atos">A entrega</a>
     <a class="l" href="#duvidas">Dúvidas</a>
     <a class="btn fill sm js-whats" href="#fim" target="_blank" rel="noopener">Quero minha marca</a>
   </nav>
@@ -337,12 +351,12 @@ p{margin:0}
     <div>
       <span class="kick mono">Identidade visual para pequenos negócios</span>
       <h1 style="margin-top:22px">Sua marca vende antes de você falar<span class="dot" aria-hidden="true"></span></h1>
-      <p class="sub">Identidade visual completa para o seu negócio parecer tão bom quanto ele é: estudo de mercado, logotipo, cores, tipografia, aplicações e manual da marca.</p>
+      <p class="sub">Identidade visual completa para o seu negócio parecer tão bom quanto ele é: consultoria de mercado, símbolo, cores, tipografia, animações, voz e manual da marca.</p>
       <div class="ctas">
         <a class="btn fill js-whats" href="#fim" target="_blank" rel="noopener">Quero minha marca <span class="arr">→</span></a>
         <a class="btn" href="#projetos">Ver projetos</a>
       </div>
-      <div class="facts mono"><span><b>R$ 799,90</b></span><span>Pronta em até <b>5 dias</b></span><span><b>100%</b> online</span></div>
+      <div class="facts mono"><span>De <b>R$ 750</b> a <b>R$ 950</b></span><span>Pronta em <b>7 dias</b></span><span><b>100%</b> online</span></div>
     </div>
     <div class="mosaico" aria-label="Marcas criadas pela turzin.">
       <figure class="a"><img src="/img/isabella/1-capa/almofada.webp" alt="Almofada com a marca Isabella Gutierres" width="1440" height="900" fetchpriority="high"><figcaption class="mono">Isabella Gutierres</figcaption></figure>
@@ -385,11 +399,11 @@ p{margin:0}
       <p>Cada projeto começa no estudo do negócio e termina com a marca aplicada no dia a dia do cliente.</p>
     </div>
     <div class="cases">
-      <a class="case rv" href="/isabella?de=lp"><div class="im"><img src="/img/isabella/4-aplicacoes/cartao.webp" alt="Cartões de visita da Isabella Gutierres" width="1000" height="1251" loading="lazy"></div><div class="meta"><h3>Isabella Gutierres</h3><span class="seg mono">Psicóloga <span class="ver">→</span></span></div></a>
-      <a class="case rv" href="/margarett?de=lp"><div class="im"><img src="/img/margarett/4-aplicacoes/cardapio.webp" alt="Cardápio da hamburgueria Margarett" width="1000" height="1250" loading="lazy"></div><div class="meta"><h3>Margarett</h3><span class="seg mono">Hamburgueria <span class="ver">→</span></span></div></a>
-      <a class="case rv" href="/acai-yo?de=lp"><div class="im"><img src="/img/acai-yo/4-aplicacoes/uniforme-polo.webp" alt="Uniforme polo da Açaí Yo" width="1000" height="1250" loading="lazy"></div><div class="meta"><h3>Açaí Yo</h3><span class="seg mono">Açaíteria <span class="ver">→</span></span></div></a>
-      <a class="case rv" href="/reigotta?de=lp"><div class="im"><img src="/img/reigotta/4-aplicacoes/post-novos-ciclos.webp" alt="Post da coleção Novos Ciclos da Reigotta" width="866" height="1082" loading="lazy"></div><div class="meta"><h3>Reigotta</h3><span class="seg mono">Moda fitness <span class="ver">→</span></span></div></a>
-      <a class="case rv" href="/kamisama?de=lp"><div class="im"><img src="/img/kamisama/4-aplicacoes/logo-salmao.webp" alt="Logotipo da Kamisama sobre fundo salmão" width="1400" height="788" loading="lazy"></div><div class="meta"><h3>Kamisama</h3><span class="seg mono">Delivery japonês <span class="ver">→</span></span></div></a>
+      <a class="case rv" href="/isabella?de=lp" style="--c:#961B2E"><div class="im"><img class="lg" src="/img/lp/logos/isabella.png" alt="Logo Isabella Gutierres" loading="lazy"><img class="ap" src="/img/isabella/4-aplicacoes/cartao.webp" alt="Cartões de visita da Isabella Gutierres" loading="lazy"><span class="hint mono" aria-hidden="true">Ver aplicação</span></div><div class="meta"><h3>Isabella Gutierres</h3><span class="seg mono">Psicóloga <span class="ver">→</span></span></div></a>
+      <a class="case rv" href="/margarett?de=lp" style="--c:#1A130D"><div class="im"><img class="lg" src="/img/lp/logos/margarett.png" alt="Logo Margarett" loading="lazy"><img class="ap" src="/img/margarett/4-aplicacoes/cardapio.webp" alt="Cardápio da hamburgueria Margarett" loading="lazy"><span class="hint mono" aria-hidden="true">Ver aplicação</span></div><div class="meta"><h3>Margarett</h3><span class="seg mono">Hamburgueria <span class="ver">→</span></span></div></a>
+      <a class="case rv" href="/acai-yo?de=lp" style="--c:#8B3AC1"><div class="im"><img class="lg" src="/img/lp/logos/acai-yo.png" alt="Logo Açaí Yo" loading="lazy"><img class="ap" src="/img/acai-yo/4-aplicacoes/uniforme-polo.webp" alt="Uniforme polo da Açaí Yo" loading="lazy"><span class="hint mono" aria-hidden="true">Ver aplicação</span></div><div class="meta"><h3>Açaí Yo</h3><span class="seg mono">Açaíteria <span class="ver">→</span></span></div></a>
+      <a class="case rv" href="/reigotta?de=lp" style="--c:#FF3EB5"><div class="im"><img class="lg" src="/img/lp/logos/reigotta.png" alt="Logo Reigotta" loading="lazy"><img class="ap" src="/img/reigotta/4-aplicacoes/post-novos-ciclos.webp" alt="Post da coleção Novos Ciclos da Reigotta" loading="lazy"><span class="hint mono" aria-hidden="true">Ver aplicação</span></div><div class="meta"><h3>Reigotta</h3><span class="seg mono">Moda fitness <span class="ver">→</span></span></div></a>
+      <a class="case rv" href="/kamisama?de=lp" style="--c:#FEA389"><div class="im"><img class="lg" src="/img/lp/logos/kamisama.png" alt="Logo Kamisama" loading="lazy"><img class="ap" src="/img/kamisama/4-aplicacoes/embalagem.webp" alt="Embalagem de delivery da Kamisama" loading="lazy"><span class="hint mono" aria-hidden="true">Ver aplicação</span></div><div class="meta"><h3>Kamisama</h3><span class="seg mono">Delivery japonês <span class="ver">→</span></span></div></a>
     </div>
   </div>
 </section>
@@ -411,23 +425,21 @@ p{margin:0}
   </div>
 </section>
 
-<!-- [GUIA: entrega] o que o cliente recebe -->
-<section class="sec" id="entrega" style="padding-top:0">
+<!-- [GUIA: atos] a entrega contada em atos -->
+<section class="sec" id="atos" style="padding-top:0">
   <div class="wrap">
     <div class="head rv">
-      <span class="kick mono">O que você recebe</span>
+      <span class="kick mono">A entrega</span>
       <h2>Uma marca inteira, não só um logo</h2>
-      <p>Tudo o que o seu negócio precisa para aparecer do mesmo jeito em qualquer lugar.</p>
+      <p>Toda marca conta uma história. A sua é escrita em cinco atos e termina com o roteiro para ela continuar.</p>
     </div>
-    <div class="itens rv">
-      <div class="item"><span class="n mono">01</span><h3>Estudo de nicho e mercado</h3><p>Concorrentes, público e o que diferencia o seu negócio. A marca nasce daqui.</p></div>
-      <div class="item"><span class="n mono">02</span><h3>Logotipo e símbolo</h3><p>A assinatura da marca, pensada para funcionar grande na fachada e pequena no perfil.</p></div>
-      <div class="item"><span class="n mono">03</span><h3>Paleta de cores</h3><p>Cores escolhidas pelo que comunicam, com códigos para impressão e para tela.</p></div>
-      <div class="item"><span class="n mono">04</span><h3>Tipografia</h3><p>As fontes da marca e como usar cada uma em títulos e textos.</p></div>
-      <div class="item"><span class="n mono">05</span><h3>Grafismos</h3><p>Elementos visuais que deixam qualquer peça com a cara do seu negócio.</p></div>
-      <div class="item"><span class="n mono">06</span><h3>Aplicações</h3><p>A marca no uso real: cartão, posts, embalagem, sacola, uniforme, fachada.</p></div>
-      <div class="item"><span class="n mono">07</span><h3>Manual da marca</h3><p>As regras para qualquer pessoa aplicar a marca do jeito certo.</p></div>
-      <div class="item"><span class="n mono">08</span><h3>Arquivos finais</h3><p>Prontos para mandar para a gráfica e para usar nas redes.</p></div>
+    <div class="atos">
+      <article class="ato rv"><span class="num" aria-hidden="true">I</span><div class="cab"><span class="mono">Ato I · Descoberta</span><h3>Consultoria de mercado</h3></div><p>Antes de desenhar, entender. O seu negócio, o seu público e a concorrência são estudados para descobrir o que só você tem.</p></article>
+      <article class="ato rv"><span class="num" aria-hidden="true">II</span><div class="cab"><span class="mono">Ato II · Essência</span><h3>Símbolo, paleta de cores e tipografia</h3></div><p>O que foi descoberto vira forma: o símbolo, as cores e as letras que contam quem você é antes de qualquer palavra.</p></article>
+      <article class="ato rv"><span class="num" aria-hidden="true">III</span><div class="cab"><span class="mono">Ato III · Movimento</span><h3>Grafismos e animações</h3></div><p>A marca ganha linguagem própria e se mexe: elementos visuais e animações para redes, telas e vídeos.</p></article>
+      <article class="ato rv"><span class="num" aria-hidden="true">IV</span><div class="cab"><span class="mono">Ato IV · Voz</span><h3>Voz da marca</h3></div><p>Como a marca fala: o tom, as palavras e o jeito de conversar com o cliente, do post ao atendimento.</p></article>
+      <article class="ato rv"><span class="num" aria-hidden="true">V</span><div class="cab"><span class="mono">Ato V · Estreia</span><h3>Aplicações digitais e físicas</h3></div><p>A marca entra em cena no mundo real: perfil, posts, cartão, embalagem, fachada e uniforme.</p></article>
+      <article class="ato fim-ato rv"><span class="num" aria-hidden="true">∞</span><div class="cab"><span class="mono">Epílogo</span><h3>Manual da marca</h3></div><p>O roteiro para a história continuar igual em qualquer lugar, com qualquer pessoa que for aplicar a marca.</p></article>
     </div>
   </div>
 </section>
@@ -437,16 +449,16 @@ p{margin:0}
   <div class="wrap">
     <div class="head rv">
       <span class="kick mono">Como funciona</span>
-      <h2>Do briefing à marca pronta em até 5 dias</h2>
+      <h2>Da conversa à marca pronta em 7 dias</h2>
     </div>
     <ol class="passos" id="passos">
-      <li><div class="bar"></div><span class="dia mono">Etapa 01</span><h3>Briefing</h3><p>Você responde perguntas sobre o negócio, o público e o que espera da marca.</p></li>
-      <li><div class="bar"></div><span class="dia mono">Etapa 02</span><h3>Estudo</h3><p>Pesquisa de nicho, concorrência e referências para definir a direção.</p></li>
-      <li><div class="bar"></div><span class="dia mono">Etapa 03</span><h3>Criação</h3><p>Símbolo, logotipo, cores, tipografia e grafismos.</p></li>
+      <li><div class="bar"></div><span class="dia mono">Etapa 01</span><h3>Conversa</h3><p>Você conta sobre o seu negócio e fechamos o projeto.</p></li>
+      <li><div class="bar"></div><span class="dia mono">Etapa 02</span><h3>Briefing e estudo</h3><p>Você responde o briefing e começa a consultoria de mercado.</p></li>
+      <li><div class="bar"></div><span class="dia mono">Etapa 03</span><h3>Criação</h3><p>Símbolo, cores, tipografia, grafismos, animações e voz.</p></li>
       <li><div class="bar"></div><span class="dia mono">Etapa 04</span><h3>Apresentação</h3><p>Você vê a marca aplicada e pede os ajustes.</p></li>
-      <li><div class="bar"></div><span class="dia mono">Etapa 05</span><h3>Entrega</h3><p>Arquivos finais e manual da marca prontos para usar.</p></li>
+      <li><div class="bar"></div><span class="dia mono">Etapa 05</span><h3>Entrega</h3><p>Aplicações, arquivos finais e manual da marca.</p></li>
     </ol>
-    <p class="nota">O prazo conta a partir do briefing respondido e das aprovações em dia. Tudo acontece online, pelo WhatsApp e por e-mail, de qualquer cidade do Brasil.</p>
+    <p class="nota">Os 7 dias contam a partir do briefing respondido e dependem das aprovações em dia. Tudo acontece online, pelo WhatsApp e por e-mail, de qualquer cidade do Brasil.</p>
   </div>
 </section>
 
@@ -457,20 +469,20 @@ p{margin:0}
       <div class="l">
         <span class="kick mono">Identidade visual completa</span>
         <ul class="check">
-          <li>Estudo de nicho e mercado</li>
-          <li>Logotipo e símbolo</li>
-          <li>Paleta de cores e tipografia</li>
+          <li>Consultoria de mercado</li>
+          <li>Símbolo, paleta de cores e tipografia</li>
           <li>Grafismos</li>
-          <li>Aplicações da marca</li>
+          <li>Animações</li>
+          <li>Aplicações digitais e físicas</li>
+          <li>Voz da marca</li>
           <li>Manual da marca</li>
-          <li>Arquivos finais para impressão e redes</li>
         </ul>
       </div>
       <div class="r">
         <div>
           <span class="mono">Investimento</span>
-          <div class="preco"><small>R$</small>799,90</div>
-          <p style="margin-top:14px">Pronta em até 5 dias. Forma de pagamento combinada pelo WhatsApp.</p>
+          <div class="preco"><small>R$</small>750<span class="ate">a</span>950</div>
+          <p style="margin-top:14px">O valor final depende do seu negócio e das aplicações que ele precisa. Pronta em 7 dias.</p>
         </div>
         <a class="btn js-whats" href="#fim" target="_blank" rel="noopener">Quero minha marca <span class="arr">→</span></a>
       </div>
@@ -486,12 +498,13 @@ p{margin:0}
       <h2>Perguntas frequentes</h2>
     </div>
     <div class="faq rv">
-      <details><summary>Em quanto tempo a marca fica pronta?<i></i></summary><p>Em até 5 dias. O prazo começa quando o briefing é respondido e depende de você aprovar cada etapa em dia.</p></details>
+      <details><summary>Em quanto tempo a marca fica pronta?<i></i></summary><p>Em 7 dias. O prazo começa quando o briefing é respondido e depende de você aprovar cada etapa em dia.</p></details>
+      <details><summary>Quanto custa?<i></i></summary><p>Entre R$ 750 e R$ 950. O valor final depende do seu negócio e das aplicações que ele precisa, e é combinado na nossa conversa.</p></details>
       <details><summary>Atende negócios de outras cidades?<i></i></summary><p>Sim. Todo o processo é online, pelo WhatsApp e por e-mail, para qualquer lugar do Brasil.</p></details>
       <details><summary>Já tenho um logo. Vale a pena fazer a identidade?<i></i></summary><p>Vale se o logo atual não representa o negócio, fica ruim em tamanhos pequenos ou não conversa com o resto da comunicação. Dá para partir do que você já tem ou começar do zero.</p></details>
-      <details><summary>O que eu preciso enviar?<i></i></summary><p>Só responder o briefing. Se tiver fotos do negócio, referências que você gosta ou materiais antigos, ajudam.</p></details>
-      <details><summary>Recebo os arquivos da marca?<i></i></summary><p>Sim. Você recebe os arquivos finais, prontos para a gráfica e para as redes, e o manual da marca.</p></details>
-      <details><summary>Como faço para começar?<i></i></summary><p>Me chame no WhatsApp. Eu explico os próximos passos e envio o briefing.</p></details>
+      <details><summary>O que eu preciso enviar?<i></i></summary><p>Com o projeto fechado, você responde o briefing. Se tiver fotos do negócio, referências que você gosta ou materiais antigos, ajudam.</p></details>
+      <details><summary>Recebo os arquivos da marca?<i></i></summary><p>Sim. Você recebe os arquivos finais, prontos para a gráfica e para as redes, as animações e o manual da marca.</p></details>
+      <details><summary>Como faço para começar?<i></i></summary><p>Me chame no WhatsApp. A gente conversa sobre o seu negócio e eu explico os próximos passos.</p></details>
     </div>
   </div>
 </section>
@@ -501,7 +514,7 @@ p{margin:0}
 <section class="fim" id="fim">
   <div class="wrap">
     <h2>Sua marca pronta na semana que vem</h2>
-    <p>Me chame no WhatsApp, conte sobre o seu negócio e receba o briefing para começar.</p>
+    <p>Me chame no WhatsApp e conte sobre o seu negócio. A gente conversa e começa a escrever a história da sua marca.</p>
     <div class="ctas">
       <a class="btn js-whats" href="#fim" target="_blank" rel="noopener">Chamar no WhatsApp <span class="arr">→</span></a>
       <span class="num mono">(34) 99959-9575</span>
@@ -543,7 +556,7 @@ const calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const MARCAS = [
   { id:'isabella',  nome:'Isabella Gutierres', seg:'Psicóloga',        cor:'#961B2E', tx:'#F7F7F7', fotos:[['4-aplicacoes/almofada','Almofada do consultório'],['4-aplicacoes/placa','Placa de fachada'],['4-aplicacoes/post-instagram','Post no Instagram']] },
   { id:'margarett', nome:'Margarett',          seg:'Hamburgueria',     cor:'#1A130D', tx:'#F7F7F7', fotos:[['4-aplicacoes/sacola','Sacola de delivery'],['4-aplicacoes/cardapio-interno','Cardápio'],['4-aplicacoes/post-imperio','Post no Instagram']] },
-  { id:'acai-yo',   nome:'Açaí Yo',            seg:'Açaíteria',        cor:'#8B3AC1', tx:'#F7F7F7', fotos:[['4-aplicacoes/embalagens','Embalagens'],['4-aplicacoes/pontos-de-venda','Pontos de venda'],['4-aplicacoes/morango-bone-avental','Boné e avental']] },
+  { id:'acai-yo',   nome:'Açaí Yo',            seg:'Açaíteria',        cor:'#8B3AC1', tx:'#F7F7F7', fotos:[['3-tipografia/embalagem-acai','Embalagem'],['4-aplicacoes/uniforme-polo','Uniforme'],['1-capa/outdoor','Outdoor']] },
   { id:'reigotta',  nome:'Reigotta',           seg:'Moda fitness',     cor:'#FF3EB5', tx:'#F7F7F7', fotos:[['1-capa/sacola','Sacola da loja'],['4-aplicacoes/cartoes','Cartões de visita'],['4-aplicacoes/etiqueta-rosa','Etiqueta de roupa']] },
   { id:'kamisama',  nome:'Kamisama',           seg:'Delivery japonês', cor:'#FEA389', tx:'#2A1517', fotos:[['4-aplicacoes/embalagem','Embalagem de delivery'],['4-aplicacoes/posts','Posts no Instagram'],['1-capa/sushi','Foto de campanha']] },
 ];
@@ -614,7 +627,7 @@ function pixelRevela(img) {
   })();
 }
 const ioPx = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const im = e.target; ioPx.unobserve(im); if (im.complete) pixelRevela(im); else im.addEventListener('load', () => pixelRevela(im), { once: true }); } }), { rootMargin: '0px 0px -12% 0px' });
-document.querySelectorAll('.mosaico img, .case img').forEach(im => ioPx.observe(im));
+document.querySelectorAll('.mosaico img').forEach(im => ioPx.observe(im));
 
 /* [GUIA: glitch-titulos] títulos dão um glitch quando aparecem (e o da abertura de vez em quando) */
 const titulos = document.querySelectorAll('h1, h2');

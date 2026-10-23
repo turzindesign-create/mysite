@@ -20,8 +20,8 @@ MARCA = {'@type': 'ProfessionalService', '@id': DOM + '/#turzin', 'name': 'turzi
          'email': 'turzindesign@gmail.com', 'areaServed': {'@type': 'Country', 'name': 'Brasil'},
          'knowsAbout': ['Identidade visual', 'Branding', 'Criação de logotipo', 'Design de embalagem', 'Criação de sites', 'Design de interface'],
          'hasOfferCatalog': {'@type': 'OfferCatalog', 'name': 'Serviços', 'itemListElement': [
-             {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': 'Identidade visual', 'description': 'Estudo de nicho e mercado, logotipo, tipografia, paleta, grafismos, aplicações e manual de uso da marca.'}},
-             {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': 'Identidade visual + site', 'description': 'Identidade visual completa com site e manual de uso do site.'}}]}}
+             {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': 'Identidade visual', 'description': 'Consultoria de mercado; símbolo, paleta de cores e tipografia; grafismos; animações; aplicações digitais e físicas; voz da marca; manual da marca. Pronta em 7 dias.'}},
+             {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': 'Identidade visual + site', 'description': 'Identidade visual completa (consultoria de mercado, símbolo, cores, tipografia, grafismos, animações, aplicações, voz e manual da marca) com site e manual de uso do site.'}}]}}
 
 if INSTA: MARCA['sameAs'] = [INSTA]
 

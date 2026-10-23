@@ -60,7 +60,7 @@ try:
 <img src="file://{R}img/margarett/1-capa/sacola.webp" style="width:100%;height:100%;object-fit:cover"><img src="file://{R}img/reigotta/4-aplicacoes/post-novos-ciclos.webp" style="width:100%;height:100%;object-fit:cover"></div>
 <div style="position:absolute;left:580px;top:70px;width:220px">{lg}</div>
 <div style="position:absolute;left:580px;bottom:150px;font:800 84px/.9 B;text-transform:uppercase;font-variation-settings:'wdth' 76">Identidade<br>visual<span style="display:inline-block;width:.16em;height:.16em;background:#44D62D;margin-left:.05em"></span></div>
-<div style="position:absolute;left:584px;bottom:80px;font:500 26px B;color:rgba(247,247,247,.75)">Sua marca pronta em até 5 dias.</div></body></html>''')
+<div style="position:absolute;left:584px;bottom:80px;font:500 26px B;color:rgba(247,247,247,.75)">Sua marca pronta em 7 dias.</div></body></html>''')
     with sync_playwright() as p:
         b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1200, 'height': 630})
         pg.goto('file://' + tmp); pg.evaluate('document.fonts.ready'); pg.wait_for_timeout(500)
