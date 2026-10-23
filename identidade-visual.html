@@ -343,7 +343,8 @@ p{margin:0}
 
 /* rastro de pixels no cursor (PC) */
 .rastro{position:fixed;z-index:50;width:8px;height:8px;background:var(--green);pointer-events:none;transition:opacity .5s,transform .5s}
-@media (prefers-reduced-motion:reduce){.gl::before,.gl::after{display:none}.rastro{display:none}*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+/* [GUIA: animacoes-sempre] as animações ficam ligadas mesmo com "reduzir movimento" do sistema; só o rastro do cursor some */
+@media (prefers-reduced-motion:reduce){.rastro{display:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -561,7 +562,7 @@ document.querySelectorAll('.rv, #passos').forEach(el => io.observe(el));
 
 /* ===================== ANIMAÇÕES ===================== */
 try { sessionStorage.setItem('veio-lp', '1'); } catch (e) {}
-const calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const calmo = false; // [GUIA: animacoes-sempre] mude para matchMedia('(prefers-reduced-motion: reduce)').matches para respeitar o "reduzir movimento" do sistema
 
 /* [GUIA: marcas-dados] marcas da aba: cor de fundo, cor do texto, logo e mockup */
 const MARCAS = [
@@ -673,7 +674,7 @@ if (!calmo && matchMedia('(min-width: 761px)').matches) {
 }
 
 /* [GUIA: rastro] rastro de quadradinhos verdes atrás do cursor (só PC) */
-if (!calmo && matchMedia('(pointer: fine)').matches) {
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches && matchMedia('(pointer: fine)').matches) {
   let ult = 0;
   addEventListener('pointermove', e => {
     const n = performance.now(); if (n - ult < 45) return; ult = n;
